@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Coordination Committee – IFS Benevolent &amp; Welfare Trust</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+  <style>
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', system-ui, sans-serif; }
+    .heading-font { font-family: 'Playfair Display', serif; }
+  </style>
+</head>
+
+<body class="bg-gradient-to-b from-emerald-900 via-emerald-800 to-emerald-950 text-white">
+
+<!-- NAVBAR -->
+<nav class="bg-emerald-900/95 backdrop-blur border-b border-emerald-800 sticky top-0 z-50">
+  <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+    <a href="ecombase.html" class="flex items-center gap-3">
+      <div class="w-10 h-10 bg-emerald-700 rounded-xl flex items-center justify-center text-xl"><i class="fas fa-tree"></i></div>
+      <div>
+        <span class="heading-font text-xl font-bold text-emerald-200">IFS Benevolent &amp; Welfare Trust</span>
+        <span class="block text-[10px] tracking-widest text-emerald-500">Standing with Green Warriors</span>
+      </div>
+    </a>
+    <div class="hidden md:flex gap-7 text-sm text-white items-center">
+      <div class="relative">
+        <button onclick="navToggle('aboutMenu')" class="hover:text-amber-300 transition">About Us</button>
+        <div id="aboutMenu" class="hidden absolute mt-2 w-48 bg-white text-black shadow-lg p-3 border z-50 text-sm">
+          <a href="about.html" class="block py-0.5 hover:text-emerald-700">About the Trust</a>
+          <a href="about.html#vision" class="block py-0.5 hover:text-emerald-700">Vision &amp; Mission</a>
+          <a href="about.html#objectives" class="block py-0.5 hover:text-emerald-700">Objects &amp; Purpose</a>
+          <a href="whoswho.html" class="block py-0.5 hover:text-emerald-700">Who's Who</a>
+        </div>
+      </div>
+      <div class="relative">
+        <button onclick="navToggle('govMenu')" class="hover:text-amber-300 transition">Governance</button>
+        <div id="govMenu" class="hidden absolute mt-2 w-60 bg-white text-black shadow-lg p-3 border z-50 text-sm">
+          <a href="boardoftrustees.html" class="block py-0.5 hover:text-emerald-700">Board of Trustees</a>
+          <a href="governingbody.html" class="block py-0.5 hover:text-emerald-700">Governing Body</a>
+          <a href="csepcommittee.html" class="block py-0.5 hover:text-emerald-700">CSEP Committee</a>
+          <a href="coordinationcommittee.html" class="block py-0.5 hover:text-emerald-700">Coordination Committee</a>
+        </div>
+      </div>
+      <div class="relative">
+        <button onclick="navToggle('galleryMenu')" class="hover:text-amber-300 transition">Gallery</button>
+        <div id="galleryMenu" class="hidden absolute mt-2 w-44 bg-white text-black shadow-lg p-3 border z-50 text-sm">
+          <a href="gallery.html#photo" class="block py-0.5 hover:text-emerald-700">Photo Gallery</a>
+          <a href="gallery.html#video" class="block py-0.5 hover:text-emerald-700">Video Gallery</a>
+          <a href="gallery.html#press" class="block py-0.5 hover:text-emerald-700">Press Coverage</a>
+        </div>
+      </div>
+      <div class="relative">
+        <button onclick="navToggle('newsMenu')" class="hover:text-amber-300 transition">News &amp; Update</button>
+        <div id="newsMenu" class="hidden absolute mt-2 w-56 bg-white text-black shadow-lg p-3 border z-50 text-sm">
+          <a href="news.html#newsletter" class="block py-0.5 hover:text-emerald-700">Bi-Monthly Newsletter</a>
+          <a href="news.html#activities" class="block py-0.5 hover:text-emerald-700">Recent Activities</a>
+          <a href="news.html#minutes" class="block py-0.5 hover:text-emerald-700">Minutes of the Meeting</a>
+        </div>
+      </div>
+      <a href="contact.html" class="hover:text-amber-300 transition">Contact Us</a>
+    </div>
+    <div class="flex items-center gap-2">
+      <button onclick="toggleLanguage()" class="text-xs border border-amber-400 text-amber-300 px-3 py-1 rounded-full hover:bg-amber-400 hover:text-emerald-950 transition">हिंदी / EN</button>
+      <a href="donate.html" class="text-xs bg-amber-400 text-emerald-950 px-4 py-2 rounded-full font-semibold hover:bg-amber-300 transition">Donate</a>
+    </div>
+  </div>
+</nav>
+
+<!-- PAGE CONTENT -->
+<section class="max-w-5xl mx-auto px-6 py-16">
+
+  <!-- Page Title -->
+  <h2 class="heading-font text-3xl text-amber-300 text-center mb-2">Coordination Committee</h2>
+  <p class="text-center text-emerald-400 italic mb-10">Terms of Reference and Operational Guidelines</p>
+
+  <!-- 1. Purpose -->
+  <div class="mb-10">
+    <h3 class="text-xl font-semibold text-amber-300 mb-4 flex items-center gap-2">
+      <span class="w-8 h-8 rounded-full bg-emerald-700 flex items-center justify-center text-sm font-bold">1</span>
+      Purpose of the Committee
+    </h3>
+    <p class="text-emerald-200 leading-relaxed pl-4">
+      The Coordination Committee is constituted to strengthen outreach, coordination, and resource mobilisation for the Trust, and to ensure timely flow of information and assistance for deserving cases.
+    </p>
+  </div>
+
+  <!-- 2. Functions -->
+  <div class="mb-10">
+    <h3 class="text-xl font-semibold text-amber-300 mb-6 flex items-center gap-2">
+      <span class="w-8 h-8 rounded-full bg-emerald-700 flex items-center justify-center text-sm font-bold">2</span>
+      Functions of the Coordination Committee
+    </h3>
+
+    <!-- 2.1 Liaison -->
+    <div class="mb-6 pl-4">
+      <h4 class="text-base font-semibold text-amber-200 mb-3">2.1 &nbsp; Liaison and Coordination</h4>
+      <p class="text-emerald-300 text-sm mb-3 pl-2">The Committee shall:</p>
+      <ul class="space-y-3 text-emerald-200 leading-relaxed pl-2">
+        <li class="flex gap-3"><span class="text-amber-400 mt-1 shrink-0">&#10003;</span><span>Liaise with various forest associations, welfare associations and/or other similar bodies within the State Forest Departments (SFDs).</span></li>
+        <li class="flex gap-3"><span class="text-amber-400 mt-1 shrink-0">&#10003;</span><span>Facilitate early identification of cases where forestry personnel have lost their lives or suffered grievous injury in the line of duty.</span></li>
+        <li class="flex gap-3"><span class="text-amber-400 mt-1 shrink-0">&#10003;</span><span>Where Trustees or members become aware of such cases, coordinate with the concerned State/UT authorities to expedite preparation and forwarding of proposals through the PCCF/Nodal Officer, and ensure completeness of documentation.</span></li>
+      </ul>
+    </div>
+
+    <!-- 2.2 Fund Mobilisation -->
+    <div class="mb-6 pl-4">
+      <h4 class="text-base font-semibold text-amber-200 mb-3">2.2 &nbsp; Fund Mobilisation</h4>
+      <p class="text-emerald-300 text-sm mb-3 pl-2">The Committee shall:</p>
+      <ul class="space-y-3 text-emerald-200 leading-relaxed pl-2">
+        <li class="flex gap-3"><span class="text-amber-400 mt-1 shrink-0">&#10003;</span><span>Undertake fund-raising initiatives, including voluntary contributions from serving and retired officers, and contributions from organizations/agencies as mentioned in the Trust Deed.</span></li>
+        <li class="flex gap-3"><span class="text-amber-400 mt-1 shrink-0">&#10003;</span><span>Encourage one-time donations and recurring contributions, made any time or any number of times.</span></li>
+        <li class="flex gap-3"><span class="text-amber-400 mt-1 shrink-0">&#10003;</span><span>Donations may be made through UPI, Net banking, and/or such other digital modes as approved by the Governing Body.</span></li>
+      </ul>
+    </div>
+
+    <!-- 2.3 Awareness -->
+    <div class="pl-4">
+      <h4 class="text-base font-semibold text-amber-200 mb-3">2.3 &nbsp; Awareness and Outreach</h4>
+      <p class="text-emerald-300 text-sm mb-3 pl-2">The Committee shall:</p>
+      <ul class="space-y-3 text-emerald-200 leading-relaxed pl-2">
+        <li class="flex gap-3"><span class="text-amber-400 mt-1 shrink-0">&#10003;</span><span>Create awareness about the mandate and objectives of the Trust, procedures for assistance and modes of contribution.</span></li>
+        <li class="flex gap-3"><span class="text-amber-400 mt-1 shrink-0">&#10003;</span><span>Disseminate approved information material of the Trust.</span></li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- 3. Composition -->
+  <div class="mb-10">
+    <h3 class="text-xl font-semibold text-amber-300 mb-4 flex items-center gap-2">
+      <span class="w-8 h-8 rounded-full bg-emerald-700 flex items-center justify-center text-sm font-bold">3</span>
+      Composition of the Committee
+    </h3>
+    <ul class="space-y-3 text-emerald-200 leading-relaxed pl-4">
+      <li class="flex gap-3"><span class="text-amber-400 mt-1 shrink-0">&#10003;</span><span>The Coordination Committee shall consist of nine members as decided by the Governing Body.</span></li>
+      <li class="flex gap-3"><span class="text-amber-400 mt-1 shrink-0">&#10003;</span><span>Members may include the Trustees, one of the office-bearers of the IFSA (Central Unit) and members of the Trust, as deemed appropriate.</span></li>
+      <li class="flex gap-3"><span class="text-amber-400 mt-1 shrink-0">&#10003;</span><span>There will be one Chairperson, one Vice-Chairperson, and one Secretary of the committee.</span></li>
+    </ul>
+  </div>
+
+  <!-- 4. Earmarked Donations -->
+  <div class="mb-10">
+    <h3 class="text-xl font-semibold text-amber-300 mb-4 flex items-center gap-2">
+      <span class="w-8 h-8 rounded-full bg-emerald-700 flex items-center justify-center text-sm font-bold">4</span>
+      Earmarked Donations
+    </h3>
+    <p class="text-emerald-200 leading-relaxed pl-4 mb-4">Where a contribution is made by name of a specific beneficiary or case, the following shall apply:</p>
+    <ul class="space-y-3 text-emerald-200 leading-relaxed pl-4">
+      <li class="flex gap-3"><span class="text-amber-400 mt-1 shrink-0">&#10003;</span><span>Such contribution shall be accounted separately in coordination with the Treasurer.</span></li>
+      <li class="flex gap-3"><span class="text-amber-400 mt-1 shrink-0">&#10003;</span><span>The Trust shall act as a facilitating agency for such contributions. Irrespective of whether the Trust extends any additional assistance in that case, the earmarked amount shall be transferred in full to the dependents of the named beneficiary, subject to verification of identity and bank details.</span></li>
+      <li class="flex gap-3"><span class="text-amber-400 mt-1 shrink-0">&#10003;</span><span>The Trust shall not retain or divert any portion of such earmarked contribution for general purposes.</span></li>
+      <li class="flex gap-3"><span class="text-amber-400 mt-1 shrink-0">&#10003;</span><span>The Trust shall not be liable for the adequacy or sufficiency of such contribution.</span></li>
+    </ul>
+  </div>
+
+  <!-- 5. Reporting -->
+  <div class="mb-10">
+    <h3 class="text-xl font-semibold text-amber-300 mb-4 flex items-center gap-2">
+      <span class="w-8 h-8 rounded-full bg-emerald-700 flex items-center justify-center text-sm font-bold">5</span>
+      Reporting
+    </h3>
+    <ul class="space-y-3 text-emerald-200 leading-relaxed pl-4">
+      <li class="flex gap-3"><span class="text-amber-400 mt-1 shrink-0">&#10003;</span><span>The Committee shall submit periodic reports to the Governing Body on outreach activities, funds mobilised, and coordination efforts.</span></li>
+    </ul>
+  </div>
+
+  <!-- 6. Review -->
+  <div class="mb-10">
+    <h3 class="text-xl font-semibold text-amber-300 mb-4 flex items-center gap-2">
+      <span class="w-8 h-8 rounded-full bg-emerald-700 flex items-center justify-center text-sm font-bold">6</span>
+      Review and Modification
+    </h3>
+    <p class="text-emerald-200 leading-relaxed pl-4">
+      These Terms of Reference may be reviewed and modified by the Governing Body from time to time.
+    </p>
+  </div>
+
+  <!-- Members Table -->
+  <div class="mt-14" id="members">
+    <h2 class="heading-font text-2xl text-amber-300 text-center mb-2">Committee Members</h2>
+    <p class="text-center text-emerald-400 italic mb-8">Coordination Committee — Office Bearers</p>
+
+    <div class="overflow-x-auto rounded-xl border border-emerald-700">
+      <table class="w-full text-sm">
+        <thead>
+          <tr class="bg-emerald-700/80">
+            <th class="text-left text-amber-300 font-semibold px-5 py-3 w-16">Sl No.</th>
+            <th class="text-left text-amber-300 font-semibold px-5 py-3">Name</th>
+            <th class="text-left text-amber-300 font-semibold px-5 py-3">Designation</th>
+            <th class="text-left text-amber-300 font-semibold px-5 py-3">Batch</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="border-t border-emerald-700/50 hover:bg-emerald-700/20 transition">
+            <td class="px-5 py-3 text-emerald-300">1</td>
+            <td class="px-5 py-3 text-emerald-100">Shri Vinod Kumar Tiwari</td>
+            <td class="px-5 py-3 text-emerald-200">Chairperson</td>
+            <td class="px-5 py-3 text-emerald-300">HP: 1986</td>
+          </tr>
+          <tr class="border-t border-emerald-700/50 hover:bg-emerald-700/20 transition">
+            <td class="px-5 py-3 text-emerald-300">2</td>
+            <td class="px-5 py-3 text-emerald-100">Shri Kunal Satyarthi</td>
+            <td class="px-5 py-3 text-emerald-200">Vice Chairperson</td>
+            <td class="px-5 py-3 text-emerald-300">HP: 1997</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="text-center mt-12">
+    <a href="ecombase.html" class="inline-block bg-amber-400 text-emerald-950 px-8 py-3 rounded-full font-semibold text-sm hover:bg-amber-300 transition">← Back to Home</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="bg-emerald-900 border-t border-emerald-800 py-12">
+  <div class="max-w-7xl mx-auto px-6 text-center">
+    <h3 class="heading-font text-2xl text-amber-300 mb-6">Connect With Us</h3>
+    <div class="flex justify-center gap-6 text-2xl mb-8">
+      <a href="#" class="w-12 h-12 flex items-center justify-center rounded-full bg-emerald-800 hover:bg-amber-400 hover:text-emerald-950 transition"><i class="fab fa-facebook-f"></i></a>
+      <a href="#" class="w-12 h-12 flex items-center justify-center rounded-full bg-emerald-800 hover:bg-amber-400 hover:text-emerald-950 transition"><i class="fab fa-x-twitter"></i></a>
+      <a href="#" class="w-12 h-12 flex items-center justify-center rounded-full bg-emerald-800 hover:bg-amber-400 hover:text-emerald-950 transition"><i class="fab fa-instagram"></i></a>
+      <a href="#" class="w-12 h-12 flex items-center justify-center rounded-full bg-emerald-800 hover:bg-amber-400 hover:text-emerald-950 transition"><i class="fab fa-linkedin-in"></i></a>
+      <a href="#" class="w-12 h-12 flex items-center justify-center rounded-full bg-emerald-800 hover:bg-amber-400 hover:text-emerald-950 transition"><i class="fab fa-youtube"></i></a>
+    </div>
+    <p class="text-sm text-emerald-300">© 2026 Indian Forest Service Benevolent and Welfare Trust. All Rights Reserved.</p>
+  </div>
+</footer>
+
+<script>
+function navToggle(id) {
+  document.querySelectorAll('nav .absolute').forEach(el => { if(el.id !== id) el.classList.add('hidden'); });
+  document.getElementById(id).classList.toggle('hidden');
+}
+document.addEventListener('click', function(e) {
+  if (!e.target.closest('nav')) document.querySelectorAll('nav .absolute').forEach(el => el.classList.add('hidden'));
+});
+let currentLang = "en";
+function toggleLanguage() {
+  const en = document.querySelectorAll(".lang.en"), hi = document.querySelectorAll(".lang.hi");
+  if (currentLang === "en") { en.forEach(el=>el.classList.add("hidden")); hi.forEach(el=>el.classList.remove("hidden")); currentLang="hi"; }
+  else { hi.forEach(el=>el.classList.add("hidden")); en.forEach(el=>el.classList.remove("hidden")); currentLang="en"; }
+}
+</script>
+</body>
+</html>

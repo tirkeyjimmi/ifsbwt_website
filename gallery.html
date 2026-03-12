@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gallery – IFS Benevolent & Welfare Trust</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+  <style>
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', system-ui, sans-serif; }
+    .heading-font { font-family: 'Playfair Display', sans-serif; }
+    .gallery-tab.active { background-color: #d97706; color: #022c22; font-weight: 700; border-color: #d97706; }
+    .gallery-section { display: none; }
+    .gallery-section.active { display: block; }
+  </style>
+</head>
+
+<body class="bg-gradient-to-b from-emerald-900 via-emerald-800 to-emerald-950 text-white">
+
+<!-- NAVBAR -->
+<nav class="bg-emerald-900/95 backdrop-blur border-b border-emerald-800 sticky top-0 z-50">
+  <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+    <a href="ecombase.html" class="flex items-center gap-3">
+      <div class="w-10 h-10 bg-emerald-700 rounded-xl flex items-center justify-center text-xl"><i class="fas fa-tree"></i></div>
+      <div>
+        <span class="heading-font text-xl font-bold text-emerald-200">IFS Benevolent &amp; Welfare Trust</span>
+        <span class="block text-[10px] tracking-widest text-emerald-500">Standing with Green Warriors</span>
+      </div>
+    </a>
+    <div class="hidden md:flex gap-7 text-sm text-white items-center">
+      <div class="relative">
+        <button onclick="navToggle('aboutMenu')" class="hover:text-amber-300 transition">About Us</button>
+        <div id="aboutMenu" class="hidden absolute mt-2 w-48 bg-white text-black shadow-lg p-3 border z-50 text-sm">
+          <a href="about.html" class="block py-0.5 hover:text-emerald-700">About the Trust</a>
+          <a href="about.html#vision" class="block py-0.5 hover:text-emerald-700">Vision &amp; Mission</a>
+          <a href="about.html#objectives" class="block py-0.5 hover:text-emerald-700">Objects &amp; Purpose</a>
+          <a href="whoswho.html" class="block py-0.5 hover:text-emerald-700">Who's Who</a>
+        </div>
+      </div>
+      <div class="relative">
+        <button onclick="navToggle('govMenu')" class="hover:text-amber-300 transition">Governance</button>
+        <div id="govMenu" class="hidden absolute mt-2 w-60 bg-white text-black shadow-lg p-3 border z-50 text-sm">
+          <a href="boardoftrustees.html" class="block py-0.5 hover:text-emerald-700">Board of Trustees</a>
+          <a href="governingbody.html" class="block py-0.5 hover:text-emerald-700">Governing Body</a>
+          <a href="csepcommittee.html" class="block py-0.5 hover:text-emerald-700">CSEP Committee</a>
+          <a href="coordinationcommittee.html" class="block py-0.5 hover:text-emerald-700">Coordination Committee</a>
+        </div>
+      </div>
+      <div class="relative">
+        <button onclick="navToggle('galleryMenu')" class="hover:text-amber-300 transition">Gallery</button>
+        <div id="galleryMenu" class="hidden absolute mt-2 w-44 bg-white text-black shadow-lg p-3 border z-50 text-sm">
+          <a href="gallery.html#photo" class="block py-0.5 hover:text-emerald-700">Photo Gallery</a>
+          <a href="gallery.html#video" class="block py-0.5 hover:text-emerald-700">Video Gallery</a>
+          <a href="gallery.html#press" class="block py-0.5 hover:text-emerald-700">Press Coverage</a>
+        </div>
+      </div>
+      <div class="relative">
+        <button onclick="navToggle('newsMenu')" class="hover:text-amber-300 transition">News &amp; Update</button>
+        <div id="newsMenu" class="hidden absolute mt-2 w-56 bg-white text-black shadow-lg p-3 border z-50 text-sm">
+          <a href="news.html#newsletter" class="block py-0.5 hover:text-emerald-700">Bi-Monthly Newsletter</a>
+          <a href="news.html#activities" class="block py-0.5 hover:text-emerald-700">Recent Activities</a>
+          <a href="news.html#minutes" class="block py-0.5 hover:text-emerald-700">Minutes of the Meeting</a>
+        </div>
+      </div>
+      <a href="contact.html" class="hover:text-amber-300 transition">Contact Us</a>
+    </div>
+    <div class="flex items-center gap-2">
+      <button onclick="toggleLanguage()" class="text-xs border border-amber-400 text-amber-300 px-3 py-1 rounded-full hover:bg-amber-400 hover:text-emerald-950 transition">हिंदी / EN</button>
+      <a href="donate.html" class="text-xs bg-amber-400 text-emerald-950 px-4 py-2 rounded-full font-semibold hover:bg-amber-300 transition">Donate</a>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="py-20 text-center px-6">
+  <h1 class="heading-font text-5xl text-amber-300 mb-4">Gallery</h1>
+  <p class="text-emerald-200 max-w-2xl mx-auto">Welfare activities, events and press coverage of the IFS Benevolent &amp; Welfare Trust.</p>
+</section>
+
+<!-- TAB BUTTONS -->
+<div class="max-w-5xl mx-auto px-6 mb-10 flex gap-3 justify-center flex-wrap">
+  <button onclick="switchTab('photo')" id="tab-photo" class="gallery-tab active px-6 py-3 rounded-full border border-emerald-600 text-emerald-200 text-sm transition">
+    <i class="fas fa-images mr-2"></i>Photo Gallery
+  </button>
+  <button onclick="switchTab('video')" id="tab-video" class="gallery-tab px-6 py-3 rounded-full border border-emerald-600 text-emerald-200 text-sm transition">
+    <i class="fas fa-video mr-2"></i>Video Gallery
+  </button>
+  <button onclick="switchTab('press')" id="tab-press" class="gallery-tab px-6 py-3 rounded-full border border-emerald-600 text-emerald-200 text-sm transition">
+    <i class="fas fa-newspaper mr-2"></i>Press Coverage
+  </button>
+</div>
+
+<!-- PHOTO SECTION -->
+<section id="section-photo" class="gallery-section active py-10">
+  <div class="max-w-7xl mx-auto px-6">
+    <div class="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+      <div onclick="openImg(this)" class="cursor-pointer group overflow-hidden rounded-xl border border-emerald-700">
+        <img src="1 Board of Trustees Meeting January 24, 2026.jpeg" class="w-full h-56 object-cover group-hover:scale-110 transition duration-300" alt="Board of Trustees Meeting">
+        <p class="p-2 text-xs text-emerald-300 bg-emerald-900/80"> Board of Trustees Meeting January 24, 2026</p>
+      </div>
+      <div onclick="openImg(this)" class="cursor-pointer group overflow-hidden rounded-xl border border-emerald-700">
+        <img src="2 Board of Trustees Meeting January 24, 2026.jpeg" class="w-full h-56 object-cover group-hover:scale-110 transition duration-300" alt="Board of Trustees Meeting">
+        <p class="p-2 text-xs text-emerald-300 bg-emerald-900/80">Board of Trustees Meeting January 24, 2026</p>
+      </div>
+      <div onclick="openImg(this)" class="cursor-pointer group overflow-hidden rounded-xl border border-emerald-700">
+        <img src="4. First Meeting of Governing Body, February 7, 2026.jpeg" class="w-full h-56 object-cover group-hover:scale-110 transition duration-300" alt=" Governing Body Meeting">
+        <p class="p-2 text-xs text-emerald-300 bg-emerald-900/80">First Meeting of Governing Body on February 7, 2026</p>
+      </div>
+      <div onclick="openImg(this)" class="cursor-pointer group overflow-hidden rounded-xl border border-emerald-700">
+        <img src="5. First Meeting of Governing Body, February 7, 2026.jpeg" class="w-full h-56 object-cover group-hover:scale-110 transition duration-300" alt="Governing Body Meeting">
+        <p class="p-2 text-xs text-emerald-300 bg-emerald-900/80">First Meeting of Governing Body on February 7, 2026</p>
+      </div>
+      <div onclick="openImg(this)" class="cursor-pointer group overflow-hidden rounded-xl border border-emerald-700">
+        <img src="blank.jpeg" class="w-full h-56 object-cover group-hover:scale-110 transition duration-300" alt="Blank">
+        <p class="p-2 text-xs text-emerald-300 bg-emerald-900/80">Photos to be uploaded</p>
+      </div>
+      <div onclick="openImg(this)" class="cursor-pointer group overflow-hidden rounded-xl border border-emerald-700">
+        <img src="6. Handing over financial assistance to First Beneficiary Family of Deceased Personnel.jpeg" class="w-full h-56 object-cover group-hover:scale-110 transition duration-300" alt="Financial Assistance">
+        <p class="p-2 text-xs text-emerald-300 bg-emerald-900/80">Handing over financial assistance to First Beneficiary Family of Deceased Personnel</p>
+      </div>
+      <div onclick="openImg(this)" class="cursor-pointer group overflow-hidden rounded-xl border border-emerald-700">
+        <img src="blank.jpeg" class="w-full h-56 object-cover group-hover:scale-110 transition duration-300" alt="Blank">
+        <p class="p-2 text-xs text-emerald-300 bg-emerald-900/80">Photos to be uploaded</p>
+      </div>
+      <div onclick="openImg(this)" class="cursor-pointer group overflow-hidden rounded-xl border border-emerald-700">
+        <img src="blank.jpeg" class="w-full h-56 object-cover group-hover:scale-110 transition duration-300" alt="Blank">
+        <p class="p-2 text-xs text-emerald-300 bg-emerald-900/80">Photos to be uploaded</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- VIDEO SECTION -->
+<section id="section-video" class="gallery-section py-10">
+  <div class="max-w-7xl mx-auto px-6">
+    <div class="grid sm:grid-cols-2 md:grid-cols-3 gap-6">
+      <div class="rounded-xl overflow-hidden border border-emerald-700 bg-emerald-900/60">
+        <div class="relative">
+          <img src="https://images.unsplash.com/photo-1503455637927-730bce8583c0" class="w-full h-44 object-cover" alt="Video thumbnail">
+          <div class="absolute inset-0 flex items-center justify-center bg-black/40">
+            <a href="https://www.youtube.com/" target="_blank" class="w-14 h-14 rounded-full bg-amber-400 flex items-center justify-center hover:bg-amber-300 transition">
+              <i class="fas fa-play text-emerald-950 text-xl ml-1"></i>
+            </a>
+          </div>
+        </div>
+        <div class="p-4"><p class="text-sm font-semibold text-emerald-100">Welfare Activities – Field Report 2025</p><p class="text-xs text-emerald-500 mt-1">Duration: 8:32</p></div>
+      </div>
+      <div class="rounded-xl overflow-hidden border border-emerald-700 bg-emerald-900/60">
+        <div class="relative">
+          <img src="https://images.unsplash.com/photo-1516627145497-ae6968895b74" class="w-full h-44 object-cover" alt="Video thumbnail">
+          <div class="absolute inset-0 flex items-center justify-center bg-black/40">
+            <a href="https://www.youtube.com/" target="_blank" class="w-14 h-14 rounded-full bg-amber-400 flex items-center justify-center hover:bg-amber-300 transition">
+              <i class="fas fa-play text-emerald-950 text-xl ml-1"></i>
+            </a>
+          </div>
+        </div>
+        <div class="p-4"><p class="text-sm font-semibold text-emerald-100">Board Meeting Highlights – Dec 2025</p><p class="text-xs text-emerald-500 mt-1">Duration: 12:10</p></div>
+      </div>
+      <div class="rounded-xl overflow-hidden border border-emerald-700 bg-emerald-900/60">
+        <div class="relative">
+          <img src="https://images.unsplash.com/photo-1524503033411-c9566986fc8f" class="w-full h-44 object-cover" alt="Video thumbnail">
+          <div class="absolute inset-0 flex items-center justify-center bg-black/40">
+            <a href="https://www.youtube.com/" target="_blank" class="w-14 h-14 rounded-full bg-amber-400 flex items-center justify-center hover:bg-amber-300 transition">
+              <i class="fas fa-play text-emerald-950 text-xl ml-1"></i>
+            </a>
+          </div>
+        </div>
+        <div class="p-4"><p class="text-sm font-semibold text-emerald-100">IFS Officers Felicitation Ceremony 2024</p><p class="text-xs text-emerald-500 mt-1">Duration: 22:45</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRESS SECTION -->
+<section id="section-press" class="gallery-section py-10">
+  <div class="max-w-7xl mx-auto px-6">
+    <div class="grid sm:grid-cols-2 md:grid-cols-3 gap-6">
+      <div onclick="openImg(this)" class="cursor-pointer rounded-xl overflow-hidden border border-emerald-700 bg-emerald-900/60 group">
+        <img src="https://images.unsplash.com/photo-1504151932400-72d4384f04b3" class="w-full h-44 object-cover group-hover:scale-105 transition duration-300" alt="Press">
+        <div class="p-4">
+          <span class="text-[10px] uppercase tracking-widest text-amber-400 font-semibold">The Hindu</span>
+          <p class="text-sm font-semibold text-emerald-100 mt-1">IFS Trust provides financial aid to 42 bereaved families</p>
+          <p class="text-xs text-emerald-500 mt-1">14 Jan 2026</p>
+        </div>
+      </div>
+      <div onclick="openImg(this)" class="cursor-pointer rounded-xl overflow-hidden border border-emerald-700 bg-emerald-900/60 group">
+        <img src="https://images.unsplash.com/photo-1509062522246-3755977927d7" class="w-full h-44 object-cover group-hover:scale-105 transition duration-300" alt="Press">
+        <div class="p-4">
+          <span class="text-[10px] uppercase tracking-widest text-amber-400 font-semibold">Times of India</span>
+          <p class="text-sm font-semibold text-emerald-100 mt-1">Forest officers felicitated for exemplary service</p>
+          <p class="text-xs text-emerald-500 mt-1">22 Oct 2025</p>
+        </div>
+      </div>
+      <div onclick="openImg(this)" class="cursor-pointer rounded-xl overflow-hidden border border-emerald-700 bg-emerald-900/60 group">
+        <img src="https://images.unsplash.com/photo-1519452575417-564c1401ecc0" class="w-full h-44 object-cover group-hover:scale-105 transition duration-300" alt="Press">
+        <div class="p-4">
+          <span class="text-[10px] uppercase tracking-widest text-amber-400 font-semibold">Hindustan Times</span>
+          <p class="text-sm font-semibold text-emerald-100 mt-1">Trust launches medical assistance drive for IFS officers</p>
+          <p class="text-xs text-emerald-500 mt-1">05 Jun 2025</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BACK BUTTON -->
+<div class="text-center py-12">
+  <a href="ecombase.html" class="inline-block bg-amber-400 text-emerald-950 px-8 py-3 rounded-full font-semibold text-sm hover:bg-amber-300 transition">← Back to Home</a>
+</div>
+
+<!-- IMAGE MODAL -->
+<div id="imgModal" class="hidden fixed inset-0 bg-black/90 z-[100] flex items-center justify-center" onclick="if(event.target===this)closeImg()">
+  <button onclick="closeImg()" class="absolute top-6 right-8 text-white text-4xl hover:text-amber-300 transition">&times;</button>
+  <img id="modalImg" class="max-h-[90vh] max-w-[90vw] rounded-xl" alt="Gallery image">
+</div>
+
+<!-- FOOTER -->
+<footer class="bg-emerald-900 border-t border-emerald-800 py-12">
+  <div class="max-w-7xl mx-auto px-6 text-center">
+    <h3 class="heading-font text-2xl text-amber-300 mb-6">Connect With Us</h3>
+    <div class="flex justify-center gap-6 text-2xl mb-8">
+      <a href="#" class="w-12 h-12 flex items-center justify-center rounded-full bg-emerald-800 hover:bg-amber-400 hover:text-emerald-950 transition"><i class="fab fa-facebook-f"></i></a>
+      <a href="#" class="w-12 h-12 flex items-center justify-center rounded-full bg-emerald-800 hover:bg-amber-400 hover:text-emerald-950 transition"><i class="fab fa-x-twitter"></i></a>
+      <a href="#" class="w-12 h-12 flex items-center justify-center rounded-full bg-emerald-800 hover:bg-amber-400 hover:text-emerald-950 transition"><i class="fab fa-instagram"></i></a>
+      <a href="#" class="w-12 h-12 flex items-center justify-center rounded-full bg-emerald-800 hover:bg-amber-400 hover:text-emerald-950 transition"><i class="fab fa-linkedin-in"></i></a>
+      <a href="#" class="w-12 h-12 flex items-center justify-center rounded-full bg-emerald-800 hover:bg-amber-400 hover:text-emerald-950 transition"><i class="fab fa-youtube"></i></a>
+    </div>
+    <p class="text-sm text-emerald-300">© 2026 Indian Forest Service Benevolent and Welfare Trust. All Rights Reserved.</p>
+  </div>
+</footer>
+
+<script>
+function navToggle(id) {
+  document.querySelectorAll('nav .absolute').forEach(el => { if(el.id !== id) el.classList.add('hidden'); });
+  document.getElementById(id).classList.toggle('hidden');
+}
+document.addEventListener('click', function(e) {
+  if (!e.target.closest('nav')) document.querySelectorAll('nav .absolute').forEach(el => el.classList.add('hidden'));
+});
+let currentLang = "en";
+function toggleLanguage() {
+  const en = document.querySelectorAll(".lang.en"), hi = document.querySelectorAll(".lang.hi");
+  if (currentLang === "en") { en.forEach(el=>el.classList.add("hidden")); hi.forEach(el=>el.classList.remove("hidden")); currentLang="hi"; }
+  else { hi.forEach(el=>el.classList.add("hidden")); en.forEach(el=>el.classList.remove("hidden")); currentLang="en"; }
+}
+function switchTab(name) {
+  document.querySelectorAll('.gallery-section').forEach(s => s.classList.remove('active'));
+  document.querySelectorAll('.gallery-tab').forEach(t => t.classList.remove('active'));
+  document.getElementById('section-' + name).classList.add('active');
+  document.getElementById('tab-' + name).classList.add('active');
+}
+function openImg(card) {
+  const img = card.querySelector("img").src;
+  document.getElementById("modalImg").src = img;
+  document.getElementById("imgModal").classList.remove("hidden");
+}
+function closeImg() {
+  document.getElementById("imgModal").classList.add("hidden");
+}
+document.addEventListener('keydown', function(e) { if(e.key === 'Escape') closeImg(); });
+(function() {
+  const hash = window.location.hash.replace('#','');
+  if (['photo','video','press'].includes(hash)) switchTab(hash);
+})();
+</script>
+</body>
+</html>

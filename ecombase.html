@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>IFS Benevolent & Welfare Trust</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+  <style>
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', system-ui, sans-serif; }
+    .heading-font { font-family: 'Playfair Display', sans-serif; }
+    .card-container { display: flex; gap: 20px; justify-content: center; flex-wrap: wrap; }
+    .card { width: 300px; text-align: center; }
+    .card img { width: 100%; height: 250px; object-fit: cover; border-radius: 10px; }
+  </style>
+</head>
+
+<body class="bg-gradient-to-b from-emerald-900 via-emerald-800 to-emerald-950 text-white">
+
+<!-- NAVBAR -->
+<nav class="bg-emerald-900/95 backdrop-blur border-b border-emerald-800 sticky top-0 z-50">
+  <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+    <a href="ecombase.html" class="flex items-center gap-3">
+      <div class="w-10 h-10 bg-emerald-700 rounded-xl flex items-center justify-center text-xl"><i class="fas fa-tree"></i></div>
+      <div>
+        <span class="heading-font text-xl font-bold text-emerald-200">IFS Benevolent &amp; Welfare Trust</span>
+        <span class="block text-[10px] tracking-widest text-emerald-500">Standing with Green Warriors</span>
+      </div>
+    </a>
+    <div class="hidden md:flex gap-7 text-sm text-white items-center">
+      <div class="relative">
+        <button onclick="navToggle('aboutMenu')" class="hover:text-amber-300 transition">About Us</button>
+        <div id="aboutMenu" class="hidden absolute mt-2 w-48 bg-white text-black shadow-lg p-3 border z-50 text-sm">
+          <a href="about.html" class="block py-0.5 hover:text-emerald-700">About the Trust</a>
+          <a href="about.html#vision" class="block py-0.5 hover:text-emerald-700">Vision &amp; Mission</a>
+          <a href="about.html#objectives" class="block py-0.5 hover:text-emerald-700">Objects &amp; Purpose</a>
+          <a href="whoswho.html" class="block py-0.5 hover:text-emerald-700">Who's Who</a>
+        </div>
+      </div>
+      <div class="relative">
+        <button onclick="navToggle('govMenu')" class="hover:text-amber-300 transition">Governance</button>
+        <div id="govMenu" class="hidden absolute mt-2 w-60 bg-white text-black shadow-lg p-3 border z-50 text-sm">
+          <a href="boardoftrustees.html" class="block py-0.5 hover:text-emerald-700">Board of Trustees</a>
+          <a href="governingbody.html" class="block py-0.5 hover:text-emerald-700">Governing Body</a>
+          <a href="csepcommittee.html" class="block py-0.5 hover:text-emerald-700">CSEP Committee</a>
+          <a href="coordinationcommittee.html" class="block py-0.5 hover:text-emerald-700">Coordination Committee</a>
+        </div>
+      </div>
+      <div class="relative">
+        <button onclick="navToggle('galleryMenu')" class="hover:text-amber-300 transition">Gallery</button>
+        <div id="galleryMenu" class="hidden absolute mt-2 w-44 bg-white text-black shadow-lg p-3 border z-50 text-sm">
+          <a href="gallery.html#photo" class="block py-0.5 hover:text-emerald-700">Photo Gallery</a>
+          <a href="gallery.html#video" class="block py-0.5 hover:text-emerald-700">Video Gallery</a>
+          <a href="gallery.html#press" class="block py-0.5 hover:text-emerald-700">Press Coverage</a>
+        </div>
+      </div>
+      <div class="relative">
+        <button onclick="navToggle('newsMenu')" class="hover:text-amber-300 transition">News &amp; Update</button>
+        <div id="newsMenu" class="hidden absolute mt-2 w-56 bg-white text-black shadow-lg p-3 border z-50 text-sm">
+          <a href="news.html#newsletter" class="block py-0.5 hover:text-emerald-700">Bi-Monthly Newsletter</a>
+          <a href="news.html#activities" class="block py-0.5 hover:text-emerald-700">Recent Activities</a>
+          <a href="news.html#minutes" class="block py-0.5 hover:text-emerald-700">Minutes of the Meeting</a>
+        </div>
+      </div>
+      <a href="contact.html" class="hover:text-amber-300 transition">Contact Us</a>
+    </div>
+    <div class="flex items-center gap-2">
+      <button onclick="toggleLanguage()" class="text-xs border border-amber-400 text-amber-300 px-3 py-1 rounded-full hover:bg-amber-400 hover:text-emerald-950 transition">हिंदी / EN</button>
+      <a href="donate.html" class="text-xs bg-amber-400 text-emerald-950 px-4 py-2 rounded-full font-semibold hover:bg-amber-300 transition">Donate</a>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="relative h-[90vh] flex items-center justify-center text-center">
+  <img src="https://images.unsplash.com/photo-1470115636492-6d2b56f9146d" class="absolute inset-0 w-full h-full object-cover" alt="Forest">
+  <div class="absolute inset-0 bg-black/40"></div>
+  <div class="relative max-w-4xl px-6">
+    <h1 class="heading-font text-6xl text-amber-300 mb-6">
+      <span class="lang en">Protecting forests. Supporting Green Warriors</span>
+      <span class="lang hi hidden">वनों की रक्षा। वीरों का सम्मान।</span>
+    </h1>
+    <p class="text-lg text-emerald-100 mb-8">
+      <span class="lang en">Dedicated to the welfare, resilience, and honour of our forest officers.</span>
+      <span class="lang hi hidden">भारतीय वन सेवा अधिकारियों के कल्याण और सम्मान हेतु समर्पित।</span>
+    </p>
+    <div class="flex gap-4 justify-center">
+      <a href="donate.html" class="bg-amber-400 hover:bg-amber-500 text-emerald-950 px-8 py-4 rounded-full font-semibold transition">Support Welfare</a>
+      <a href="about.html" class="border border-amber-300 text-amber-300 px-8 py-4 rounded-full hover:bg-amber-300/10 transition">Learn More</a>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about" class="py-24 bg-emerald-900">
+  <div class="max-w-4xl mx-auto text-center px-6">
+    <h2 class="heading-font text-4xl mb-6 text-amber-300">About the Trust</h2>
+    <p class="text-emerald-200 leading-relaxed">
+      Indian Forest Service Benevolent and Welfare Trust is a public charitable trust established to provide
+      financial assistance to the bereaved families of Officers and all other subordinate field personnel.
+      Originally constituted in 2008, the Trust operates as a non-profit initiative guided by the spirit of
+      service, fraternity, and compassion. Revitalized in 2026, it seeks to expand welfare support through
+      structured benevolent programmes.
+    </p>
+    <a href="about.html" class="inline-block mt-8 bg-amber-400 text-emerald-950 px-6 py-2 rounded-full font-semibold text-sm hover:bg-amber-300 transition">Read More →</a>
+  </div>
+</section>
+
+<!-- INITIATIVES -->
+<section id="initiatives" class="py-24 bg-emerald-800">
+  <h2 class="heading-font text-4xl text-center mb-12 text-amber-300">Initiatives</h2>
+  <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-4 gap-8">
+    <div class="bg-emerald-900 p-8 rounded-xl text-center">
+      <i class="fas fa-hand-holding-usd text-amber-300 text-3xl mb-3"></i>
+      <p class="text-emerald-100 font-medium mt-2">Financial Support</p>
+    </div>
+    <div class="bg-emerald-900 p-8 rounded-xl text-center">
+      <i class="fas fa-heartbeat text-amber-300 text-3xl mb-3"></i>
+      <p class="text-emerald-100 font-medium mt-2">Medical &amp; Disability Assistance</p>
+    </div>
+    <div class="bg-emerald-900 p-8 rounded-xl text-center">
+      <i class="fas fa-shield-alt text-amber-300 text-3xl mb-3"></i>
+      <p class="text-emerald-100 font-medium mt-2">Welfare &amp; Trustee Approved Social Security Measures</p>
+    </div>
+    <div class="bg-emerald-900 p-8 rounded-xl text-center">
+      <i class="fas fa-leaf text-amber-300 text-3xl mb-3"></i>
+      <p class="text-emerald-100 font-medium mt-2">Trustee Approved Special Residual Welfare Activities</p>
+    </div>
+  </div>
+</section>
+
+<!-- WELFARE ACTIVITIES -->
+<section id="stories" class="py-24 bg-emerald-900">
+  <div class="max-w-6xl mx-auto px-6">
+    <h2 class="heading-font text-4xl text-center mb-12 text-amber-300">Welfare Activities Undertaken</h2>
+    <div class="card-container">
+      <div class="card">
+        <img src="blank.jpeg" alt="Blank">
+        <p class="text-emerald-200 text-sm mt-3">
+          <span id="more" style="display:none;">forest guards across remote forest ranges in Northeast India, including areas near Kaziranga and Namdapha National Parks. These curated kits — containing notebooks, stationery, school bags, uniforms, and educational supplies — have empowered hundreds of young beneficiaries.</span>
+        </p>
+        <button onclick="document.getElementById('more').style.display='inline';this.style.display='none';" class="mt-2 text-amber-300 text-xs underline">At IFS Benevolent & Welfare Trust, we have distributed school kits to children of forest guards... Read More</button>
+      </div>
+      <div class="card">
+        <img src="blank.jpeg" alt="Blank">
+        <p class="text-emerald-200 text-sm mt-3">
+          <span id="more2" style="display:none;">and their families across Rajasthan's remote forest ranges, including key sites near Ranthambore and Sariska National Parks. These initiatives delivered free medical check-ups, diagnostic tests, vaccinations, and counseling.</span>
+        </p>
+        <button onclick="document.getElementById('more2').style.display='inline';this.style.display='none';" class="mt-2 text-amber-300 text-xs underline">The Trust has conducted multiple health camps for forest guards... Read More</button>
+      </div>
+      <div class="card">
+        <img src="6. Handing over financial assistance to First Beneficiary Family of Deceased Personnel.jpeg" alt="Financial Assistance">
+        <p class="text-emerald-200 text-sm mt-3">
+          <span id="more3" style="display:none;">A cheque of Rs.1,35,000/- was issued towards contribution to the bereaved family of Late Shri Jitender Singh Shekhawat, Forest Guard, Rajasthan Forest Department.</span>
+        </p>
+        <button onclick="document.getElementById('more3').style.display='inline';this.style.display='none';" class="mt-2 text-amber-300 text-xs underline">A cheque of Rs.1,35,000/- was issued... Read More</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GOVERNANCE -->
+<section id="governance" class="py-24 bg-emerald-950">
+  <div class="max-w-7xl mx-auto px-6">
+    <h2 class="heading-font text-4xl font-bold mb-6 text-center text-amber-300">Governance</h2>
+    <p class="text-center text-emerald-200 max-w-3xl mx-auto mb-16">
+      The Trust operates under a structured governance framework ensuring transparency, accountability, and institutional integrity.
+    </p>
+    <div class="grid md:grid-cols-2 gap-12 mb-20">
+      <div class="bg-emerald-900 p-10 rounded-3xl border border-amber-400 shadow-lg">
+        <h3 class="text-2xl font-semibold text-amber-300 mb-4">Vision</h3>
+        <p class="text-emerald-200 leading-relaxed">Honouring the sacrifices of Green Warriors and standing by their families.</p>
+      </div>
+      <div class="bg-emerald-900 p-10 rounded-3xl border border-amber-400 shadow-lg">
+        <h3 class="text-2xl font-semibold text-amber-300 mb-4">Mission</h3>
+        <p class="text-emerald-200 leading-relaxed">To extend timely support to the families of forestry field personnel who lose their lives, health, or livelihood in the line of duty.</p>
+      </div>
+    </div>
+    <div class="bg-emerald-900 p-10 rounded-3xl shadow-lg flex flex-col md:flex-row items-center gap-10">
+      <div class="flex-shrink-0 text-center">
+        <img src="blank.jpeg" alt="President" class="w-56 h-56 object-cover rounded-full border-4 border-amber-300 shadow-lg mx-auto">
+        <div class="mt-4 text-amber-300 font-semibold text-xl">Shri A.K.Goyal</div>
+        <div class="text-sm text-emerald-300"> Ex-IFS Officer(Batch: KR-1981)</div>
+      </div>
+      <div class="text-emerald-200 leading-relaxed text-justify max-w-3xl">
+        <h3 class="text-2xl font-semibold text-amber-300 mb-4">Message from the President</h3>
+        <p class="mb-4">"The Indian Forest Service forms the backbone of India's ecological security and wildlife protection. Our officers serve in some of the most challenging environments — from remote high-altitude forests to dense tropical reserves."</p>
+        <p class="mb-4">"Through structured governance, transparent policies, and unwavering institutional support, we aim to uphold the highest standards of service, welfare, and conservation across the country."</p>
+        <p>"Together, we move forward to protect forests, strengthen communities, and safeguard biodiversity for future generations."</p>
+      </div>
+   
+</section>
+
+<!-- ADDRESS -->
+<section id="location" class="py-20 bg-emerald-950 border-t border-emerald-800">
+  <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-10 items-center">
+    <div>
+      <h2 class="heading-font text-3xl text-amber-300 mb-6">Reach Us</h2>
+      <p class="text-emerald-200 font-medium mb-6">Indian Forest Service Benevolent and Welfare Trust</p>
+      <div class="flex items-start gap-3 mb-4">
+        <span class="text-red-400 mt-0.5 text-lg"><i class="fas fa-map-marker-alt"></i></span>
+        <a href="https://maps.google.com/?q=Van+Vigyan+Bhawan+Sector+5+RK+Puram+New+Delhi" target="_blank" class="text-amber-300 hover:underline leading-snug">
+          Van Vigyan Bhawan, Sector 5, RK Puram, New Delhi
+        </a>
+      </div>
+      <div class="flex items-center gap-3 mb-4">
+        <span class="text-red-400 text-lg"><i class="fas fa-phone"></i></span>
+        <span class="text-emerald-200">Phone: +91-XXXXXXXXXX</span>
+      </div>
+      <div class="flex items-center gap-3 mb-8">
+        <span class="text-emerald-400 text-lg"><i class="fas fa-envelope"></i></span>
+        Email: <a href="mailto:ifsbwt@gmail.com" class="text-emerald-200 hover:text-amber-300 transition">ifsbwt@gmail.com</a>
+      </div>
+      <a href="https://maps.google.com/?q=Van+Vigyan+Bhawan+Sector+5+RK+Puram+New+Delhi" target="_blank"
+         class="inline-block bg-amber-400 text-emerald-950 px-6 py-2 rounded-full font-semibold hover:bg-amber-300 transition">
+        View on Google Maps
+      </a>
+    </div>
+    <div class="rounded-xl overflow-hidden border-2 border-amber-400 shadow-lg">
+      <iframe src="https://maps.google.com/maps?q=Van+Vigyan+Bhawan,+Sector+5,+Rama+Krishna+Puram,+New+Delhi,+Delhi+110022&output=embed"
+        width="100%" height="350" style="border:0;" allowfullscreen="" loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade"></iframe>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="bg-emerald-900 border-t border-emerald-800 py-12">
+  <div class="max-w-7xl mx-auto px-6 text-center">
+    <h3 class="heading-font text-2xl text-amber-300 mb-6">Connect With Us</h3>
+    <div class="flex justify-center gap-6 text-2xl mb-8">
+      <a href="#" class="w-12 h-12 flex items-center justify-center rounded-full bg-emerald-800 hover:bg-amber-400 hover:text-emerald-950 transition"><i class="fab fa-facebook-f"></i></a>
+      <a href="#" class="w-12 h-12 flex items-center justify-center rounded-full bg-emerald-800 hover:bg-amber-400 hover:text-emerald-950 transition"><i class="fab fa-x-twitter"></i></a>
+      <a href="#" class="w-12 h-12 flex items-center justify-center rounded-full bg-emerald-800 hover:bg-amber-400 hover:text-emerald-950 transition"><i class="fab fa-instagram"></i></a>
+      <a href="#" class="w-12 h-12 flex items-center justify-center rounded-full bg-emerald-800 hover:bg-amber-400 hover:text-emerald-950 transition"><i class="fab fa-linkedin-in"></i></a>
+      <a href="#" class="w-12 h-12 flex items-center justify-center rounded-full bg-emerald-800 hover:bg-amber-400 hover:text-emerald-950 transition"><i class="fab fa-youtube"></i></a>
+    </div>
+    <p class="text-sm text-emerald-300">© 2026 Indian Forest Service Benevolent and Welfare Trust. All Rights Reserved.</p>
+  </div>
+</footer>
+<script>
+function navToggle(id) {
+  document.querySelectorAll('nav .absolute').forEach(el => { if(el.id !== id) el.classList.add('hidden'); });
+  document.getElementById(id).classList.toggle('hidden');
+}
+document.addEventListener('click', function(e) {
+  if (!e.target.closest('nav')) document.querySelectorAll('nav .absolute').forEach(el => el.classList.add('hidden'));
+});
+let currentLang = "en";
+function toggleLanguage() {
+  const en = document.querySelectorAll(".lang.en"), hi = document.querySelectorAll(".lang.hi");
+  if (currentLang === "en") { en.forEach(el=>el.classList.add("hidden")); hi.forEach(el=>el.classList.remove("hidden")); currentLang="hi"; }
+  else { hi.forEach(el=>el.classList.add("hidden")); en.forEach(el=>el.classList.remove("hidden")); currentLang="en"; }
+}
+</script>
+</body>
+</html>

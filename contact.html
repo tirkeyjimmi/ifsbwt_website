@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact Us – IFS Benevolent & Welfare Trust</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+  <style>
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', system-ui, sans-serif; }
+    .heading-font { font-family: 'Playfair Display', sans-serif; }
+    .hero-bg { background-image: url("https://images.unsplash.com/photo-1500530855697-b586d89ba3ee"); background-size: cover; background-position: center; }
+  </style>
+</head>
+
+<body class="bg-gradient-to-b from-emerald-900 via-emerald-800 to-emerald-950 text-white">
+
+<!-- NAVBAR -->
+<nav class="bg-emerald-900/95 backdrop-blur border-b border-emerald-800 sticky top-0 z-50">
+  <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+    <a href="ecombase.html" class="flex items-center gap-3">
+      <div class="w-10 h-10 bg-emerald-700 rounded-xl flex items-center justify-center text-xl"><i class="fas fa-tree"></i></div>
+      <div>
+        <span class="heading-font text-xl font-bold text-emerald-200">IFS Benevolent &amp; Welfare Trust</span>
+        <span class="block text-[10px] tracking-widest text-emerald-500">Standing with Green Warriors</span>
+      </div>
+    </a>
+    <div class="hidden md:flex gap-7 text-sm text-white items-center">
+      <div class="relative">
+        <button onclick="navToggle('aboutMenu')" class="hover:text-amber-300 transition">About Us</button>
+        <div id="aboutMenu" class="hidden absolute mt-2 w-48 bg-white text-black shadow-lg p-3 border z-50 text-sm">
+          <a href="about.html" class="block py-0.5 hover:text-emerald-700">About the Trust</a>
+          <a href="about.html#vision" class="block py-0.5 hover:text-emerald-700">Vision &amp; Mission</a>
+          <a href="about.html#objectives" class="block py-0.5 hover:text-emerald-700">Objects &amp; Purpose</a>
+          <a href="whoswho.html" class="block py-0.5 hover:text-emerald-700">Who's Who</a>
+        </div>
+      </div>
+      <div class="relative">
+        <button onclick="navToggle('govMenu')" class="hover:text-amber-300 transition">Governance</button>
+        <div id="govMenu" class="hidden absolute mt-2 w-60 bg-white text-black shadow-lg p-3 border z-50 text-sm">
+          <a href="boardoftrustees.html" class="block py-0.5 hover:text-emerald-700">Board of Trustees</a>
+          <a href="governingbody.html" class="block py-0.5 hover:text-emerald-700">Governing Body</a>
+          <a href="csepcommittee.html" class="block py-0.5 hover:text-emerald-700">CSEP Committee</a>
+          <a href="coordinationcommittee.html" class="block py-0.5 hover:text-emerald-700">Coordination Committee</a>
+        </div>
+      </div>
+      <div class="relative">
+        <button onclick="navToggle('galleryMenu')" class="hover:text-amber-300 transition">Gallery</button>
+        <div id="galleryMenu" class="hidden absolute mt-2 w-44 bg-white text-black shadow-lg p-3 border z-50 text-sm">
+          <a href="gallery.html#photo" class="block py-0.5 hover:text-emerald-700">Photo Gallery</a>
+          <a href="gallery.html#video" class="block py-0.5 hover:text-emerald-700">Video Gallery</a>
+          <a href="gallery.html#press" class="block py-0.5 hover:text-emerald-700">Press Coverage</a>
+        </div>
+      </div>
+      <div class="relative">
+        <button onclick="navToggle('newsMenu')" class="hover:text-amber-300 transition">News &amp; Update</button>
+        <div id="newsMenu" class="hidden absolute mt-2 w-56 bg-white text-black shadow-lg p-3 border z-50 text-sm">
+          <a href="news.html#newsletter" class="block py-0.5 hover:text-emerald-700">Bi-Monthly Newsletter</a>
+          <a href="news.html#activities" class="block py-0.5 hover:text-emerald-700">Recent Activities</a>
+          <a href="news.html#minutes" class="block py-0.5 hover:text-emerald-700">Minutes of the Meeting</a>
+        </div>
+      </div>
+      <a href="contact.html" class="hover:text-amber-300 transition">Contact Us</a>
+    </div>
+    <div class="flex items-center gap-2">
+      <button onclick="toggleLanguage()" class="text-xs border border-amber-400 text-amber-300 px-3 py-1 rounded-full hover:bg-amber-400 hover:text-emerald-950 transition">हिंदी / EN</button>
+      <a href="donate.html" class="text-xs bg-amber-400 text-emerald-950 px-4 py-2 rounded-full font-semibold hover:bg-amber-300 transition">Donate</a>
+    </div>
+  </div>
+</nav>
+
+<!-- PAGE HEADING -->
+<section class="py-16 text-center px-6 bg-emerald-950">
+  <h1 class="heading-font text-5xl text-amber-300 mb-3">Contact Us</h1>
+  <p class="text-emerald-300 max-w-xl mx-auto">Get in touch with the IFS Benevolent &amp; Welfare Trust.</p>
+</section>
+
+<!-- REACH US -->
+<section class="py-16 bg-emerald-950 border-t border-emerald-800">
+  <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-12 items-center">
+
+    <!-- Left: text content -->
+    <div>
+      <h2 class="heading-font text-4xl text-amber-300 mb-6">Reach Us</h2>
+      <p class="text-emerald-200 font-medium mb-6">Indian Forest Service Benevolent and Welfare Trust</p>
+
+      <div class="flex items-start gap-3 mb-4">
+        <span class="text-red-400 mt-0.5 text-lg"><i class="fas fa-map-marker-alt"></i></span>
+        <a href="https://maps.google.com/?q=Van+Vigyan+Bhawan+Sector+5+RK+Puram+New+Delhi"
+           target="_blank"
+           class="text-amber-300 hover:underline leading-snug">
+          Van Vigyan Bhawan, Sector 5, RK Puram, New Delhi
+        </a>
+      </div>
+
+      <div class="flex items-center gap-3 mb-4">
+        <span class="text-red-400 text-lg"><i class="fas fa-phone"></i></span>
+        <span class="text-emerald-200">Phone: +91-XXXXXXXXXX</span>
+      </div>
+
+      <div class="flex items-center gap-3 mb-8">
+        <span class="text-emerald-400 text-lg"><i class="fas fa-envelope"></i></span>
+        Email: <a href="mailto:ifsbwt@gmail.com" class="text-emerald-200 hover:text-amber-300 transition">ifsbwt@gmail.com</a>
+      </div>
+
+      <a href="https://maps.google.com/?q=Van+Vigyan+Bhawan+Sector+5+RK+Puram+New+Delhi"
+         target="_blank"
+         class="inline-block bg-amber-400 text-emerald-950 px-7 py-3 rounded-full font-semibold hover:bg-amber-300 transition">
+        View on Google Maps
+      </a>
+    </div>
+
+    <!-- Right: Google Map -->
+    <div class="rounded-xl overflow-hidden border-2 border-amber-400/40 shadow-xl">
+      <iframe
+        src="https://maps.google.com/maps?q=Van+Vigyan+Bhawan,+Sector+5,+Rama+Krishna+Puram,+New+Delhi,+Delhi+110022&output=embed"
+        width="100%" height="380" style="border:0;" allowfullscreen="" loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade">
+      </iframe>
+    </div>
+
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="bg-emerald-900 border-t border-emerald-800 py-12">
+  <div class="max-w-7xl mx-auto px-6 text-center">
+    <h3 class="heading-font text-2xl text-amber-300 mb-6">Connect With Us</h3>
+    <div class="flex justify-center gap-6 text-2xl mb-8">
+      <a href="#" class="w-12 h-12 flex items-center justify-center rounded-full bg-emerald-800 hover:bg-amber-400 hover:text-emerald-950 transition"><i class="fab fa-facebook-f"></i></a>
+      <a href="#" class="w-12 h-12 flex items-center justify-center rounded-full bg-emerald-800 hover:bg-amber-400 hover:text-emerald-950 transition"><i class="fab fa-x-twitter"></i></a>
+      <a href="#" class="w-12 h-12 flex items-center justify-center rounded-full bg-emerald-800 hover:bg-amber-400 hover:text-emerald-950 transition"><i class="fab fa-instagram"></i></a>
+      <a href="#" class="w-12 h-12 flex items-center justify-center rounded-full bg-emerald-800 hover:bg-amber-400 hover:text-emerald-950 transition"><i class="fab fa-linkedin-in"></i></a>
+      <a href="#" class="w-12 h-12 flex items-center justify-center rounded-full bg-emerald-800 hover:bg-amber-400 hover:text-emerald-950 transition"><i class="fab fa-youtube"></i></a>
+    </div>
+    <p class="text-sm text-emerald-300">© 2026 Indian Forest Service Benevolent and Welfare Trust. All Rights Reserved.</p>
+  </div>
+</footer>
+<script>
+function navToggle(id) {
+  document.querySelectorAll('nav .absolute').forEach(el => { if(el.id !== id) el.classList.add('hidden'); });
+  document.getElementById(id).classList.toggle('hidden');
+}
+document.addEventListener('click', function(e) {
+  if (!e.target.closest('nav')) document.querySelectorAll('nav .absolute').forEach(el => el.classList.add('hidden'));
+});
+let currentLang = "en";
+function toggleLanguage() {
+  const en = document.querySelectorAll(".lang.en"), hi = document.querySelectorAll(".lang.hi");
+  if (currentLang === "en") { en.forEach(el=>el.classList.add("hidden")); hi.forEach(el=>el.classList.remove("hidden")); currentLang="hi"; }
+  else { hi.forEach(el=>el.classList.add("hidden")); en.forEach(el=>el.classList.remove("hidden")); currentLang="en"; }
+}
+</script>
+</body>
+</html>

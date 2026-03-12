@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>News &amp; Update – IFS Benevolent &amp; Welfare Trust</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+  <style>
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', system-ui, sans-serif; }
+    .heading-font { font-family: 'Playfair Display', serif; }
+    .pdf-card { transition: transform 0.2s ease, box-shadow 0.2s ease; }
+    .pdf-card:hover { transform: translateY(-3px); box-shadow: 0 10px 30px rgba(0,0,0,0.3); }
+    .activity-card { transition: transform 0.2s ease; }
+    .activity-card:hover { transform: translateY(-3px); }
+  </style>
+</head>
+
+<body class="bg-gradient-to-b from-emerald-900 via-emerald-800 to-emerald-950 text-white">
+
+<!-- NAVBAR -->
+<nav class="bg-emerald-900/95 backdrop-blur border-b border-emerald-800 sticky top-0 z-50">
+  <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+    <a href="ecombase.html" class="flex items-center gap-3">
+      <div class="w-10 h-10 bg-emerald-700 rounded-xl flex items-center justify-center text-xl"><i class="fas fa-tree"></i></div>
+      <div>
+        <span class="heading-font text-xl font-bold text-emerald-200">IFS Benevolent &amp; Welfare Trust</span>
+        <span class="block text-[10px] tracking-widest text-emerald-500">Standing with Green Warriors</span>
+      </div>
+    </a>
+    <div class="hidden md:flex gap-7 text-sm text-white items-center">
+      <div class="relative">
+        <button onclick="navToggle('aboutMenu')" class="hover:text-amber-300 transition">About Us</button>
+        <div id="aboutMenu" class="hidden absolute mt-2 w-48 bg-white text-black shadow-lg p-3 border z-50 text-sm">
+          <a href="about.html" class="block py-0.5 hover:text-emerald-700">About the Trust</a>
+          <a href="about.html#vision" class="block py-0.5 hover:text-emerald-700">Vision &amp; Mission</a>
+          <a href="about.html#objectives" class="block py-0.5 hover:text-emerald-700">Objects &amp; Purpose</a>
+          <a href="whoswho.html" class="block py-0.5 hover:text-emerald-700">Who's Who</a>
+        </div>
+      </div>
+      <div class="relative">
+        <button onclick="navToggle('govMenu')" class="hover:text-amber-300 transition">Governance</button>
+        <div id="govMenu" class="hidden absolute mt-2 w-60 bg-white text-black shadow-lg p-3 border z-50 text-sm">
+          <a href="boardoftrustees.html" class="block py-0.5 hover:text-emerald-700">Board of Trustees</a>
+          <a href="governingbody.html" class="block py-0.5 hover:text-emerald-700">Governing Body</a>
+          <a href="csepcommittee.html" class="block py-0.5 hover:text-emerald-700">CSEP Committee</a>
+          <a href="coordinationcommittee.html" class="block py-0.5 hover:text-emerald-700">Coordination Committee</a>
+        </div>
+      </div>
+      <div class="relative">
+        <button onclick="navToggle('galleryMenu')" class="hover:text-amber-300 transition">Gallery</button>
+        <div id="galleryMenu" class="hidden absolute mt-2 w-44 bg-white text-black shadow-lg p-3 border z-50 text-sm">
+          <a href="gallery.html#photo" class="block py-0.5 hover:text-emerald-700">Photo Gallery</a>
+          <a href="gallery.html#video" class="block py-0.5 hover:text-emerald-700">Video Gallery</a>
+          <a href="gallery.html#press" class="block py-0.5 hover:text-emerald-700">Press Coverage</a>
+        </div>
+      </div>
+      <div class="relative">
+        <button onclick="navToggle('newsMenu')" class="hover:text-amber-300 transition">News &amp; Update</button>
+        <div id="newsMenu" class="hidden absolute mt-2 w-56 bg-white text-black shadow-lg p-3 border z-50 text-sm">
+          <a href="news.html#newsletter" class="block py-0.5 hover:text-emerald-700">Bi-Monthly Newsletter</a>
+          <a href="news.html#activities" class="block py-0.5 hover:text-emerald-700">Recent Activities</a>
+          <a href="news.html#minutes" class="block py-0.5 hover:text-emerald-700">Minutes of the Meeting</a>
+        </div>
+      </div>
+      <a href="contact.html" class="hover:text-amber-300 transition">Contact Us</a>
+    </div>
+    <div class="flex items-center gap-2">
+      <button onclick="toggleLanguage()" class="text-xs border border-amber-400 text-amber-300 px-3 py-1 rounded-full hover:bg-amber-400 hover:text-emerald-950 transition">हिंदी / EN</button>
+      <a href="donate.html" class="text-xs bg-amber-400 text-emerald-950 px-4 py-2 rounded-full font-semibold hover:bg-amber-300 transition">Donate</a>
+    </div>
+  </div>
+</nav>
+
+<!-- PAGE HERO -->
+<section class="py-16 text-center px-6 bg-emerald-950 border-b border-emerald-800">
+  <h1 class="heading-font text-5xl text-amber-300 mb-3">News &amp; Updates</h1>
+  <p class="text-emerald-300 max-w-2xl mx-auto">Stay informed with our latest newsletters, field activities, and official meeting records.</p>
+  <!-- Quick-jump tabs -->
+  <div class="flex flex-wrap justify-center gap-3 mt-8">
+    <a href="#newsletter" class="bg-emerald-800 border border-emerald-600 text-emerald-200 hover:bg-amber-400 hover:text-emerald-950 hover:border-amber-400 px-5 py-2 rounded-full text-sm font-medium transition">
+      <i class="fas fa-newspaper mr-2"></i>Bi-Monthly Newsletter
+    </a>
+    <a href="#activities" class="bg-emerald-800 border border-emerald-600 text-emerald-200 hover:bg-amber-400 hover:text-emerald-950 hover:border-amber-400 px-5 py-2 rounded-full text-sm font-medium transition">
+      <i class="fas fa-images mr-2"></i>Recent Activities
+    </a>
+    <a href="#minutes" class="bg-emerald-800 border border-emerald-600 text-emerald-200 hover:bg-amber-400 hover:text-emerald-950 hover:border-amber-400 px-5 py-2 rounded-full text-sm font-medium transition">
+      <i class="fas fa-file-alt mr-2"></i>Minutes of the Meeting
+    </a>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════
+     SECTION 1 — BI-MONTHLY NEWSLETTER
+════════════════════════════════════════════════ -->
+<section id="newsletter" class="py-20 bg-emerald-900">
+  <div class="max-w-5xl mx-auto px-6">
+
+    <div class="flex items-center gap-3 mb-2">
+      <span class="w-10 h-10 rounded-full bg-amber-400 text-emerald-950 flex items-center justify-center text-lg"><i class="fas fa-newspaper"></i></span>
+      <h2 class="heading-font text-3xl text-amber-300">Bi-Monthly Newsletter</h2>
+    </div>
+    <p class="text-emerald-400 italic mb-10 pl-14">Official publications of the IFS Benevolent &amp; Welfare Trust</p>
+
+    <!-- Upload notice -->
+    <div class="mb-8 bg-emerald-800/50 border border-dashed border-emerald-600 rounded-xl px-6 py-4 flex items-center gap-4">
+      <i class="fas fa-info-circle text-amber-300 text-xl shrink-0"></i>
+      <p class="text-emerald-300 text-sm">Newsletter PDFs will be uploaded here. Each issue will appear as a downloadable card below.</p>
+    </div>
+
+    <!-- Newsletter cards grid — placeholders ready for PDFs -->
+    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+
+      <!-- Placeholder card 1 -->
+      <div class="pdf-card bg-emerald-800/60 border border-emerald-700 rounded-xl p-6 flex flex-col gap-4">
+        <div class="flex items-center gap-3">
+          <span class="text-4xl text-red-400"><i class="fas fa-file-pdf"></i></span>
+          <div>
+            <p class="text-emerald-100 font-semibold text-sm leading-snug">Issue 01 – Jan–Feb 2026</p>
+            <p class="text-emerald-400 text-xs mt-0.5">PDF • To be uploaded</p>
+          </div>
+        </div>
+        <p class="text-emerald-300 text-xs leading-relaxed flex-1">First bi-monthly newsletter covering welfare activities, fund updates, and Trust highlights.</p>
+        <a href="#" class="mt-auto inline-flex items-center gap-2 bg-amber-400/20 border border-amber-400/40 text-amber-300 text-xs px-4 py-2 rounded-full hover:bg-amber-400 hover:text-emerald-950 transition">
+          <i class="fas fa-download"></i> Download PDF
+        </a>
+      </div>
+
+      <!-- Placeholder card 2 -->
+      <div class="pdf-card bg-emerald-800/60 border border-emerald-700 rounded-xl p-6 flex flex-col gap-4">
+        <div class="flex items-center gap-3">
+          <span class="text-4xl text-red-400"><i class="fas fa-file-pdf"></i></span>
+          <div>
+            <p class="text-emerald-100 font-semibold text-sm leading-snug">Issue 02 – Mar–Apr 2026</p>
+            <p class="text-emerald-400 text-xs mt-0.5">PDF • To be uploaded</p>
+          </div>
+        </div>
+        <p class="text-emerald-300 text-xs leading-relaxed flex-1">Second issue featuring field reports, beneficiary stories, and governance updates.</p>
+        <a href="#" class="mt-auto inline-flex items-center gap-2 bg-amber-400/20 border border-amber-400/40 text-amber-300 text-xs px-4 py-2 rounded-full hover:bg-amber-400 hover:text-emerald-950 transition">
+          <i class="fas fa-download"></i> Download PDF
+        </a>
+      </div>
+
+      <!-- Add new newsletter CTA -->
+      <div class="pdf-card bg-emerald-950/40 border border-dashed border-emerald-600 rounded-xl p-6 flex flex-col items-center justify-center gap-3 text-center opacity-60 hover:opacity-100 transition">
+        <span class="w-12 h-12 rounded-full bg-emerald-800 flex items-center justify-center text-emerald-400 text-xl"><i class="fas fa-plus"></i></span>
+        <p class="text-emerald-400 text-sm">Future issues will appear here</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════
+     SECTION 2 — RECENT ACTIVITIES
+════════════════════════════════════════════════ -->
+<section id="activities" class="py-20 bg-emerald-950 border-t border-emerald-800">
+  <div class="max-w-5xl mx-auto px-6">
+
+    <div class="flex items-center gap-3 mb-2">
+      <span class="w-10 h-10 rounded-full bg-amber-400 text-emerald-950 flex items-center justify-center text-lg"><i class="fas fa-images"></i></span>
+      <h2 class="heading-font text-3xl text-amber-300">Recent Activities</h2>
+    </div>
+    <p class="text-emerald-400 italic mb-10 pl-14">Highlights from the Trust's welfare work on the ground</p>
+
+    <!-- Upload notice -->
+    <div class="mb-8 bg-emerald-800/50 border border-dashed border-emerald-600 rounded-xl px-6 py-4 flex items-center gap-4">
+      <i class="fas fa-info-circle text-amber-300 text-xl shrink-0"></i>
+      <p class="text-emerald-300 text-sm">Activity photos with captions will be uploaded here. Each entry includes an image and a brief description.</p>
+    </div>
+
+    <!-- Activity cards -->
+    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+
+      <!-- Activity card 1 -->
+      <div class="activity-card bg-emerald-800/60 border border-emerald-700 rounded-xl overflow-hidden">
+        <div class="w-full h-44 bg-emerald-700/50 flex items-center justify-center">
+          <div class="text-center">
+            <i class="fas fa-image text-emerald-500 text-4xl mb-2"></i>
+            <p class="text-emerald-500 text-xs">Photo to be uploaded</p>
+          </div>
+        </div>
+        <div class="p-4">
+          <p class="text-xs text-amber-400 mb-1 uppercase tracking-wide">Activity • 2026</p>
+          <p class="text-emerald-100 text-sm font-semibold leading-snug">School Kit Distribution Drive</p>
+          <p class="text-emerald-300 text-xs mt-2 leading-relaxed">Distribution of school kits to children of forest guards across remote forest ranges.</p>
+        </div>
+      </div>
+
+      <!-- Activity card 2 -->
+      <div class="activity-card bg-emerald-800/60 border border-emerald-700 rounded-xl overflow-hidden">
+        <div class="w-full h-44 bg-emerald-700/50 flex items-center justify-center">
+          <div class="text-center">
+            <i class="fas fa-image text-emerald-500 text-4xl mb-2"></i>
+            <p class="text-emerald-500 text-xs">Photo to be uploaded</p>
+          </div>
+        </div>
+        <div class="p-4">
+          <p class="text-xs text-amber-400 mb-1 uppercase tracking-wide">Activity • 2026</p>
+          <p class="text-emerald-100 text-sm font-semibold leading-snug">Health Camp for Forest Personnel</p>
+          <p class="text-emerald-300 text-xs mt-2 leading-relaxed">Free medical check-ups, diagnostic tests, and health counselling for forestry field staff and families.</p>
+        </div>
+      </div>
+
+      <!-- Activity card 3 -->
+      <div class="activity-card bg-emerald-800/60 border border-emerald-700 rounded-xl overflow-hidden">
+        <div class="w-full h-44 bg-emerald-700/50 flex items-center justify-center">
+          <div class="text-center">
+            <i class="fas fa-image text-emerald-500 text-4xl mb-2"></i>
+            <p class="text-emerald-500 text-xs">Photo to be uploaded</p>
+          </div>
+        </div>
+        <div class="p-4">
+          <p class="text-xs text-amber-400 mb-1 uppercase tracking-wide">Activity • 2026</p>
+          <p class="text-emerald-100 text-sm font-semibold leading-snug">Financial Assistance Disbursement</p>
+          <p class="text-emerald-300 text-xs mt-2 leading-relaxed">Cheque presentation ceremony for bereaved families of forestry personnel who lost their lives in the line of duty.</p>
+        </div>
+      </div>
+
+      <!-- Add new activity CTA -->
+      <div class="activity-card bg-emerald-950/40 border border-dashed border-emerald-600 rounded-xl p-6 flex flex-col items-center justify-center gap-3 text-center opacity-60 hover:opacity-100 transition min-h-[200px]">
+        <span class="w-12 h-12 rounded-full bg-emerald-800 flex items-center justify-center text-emerald-400 text-xl"><i class="fas fa-plus"></i></span>
+        <p class="text-emerald-400 text-sm">New activity photos &amp; captions will appear here</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════
+     SECTION 3 — MINUTES OF THE MEETING
+════════════════════════════════════════════════ -->
+<section id="minutes" class="py-20 bg-emerald-900 border-t border-emerald-800">
+  <div class="max-w-5xl mx-auto px-6">
+
+    <div class="flex items-center gap-3 mb-2">
+      <span class="w-10 h-10 rounded-full bg-amber-400 text-emerald-950 flex items-center justify-center text-lg"><i class="fas fa-file-alt"></i></span>
+      <h2 class="heading-font text-3xl text-amber-300">Minutes of the Meeting</h2>
+    </div>
+    <p class="text-emerald-400 italic mb-10 pl-14">Official records of Board &amp; Governing Body proceedings</p>
+
+    <!-- Upload notice -->
+    <div class="mb-8 bg-emerald-800/50 border border-dashed border-emerald-600 rounded-xl px-6 py-4 flex items-center gap-4">
+      <i class="fas fa-info-circle text-amber-300 text-xl shrink-0"></i>
+      <p class="text-emerald-300 text-sm">Minutes of meetings (PDFs) will be uploaded here. Each document will be listed with the meeting date and body name.</p>
+    </div>
+
+    <!-- Minutes list -->
+    <div class="space-y-4">
+
+      <!-- Minutes item 1 -->
+      <div class="pdf-card bg-emerald-800/60 border border-emerald-700 rounded-xl px-6 py-4 flex items-center justify-between gap-4">
+        <div class="flex items-center gap-4">
+          <span class="text-3xl text-red-400 shrink-0"><i class="fas fa-file-pdf"></i></span>
+          <div>
+            <p class="text-emerald-100 font-semibold text-sm">Governing Body – Meeting No. 01</p>
+            <p class="text-emerald-400 text-xs mt-0.5">Date: 07.02.2026 &nbsp;|&nbsp; PDF • Uploaded</p>
+          </div>
+        </div>
+        <a href="Minutes_7.2.26.pdf" target="_blank" download class="shrink-0 inline-flex items-center gap-2 bg-amber-400/20 border border-amber-400/40 text-amber-300 text-xs px-4 py-2 rounded-full hover:bg-amber-400 hover:text-emerald-950 transition">
+          <i class="fas fa-download"></i> Download
+        </a>
+      </div>
+
+      <!-- Minutes item 2 -->
+      <div class="pdf-card bg-emerald-800/60 border border-emerald-700 rounded-xl px-6 py-4 flex items-center justify-between gap-4">
+        <div class="flex items-center gap-4">
+          <span class="text-3xl text-red-400 shrink-0"><i class="fas fa-file-pdf"></i></span>
+          <div>
+            <p class="text-emerald-100 font-semibold text-sm">Board of Trustees – Meeting No. 04</p>
+            <p class="text-emerald-400 text-xs mt-0.5">Date: 24.01.2026 &nbsp;|&nbsp; PDF • Uploaded</p>
+          </div>
+        </div>
+        <a href="IFSBWT-Minutes of Fourth Meeting of Board of Trustees-January 24, 2026.pdf" target="_blank" download class="shrink-0 inline-flex items-center gap-2 bg-amber-400/20 border border-amber-400/40 text-amber-300 text-xs px-4 py-2 rounded-full hover:bg-amber-400 hover:text-emerald-950 transition">
+          <i class="fas fa-download"></i> Download
+        </a>
+      </div>
+
+      <!-- Minutes item 3 -->
+      <div class="pdf-card bg-emerald-800/60 border border-emerald-700 rounded-xl px-6 py-4 flex items-center justify-between gap-4">
+        <div class="flex items-center gap-4">
+          <span class="text-3xl text-red-400 shrink-0"><i class="fas fa-file-pdf"></i></span>
+          <div>
+            <p class="text-emerald-100 font-semibold text-sm">Governing Body – Meeting No. 05</p>
+            <p class="text-emerald-400 text-xs mt-0.5">Date: To be updated &nbsp;|&nbsp; PDF • To be uploaded</p>
+          </div>
+        </div>
+        <a href="#" target="_blank" download class="shrink-0 inline-flex items-center gap-2 bg-amber-400/20 border border-amber-400/40 text-amber-300 text-xs px-4 py-2 rounded-full hover:bg-amber-400 hover:text-emerald-950 transition">
+          <i class="fas fa-download"></i> Download
+        </a>
+      </div>
+
+      <!-- Placeholder for more -->
+      <div class="pdf-card bg-emerald-950/40 border border-dashed border-emerald-600 rounded-xl px-6 py-4 flex items-center gap-4 opacity-60 hover:opacity-100 transition">
+        <span class="w-8 h-8 rounded-full bg-emerald-800 flex items-center justify-center text-emerald-400 text-sm shrink-0"><i class="fas fa-plus"></i></span>
+        <p class="text-emerald-400 text-sm">Additional meeting minutes will be listed here as they are uploaded</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- BACK BUTTON -->
+<section class="py-10 text-center bg-emerald-950 border-t border-emerald-800">
+  <a href="ecombase.html" class="inline-block bg-amber-400 text-emerald-950 px-8 py-3 rounded-full font-semibold text-sm hover:bg-amber-300 transition">← Back to Home</a>
+</section>
+
+<!-- FOOTER -->
+<footer class="bg-emerald-900 border-t border-emerald-800 py-12">
+  <div class="max-w-7xl mx-auto px-6 text-center">
+    <h3 class="heading-font text-2xl text-amber-300 mb-6">Connect With Us</h3>
+    <div class="flex justify-center gap-6 text-2xl mb-8">
+      <a href="#" class="w-12 h-12 flex items-center justify-center rounded-full bg-emerald-800 hover:bg-amber-400 hover:text-emerald-950 transition"><i class="fab fa-facebook-f"></i></a>
+      <a href="#" class="w-12 h-12 flex items-center justify-center rounded-full bg-emerald-800 hover:bg-amber-400 hover:text-emerald-950 transition"><i class="fab fa-x-twitter"></i></a>
+      <a href="#" class="w-12 h-12 flex items-center justify-center rounded-full bg-emerald-800 hover:bg-amber-400 hover:text-emerald-950 transition"><i class="fab fa-instagram"></i></a>
+      <a href="#" class="w-12 h-12 flex items-center justify-center rounded-full bg-emerald-800 hover:bg-amber-400 hover:text-emerald-950 transition"><i class="fab fa-linkedin-in"></i></a>
+      <a href="#" class="w-12 h-12 flex items-center justify-center rounded-full bg-emerald-800 hover:bg-amber-400 hover:text-emerald-950 transition"><i class="fab fa-youtube"></i></a>
+    </div>
+    <p class="text-sm text-emerald-300">© 2026 Indian Forest Service Benevolent and Welfare Trust. All Rights Reserved.</p>
+  </div>
+</footer>
+
+<script>
+function navToggle(id) {
+  document.querySelectorAll('nav .absolute').forEach(el => { if(el.id !== id) el.classList.add('hidden'); });
+  document.getElementById(id).classList.toggle('hidden');
+}
+document.addEventListener('click', function(e) {
+  if (!e.target.closest('nav')) document.querySelectorAll('nav .absolute').forEach(el => el.classList.add('hidden'));
+});
+let currentLang = "en";
+function toggleLanguage() {
+  const en = document.querySelectorAll(".lang.en"), hi = document.querySelectorAll(".lang.hi");
+  if (currentLang === "en") { en.forEach(el=>el.classList.add("hidden")); hi.forEach(el=>el.classList.remove("hidden")); currentLang="hi"; }
+  else { hi.forEach(el=>el.classList.add("hidden")); en.forEach(el=>el.classList.remove("hidden")); currentLang="en"; }
+}
+</script>
+</body>
+</html>

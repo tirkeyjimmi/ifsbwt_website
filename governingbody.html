@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Governing Body – IFS Benevolent &amp; Welfare Trust</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+  <style>
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', system-ui, sans-serif; }
+    .heading-font { font-family: 'Playfair Display', serif; }
+    table td:first-child { padding-left: 0.75rem; }
+  </style>
+</head>
+
+<body class="bg-gradient-to-b from-emerald-900 via-emerald-800 to-emerald-950 text-white">
+
+<!-- NAVBAR -->
+<nav class="bg-emerald-900/95 backdrop-blur border-b border-emerald-800 sticky top-0 z-50">
+  <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+    <a href="ecombase.html" class="flex items-center gap-3">
+      <div class="w-10 h-10 bg-emerald-700 rounded-xl flex items-center justify-center text-xl"><i class="fas fa-tree"></i></div>
+      <div>
+        <span class="heading-font text-xl font-bold text-emerald-200">IFS Benevolent &amp; Welfare Trust</span>
+        <span class="block text-[10px] tracking-widest text-emerald-500">Standing with Green Warriors</span>
+      </div>
+    </a>
+    <div class="hidden md:flex gap-7 text-sm text-white items-center">
+      <div class="relative">
+        <button onclick="navToggle('aboutMenu')" class="hover:text-amber-300 transition">About Us</button>
+        <div id="aboutMenu" class="hidden absolute mt-2 w-48 bg-white text-black shadow-lg p-3 border z-50 text-sm">
+          <a href="about.html" class="block py-0.5 hover:text-emerald-700">About the Trust</a>
+          <a href="about.html#vision" class="block py-0.5 hover:text-emerald-700">Vision &amp; Mission</a>
+          <a href="about.html#objectives" class="block py-0.5 hover:text-emerald-700">Objects &amp; Purpose</a>
+          <a href="whoswho.html" class="block py-0.5 hover:text-emerald-700">Who's Who</a>
+        </div>
+      </div>
+      <div class="relative">
+        <button onclick="navToggle('govMenu')" class="hover:text-amber-300 transition">Governance</button>
+        <div id="govMenu" class="hidden absolute mt-2 w-60 bg-white text-black shadow-lg p-3 border z-50 text-sm">
+          <a href="boardoftrustees.html" class="block py-0.5 hover:text-emerald-700">Board of Trustees</a>
+          <a href="governingbody.html" class="block py-0.5 hover:text-emerald-700">Governing Body</a>
+          <a href="csepcommittee.html" class="block py-0.5 hover:text-emerald-700">CSEP Committee</a>
+          <a href="coordinationcommittee.html" class="block py-0.5 hover:text-emerald-700">Coordination Committee</a>
+        </div>
+      </div>
+      <div class="relative">
+        <button onclick="navToggle('galleryMenu')" class="hover:text-amber-300 transition">Gallery</button>
+        <div id="galleryMenu" class="hidden absolute mt-2 w-44 bg-white text-black shadow-lg p-3 border z-50 text-sm">
+          <a href="gallery.html#photo" class="block py-0.5 hover:text-emerald-700">Photo Gallery</a>
+          <a href="gallery.html#video" class="block py-0.5 hover:text-emerald-700">Video Gallery</a>
+          <a href="gallery.html#press" class="block py-0.5 hover:text-emerald-700">Press Coverage</a>
+        </div>
+      </div>
+      <div class="relative">
+        <button onclick="navToggle('newsMenu')" class="hover:text-amber-300 transition">News &amp; Update</button>
+        <div id="newsMenu" class="hidden absolute mt-2 w-56 bg-white text-black shadow-lg p-3 border z-50 text-sm">
+          <a href="news.html#newsletter" class="block py-0.5 hover:text-emerald-700">Bi-Monthly Newsletter</a>
+          <a href="news.html#activities" class="block py-0.5 hover:text-emerald-700">Recent Activities</a>
+          <a href="news.html#minutes" class="block py-0.5 hover:text-emerald-700">Minutes of the Meeting</a>
+        </div>
+      </div>
+      <a href="contact.html" class="hover:text-amber-300 transition">Contact Us</a>
+    </div>
+    <div class="flex items-center gap-2">
+      <button onclick="toggleLanguage()" class="text-xs border border-amber-400 text-amber-300 px-3 py-1 rounded-full hover:bg-amber-400 hover:text-emerald-950 transition">हिंदी / EN</button>
+      <a href="donate.html" class="text-xs bg-amber-400 text-emerald-950 px-4 py-2 rounded-full font-semibold hover:bg-amber-300 transition">Donate</a>
+    </div>
+  </div>
+</nav>
+
+<!-- GOVERNING BODY CONTENT -->
+<section class="max-w-5xl mx-auto px-6 py-16">
+  <h2 class="heading-font text-3xl text-amber-300 text-center mb-2">Governing Body</h2>
+  <p class="text-center text-emerald-400 italic mb-10">Executive, Administrative &amp; Decision-Making Authority</p>
+  <p class="text-emerald-200 leading-relaxed mb-10">
+    The Governing Body shall be the principal executive authority of the Trust and shall be responsible for day-to-day administration, expeditious decision-making, and implementation of the Trust's core benevolent functions.
+  </p>
+
+  <!-- 1. General Powers and Administration -->
+  <div class="mb-10">
+    <h3 class="text-xl font-semibold text-amber-300 mb-4 flex items-center gap-2">
+      <span class="w-8 h-8 rounded-full bg-emerald-700 flex items-center justify-center text-sm font-bold">1</span>
+      General Powers and Administration
+    </h3>
+    <ul class="space-y-3 text-emerald-200 leading-relaxed pl-4">
+      <li class="flex gap-3"><span class="text-amber-400 mt-1">&#10003;</span><span>To administer and manage the affairs of the Trust in accordance with the Trust Deed.</span></li>
+      <li class="flex gap-3"><span class="text-amber-400 mt-1">&#10003;</span><span>To implement the objects of the Trust efficiently and compassionately.</span></li>
+      <li class="flex gap-3"><span class="text-amber-400 mt-1">&#10003;</span><span>To operate bank accounts and manage funds as authorized under the Trust Deed.</span></li>
+    </ul>
+  </div>
+
+  <!-- 2. Committees -->
+  <div class="mb-10">
+    <h3 class="text-xl font-semibold text-amber-300 mb-4 flex items-center gap-2">
+      <span class="w-8 h-8 rounded-full bg-emerald-700 flex items-center justify-center text-sm font-bold">2</span>
+      Committees
+    </h3>
+    <ul class="space-y-3 text-emerald-200 leading-relaxed pl-4">
+      <li class="flex gap-3"><span class="text-amber-400 mt-1">&#10003;</span><span>To constitute, reconstitute, and dissolve committees including the Committee for Scrutiny and Evaluation of Proposals, and to define their terms of reference.</span></li>
+      <li class="flex gap-3"><span class="text-amber-400 mt-1">&#10003;</span><span>To receive reports and recommendations from such committees and take appropriate decisions thereon.</span></li>
+    </ul>
+
+    <!-- Clarification Box -->
+    <div class="mt-6 bg-emerald-800/60 border border-emerald-600 rounded-xl px-6 py-4">
+      <p class="text-amber-300 font-semibold mb-1 text-sm uppercase tracking-wide">Clarification</p>
+      <p class="text-emerald-200 leading-relaxed text-sm">
+        The Board shall nominate Trustees only to the Trust and Governing Body. Committees shall be constituted by the Governing Body and may include Trustees or other members, as deemed appropriate.
+      </p>
+    </div>
+  </div>
+
+  <!-- 3. Core Benevolent Functions -->
+  <div class="mb-10">
+    <h3 class="text-xl font-semibold text-amber-300 mb-4 flex items-center gap-2">
+      <span class="w-8 h-8 rounded-full bg-emerald-700 flex items-center justify-center text-sm font-bold">3</span>
+      Core Benevolent Functions
+    </h3>
+    <ul class="space-y-3 text-emerald-200 leading-relaxed pl-4">
+      <li class="flex gap-3"><span class="text-amber-400 mt-1">&#10003;</span><span>Based on the recommendations of the Committee constituted for the purpose, to examine, decide, and sanction cases relating to ex-gratia assistance, benevolent financial support and welfare measures for families of deceased forestry personnel and personnel who suffer serious injuries, disabilities, or critical illnesses while performing their duties.</span></li>
+      <li class="flex gap-3"><span class="text-amber-400 mt-1">&#10003;</span><span>To take time-sensitive decisions in deserving cases without waiting for approval of the Board of Trustees.</span></li>
+      <li class="flex gap-3"><span class="text-amber-400 mt-1">&#10003;</span><span>To determine the quantum of assistance, the mode of disbursement (lump sum or instalments), and beneficiaries among eligible family members.</span></li>
+    </ul>
+  </div>
+
+  <!-- 4. Financial Management and Reporting -->
+  <div class="mb-10">
+    <h3 class="text-xl font-semibold text-amber-300 mb-4 flex items-center gap-2">
+      <span class="w-8 h-8 rounded-full bg-emerald-700 flex items-center justify-center text-sm font-bold">4</span>
+      Financial Management and Reporting
+    </h3>
+    <ul class="space-y-3 text-emerald-200 leading-relaxed pl-4">
+      <li class="flex gap-3"><span class="text-amber-400 mt-1">&#10003;</span><span>To prepare annual statements of accounts, budgets, and financial summaries.</span></li>
+      <li class="flex gap-3"><span class="text-amber-400 mt-1">&#10003;</span><span>To place before the Board of Trustees the annual activity report, and the audited accounts for review and record.</span></li>
+    </ul>
+  </div>
+
+  <!-- 5. Liaison, Fund Mobilization, and Outreach -->
+  <div class="mb-10">
+    <h3 class="text-xl font-semibold text-amber-300 mb-4 flex items-center gap-2">
+      <span class="w-8 h-8 rounded-full bg-emerald-700 flex items-center justify-center text-sm font-bold">5</span>
+      Liaison, Fund Mobilization, and Outreach
+    </h3>
+    <ul class="space-y-3 text-emerald-200 leading-relaxed pl-4">
+      <li class="flex gap-3"><span class="text-amber-400 mt-1">&#10003;</span><span>Through a committee constituted for the purpose, liaise with State Forest Departments, PCCFs/Nodal Officers, forestry associations and donors.</span></li>
+      <li class="flex gap-3"><span class="text-amber-400 mt-1">&#10003;</span><span>To mobilize funds consistent with the objects of the Trust.</span></li>
+    </ul>
+  </div>
+
+  <!-- 6. Records and Transparency -->
+  <div class="mb-10">
+    <h3 class="text-xl font-semibold text-amber-300 mb-4 flex items-center gap-2">
+      <span class="w-8 h-8 rounded-full bg-emerald-700 flex items-center justify-center text-sm font-bold">6</span>
+      Records and Transparency
+    </h3>
+    <ul class="space-y-3 text-emerald-200 leading-relaxed pl-4">
+      <li class="flex gap-3"><span class="text-amber-400 mt-1">&#10003;</span><span>To maintain proper records of decisions taken, assistance granted, minutes of meetings, and correspondence.</span></li>
+      <li class="flex gap-3"><span class="text-amber-400 mt-1">&#10003;</span><span>To ensure transparency, fairness, and consistency in decision-making.</span></li>
+    </ul>
+  </div>
+
+  <!-- Governing Body Members Table -->
+  <div class="mt-16" id="members">
+    <h2 class="heading-font text-3xl text-amber-300 text-center mb-2">Governing Body</h2>
+    <p class="text-center text-emerald-400 italic mb-8">Office Bearers &amp; Key Members</p>
+
+    <div class="overflow-x-auto rounded-xl border border-emerald-700 mb-12">
+      <table class="w-full text-sm">
+        <thead>
+          <tr class="bg-emerald-700/80">
+            <th class="text-left text-amber-300 font-semibold px-5 py-3 w-12">Sl No.</th>
+            <th class="text-left text-amber-300 font-semibold px-5 py-3">Name of Member</th>
+            <th class="text-left text-amber-300 font-semibold px-5 py-3">Designation</th>
+            <th class="text-left text-amber-300 font-semibold px-5 py-3">Batch</th>
+            <th class="text-left text-amber-300 font-semibold px-5 py-3">Mobile No.</th>
+            <th class="text-left text-amber-300 font-semibold px-5 py-3">Email Address</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="border-t border-emerald-700/50 hover:bg-emerald-700/20 transition">
+            <td class="px-5 py-3 text-emerald-300">1</td>
+            <td class="px-5 py-3 text-emerald-100">Shri A. K. Goyal</td>
+            <td class="px-5 py-3 text-emerald-200">President</td>
+            <td class="px-5 py-3 text-emerald-300">KR: 1981</td>
+            <td class="px-5 py-3 text-emerald-400 tracking-widest">***</td>
+            <td class="px-5 py-3 text-emerald-400 tracking-widest">***</td>
+          </tr>
+          <tr class="border-t border-emerald-700/50 hover:bg-emerald-700/20 transition">
+            <td class="px-5 py-3 text-emerald-300">2</td>
+            <td class="px-5 py-3 text-emerald-100">Dr. D. D. Sharma</td>
+            <td class="px-5 py-3 text-emerald-200">Vice-President</td>
+            <td class="px-5 py-3 text-emerald-300">JH: 1984</td>
+            <td class="px-5 py-3 text-emerald-400 tracking-widest">***</td>
+            <td class="px-5 py-3 text-emerald-400 tracking-widest">***</td>
+          </tr>
+          <tr class="border-t border-emerald-700/50 hover:bg-emerald-700/20 transition">
+            <td class="px-5 py-3 text-emerald-300">3</td>
+            <td class="px-5 py-3 text-emerald-100">Shri Rajesh Kumar Chaudhry</td>
+            <td class="px-5 py-3 text-emerald-200">Secretary</td>
+            <td class="px-5 py-3 text-emerald-300">PB: 1987</td>
+            <td class="px-5 py-3 text-emerald-400 tracking-widest">***</td>
+            <td class="px-5 py-3 text-emerald-400 tracking-widest">***</td>
+          </tr>
+          <tr class="border-t border-emerald-700/50 hover:bg-emerald-700/20 transition">
+            <td class="px-5 py-3 text-emerald-300">4</td>
+            <td class="px-5 py-3 text-emerald-100">Shri Vinod Kumar Tiwari</td>
+            <td class="px-5 py-3 text-emerald-200">Treasurer</td>
+            <td class="px-5 py-3 text-emerald-300">HP: 1986</td>
+            <td class="px-5 py-3 text-emerald-400 tracking-widest">***</td>
+            <td class="px-5 py-3 text-emerald-400 tracking-widest">***</td>
+          </tr>
+          <tr class="border-t border-emerald-700/50 hover:bg-emerald-700/20 transition">
+            <td class="px-5 py-3 text-emerald-300">5</td>
+            <td class="px-5 py-3 text-emerald-100">Shri Sanjeev Chadha</td>
+            <td class="px-5 py-3 text-emerald-200">Joint Secretary</td>
+            <td class="px-5 py-3 text-emerald-300">OR: 1989</td>
+            <td class="px-5 py-3 text-emerald-400 tracking-widest">***</td>
+            <td class="px-5 py-3 text-emerald-400 tracking-widest">***</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Members Table -->
+    <h2 class="heading-font text-3xl text-amber-300 text-center mb-2">Members</h2>
+    <p class="text-center text-emerald-400 italic mb-8">General Body Members</p>
+
+    <div class="overflow-x-auto rounded-xl border border-emerald-700 mb-6">
+      <table class="w-full text-sm">
+        <thead>
+          <tr class="bg-emerald-700/80">
+            <th class="text-left text-amber-300 font-semibold px-5 py-3 w-16">Sl No.</th>
+            <th class="text-left text-amber-300 font-semibold px-5 py-3">Name of Member</th>
+            <th class="text-left text-amber-300 font-semibold px-5 py-3">Batch</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="border-t border-emerald-700/50 hover:bg-emerald-700/20 transition">
+            <td class="px-5 py-3 text-emerald-300">1</td>
+            <td class="px-5 py-3 text-emerald-100">Mr. Ashok Pai</td>
+            <td class="px-5 py-3 text-emerald-300">UTT: 1983</td>
+          </tr>
+          <tr class="border-t border-emerald-700/50 hover:bg-emerald-700/20 transition">
+            <td class="px-5 py-3 text-emerald-300">2</td>
+            <td class="px-5 py-3 text-emerald-100">Mr. Surinder Kumar</td>
+            <td class="px-5 py-3 text-emerald-300">TR: 1985</td>
+          </tr>
+          <tr class="border-t border-emerald-700/50 hover:bg-emerald-700/20 transition">
+            <td class="px-5 py-3 text-emerald-300">3</td>
+            <td class="px-5 py-3 text-emerald-100">Mr. Bipin Bihari</td>
+            <td class="px-5 py-3 text-emerald-300">AGMUT: 1985</td>
+          </tr>
+          <tr class="border-t border-emerald-700/50 hover:bg-emerald-700/20 transition">
+            <td class="px-5 py-3 text-emerald-300">4</td>
+            <td class="px-5 py-3 text-emerald-100">Mr. Surendra Kumar</td>
+            <td class="px-5 py-3 text-emerald-300">KR: 1986</td>
+          </tr>
+          <tr class="border-t border-emerald-700/50 hover:bg-emerald-700/20 transition">
+            <td class="px-5 py-3 text-emerald-300">5</td>
+            <td class="px-5 py-3 text-emerald-100">Mr. A. K. Johari</td>
+            <td class="px-5 py-3 text-emerald-300">AM: 1986</td>
+          </tr>
+          <tr class="border-t border-emerald-700/50 hover:bg-emerald-700/20 transition">
+            <td class="px-5 py-3 text-emerald-300">6</td>
+            <td class="px-5 py-3 text-emerald-100">Mr. C. D. Singh</td>
+            <td class="px-5 py-3 text-emerald-300">AGMUT: 1987</td>
+          </tr>
+          <tr class="border-t border-emerald-700/50 hover:bg-emerald-700/20 transition">
+            <td class="px-5 py-3 text-emerald-300">7</td>
+            <td class="px-5 py-3 text-emerald-100">Ms. Jyotsna Sitling</td>
+            <td class="px-5 py-3 text-emerald-300">UTT: 1987</td>
+          </tr>
+          <tr class="border-t border-emerald-700/50 hover:bg-emerald-700/20 transition">
+            <td class="px-5 py-3 text-emerald-300">8</td>
+            <td class="px-5 py-3 text-emerald-100">Ms. Anita Karn</td>
+            <td class="px-5 py-3 text-emerald-300">GJ: 1997</td>
+          </tr>
+          <tr class="border-t border-emerald-700/50 hover:bg-emerald-700/20 transition">
+            <td class="px-5 py-3 text-emerald-300">9</td>
+            <td class="px-5 py-3 text-emerald-100">Mr. Kunal Satyarthi</td>
+            <td class="px-5 py-3 text-emerald-300">HP: 1997</td>
+          </tr>
+          <tr class="border-t border-emerald-700/50 hover:bg-emerald-700/20 transition">
+            <td class="px-5 py-3 text-emerald-300">10</td>
+            <td class="px-5 py-3 text-emerald-100">Mr. Nishant Verma</td>
+            <td class="px-5 py-3 text-emerald-300">UTT: 1999</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="text-center mt-12">
+    <a href="ecombase.html" class="inline-block bg-amber-400 text-emerald-950 px-8 py-3 rounded-full font-semibold text-sm hover:bg-amber-300 transition">← Back to Home</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="bg-emerald-900 border-t border-emerald-800 py-12">
+  <div class="max-w-7xl mx-auto px-6 text-center">
+    <h3 class="heading-font text-2xl text-amber-300 mb-6">Connect With Us</h3>
+    <div class="flex justify-center gap-6 text-2xl mb-8">
+      <a href="#" class="w-12 h-12 flex items-center justify-center rounded-full bg-emerald-800 hover:bg-amber-400 hover:text-emerald-950 transition"><i class="fab fa-facebook-f"></i></a>
+      <a href="#" class="w-12 h-12 flex items-center justify-center rounded-full bg-emerald-800 hover:bg-amber-400 hover:text-emerald-950 transition"><i class="fab fa-x-twitter"></i></a>
+      <a href="#" class="w-12 h-12 flex items-center justify-center rounded-full bg-emerald-800 hover:bg-amber-400 hover:text-emerald-950 transition"><i class="fab fa-instagram"></i></a>
+      <a href="#" class="w-12 h-12 flex items-center justify-center rounded-full bg-emerald-800 hover:bg-amber-400 hover:text-emerald-950 transition"><i class="fab fa-linkedin-in"></i></a>
+      <a href="#" class="w-12 h-12 flex items-center justify-center rounded-full bg-emerald-800 hover:bg-amber-400 hover:text-emerald-950 transition"><i class="fab fa-youtube"></i></a>
+    </div>
+    <p class="text-sm text-emerald-300">© 2026 Indian Forest Service Benevolent and Welfare Trust. All Rights Reserved.</p>
+  </div>
+</footer>
+
+<script>
+function navToggle(id) {
+  document.querySelectorAll('nav .absolute').forEach(el => { if(el.id !== id) el.classList.add('hidden'); });
+  document.getElementById(id).classList.toggle('hidden');
+}
+document.addEventListener('click', function(e) {
+  if (!e.target.closest('nav')) document.querySelectorAll('nav .absolute').forEach(el => el.classList.add('hidden'));
+});
+let currentLang = "en";
+function toggleLanguage() {
+  const en = document.querySelectorAll(".lang.en"), hi = document.querySelectorAll(".lang.hi");
+  if (currentLang === "en") { en.forEach(el=>el.classList.add("hidden")); hi.forEach(el=>el.classList.remove("hidden")); currentLang="hi"; }
+  else { hi.forEach(el=>el.classList.add("hidden")); en.forEach(el=>el.classList.remove("hidden")); currentLang="en"; }
+}
+</script>
+</body>
+</html>
