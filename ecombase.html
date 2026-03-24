@@ -230,12 +230,10 @@
     </div>
     <p class="text-sm text-emerald-300">© 2026 Indian Forest Service Benevolent and Welfare Trust. All Rights Reserved.</p>
   </div>
-	<!-- Visitor Counter -->
-<div class="mt-4 text-emerald-400 text-sm flex items-center justify-center gap-2">
-  <i class="fas fa-eye"></i>
-  <span>Visitors: <span id="visitorCount">...</span></span>
+	<div class="mt-4 flex items-center justify-center">
+  <img src="https://hits.sh/tirkeyjimmi.github.io/ifsbwt_website/ecombase.html.svg?label=Visitors&color=4ade80&labelColor=064e3b&style=flat-square" alt="Visitor Count">
 </div>
-</footer>
+	</footer>
 <script>
 function navToggle(id) {
   document.querySelectorAll('nav .absolute').forEach(el => { if(el.id !== id) el.classList.add('hidden'); });
@@ -250,16 +248,6 @@ function toggleLanguage() {
   if (currentLang === "en") { en.forEach(el=>el.classList.add("hidden")); hi.forEach(el=>el.classList.remove("hidden")); currentLang="hi"; }
   else { hi.forEach(el=>el.classList.add("hidden")); en.forEach(el=>el.classList.remove("hidden")); currentLang="en"; }
 }
-</script>
-		<script>
-  fetch('https://api.countapi.xyz/hit/tirkeyjimmi.github.io/ifsbwt_website')
-    .then(res => res.json())
-    .then(data => {
-      document.getElementById('visitorCount').textContent = data.value.toLocaleString();
-    })
-    .catch(() => {
-      document.getElementById('visitorCount').textContent = 'N/A';
-    });
 </script>
 </body>
 </html>
