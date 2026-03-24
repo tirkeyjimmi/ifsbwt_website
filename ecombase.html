@@ -230,10 +230,18 @@
     </div>
     <p class="text-sm text-emerald-300">© 2026 Indian Forest Service Benevolent and Welfare Trust. All Rights Reserved.</p>
   </div>
-	<div class="mt-4 flex items-center justify-center">
-  <img src="https://hits.sh/tirkeyjimmi.github.io/ifsbwt_website/ecombase.html.svg?label=Visitors&color=4ade80&labelColor=064e3b&style=flat-square" alt="Visitor Count">
+	<div class="mt-4 flex items-center justify-center gap-4">
+  <!-- Total count -->
+  <img src="https://hits.sh/tirkeyjimmi.github.io/ifsbwt_website/ecombase.html.svg?label=Total+Visitors&color=4ade80&labelColor=064e3b&style=flat-square" alt="Total Visitors">
+
+  <!-- Daily count (resets every 24hrs using date as key) -->
+  <img id="dailyBadge" alt="Today's Visitors">
 </div>
 	</footer>
+		<script>
+  const today = new Date().toISOString().slice(0,10).replace(/-/g,'');
+  document.getElementById('dailyBadge').src = `https://hits.sh/tirkeyjimmi.github.io/ifsbwt_website/daily-${today}.svg?label=Today&color=fb923c&labelColor=064e3b&style=flat-square`;
+</script>
 <script>
 function navToggle(id) {
   document.querySelectorAll('nav .absolute').forEach(el => { if(el.id !== id) el.classList.add('hidden'); });
