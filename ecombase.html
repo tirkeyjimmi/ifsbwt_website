@@ -181,7 +181,7 @@
         <p class="mb-4">Through transparent governance, collective commitment, and the goodwill of our members and supporters, we aim to ensure that the families of these unsung guardians are not left alone in their hours of need.</p>
 	<p class="mb-4">Together, we reaffirm our resolve to honour their sacrifices, support their families, and continue the larger mission of conserving India’s forests and biodiversity for future generations.</p>
       </div>
-   
+   </div>
 </section>
 
 <!-- ADDRESS -->
@@ -229,18 +229,29 @@
       <a href="#" class="w-12 h-12 flex items-center justify-center rounded-full bg-emerald-800 hover:bg-amber-400 hover:text-emerald-950 transition"><i class="fab fa-youtube"></i></a>
     </div>
     <p class="text-sm text-emerald-300">© 2026 Indian Forest Service Benevolent and Welfare Trust. All Rights Reserved.</p>
+     <!-- ✅ CORRECTED: Visitor badges inside footer, with fallback alt and noscript -->
+    <div class="mt-4 flex items-center justify-center gap-4 flex-wrap">
+      <img
+        src="https://hits.sh/www.foresttrust.in/ecombase.html.svg?label=Total+Visitors&color=4ade80&labelColor=064e3b&style=flat-square"
+        alt="Total Visitors"
+        loading="lazy"
+      >
+      <img
+        id="dailyBadge"
+        src=""
+        alt="Today's Visitors"
+        loading="lazy"
+      >
+    </div>
   </div>
-	<div class="mt-4 flex items-center justify-center gap-4">
-  <!-- Total count -->
-  <img src="https://hits.sh/www.foresttrust.in/ecombase.html.svg?label=Total+Visitors&color=4ade80&labelColor=064e3b&style=flat-square" alt="Total Visitors">
-
-  <!-- Daily count (resets every 24hrs using date as key) -->
-  <img id="dailyBadge" alt="Today's Visitors">
-</div>
-	</footer>
+</footer>
 		<script>
-  const today = new Date().toISOString().slice(0,10).replace(/-/g,'');
-  document.getElementById('dailyBadge').src = `https://hits.sh/www.foresttrust.in/daily-${today}.svg?label=Today&color=fb923c&labelColor=064e3b&style=flat-square`;
+  // Daily badge — keyed by today's date so it resets every 24 hrs
+  const today = new Date().toISOString().slice(0, 10).replace(/-/g, '');
+  const badge = document.getElementById('dailyBadge');
+  if (badge) {
+    badge.src = `https://hits.sh/www.foresttrust.in/daily-${today}.svg?label=Today&color=fb923c&labelColor=064e3b&style=flat-square`;
+  }
 </script>
 <script>
 function navToggle(id) {
