@@ -231,11 +231,16 @@
     <p class="text-sm text-emerald-300">© 2026 Indian Forest Service Benevolent and Welfare Trust. All Rights Reserved.</p>
 
 	  <script>
-    // Append to the <body>; can use a CSS selector to append somewhere else.
-    window.goatcounter.visit_count({append: 'body'})
+    var t = setInterval(function() {
+        if (window.goatcounter && window.goatcounter.visit_count) {
+            clearInterval(t)
+            window.goatcounter.visit_count({append: 'body'})
+        }
+    }, 100)
 </script>
 <script data-goatcounter="https://foresttrust.goatcounter.com/count"
         async src="//gc.zgo.at/count.js"></script>
+
 	  
 <script>
 function navToggle(id) {
