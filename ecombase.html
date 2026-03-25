@@ -229,46 +229,33 @@
       <a href="#" class="w-12 h-12 flex items-center justify-center rounded-full bg-emerald-800 hover:bg-amber-400 hover:text-emerald-950 transition"><i class="fab fa-youtube"></i></a>
     </div>
     <p class="text-sm text-emerald-300">© 2026 Indian Forest Service Benevolent and Welfare Trust. All Rights Reserved.</p>
-  <script data-goatcounter="https://foresttrust.goatcounter.com/count"
-        async src="//gc.zgo.at/count.js">
-		</script>
 
-<div class="text-center mt-6">
+	  <div class="text-center mt-6">
   <p class="text-emerald-300 text-sm">Total Visitors</p>
-  <h3 id="visitorCount" class="text-3xl text-amber-300 font-bold">—</h3>
+  <h3 id="visitorCount" class="text-3xl text-amber-300 font-bold">0</h3>
 </div>
 
 	  <script>
-async function loadVisitors() {
-  try {
-    const res = await fetch("https://foresttrust.goatcounter.com/api/v0/stats/total");
-    const data = await res.json();
-    document.getElementById("visitorCount").innerText =
-      data.count.toLocaleString();
-  } catch {
-    document.getElementById("visitorCount").innerText = "—";
-  }
-}
-loadVisitors();
+fetch('https://api.countapi.xyz/hit/foresttrust.in/visits')
+  .then(res => res.json())
+  .then(res => {
+    document.getElementById('visitorCount').innerText = res.value;
+  });
 </script>
 
 	  <div class="text-center mt-4">
   <p class="text-emerald-300 text-sm">Visitors Today</p>
-  <h3 id="todayVisitors" class="text-xl text-amber-300 font-semibold">—</h3>
+  <h3 id="todayCount" class="text-xl text-amber-300 font-semibold">0</h3>
 </div>
 
 	  <script>
-async function loadTodayVisitors() {
-  try {
-    const res = await fetch("https://foresttrust.goatcounter.com/api/v0/stats/today");
-    const data = await res.json();
-    document.getElementById("todayVisitors").innerText =
-      data.count.toLocaleString();
-  } catch {
-    document.getElementById("todayVisitors").innerText = "—";
-  }
-}
-loadTodayVisitors();
+const today = new Date().toISOString().slice(0,10);
+
+fetch(`https://api.countapi.xyz/hit/foresttrust.in-${today}/visits`)
+  .then(res => res.json())
+  .then(res => {
+    document.getElementById('todayCount').innerText = res.value;
+  });
 </script>
 	  
 <script>
