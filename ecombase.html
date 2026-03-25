@@ -230,86 +230,12 @@
     </div>
     <p class="text-sm text-emerald-300">© 2026 Indian Forest Service Benevolent and Welfare Trust. All Rights Reserved.</p>
 
-<div class="grid grid-cols-2 gap-8 max-w-sm mx-auto mt-8 text-center">
-
-  <div class="bg-emerald-800 p-4 rounded-xl shadow">
-    <p class="text-xs text-emerald-300 mb-1">Total Visitors</p>
-    <p id="visitorCount" class="text-3xl text-amber-300 font-bold">—</p>
-  </div>
-
-  <div class="bg-emerald-800 p-4 rounded-xl shadow">
-    <p class="text-xs text-emerald-300 mb-1">Today</p>
-    <p id="todayCount" class="text-3xl text-amber-300 font-bold">—</p>
-  </div>
-</div>
-</footer>
 	  <script>
-async function updateVisitorCount() {
-  try {
-    const res = await fetch('https://api.countapi.xyz/hit/foresttrust.in/visits');
-    const data = await res.json();
-
-    document.getElementById('visitorCount').innerText =
-      data.value ? data.value.toLocaleString() : '1';
-
-  } catch {
-    document.getElementById('visitorCount').innerText = '—';
-  }
-}
-
-updateVisitorCount();
+    // Append to the <body>; can use a CSS selector to append somewhere else.
+    window.goatcounter.visit_count({append: 'body'})
 </script>
-
-	  <script>
-async function updateTodayCount() {
-  try {
-    const today = new Date().toISOString().slice(0,10);
-
-    const res = await fetch(`https://api.countapi.xyz/hit/foresttrust.in-${today}/visits`);
-    const data = await res.json();
-
-    document.getElementById('todayCount').innerText =
-      data.value ? data.value.toLocaleString() : '1';
-
-  } catch {
-    document.getElementById('todayCount').innerText = '—';
-  }
-}
-
-updateTodayCount();
-</script>
-
-<script>
-function animateValue(id, start, end, duration) {
-  let range = end - start;
-  let current = start;
-  let increment = end > start ? 1 : -1;
-  let stepTime = Math.abs(Math.floor(duration / range));
-  let obj = document.getElementById(id);
-
-  let timer = setInterval(function() {
-    current += increment;
-    obj.innerText = current.toLocaleString();
-    if (current == end) clearInterval(timer);
-  }, stepTime);
-}
-
-async function updateVisitorCount() {
-  const res = await fetch('https://api.countapi.xyz/hit/foresttrust.in/visits');
-  const data = await res.json();
-  animateValue("visitorCount", 0, data.value, 800);
-}
-
-async function updateTodayCount() {
-  const today = new Date().toISOString().slice(0,10);
-  const res = await fetch(`https://api.countapi.xyz/hit/foresttrust.in-${today}/visits`);
-  const data = await res.json();
-  animateValue("todayCount", 0, data.value, 800);
-}
-
-updateVisitorCount();
-updateTodayCount();
-</script>
+<script data-goatcounter="https://foresttrust.goatcounter.com/count"
+        async src="//gc.zgo.at/count.js"></script>
 	  
 <script>
 function navToggle(id) {
