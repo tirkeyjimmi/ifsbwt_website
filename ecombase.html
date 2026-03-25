@@ -229,30 +229,27 @@
       <a href="#" class="w-12 h-12 flex items-center justify-center rounded-full bg-emerald-800 hover:bg-amber-400 hover:text-emerald-950 transition"><i class="fab fa-youtube"></i></a>
     </div>
     <p class="text-sm text-emerald-300">© 2026 Indian Forest Service Benevolent and Welfare Trust. All Rights Reserved.</p>
-     <!-- ✅ CORRECTED: Visitor badges inside footer, with fallback alt and noscript -->
-    <div class="mt-4 flex items-center justify-center gap-4 flex-wrap">
-      <img
-        src="https://hits.sh/www.foresttrust.in/ecombase.html.svg?label=Total+Visitors&color=4ade80&labelColor=064e3b&style=flat-square"
-        alt="Total Visitors"
-        loading="lazy"
-      >
-      <img
-        id="dailyBadge"
-        src=""
-        alt="Today's Visitors"
-        loading="lazy"
-      >
-    </div>
-  </div>
-</footer>
-		<script>
-  // Daily badge — keyed by today's date so it resets every 24 hrs
-  const today = new Date().toISOString().slice(0, 10).replace(/-/g, '');
-  const badge = document.getElementById('dailyBadge');
-  if (badge) {
-    badge.src = `https://hits.sh/www.foresttrust.in/daily-${today}.svg?label=Today&color=fb923c&labelColor=064e3b&style=flat-square`;
-  }
-</script>
+  <div class="mt-4 flex items-center justify-center gap-4 flex-wrap">
+  <!-- Total Visitors -->
+  <img
+    src="https://hits.sh/www.foresttrust.in.svg?label=Total+Visitors&color=4ade80&labelColor=064e3b&style=flat-square"
+    alt="Total Visitors"
+    loading="lazy"
+    onerror="this.style.display='none'"
+  >
+
+  <!-- Daily Visitors -->
+  <img
+    src="https://hits.sh/www.foresttrust.in/daily.svg?label=Today&color=fb923c&labelColor=064e3b&style=flat-square"
+    alt="Today's Visitors"
+    loading="lazy"
+    onerror="this.style.display='none'"
+  >
+</div>
+
+<noscript>
+  <img src="https://hits.sh/www.foresttrust.in.svg">
+</noscript>
 <script>
 function navToggle(id) {
   document.querySelectorAll('nav .absolute').forEach(el => { if(el.id !== id) el.classList.add('hidden'); });
