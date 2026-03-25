@@ -229,27 +229,48 @@
       <a href="#" class="w-12 h-12 flex items-center justify-center rounded-full bg-emerald-800 hover:bg-amber-400 hover:text-emerald-950 transition"><i class="fab fa-youtube"></i></a>
     </div>
     <p class="text-sm text-emerald-300">© 2026 Indian Forest Service Benevolent and Welfare Trust. All Rights Reserved.</p>
-  <div class="mt-4 flex items-center justify-center gap-4 flex-wrap">
-  <!-- Total Visitors -->
-  <img
-    src="https://hits.sh/www.foresttrust.in.svg?label=Total+Visitors&color=4ade80&labelColor=064e3b&style=flat-square"
-    alt="Total Visitors"
-    loading="lazy"
-    onerror="this.style.display='none'"
-  >
+  <script data-goatcounter="https://foresttrust.goatcounter.com/count"
+        async src="//gc.zgo.at/count.js">
+		</script>
 
-  <!-- Daily Visitors -->
-  <img
-    src="https://hits.sh/www.foresttrust.in/daily.svg?label=Today&color=fb923c&labelColor=064e3b&style=flat-square"
-    alt="Today's Visitors"
-    loading="lazy"
-    onerror="this.style.display='none'"
-  >
+<div class="text-center mt-6">
+  <p class="text-emerald-300 text-sm">Total Visitors</p>
+  <h3 id="visitorCount" class="text-3xl text-amber-300 font-bold">—</h3>
 </div>
 
-<noscript>
-  <img src="https://hits.sh/www.foresttrust.in.svg">
-</noscript>
+	  <script>
+async function loadVisitors() {
+  try {
+    const res = await fetch("https://foresttrust.goatcounter.com/api/v0/stats/total");
+    const data = await res.json();
+    document.getElementById("visitorCount").innerText =
+      data.count.toLocaleString();
+  } catch {
+    document.getElementById("visitorCount").innerText = "—";
+  }
+}
+loadVisitors();
+</script>
+
+	  <div class="text-center mt-4">
+  <p class="text-emerald-300 text-sm">Visitors Today</p>
+  <h3 id="todayVisitors" class="text-xl text-amber-300 font-semibold">—</h3>
+</div>
+
+	  <script>
+async function loadTodayVisitors() {
+  try {
+    const res = await fetch("https://foresttrust.goatcounter.com/api/v0/stats/today");
+    const data = await res.json();
+    document.getElementById("todayVisitors").innerText =
+      data.count.toLocaleString();
+  } catch {
+    document.getElementById("todayVisitors").innerText = "—";
+  }
+}
+loadTodayVisitors();
+</script>
+	  
 <script>
 function navToggle(id) {
   document.querySelectorAll('nav .absolute').forEach(el => { if(el.id !== id) el.classList.add('hidden'); });
