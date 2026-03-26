@@ -12,8 +12,13 @@
     body { font-family: 'Inter', system-ui, sans-serif; }
     .heading-font { font-family: 'Playfair Display', sans-serif; }
     .card-container { display: flex; gap: 20px; justify-content: center; flex-wrap: wrap; }
-    .card { width: 300px; text-align: center; }
+    .card { width: 100%; max-width: 320px; text-align: center; }
     .card img { width: 100%; height: 250px; object-fit: cover; border-radius: 10px; }
+	 
+	  p { font-size: 15px; }
+@media (min-width: 768px) {
+  p { font-size: 16px; }
+}
   </style>
 </head>
 
@@ -72,11 +77,11 @@
   </div>
 </nav>
 <!-- HERO -->
-<section class="relative h-[90vh] flex items-center justify-center text-center">
+<section class="relative min-h-screen flex items-center justify-center text-center px-4">
   <img src="homepage_image.jpeg" class="absolute inset-0 w-full h-full object-cover object-fill" alt=" Mangrove Forest">
   <div class="absolute inset-0 bg-black/40"></div>
   <div class="relative max-w-4xl px-6">
-    <h1 class="heading-font text-6xl text-amber-300 mb-6">
+    <h1 class="heading-font text-3xl sm:text-5xl md:text-6xl text-amber-300 mb-6 leading-tight">
       <span class="lang en">Protecting forests. Supporting Green Warriors</span>
       <span class="lang hi hidden">वनों की रक्षा। वीरों का सम्मान।</span>
     </h1>
@@ -84,7 +89,7 @@
       <span class="lang en">Dedicated to the welfare, resilience, and honour of our forest officers.</span>
       <span class="lang hi hidden">भारतीय वन सेवा अधिकारियों के कल्याण और सम्मान हेतु समर्पित।</span>
     </p>
-    <div class="flex gap-4 justify-center">
+    <div class="flex flex-col sm:flex-row gap-4 justify-center">
       <a href="donate.html" class="bg-amber-400 hover:bg-amber-500 text-emerald-950 px-8 py-4 rounded-full font-semibold transition">Support Welfare</a>
       <a href="about.html" class="border border-amber-300 text-amber-300 px-8 py-4 rounded-full hover:bg-amber-300/10 transition">Learn More</a>
     </div>
@@ -92,7 +97,7 @@
 </section>
 
 <!-- ABOUT -->
-<section id="about" class="py-24 bg-emerald-900">
+<section id="about" class="py-16 md:py-24 bg-emerald-900">
   <div class="max-w-4xl mx-auto text-center px-6">
     <h2 class="heading-font text-4xl mb-6 text-amber-300">About the Trust</h2>
     <p class="text-emerald-200 leading-relaxed">
@@ -108,7 +113,7 @@
 
 
 <!-- RECENT ACTIVITIES -->
-<section id="stories" class="py-24 bg-emerald-900">
+<section id="stories" class="py-16 md:py-24 bg-emerald-900">
   <div class="max-w-6xl mx-auto px-6">
     <h2 class="heading-font text-4xl text-center mb-12 text-amber-300">Recent Activities </h2>
     <div class="card-container">
@@ -152,7 +157,7 @@
 </section>
 
 <!-- GOVERNANCE -->
-<section id="governance" class="py-24 bg-emerald-950">
+<section id="governance" class="py-16 md:py-24 bg-emerald-950">
   <div class="max-w-7xl mx-auto px-6">
     <h2 class="heading-font text-4xl font-bold mb-6 text-center text-amber-300">Governance</h2>
     <p class="text-center text-emerald-200 max-w-3xl mx-auto mb-16">
@@ -168,9 +173,9 @@
         <p class="text-emerald-200 leading-relaxed">To extend support to the families of forestry field personnel who lose their lives, health, or livelihood in the line of duty.</p>
       </div>
     </div>
-    <div class="bg-emerald-900 p-10 rounded-3xl shadow-lg flex flex-col md:flex-row items-center gap-10">
+    <div class="bg-emerald-900 p-6 md:p-10 rounded-3xl shadow-lg flex flex-col md:flex-row items-center gap-6 md:gap-10">
       <div class="flex-shrink-0 text-center">
-        <img src="blank.jpeg" alt="President" class="w-56 h-56 object-cover rounded-full border-4 border-amber-300 shadow-lg mx-auto">
+        <img src="blank.jpeg" alt="President" class="w-40 h-40 sm:w-56 sm:h-56 object-cover rounded-full border-4 border-amber-300 shadow-lg mx-auto">
         <div class="mt-4 text-amber-300 font-semibold text-xl">Shri A.K.Goyal</div>
         <div class="text-sm text-emerald-300"> Retd. IFS Officer(Batch: KR-1981)</div>
       </div>
