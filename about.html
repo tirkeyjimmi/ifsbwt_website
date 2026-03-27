@@ -21,10 +21,10 @@
 <nav class="bg-emerald-900/95 backdrop-blur border-b border-emerald-800 sticky top-0 z-50">
   <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
     <a href="ecombase.html" class="flex items-center gap-3">
-  <img src="logo.jpeg" alt="IFS Benevolent and Welfare Trust Logo" class="w-20 h-20 rounded-xl object-contain bg-white">
+  <img src="logo.jpeg" alt="IFS Benevolent and Welfare Trust Logo" class="w-10 h-10 sm:w-14 sm:h-14 md:w-20 md:h-20 rounded-xl object-contain bg-white">
   <div>
-        <span class="heading-font text-xl font-bold text-emerald-200">IFS Benevolent and Welfare Trust</span>
-        <span class="block text-[10px] tracking-widest text-emerald-500">Standing with Green Warriors</span>
+        <span class="heading-font text-sm sm:text-base md:text-xl font-bold text-emerald-200 leading-tight">IFS Benevolent and Welfare Trust</span>
+        <span class="block text-[9px] sm:text-[10px] tracking-widest text-emerald-500">Standing with Green Warriors</span>
       </div>
     </a>
     <div class="hidden md:flex gap-7 text-sm text-white items-center">
@@ -60,18 +60,107 @@
           <a href="news.html#newsletter" class="block py-0.5 hover:text-emerald-700">Bi-Monthly Newsletter</a>
           <a href="news.html#activities" class="block py-0.5 hover:text-emerald-700">Recent Activities</a>
           <a href="news.html#minutes" class="block py-0.5 hover:text-emerald-700">Minutes of the Meeting</a>
+          <a href="https://forms.gle/VHNhYQBW3nVfu887A" target="_blank" class="block py-0.5 hover:text-emerald-700 text-amber-600 font-medium">Google Form for Assistance</a>
         </div>
       </div>
       <a href="contact.html" class="hover:text-amber-300 transition">Contact Us</a>
     </div>
     <div class="flex items-center gap-2">
       <a href="donate.html" class="text-xs bg-amber-400 text-emerald-950 px-4 py-2 rounded-full font-semibold hover:bg-amber-300 transition">Donate</a>
+      <button class="md:hidden text-2xl text-white ml-1"
+        onclick="document.getElementById('mobileMenu').classList.toggle('hidden')">
+        <i class="fas fa-bars"></i>
+      </button>
     </div>
   </div>
 </nav>
+<!-- MOBILE MENU -->
+<div id="mobileMenu" class="hidden md:hidden bg-emerald-900 border-b border-emerald-800 text-white text-sm z-40">
 
+  <!-- About Us -->
+  <div class="border-b border-emerald-800">
+    <button onclick="mobileToggle('mob-about')"
+      class="w-full flex justify-between items-center px-6 py-4 hover:bg-emerald-800 transition text-left font-medium">
+      About Us
+      <i id="mob-about-icon" class="fas fa-chevron-down text-amber-300 text-xs transition-transform duration-200"></i>
+    </button>
+    <div id="mob-about" class="hidden bg-emerald-950 px-6 py-2 space-y-2">
+      <a href="about.html" class="block py-1.5 pl-2 border-l-2 border-amber-400 hover:text-amber-300 transition">About the Trust</a>
+      <a href="about.html#vision" class="block py-1.5 pl-2 border-l-2 border-amber-400 hover:text-amber-300 transition">Vision and Mission</a>
+      <a href="about.html#objectives" class="block py-1.5 pl-2 border-l-2 border-amber-400 hover:text-amber-300 transition">Objects and Purposes</a>
+      <a href="whoswho.html" class="block py-1.5 pl-2 border-l-2 border-amber-400 hover:text-amber-300 transition">Who's Who</a>
+    </div>
+  </div>
+
+  <!-- Governance -->
+  <div class="border-b border-emerald-800">
+    <button onclick="mobileToggle('mob-gov')"
+      class="w-full flex justify-between items-center px-6 py-4 hover:bg-emerald-800 transition text-left font-medium">
+      Governance
+      <i id="mob-gov-icon" class="fas fa-chevron-down text-amber-300 text-xs transition-transform duration-200"></i>
+    </button>
+    <div id="mob-gov" class="hidden bg-emerald-950 px-6 py-2 space-y-2">
+      <a href="boardoftrustees.html" class="block py-1.5 pl-2 border-l-2 border-amber-400 hover:text-amber-300 transition">Board of Trustees</a>
+      <a href="governingbody.html" class="block py-1.5 pl-2 border-l-2 border-amber-400 hover:text-amber-300 transition">Governing Body</a>
+      <a href="csepcommittee.html" class="block py-1.5 pl-2 border-l-2 border-amber-400 hover:text-amber-300 transition">CSEP Committee</a>
+      <a href="coordinationcommittee.html" class="block py-1.5 pl-2 border-l-2 border-amber-400 hover:text-amber-300 transition">Coordination Committee</a>
+    </div>
+  </div>
+
+  <!-- Gallery -->
+  <div class="border-b border-emerald-800">
+    <button onclick="mobileToggle('mob-gallery')"
+      class="w-full flex justify-between items-center px-6 py-4 hover:bg-emerald-800 transition text-left font-medium">
+      Gallery
+      <i id="mob-gallery-icon" class="fas fa-chevron-down text-amber-300 text-xs transition-transform duration-200"></i>
+    </button>
+    <div id="mob-gallery" class="hidden bg-emerald-950 px-6 py-2 space-y-2">
+      <a href="gallery.html#photo" class="block py-1.5 pl-2 border-l-2 border-amber-400 hover:text-amber-300 transition">Photo Gallery</a>
+      <a href="gallery.html#video" class="block py-1.5 pl-2 border-l-2 border-amber-400 hover:text-amber-300 transition">Video Gallery</a>
+      <a href="gallery.html#press" class="block py-1.5 pl-2 border-l-2 border-amber-400 hover:text-amber-300 transition">Press Coverage</a>
+    </div>
+  </div>
+
+  <!-- News & Updates -->
+  <div class="border-b border-emerald-800">
+    <button onclick="mobileToggle('mob-news')"
+      class="w-full flex justify-between items-center px-6 py-4 hover:bg-emerald-800 transition text-left font-medium">
+      News & Updates
+      <i id="mob-news-icon" class="fas fa-chevron-down text-amber-300 text-xs transition-transform duration-200"></i>
+    </button>
+    <div id="mob-news" class="hidden bg-emerald-950 px-6 py-2 space-y-2">
+      <a href="news.html#newsletter" class="block py-1.5 pl-2 border-l-2 border-amber-400 hover:text-amber-300 transition">Bi-Monthly Newsletter</a>
+      <a href="news.html#activities" class="block py-1.5 pl-2 border-l-2 border-amber-400 hover:text-amber-300 transition">Recent Activities</a>
+      <a href="news.html#minutes" class="block py-1.5 pl-2 border-l-2 border-amber-400 hover:text-amber-300 transition">Minutes of the Meeting</a>
+      <a href="https://forms.gle/VHNhYQBW3nVfu887A" target="_blank" class="block py-1.5 pl-2 border-l-2 border-amber-400 text-amber-300 font-medium hover:text-amber-200 transition">Google Form for Assistance</a>
+    </div>
+  </div>
+
+  <!-- Direct links -->
+  <a href="contact.html" class="block px-6 py-4 border-b border-emerald-800 hover:bg-emerald-800 transition font-medium">Contact Us</a>
+  <a href="donate.html" class="block px-6 py-4 text-amber-300 font-semibold hover:bg-emerald-800 transition">Donate →</a>
+
+</div>
+
+<script>
+function mobileToggle(id) {
+  var panel = document.getElementById(id);
+  var icon  = document.getElementById(id + '-icon');
+  var isHidden = panel.classList.contains('hidden');
+  // Close all open panels first
+  ['mob-about','mob-gov','mob-gallery','mob-news'].forEach(function(p) {
+    document.getElementById(p).classList.add('hidden');
+    document.getElementById(p + '-icon').style.transform = 'rotate(0deg)';
+  });
+  // Open clicked one if it was closed
+  if (isHidden) {
+    panel.classList.remove('hidden');
+    icon.style.transform = 'rotate(180deg)';
+  }
+}
+</script>
 <!-- HERO -->
-<section class="hero-bg relative py-28">
+<section class="hero-bg relative py-16 md:py-28">
   <div class="absolute inset-0 bg-emerald-950/80"></div>
   <div class="relative max-w-6xl mx-auto px-6 text-center">
     <h1 class="heading-font text-5xl font-bold text-amber-300 mb-4">About the Trust</h1>
