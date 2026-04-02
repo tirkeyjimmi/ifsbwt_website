@@ -332,61 +332,114 @@ function mobileToggle(id) {
     <!-- Upload notice -->
     <div class="mb-8 bg-emerald-800/50 border border-dashed border-emerald-600 rounded-xl px-6 py-4 flex items-center gap-4">
       <i class="fas fa-info-circle text-amber-300 text-xl shrink-0"></i>
-      <p class="text-emerald-300 text-sm">Minutes of meetings (PDFs) will be uploaded here. Each document will be listed with the meeting date and body name.</p>
+      <p class="text-emerald-300 text-sm">Minutes of meetings (PDFs) are organised by body. Click a folder to expand and download individual meeting records.</p>
     </div>
 
-    <!-- Minutes list -->
-    <div class="space-y-4">
+    <!-- ── FOLDER 1: BOARD OF TRUSTEES ── -->
+    <div class="mb-6 rounded-2xl border border-emerald-700 overflow-hidden shadow-lg">
 
-      <!-- Minutes item 1 -->
-      <div class="pdf-card bg-emerald-800/60 border border-emerald-700 rounded-xl px-6 py-4 flex items-center justify-between gap-4">
+      <!-- Folder header (clickable) -->
+      <button onclick="toggleFolder('folder-bot')"
+        class="w-full flex items-center justify-between px-6 py-5 bg-emerald-800 hover:bg-emerald-700 transition text-left group">
         <div class="flex items-center gap-4">
-          <span class="text-3xl text-red-400 shrink-0"><i class="fas fa-file-pdf"></i></span>
+          <span class="w-11 h-11 rounded-xl bg-amber-400 text-emerald-950 flex items-center justify-center text-lg shrink-0">
+            <i class="fas fa-folder-open"></i>
+          </span>
           <div>
-            <p class="text-emerald-100 font-semibold text-sm">Governing Body – Meeting No. 01</p>
-            <p class="text-emerald-400 text-xs mt-0.5">Date: 07.02.2026 &nbsp;|&nbsp; PDF • Uploaded</p>
+            <p class="text-amber-300 font-bold text-base leading-tight heading-font">Meetings of the Board of Trustees</p>
+            <p class="text-emerald-400 text-xs mt-0.5">1 document &nbsp;·&nbsp; Click to expand</p>
           </div>
         </div>
-        <a href="Minutes_7.2.26.pdf" target="_blank" download class="shrink-0 inline-flex items-center gap-2 bg-amber-400/20 border border-amber-400/40 text-amber-300 text-xs px-4 py-2 rounded-full hover:bg-amber-400 hover:text-emerald-950 transition">
-          <i class="fas fa-download"></i> Download
-        </a>
-      </div>
+        <i id="folder-bot-icon" class="fas fa-chevron-down text-amber-300 text-sm transition-transform duration-300"></i>
+      </button>
 
-      <!-- Minutes item 2 -->
-      <div class="pdf-card bg-emerald-800/60 border border-emerald-700 rounded-xl px-6 py-4 flex items-center justify-between gap-4">
-        <div class="flex items-center gap-4">
-          <span class="text-3xl text-red-400 shrink-0"><i class="fas fa-file-pdf"></i></span>
-          <div>
-            <p class="text-emerald-100 font-semibold text-sm">Board of Trustees – Meeting No. 04</p>
-            <p class="text-emerald-400 text-xs mt-0.5">Date: 24.01.2026 &nbsp;|&nbsp; PDF • Uploaded</p>
+      <!-- Folder contents -->
+      <div id="folder-bot" class="hidden bg-emerald-900/70 divide-y divide-emerald-800">
+
+        <!-- BOT – Meeting 4 -->
+        <div class="pdf-card px-6 py-4 flex items-center justify-between gap-4 hover:bg-emerald-800/40 transition">
+          <div class="flex items-center gap-4">
+            <span class="text-3xl text-red-400 shrink-0"><i class="fas fa-file-pdf"></i></span>
+            <div>
+              <p class="text-emerald-100 font-semibold text-sm">Minutes of Fourth Meeting of the Board</p>
+              <p class="text-emerald-400 text-xs mt-0.5">Date: 24.01.2026 &nbsp;|&nbsp; PDF • Uploaded</p>
+            </div>
           </div>
+          <a href="IFSBWT-Minutes of Fourth Meeting of Board of Trustees-January 24, 2026.pdf" target="_blank" download
+            class="shrink-0 inline-flex items-center gap-2 bg-amber-400/20 border border-amber-400/40 text-amber-300 text-xs px-4 py-2 rounded-full hover:bg-amber-400 hover:text-emerald-950 transition">
+            <i class="fas fa-download"></i> Download
+          </a>
         </div>
-        <a href="IFSBWT-Minutes of Fourth Meeting of Board of Trustees-January 24, 2026.pdf" target="_blank" download class="shrink-0 inline-flex items-center gap-2 bg-amber-400/20 border border-amber-400/40 text-amber-300 text-xs px-4 py-2 rounded-full hover:bg-amber-400 hover:text-emerald-950 transition">
-          <i class="fas fa-download"></i> Download
-        </a>
-      </div>
 
-    <!-- Minutes item 3 -->
-      <div class="pdf-card bg-emerald-800/60 border border-emerald-700 rounded-xl px-6 py-4 flex items-center justify-between gap-4">
-        <div class="flex items-center gap-4">
-          <span class="text-3xl text-red-400 shrink-0"><i class="fas fa-file-pdf"></i></span>
-          <div>
-            <p class="text-emerald-100 font-semibold text-sm">Governing Body – Meeting No. 03</p>
-            <p class="text-emerald-400 text-xs mt-0.5">Date: 19.03.2026 &nbsp;|&nbsp; PDF • Uploaded</p>
-          </div>
+        <!-- BOT placeholder -->
+        <div class="px-6 py-4 flex items-center gap-4 opacity-50 hover:opacity-80 transition">
+          <span class="w-8 h-8 rounded-full bg-emerald-800 flex items-center justify-center text-emerald-400 text-sm shrink-0"><i class="fas fa-plus"></i></span>
+          <p class="text-emerald-400 text-sm">Future Board of Trustees meeting minutes will appear here</p>
         </div>
-        <a href="190326 IFSBWT-Decision Points of third GB meeting AKG.pdf" target="_blank" download class="shrink-0 inline-flex items-center gap-2 bg-amber-400/20 border border-amber-400/40 text-amber-300 text-xs px-4 py-2 rounded-full hover:bg-amber-400 hover:text-emerald-950 transition">
-          <i class="fas fa-download"></i> Download
-        </a>
-      </div>
 
-      <!-- Placeholder for more -->
-      <div class="pdf-card bg-emerald-950/40 border border-dashed border-emerald-600 rounded-xl px-6 py-4 flex items-center gap-4 opacity-60 hover:opacity-100 transition">
-        <span class="w-8 h-8 rounded-full bg-emerald-800 flex items-center justify-center text-emerald-400 text-sm shrink-0"><i class="fas fa-plus"></i></span>
-        <p class="text-emerald-400 text-sm">Additional meeting minutes will be listed here as they are uploaded</p>
       </div>
-
     </div>
+
+    <!-- ── FOLDER 2: GOVERNING BODY ── -->
+    <div class="mb-6 rounded-2xl border border-emerald-700 overflow-hidden shadow-lg">
+
+      <!-- Folder header (clickable) -->
+      <button onclick="toggleFolder('folder-gb')"
+        class="w-full flex items-center justify-between px-6 py-5 bg-emerald-800 hover:bg-emerald-700 transition text-left group">
+        <div class="flex items-center gap-4">
+          <span class="w-11 h-11 rounded-xl bg-amber-400 text-emerald-950 flex items-center justify-center text-lg shrink-0">
+            <i class="fas fa-folder-open"></i>
+          </span>
+          <div>
+            <p class="text-amber-300 font-bold text-base leading-tight heading-font">Meetings of the Governing Body</p>
+            <p class="text-emerald-400 text-xs mt-0.5">3 documents &nbsp;·&nbsp; Click to expand</p>
+          </div>
+        </div>
+        <i id="folder-gb-icon" class="fas fa-chevron-down text-amber-300 text-sm transition-transform duration-300"></i>
+      </button>
+
+      <!-- Folder contents -->
+      <div id="folder-gb" class="hidden bg-emerald-900/70 divide-y divide-emerald-800">
+
+        <!-- GB – Meeting 1 -->
+        <div class="pdf-card px-6 py-4 flex items-center justify-between gap-4 hover:bg-emerald-800/40 transition">
+          <div class="flex items-center gap-4">
+            <span class="text-3xl text-red-400 shrink-0"><i class="fas fa-file-pdf"></i></span>
+            <div>
+              <p class="text-emerald-100 font-semibold text-sm">Minutes of First Meeting of GB</p>
+              <p class="text-emerald-400 text-xs mt-0.5">Date: 07.02.2026 &nbsp;|&nbsp; PDF • Uploaded</p>
+            </div>
+          </div>
+          <a href="Minutes_7.2.26.pdf" target="_blank" download
+            class="shrink-0 inline-flex items-center gap-2 bg-amber-400/20 border border-amber-400/40 text-amber-300 text-xs px-4 py-2 rounded-full hover:bg-amber-400 hover:text-emerald-950 transition">
+            <i class="fas fa-download"></i> Download
+          </a>
+        </div>
+        
+        <!-- GB – Meeting 3 -->
+        <div class="pdf-card px-6 py-4 flex items-center justify-between gap-4 hover:bg-emerald-800/40 transition">
+          <div class="flex items-center gap-4">
+            <span class="text-3xl text-red-400 shrink-0"><i class="fas fa-file-pdf"></i></span>
+            <div>
+              <p class="text-emerald-100 font-semibold text-sm">Minutes of Third Meeting of GB</p>
+              <p class="text-emerald-400 text-xs mt-0.5">Date: 19.03.2026 &nbsp;|&nbsp; PDF • Uploaded</p>
+            </div>
+          </div>
+          <a href="190326 IFSBWT-Decision Points of third GB meeting AKG.pdf" target="_blank" download
+            class="shrink-0 inline-flex items-center gap-2 bg-amber-400/20 border border-amber-400/40 text-amber-300 text-xs px-4 py-2 rounded-full hover:bg-amber-400 hover:text-emerald-950 transition">
+            <i class="fas fa-download"></i> Download
+          </a>
+        </div>
+
+        <!-- GB placeholder -->
+        <div class="px-6 py-4 flex items-center gap-4 opacity-50 hover:opacity-80 transition">
+          <span class="w-8 h-8 rounded-full bg-emerald-800 flex items-center justify-center text-emerald-400 text-sm shrink-0"><i class="fas fa-plus"></i></span>
+          <p class="text-emerald-400 text-sm">Future Governing Body meeting minutes will appear here</p>
+        </div>
+
+      </div>
+    </div>
+
   </div>
 </section>
 
@@ -409,8 +462,15 @@ function mobileToggle(id) {
     <p class="text-sm text-emerald-300">© 2026 Indian Forest Service Benevolent and Welfare Trust. All Rights Reserved.</p>
   </div>
 </footer>
-
 <script>
+function toggleFolder(id) {
+  var panel = document.getElementById(id);
+  var icon  = document.getElementById(id + '-icon');
+  var isHidden = panel.classList.contains('hidden');
+  panel.classList.toggle('hidden', !isHidden);
+  icon.style.transform = isHidden ? 'rotate(180deg)' : 'rotate(0deg)';
+}
+  <script>
 function navToggle(id) {
   document.querySelectorAll('nav .absolute').forEach(el => { if(el.id !== id) el.classList.add('hidden'); });
   document.getElementById(id).classList.toggle('hidden');
