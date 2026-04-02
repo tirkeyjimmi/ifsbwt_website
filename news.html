@@ -15,6 +15,8 @@
     .pdf-card:hover { transform: translateY(-3px); box-shadow: 0 10px 30px rgba(0,0,0,0.3); }
     .activity-card { transition: transform 0.2s ease; }
     .activity-card:hover { transform: translateY(-3px); }
+    .bounce-down { display: inline-block; animation: bounceDown 1s infinite; }
+@keyframes bounceDown { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(5px); } }
   </style>
 </head>
 
@@ -332,7 +334,7 @@ function mobileToggle(id) {
     <!-- Upload notice -->
     <div class="mb-8 bg-emerald-800/50 border border-dashed border-emerald-600 rounded-xl px-6 py-4 flex items-center gap-4">
       <i class="fas fa-info-circle text-amber-300 text-xl shrink-0"></i>
-      <p class="text-emerald-300 text-sm">Minutes of the Meetings (PDFs). Click a folder to expand and download individual meeting records.</p>
+      <p class="text-emerald-300 text-sm">Minutes of the Meetings (PDFs). Click a folder to expand and download individual meeting records. <i class="fas fa-hand-point-down text-amber-300 ml-1 bounce-down"></i></p>
     </div>
 
     <!-- ── FOLDER 1: BOARD OF TRUSTEES ── -->
