@@ -462,6 +462,7 @@ function mobileToggle(id) {
     <p class="text-sm text-emerald-300">© 2026 Indian Forest Service Benevolent and Welfare Trust. All Rights Reserved.</p>
   </div>
 </footer>
+  
 <script>
 function toggleFolder(id) {
   var panel = document.getElementById(id);
@@ -470,7 +471,6 @@ function toggleFolder(id) {
   panel.classList.toggle('hidden', !isHidden);
   icon.style.transform = isHidden ? 'rotate(180deg)' : 'rotate(0deg)';
 }
-  <script>
 function navToggle(id) {
   document.querySelectorAll('nav .absolute').forEach(el => { if(el.id !== id) el.classList.add('hidden'); });
   document.getElementById(id).classList.toggle('hidden');
