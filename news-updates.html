@@ -30,6 +30,27 @@
     .news-row:hover .news-title { color: #fbbf24; }
     .news-row.open  .news-title { color: #fbbf24; }
 
+        /* Expandable message panel */
+    .msg-panel {
+      display: none;
+      background: rgba(6, 78, 59, 0.7);
+      border-top: 1px solid rgba(52, 211, 153, 0.25);
+      padding: 14px 20px 14px 52px;
+      font-size: 0.82rem;
+      line-height: 1.65;
+      color: #a7f3d0;
+      animation: fadeSlide 0.2s ease;
+    }
+    .msg-panel.open { display: block; }
+    @keyframes fadeSlide {
+      from { opacity: 0; transform: translateY(-4px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Expand icon */
+    .expand-icon { transition: transform 0.2s ease; color: #6ee7b7; }
+    .news-row.open .expand-icon { transform: rotate(180deg); color: #fbbf24; }
+    
     /* Bounce arrow in hero */
     .bounce-down { display: inline-block; animation: bounceDown 1.1s infinite; }
     @keyframes bounceDown {
@@ -393,6 +414,19 @@
 </footer>
 
 <script>
+    /* ── Expandable text-panel toggle (no PDF) ── */
+  function toggleExpand(panelId, rowEl) {
+    var panel  = document.getElementById(panelId);
+    var isOpen = panel.classList.contains('open');
+    // Close any other open panels first
+    document.querySelectorAll('.msg-panel.open').forEach(function(p) { p.classList.remove('open'); });
+    document.querySelectorAll('.news-row.open').forEach(function(r) { r.classList.remove('open'); });
+    if (!isOpen) {
+      panel.classList.add('open');
+      rowEl.classList.add('open');
+    }
+  }
+  
   /* ── Title highlight toggle ── */
   function toggleNews(el) {
     var row = el.closest('.news-row');
