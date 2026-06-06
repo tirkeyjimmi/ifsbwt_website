@@ -295,9 +295,32 @@
            Copy any news-row block below.
            Update: serial number · title text · PDF href
       ══════════════════════════════ -->
-   <!-- Row 1 -->
+
+       <!-- Row 1 — expandable text (no PDF) -->
+      <div>
+        <div class="news-row flex items-center gap-4 px-6 py-4 bg-emerald-800/50 cursor-pointer"
+             onclick="toggleExpand('msg-radhakrishnan', this)">
+          <span class="text-emerald-400 font-semibold text-sm w-6 shrink-0 text-right">1.</span>
+          <span class="news-title flex-1 text-sm font-medium leading-snug">
+            Financial Assistance to the family of Thiru S Radhakrishan, ACF, TN Forest Academy
+          </span>
+          <span class="expand-icon shrink-0 text-xl ml-2">
+            <i class="fas fa-chevron-down"></i>
+          </span>
+        </div>
+        <div id="msg-radhakrishnan" class="msg-panel">
+          <p>
+            On <strong>May 30, 2026</strong>, the Trust provided financial assistance to the family of
+            <strong>Thiru S Radhakrishan</strong>, Assistant Conservator of Forests, Tamil Nadu Forest Academy,
+            Coimbatore, who got seriously injured in the line of duty and is presently undergoing emergency
+            treatment in a hospital in Coimbatore.
+          </p>
+        </div>
+      </div>
+      
+   <!-- Row 2 -->
       <div class="news-row flex items-center gap-4 px-6 py-4 bg-emerald-800/50">
-        <span class="text-emerald-400 font-semibold text-sm w-6 shrink-0 text-right">1.</span>
+        <span class="text-emerald-400 font-semibold text-sm w-6 shrink-0 text-right">2.</span>
         <span class="news-title flex-1 text-sm font-medium leading-snug" onclick="toggleNews(this)">
           IFSBWT-Presentation Made to the Press on May 26, 2026 at Press Club of India.
         </span>
@@ -306,9 +329,9 @@
           <i class="fas fa-file-pdf"></i>
         </a>
       </div>
-          <!-- Row 2 -->
+          <!-- Row 3 -->
 <div class="news-row flex items-center gap-4 px-6 py-4 bg-emerald-800/40">
-  <span class="text-emerald-400 font-semibold text-sm w-6 shrink-0 text-right">2.</span>
+  <span class="text-emerald-400 font-semibold text-sm w-6 shrink-0 text-right">3.</span>
   <span class="news-title flex-1 text-sm font-medium leading-snug" onclick="toggleNews(this)">
     A copy of the presentation delivered during the Trust’s First General Body Meeting, held on May 24, 2026.
   </span>
@@ -319,9 +342,9 @@
 </div>
 
       
-     <!-- Row 3 -->
+     <!-- Row 4 -->
 <div class="news-row flex items-center gap-4 px-6 py-4 bg-emerald-800/40">
-  <span class="text-emerald-400 font-semibold text-sm w-6 shrink-0 text-right">3.</span>
+  <span class="text-emerald-400 font-semibold text-sm w-6 shrink-0 text-right">4.</span>
   <span class="news-title flex-1 text-sm font-medium leading-snug" onclick="toggleNews(this)">
     IFSBWT-A Presentation Made to  Forestry Associations on May 23, 2026.
   </span>
