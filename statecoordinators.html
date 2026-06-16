@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>State Coordinators and Nodal Officers – IFS Benevolent and Welfare Trust</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+  <style>
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', system-ui, sans-serif; }
+    .heading-font { font-family: 'Playfair Display', sans-serif; }
+  </style>
+</head>
+
+<body class="bg-gradient-to-b from-emerald-900 via-emerald-800 to-emerald-950 text-white">
+
+<!-- NAVBAR -->
+<nav class="bg-emerald-900/95 backdrop-blur border-b border-emerald-800 sticky top-0 z-50">
+  <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+    <a href="ecombase.html" class="flex items-center gap-3">
+      <img src="logo.jpeg" alt="IFS Benevolent and Welfare Trust Logo" class="w-10 h-10 sm:w-14 sm:h-14 md:w-20 md:h-20 rounded-xl object-contain bg-white">
+      <div>
+        <span class="heading-font text-sm sm:text-base md:text-xl font-bold text-emerald-200 leading-tight">IFS Benevolent and Welfare Trust</span>
+        <span class="block text-[9px] sm:text-[10px] tracking-widest text-emerald-500">Standing with Green Warriors</span>
+      </div>
+    </a>
+    <div class="hidden md:flex gap-7 text-sm text-white items-center">
+      <div class="relative">
+        <button onclick="navToggle('aboutMenu')" class="hover:text-amber-300 transition">About Us</button>
+        <div id="aboutMenu" class="hidden absolute mt-2 w-48 bg-white text-black shadow-lg p-3 border z-50 text-sm">
+          <a href="about.html" class="block py-0.5 hover:text-emerald-700">About the Trust</a>
+          <a href="about.html#vision" class="block py-0.5 hover:text-emerald-700">Vision and Mission</a>
+          <a href="about.html#objectives" class="block py-0.5 hover:text-emerald-700">Objects and Purposes</a>
+          <a href="whoswho.html" class="block py-0.5 hover:text-emerald-700">Who's Who</a>
+        </div>
+      </div>
+      <div class="relative">
+        <button onclick="navToggle('govMenu')" class="hover:text-amber-300 transition">Governance</button>
+        <div id="govMenu" class="hidden absolute mt-2 w-60 bg-white text-black shadow-lg p-3 border z-50 text-sm">
+          <a href="boardoftrustees.html" class="block py-0.5 hover:text-emerald-700">Board of Trustees</a>
+          <a href="governingbody.html" class="block py-0.5 hover:text-emerald-700">Governing Body</a>
+          <a href="csepcommittee.html" class="block py-0.5 hover:text-emerald-700">CSEP Committee</a>
+          <a href="coordinationcommittee.html" class="block py-0.5 hover:text-emerald-700">Coordination Committee</a>
+          <a href="statecoordinators.html" class="block py-0.5 font-semibold text-emerald-700">State Coordinators &amp; Nodal Officers</a>
+        </div>
+      </div>
+      <div class="relative">
+        <button onclick="navToggle('galleryMenu')" class="hover:text-amber-300 transition">Gallery</button>
+        <div id="galleryMenu" class="hidden absolute mt-2 w-44 bg-white text-black shadow-lg p-3 border z-50 text-sm">
+          <a href="gallery.html#photo" class="block py-0.5 hover:text-emerald-700">Photo Gallery</a>
+          <a href="gallery.html#video" class="block py-0.5 hover:text-emerald-700">Video Gallery</a>
+          <a href="gallery.html#press" class="block py-0.5 hover:text-emerald-700">Press Coverage</a>
+        </div>
+      </div>
+      <div class="relative">
+        <button onclick="navToggle('newsMenu')" class="hover:text-amber-300 transition">News and Updates</button>
+        <div id="newsMenu" class="hidden absolute mt-2 w-56 bg-white text-black shadow-lg p-3 border z-50 text-sm">
+          <a href="news-updates.html" class="block py-0.5 hover:text-emerald-700">News updates</a>
+          <a href="news.html#newsletter" class="block py-0.5 hover:text-emerald-700">e-Newsletter</a>
+          <a href="news.html#activities" class="block py-0.5 hover:text-emerald-700">Recent Activities</a>
+          <a href="news.html#minutes" class="block py-0.5 hover:text-emerald-700">Minutes of the Meetings</a>
+<a href="https://forms.gle/VHNhYQBW3nVfu887A" target="_blank"
+             class="block py-0.5 hover:text-emerald-700 text-amber-600 font-medium">Google Form for Assistance</a>
+        </div>
+      </div>
+      <a href="donors.html" class="hover:text-amber-300 transition">List of Donors</a>
+      <a href="contact.html" class="hover:text-amber-300 transition">Contact Us</a>
+    </div>
+    <div class="flex items-center gap-3">
+      <a href="donate.html" class="text-xs bg-amber-400 text-emerald-950 px-4 py-2 rounded-full font-semibold hover:bg-amber-300 transition">Donate</a>
+      <button class="md:hidden text-2xl text-white" onclick="document.getElementById('mobileMenu').classList.toggle('hidden')">
+        <i class="fas fa-bars"></i>
+      </button>
+    </div>
+  </div>
+</nav>
+
+<!-- MOBILE MENU -->
+<div id="mobileMenu" class="hidden md:hidden bg-emerald-900 border-b border-emerald-800 text-white text-sm z-40">
+  <div class="border-b border-emerald-800">
+    <button onclick="mobileToggle('mob-about')" class="w-full flex justify-between items-center px-6 py-4 hover:bg-emerald-800 transition text-left font-medium">
+      About Us
+      <i id="mob-about-icon" class="fas fa-chevron-down text-amber-300 text-xs transition-transform duration-200"></i>
+    </button>
+    <div id="mob-about" class="hidden bg-emerald-950 px-6 py-2 space-y-2">
+      <a href="about.html" class="block py-1.5 pl-2 border-l-2 border-amber-400 hover:text-amber-300 transition">About the Trust</a>
+      <a href="about.html#vision" class="block py-1.5 pl-2 border-l-2 border-amber-400 hover:text-amber-300 transition">Vision and Mission</a>
+      <a href="about.html#objectives" class="block py-1.5 pl-2 border-l-2 border-amber-400 hover:text-amber-300 transition">Objects and Purposes</a>
+      <a href="whoswho.html" class="block py-1.5 pl-2 border-l-2 border-amber-400 hover:text-amber-300 transition">Who's Who</a>
+    </div>
+  </div>
+  <div class="border-b border-emerald-800">
+    <button onclick="mobileToggle('mob-gov')" class="w-full flex justify-between items-center px-6 py-4 hover:bg-emerald-800 transition text-left font-medium">
+      Governance
+      <i id="mob-gov-icon" class="fas fa-chevron-down text-amber-300 text-xs transition-transform duration-200"></i>
+    </button>
+    <div id="mob-gov" class="hidden bg-emerald-950 px-6 py-2 space-y-2">
+      <a href="boardoftrustees.html" class="block py-1.5 pl-2 border-l-2 border-amber-400 hover:text-amber-300 transition">Board of Trustees</a>
+      <a href="governingbody.html" class="block py-1.5 pl-2 border-l-2 border-amber-400 hover:text-amber-300 transition">Governing Body</a>
+      <a href="csepcommittee.html" class="block py-1.5 pl-2 border-l-2 border-amber-400 hover:text-amber-300 transition">CSEP Committee</a>
+      <a href="coordinationcommittee.html" class="block py-1.5 pl-2 border-l-2 border-amber-400 hover:text-amber-300 transition">Coordination Committee</a>
+      <a href="statecoordinators.html" class="block py-1.5 pl-2 border-l-2 border-amber-400 text-amber-300 font-semibold transition">State Coordinators &amp; Nodal Officers</a>
+    </div>
+  </div>
+  <div class="border-b border-emerald-800">
+    <button onclick="mobileToggle('mob-gallery')" class="w-full flex justify-between items-center px-6 py-4 hover:bg-emerald-800 transition text-left font-medium">
+      Gallery
+      <i id="mob-gallery-icon" class="fas fa-chevron-down text-amber-300 text-xs transition-transform duration-200"></i>
+    </button>
+    <div id="mob-gallery" class="hidden bg-emerald-950 px-6 py-2 space-y-2">
+      <a href="gallery.html#photo" class="block py-1.5 pl-2 border-l-2 border-amber-400 hover:text-amber-300 transition">Photo Gallery</a>
+      <a href="gallery.html#video" class="block py-1.5 pl-2 border-l-2 border-amber-400 hover:text-amber-300 transition">Video Gallery</a>
+      <a href="gallery.html#press" class="block py-1.5 pl-2 border-l-2 border-amber-400 hover:text-amber-300 transition">Press Coverage</a>
+    </div>
+  </div>
+  <div class="border-b border-emerald-800">
+    <button onclick="mobileToggle('mob-news')" class="w-full flex justify-between items-center px-6 py-4 hover:bg-emerald-800 transition text-left font-medium">
+      News and Updates
+      <i id="mob-news-icon" class="fas fa-chevron-down text-amber-300 text-xs transition-transform duration-200"></i>
+    </button>
+    <div id="mob-news" class="hidden bg-emerald-950 px-6 py-2 space-y-2">
+      <a href="news-updates.html" class="block py-1.5 pl-2 border-l-2 border-amber-400 hover:text-amber-300 transition">News updates</a>
+      <a href="news.html#newsletter" class="block py-1.5 pl-2 border-l-2 border-amber-400 hover:text-amber-300 transition">e-Newsletter</a>
+      <a href="news.html#activities" class="block py-1.5 pl-2 border-l-2 border-amber-400 hover:text-amber-300 transition">Recent Activities</a>
+      <a href="news.html#minutes" class="block py-1.5 pl-2 border-l-2 border-amber-400 hover:text-amber-300 transition">Minutes of the Meetings</a>
+      <a href="https://forms.gle/VHNhYQBW3nVfu887A" target="_blank"
+             class="block py-0.5 hover:text-emerald-700 text-amber-600 font-medium">Google Form for Assistance</a>
+    </div>
+  </div>
+  <a href="donors.html" class="block px-6 py-4 border-b border-emerald-800 hover:bg-emerald-800 transition font-medium">List of Donors</a>
+  <a href="contact.html" class="block px-6 py-4 border-b border-emerald-800 hover:bg-emerald-800 transition font-medium">Contact Us</a>
+  <a href="donate.html" class="block px-6 py-4 text-amber-300 font-semibold hover:bg-emerald-800 transition">Donate →</a>
+</div>
+
+<script>
+function navToggle(id) {
+  document.querySelectorAll('nav .absolute').forEach(el => { if(el.id !== id) el.classList.add('hidden'); });
+  document.getElementById(id).classList.toggle('hidden');
+}
+document.addEventListener('click', function(e) {
+  if (!e.target.closest('nav')) document.querySelectorAll('nav .absolute').forEach(el => el.classList.add('hidden'));
+});
+function mobileToggle(id) {
+  var panel = document.getElementById(id);
+  var icon  = document.getElementById(id + '-icon');
+  var isHidden = panel.classList.contains('hidden');
+  ['mob-about','mob-gov','mob-gallery','mob-news'].forEach(function(p) {
+    document.getElementById(p).classList.add('hidden');
+    document.getElementById(p + '-icon').style.transform = 'rotate(0deg)';
+  });
+  if (isHidden) {
+    panel.classList.remove('hidden');
+    icon.style.transform = 'rotate(180deg)';
+  }
+}
+</script>
+
+<!-- STATE COORDINATORS -->
+<section class="py-16 md:py-24 bg-emerald-900">
+  <div class="max-w-6xl mx-auto px-6">
+    <div class="flex items-center justify-center gap-3 mb-3">
+      <i class="fas fa-user-tie text-amber-400 text-xl"></i>
+      <h2 class="heading-font text-3xl md:text-4xl font-bold text-amber-300 text-center">List of State Coordinators</h2>
+    </div>
+    <div class="w-16 h-1 bg-amber-400 mx-auto mb-10 rounded-full"></div>
+
+    <div class="rounded-3xl border border-amber-400 shadow-lg overflow-hidden">
+      <div class="overflow-x-auto">
+        <table class="w-full text-sm min-w-[880px]">
+          <thead class="bg-emerald-950">
+            <tr>
+              <th class="text-left px-5 py-4 text-amber-300 font-semibold uppercase tracking-wide text-xs">Sl No.</th>
+              <th class="text-left px-5 py-4 text-amber-300 font-semibold uppercase tracking-wide text-xs">State</th>
+              <th class="text-left px-5 py-4 text-amber-300 font-semibold uppercase tracking-wide text-xs">Name</th>
+              <th class="text-left px-5 py-4 text-amber-300 font-semibold uppercase tracking-wide text-xs">Cadre and Batch</th>
+              <th class="text-left px-5 py-4 text-amber-300 font-semibold uppercase tracking-wide text-xs">Mobile No.</th>
+              <th class="text-left px-5 py-4 text-amber-300 font-semibold uppercase tracking-wide text-xs">Email Address</th>
+              <th class="text-left px-5 py-4 text-amber-300 font-semibold uppercase tracking-wide text-xs">Joining Order</th>
+            </tr>
+          </thead>
+          <tbody class="bg-emerald-900">
+            <tr class="border-t border-emerald-800">
+              <td class="px-5 py-4 text-emerald-200">1</td>
+              <td class="px-5 py-4 text-emerald-200">Bihar</td>
+              <td class="px-5 py-4 text-emerald-200">Shri Pradyumn Gaurav</td>
+              <td class="px-5 py-4 text-emerald-200">BH: 2016</td>
+              <td class="px-5 py-4 text-emerald-200">8285799758</td>
+              <td class="px-5 py-4"><a href="mailto:pradyumngaurav@gmail.com" class="text-emerald-200 hover:text-amber-300 transition break-all">pradyumngaurav@gmail.com</a></td>
+              <td class="px-5 py-4"><a href="joining-orders/bihar-pradyumn-gaurav.pdf" target="_blank" rel="noopener" class="inline-flex items-center gap-1.5 bg-red-400 hover:bg-red-500 text-white px-3 py-1.5 rounded-full text-xs font-semibold transition whitespace-nowrap"><i class="fas fa-file-pdf"></i> PDF</a></td>
+            </tr>
+            <tr class="border-t border-emerald-800">
+              <td class="px-5 py-4 text-emerald-200">2</td>
+              <td class="px-5 py-4 text-emerald-200">Dehradun Region</td>
+              <td class="px-5 py-4 text-emerald-200">Shri Ajai Kumar Lal</td>
+              <td class="px-5 py-4 text-emerald-200">HP: 1987</td>
+              <td class="px-5 py-4 text-emerald-200">9418020350</td>
+              <td class="px-5 py-4"><a href="mailto:aklal87@gmail.com" class="text-emerald-200 hover:text-amber-300 transition break-all">aklal87@gmail.com</a></td>
+              <td class="px-5 py-4"><a href="joining-orders/dehradun-ajai-kumar-lal.pdf" target="_blank" rel="noopener" class="inline-flex items-center gap-1.5 bg-red-400 hover:bg-red-500 text-white px-3 py-1.5 rounded-full text-xs font-semibold transition whitespace-nowrap"><i class="fas fa-file-pdf"></i> PDF</a></td>
+            </tr>
+            <tr class="border-t border-emerald-800">
+              <td class="px-5 py-4 text-emerald-200">3</td>
+              <td class="px-5 py-4 text-emerald-200">Haryana</td>
+              <td class="px-5 py-4 text-emerald-200">Shri R.K. Sapra</td>
+              <td class="px-5 py-4 text-emerald-200">HR: 1982</td>
+              <td class="px-5 py-4 text-emerald-200">9876200784</td>
+              <td class="px-5 py-4"><a href="mailto:rk_sapraus@yahoo.com" class="text-emerald-200 hover:text-amber-300 transition break-all">rk_sapraus@yahoo.com</a></td>
+              <td class="px-5 py-4"><a href="joining-orders/haryana-rk-sapra.pdf" target="_blank" rel="noopener" class="inline-flex items-center gap-1.5 bg-red-400 hover:bg-red-500 text-white px-3 py-1.5 rounded-full text-xs font-semibold transition whitespace-nowrap"><i class="fas fa-file-pdf"></i> PDF</a></td>
+            </tr>
+            <tr class="border-t border-emerald-800">
+              <td class="px-5 py-4 text-emerald-200">4</td>
+              <td class="px-5 py-4 text-emerald-200">Jammu and Kashmir</td>
+              <td class="px-5 py-4 text-emerald-200">Shri Suneesh Buxy</td>
+              <td class="px-5 py-4 text-emerald-200">AGMUT: 1998</td>
+              <td class="px-5 py-4 text-emerald-200">9868948253</td>
+              <td class="px-5 py-4"><a href="mailto:suneeshb@rediffmail.com" class="text-emerald-200 hover:text-amber-300 transition break-all">suneeshb@rediffmail.com</a></td>
+              <td class="px-5 py-4"><a href="joining-orders/jk-suneesh-buxy.pdf" target="_blank" rel="noopener" class="inline-flex items-center gap-1.5 bg-red-400 hover:bg-red-500 text-white px-3 py-1.5 rounded-full text-xs font-semibold transition whitespace-nowrap"><i class="fas fa-file-pdf"></i> PDF</a></td>
+            </tr>
+            <tr class="border-t border-emerald-800">
+              <td class="px-5 py-4 text-emerald-200">5</td>
+              <td class="px-5 py-4 text-emerald-200">Jharkhand</td>
+              <td class="px-5 py-4 text-emerald-200">Shri Ankit Singh</td>
+              <td class="px-5 py-4 text-emerald-200">IFS (JH: 2017)</td>
+              <td class="px-5 py-4 text-emerald-200">9953704018</td>
+              <td class="px-5 py-4"><a href="mailto:ankit.ifs2017@gmail.com" class="text-emerald-200 hover:text-amber-300 transition break-all">ankit.ifs2017@gmail.com</a></td>
+              <td class="px-5 py-4"><a href="joining-orders/jharkhand-ankit-singh.pdf" target="_blank" rel="noopener" class="inline-flex items-center gap-1.5 bg-red-400 hover:bg-red-500 text-white px-3 py-1.5 rounded-full text-xs font-semibold transition whitespace-nowrap"><i class="fas fa-file-pdf"></i> PDF</a></td>
+            </tr>
+            <tr class="border-t border-emerald-800">
+              <td class="px-5 py-4 text-emerald-200">6</td>
+              <td class="px-5 py-4 text-emerald-200">Kerala</td>
+              <td class="px-5 py-4 text-emerald-200">Shri N. Gopinathan</td>
+              <td class="px-5 py-4 text-emerald-200">KR: 1981</td>
+              <td class="px-5 py-4 text-emerald-200">9495116555</td>
+              <td class="px-5 py-4"><a href="mailto:nedungotegopi@gmail" class="text-emerald-200 hover:text-amber-300 transition break-all">nedungotegopi@gmail</a></td>
+              <td class="px-5 py-4"><a href="joining-orders/kerala-n-gopinathan.pdf" target="_blank" rel="noopener" class="inline-flex items-center gap-1.5 bg-red-400 hover:bg-red-500 text-white px-3 py-1.5 rounded-full text-xs font-semibold transition whitespace-nowrap"><i class="fas fa-file-pdf"></i> PDF</a></td>
+            </tr>
+            <tr class="border-t border-emerald-800">
+              <td class="px-5 py-4 text-emerald-200">7</td>
+              <td class="px-5 py-4 text-emerald-200">Sikkim</td>
+              <td class="px-5 py-4 text-emerald-200">Shri Anil Kumar Ganeriwala</td>
+              <td class="px-5 py-4 text-emerald-200">SK: 1986</td>
+              <td class="px-5 py-4 text-emerald-200">9899189802</td>
+              <td class="px-5 py-4"><a href="mailto:anilganeriwala86@gmail.com" class="text-emerald-200 hover:text-amber-300 transition break-all">anilganeriwala86@gmail.com</a></td>
+              <td class="px-5 py-4"><a href="joining-orders/sikkim-anil-kumar-ganeriwala.pdf" target="_blank" rel="noopener" class="inline-flex items-center gap-1.5 bg-red-400 hover:bg-red-500 text-white px-3 py-1.5 rounded-full text-xs font-semibold transition whitespace-nowrap"><i class="fas fa-file-pdf"></i> PDF</a></td>
+            </tr>
+            <tr class="border-t border-emerald-800">
+              <td class="px-5 py-4 text-emerald-200">8</td>
+              <td class="px-5 py-4 text-emerald-200">Tripura</td>
+              <td class="px-5 py-4 text-emerald-200">Shri Animesh Das</td>
+              <td class="px-5 py-4 text-emerald-200">DCF (HQ)</td>
+              <td class="px-5 py-4 text-emerald-200">9436502484</td>
+              <td class="px-5 py-4 text-emerald-700 italic">—</td>
+              <td class="px-5 py-4"><a href="joining-orders/tripura-animesh-das.pdf" target="_blank" rel="noopener" class="inline-flex items-center gap-1.5 bg-red-400 hover:bg-red-500 text-white px-3 py-1.5 rounded-full text-xs font-semibold transition whitespace-nowrap"><i class="fas fa-file-pdf"></i> PDF</a></td>
+            </tr>
+            <tr class="border-t border-emerald-800">
+              <td class="px-5 py-4 text-emerald-200">9</td>
+              <td class="px-5 py-4 text-emerald-200">West Bengal</td>
+              <td class="px-5 py-4 text-emerald-200">Shri Pradeep Vyas</td>
+              <td class="px-5 py-4 text-emerald-200">WB: 1983</td>
+              <td class="px-5 py-4 text-emerald-200">9830175198</td>
+              <td class="px-5 py-4 text-emerald-700 italic">—</td>
+              <td class="px-5 py-4"><a href="joining-orders/wb-pradeep-vyas.pdf" target="_blank" rel="noopener" class="inline-flex items-center gap-1.5 bg-red-400 hover:bg-red-500 text-white px-3 py-1.5 rounded-full text-xs font-semibold transition whitespace-nowrap"><i class="fas fa-file-pdf"></i> PDF</a></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STATE NODAL OFFICERS -->
+<section class="py-16 md:py-24 bg-emerald-950">
+  <div class="max-w-6xl mx-auto px-6">
+    <div class="flex items-center justify-center gap-3 mb-3">
+      <i class="fas fa-user-shield text-amber-400 text-xl"></i>
+      <h2 class="heading-font text-3xl md:text-4xl font-bold text-amber-300 text-center">List of State Nodal Officers</h2>
+    </div>
+    <div class="w-16 h-1 bg-amber-400 mx-auto mb-10 rounded-full"></div>
+
+    <div class="rounded-3xl border border-amber-400 shadow-lg overflow-hidden">
+      <div class="overflow-x-auto">
+        <table class="w-full text-sm min-w-[880px]">
+          <thead class="bg-emerald-900">
+            <tr>
+              <th class="text-left px-5 py-4 text-amber-300 font-semibold uppercase tracking-wide text-xs">Sl No.</th>
+              <th class="text-left px-5 py-4 text-amber-300 font-semibold uppercase tracking-wide text-xs">State</th>
+              <th class="text-left px-5 py-4 text-amber-300 font-semibold uppercase tracking-wide text-xs">Name</th>
+              <th class="text-left px-5 py-4 text-amber-300 font-semibold uppercase tracking-wide text-xs">Cadre and Batch</th>
+              <th class="text-left px-5 py-4 text-amber-300 font-semibold uppercase tracking-wide text-xs">Mobile No.</th>
+              <th class="text-left px-5 py-4 text-amber-300 font-semibold uppercase tracking-wide text-xs">Email Address</th>
+              <th class="text-left px-5 py-4 text-amber-300 font-semibold uppercase tracking-wide text-xs">Joining Order</th>
+            </tr>
+          </thead>
+          <tbody class="bg-emerald-950">
+            <tr class="border-t border-emerald-800">
+              <td class="px-5 py-4 text-emerald-200">1</td>
+              <td class="px-5 py-4 text-emerald-200">Tripura</td>
+              <td class="px-5 py-4 text-emerald-200">Shri Chaitanya Murti</td>
+              <td class="px-5 py-4 text-emerald-200">PCCF (TR: 1995)</td>
+              <td class="px-5 py-4 text-emerald-200">9717403877</td>
+              <td class="px-5 py-4 text-emerald-700 italic">—</td>
+              <td class="px-5 py-4"><a href="joining-orders/tripura-chaitanya-murti.pdf" target="_blank" rel="noopener" class="inline-flex items-center gap-1.5 bg-red-400 hover:bg-red-500 text-white px-3 py-1.5 rounded-full text-xs font-semibold transition whitespace-nowrap"><i class="fas fa-file-pdf"></i> PDF</a></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="text-center mt-14">
+      <a href="ecombase.html" class="inline-block bg-amber-400 text-emerald-950 px-8 py-3 rounded-full font-semibold hover:bg-amber-300 transition">&larr; Back to Home</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="bg-emerald-900 border-t border-emerald-800 py-12">
+  <div class="max-w-7xl mx-auto px-6 text-center">
+    <h3 class="heading-font text-2xl text-amber-300 mb-6">Connect With Us</h3>
+    <div class="flex justify-center gap-6 text-2xl mb-8">
+      <a href="#" class="w-12 h-12 flex items-center justify-center rounded-full bg-emerald-800 hover:bg-amber-400 hover:text-emerald-950 transition"><i class="fab fa-facebook-f"></i></a>
+      <a href="#" class="w-12 h-12 flex items-center justify-center rounded-full bg-emerald-800 hover:bg-amber-400 hover:text-emerald-950 transition"><i class="fab fa-x-twitter"></i></a>
+      <a href="#" class="w-12 h-12 flex items-center justify-center rounded-full bg-emerald-800 hover:bg-amber-400 hover:text-emerald-950 transition"><i class="fab fa-instagram"></i></a>
+      <a href="#" class="w-12 h-12 flex items-center justify-center rounded-full bg-emerald-800 hover:bg-amber-400 hover:text-emerald-950 transition"><i class="fab fa-linkedin-in"></i></a>
+      <a href="#" class="w-12 h-12 flex items-center justify-center rounded-full bg-emerald-800 hover:bg-amber-400 hover:text-emerald-950 transition"><i class="fab fa-youtube"></i></a>
+    </div>
+    <p class="text-sm text-emerald-300">© 2026 Indian Forest Service Benevolent and Welfare Trust. All Rights Reserved.</p>
+  </div>
+</footer>
+
+</body>
+</html>
