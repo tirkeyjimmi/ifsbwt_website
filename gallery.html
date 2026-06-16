@@ -2,7 +2,9 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <title>Gallery – IFS Benevolent and Welfare Trust</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
@@ -14,35 +16,72 @@
     .gallery-tab.active { background-color: #d97706; color: #022c22; font-weight: 700; border-color: #d97706; }
     .gallery-section { display: none; }
     .gallery-section.active { display: block; }
+
+    /* iOS fixes */
+    .nav-blur {
+      -webkit-backdrop-filter: blur(8px);
+      backdrop-filter: blur(8px);
+    }
+    .safe-top { padding-top: env(safe-area-inset-top); }
+    .safe-bottom { padding-bottom: env(safe-area-inset-bottom); }
+    .brand-subtitle {
+      letter-spacing: 0.03em;
+      text-align: left;
+    }
+    button, a.btn-tap {
+      cursor: pointer;
+      -webkit-tap-highlight-color: rgba(255,255,255,0.15);
+      touch-action: manipulation;
+    }
+
+    /* Hover dropdowns */
+    .group:hover .group-hover\:block {
+      display: block;
+    }
+    .group .group-hover\:block {
+      display: none;
+    }
+    .group:hover .group-hover\:block {
+      display: block;
+    }
+    .group .group .group-hover\:block {
+      display: none;
+    }
+    .group .group:hover .group-hover\:block {
+      display: block;
+    }
   </style>
 </head>
 
 <body class="bg-gradient-to-b from-emerald-900 via-emerald-800 to-emerald-950 text-white">
 
 <!-- NAVBAR -->
-<nav class="bg-emerald-900/95 backdrop-blur border-b border-emerald-800 sticky top-0 z-50">
+<nav class="bg-emerald-900/95 nav-blur border-b border-emerald-800 sticky top-0 z-50 safe-top">
   <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
     <a href="ecombase.html" class="flex items-center gap-3">
-  <img src="logo.jpeg" alt="IFS Benevolent and Welfare Trust Logo" class="w-10 h-10 sm:w-14 sm:h-14 md:w-20 md:h-20 rounded-xl object-contain bg-white">
-  <div>
+      <img src="logo.jpeg" alt="IFS Benevolent and Welfare Trust Logo" class="w-10 h-10 sm:w-14 sm:h-14 md:w-20 md:h-20 rounded-xl object-contain bg-white">
+      <div>
         <span class="heading-font text-sm sm:text-base md:text-xl font-bold text-emerald-200 leading-tight">IFS Benevolent and Welfare Trust</span>
-        <span class="block text-[9px] sm:text-[10px] tracking-widest text-emerald-500">Standing with Green Warriors</span>
+        <span class="block text-[9px] sm:text-[10px] brand-subtitle text-emerald-500">Standing with Green Warriors</span>
       </div>
     </a>
     <div class="hidden md:flex gap-7 text-sm text-white items-center">
+
+      <!-- About Us – dropdown trigger (click to toggle) -->
       <div class="relative">
         <button onclick="navToggle('aboutMenu')" class="hover:text-amber-300 transition">About Us</button>
         <div id="aboutMenu" class="hidden absolute mt-2 w-48 bg-white text-black shadow-lg p-3 border z-50 text-sm">
+          <!-- About the Trust – clickable link + hover submenu for PDFs -->
           <div class="relative group">
             <a href="about.html" class="flex items-center justify-between py-0.5 hover:text-emerald-700 w-full">
               About the Trust
               <i class="fas fa-chevron-right text-[9px] ml-2 text-emerald-400"></i>
             </a>
             <div class="hidden group-hover:block absolute left-full top-0 w-52 bg-white text-black shadow-lg p-3 border z-50 text-sm">
-              <a href="Original Trust Deed Registered on July 22, 2008-.pdf" target="_blank" class="flex items-center gap-2 py-0.5 hover:text-emerald-700">
+              <a href="Original%20Trust%20Deed%20Registered%20on%20July%2022%2C%202008-.pdf" target="_blank" rel="noopener noreferrer" class="flex items-center gap-2 py-0.5 hover:text-emerald-700">
                 <i class="fas fa-file-pdf text-red-500 text-xs"></i> Original Trust Deed
               </a>
-              <a href="Revised Trust Deed Registered on February 11, 2026-.pdf" target="_blank" class="flex items-center gap-2 py-0.5 hover:text-emerald-700">
+              <a href="Revised%20Trust%20Deed%20Registered%20on%20February%2011%2C%202026-.pdf" target="_blank" rel="noopener noreferrer" class="flex items-center gap-2 py-0.5 hover:text-emerald-700">
                 <i class="fas fa-file-pdf text-red-500 text-xs"></i> Revised Trust Deed
               </a>
             </div>
@@ -52,6 +91,8 @@
           <a href="whoswho.html" class="block py-0.5 hover:text-emerald-700">Who's Who</a>
         </div>
       </div>
+
+      <!-- Governance (dropdown toggle) -->
       <div class="relative">
         <button onclick="navToggle('govMenu')" class="hover:text-amber-300 transition">Governance</button>
         <div id="govMenu" class="hidden absolute mt-2 w-60 bg-white text-black shadow-lg p-3 border z-50 text-sm">
@@ -59,76 +100,87 @@
           <a href="governingbody.html" class="block py-0.5 hover:text-emerald-700">Governing Body</a>
           <a href="csepcommittee.html" class="block py-0.5 hover:text-emerald-700">CSEP Committee</a>
           <a href="coordinationcommittee.html" class="block py-0.5 hover:text-emerald-700">Coordination Committee</a>
-            <a href="statecoordinators.html" class="block py-0.5 hover:text-emerald-700">State Coordinators and Nodal Officers</a>
+          <a href="statecoordinators.html" class="block py-0.5 hover:text-emerald-700">State Coordinators and Nodal Officers</a>
         </div>
       </div>
+
+      <!-- Gallery (dropdown toggle) – highlights current page -->
       <div class="relative">
-        <button onclick="navToggle('galleryMenu')" class="hover:text-amber-300 transition">Gallery</button>
+        <button onclick="navToggle('galleryMenu')" class="hover:text-amber-300 transition text-amber-300 font-semibold border-b border-amber-300">Gallery</button>
         <div id="galleryMenu" class="hidden absolute mt-2 w-44 bg-white text-black shadow-lg p-3 border z-50 text-sm">
           <a href="gallery.html#photo" class="block py-0.5 hover:text-emerald-700">Photo Gallery</a>
           <a href="gallery.html#video" class="block py-0.5 hover:text-emerald-700">Video Gallery</a>
           <a href="gallery.html#press" class="block py-0.5 hover:text-emerald-700">Press Coverage</a>
         </div>
       </div>
-         <div class="relative">
+
+      <!-- News and Updates (dropdown toggle) -->
+      <div class="relative">
         <button onclick="navToggle('newsMenu')" class="hover:text-amber-300 transition">News and Updates</button>
         <div id="newsMenu" class="hidden absolute mt-2 w-56 bg-white text-black shadow-lg p-3 border z-50 text-sm">
-           <a href="news-updates.html" class="block py-0.5 hover:text-emerald-700">News updates</a>
+          <a href="news-updates.html" class="block py-0.5 hover:text-emerald-700">News updates</a>
           <a href="news.html#newsletter" class="block py-0.5 hover:text-emerald-700">e-Newsletter</a>
-          <div class="relative group">
-            <a href="#" class="flex items-center justify-between py-0.5 hover:text-emerald-700 w-full">
+          <!-- Compensation Orders (click-based submenu) -->
+          <div class="relative">
+            <button onclick="subToggle('compOrdersMenu', event)" 
+                    class="flex items-center justify-between py-0.5 px-0 text-left bg-transparent hover:text-emerald-700 w-full">
               Compensation Orders by States
               <i class="fas fa-chevron-right text-[9px] ml-2 text-emerald-400"></i>
-            </a>
-            <div class="hidden group-hover:block absolute left-full top-0 w-64 bg-white text-black shadow-lg p-3 border z-50 text-sm">
-              <a href="Rajasthan-MOU Bank of Baroda-Insurance of forest employees_V1.pdf" target="_blank" class="flex items-center gap-2 py-0.5 hover:text-emerald-700">
-                <i class="fas fa-file-pdf text-red-500 text-xs"></i> Relief Order – Rajasthan
+            </button>
+            <div id="compOrdersMenu" class="hidden absolute left-full top-0 w-64 bg-white text-black shadow-lg p-3 border z-50 text-sm">
+              <a href="pdf24_merged%20(1).pdf" target="_blank" rel="noopener noreferrer" class="flex items-center gap-2 py-0.5 hover:text-emerald-700">
+                <i class="fas fa-file-pdf text-red-500 text-xs"></i> Andhra Pradesh- order dated 30.09.2023
               </a>
-              <a href="MP GOVT ORDER 061023 INCREASING EX-GRATIA AMOUNT.pdf" target="_blank" class="flex items-center gap-2 py-0.5 hover:text-emerald-700">
-                <i class="fas fa-file-pdf text-red-500 text-xs"></i> Relief Order – Madhya Pradesh
+              <a href="Himachal%20Pradesh.pdf" target="_blank" rel="noopener noreferrer" class="flex items-center gap-2 py-0.5 hover:text-emerald-700">
+                <i class="fas fa-file-pdf text-red-500 text-xs"></i> Himachal Pradesh- order dated 17.11.2025
               </a>
-               <a href="pdf24_merged (1).pdf" target="_blank" class="flex items-center gap-2 py-0.5 hover:text-emerald-700">
-                <i class="fas fa-file-pdf text-red-500 text-xs"></i> SANJEEVANI Scheme - AP Forest Department
+              <a href="MP%20GOVT%20ORDER%20061023%20INCREASING%20EX-GRATIA%20AMOUNT.pdf" target="_blank" rel="noopener noreferrer" class="flex items-center gap-2 py-0.5 hover:text-emerald-700">
+                <i class="fas fa-file-pdf text-red-500 text-xs"></i> Madhya Pradesh-order dated 06.10.2023
               </a>
-               <a href="Maharastra-order dated Oct 12, 2022 compensation to Forest Department Employees.pdf" target="_blank" class="flex items-center gap-2 py-0.5 hover:text-emerald-700">
-                <i class="fas fa-file-pdf text-red-500 text-xs"></i> Relief Order – Maharashtra
+              <a href="Maharastra-order%20dated%20Oct%2012%2C%202022%20compensation%20to%20Forest%20Department%20Employees.pdf" target="_blank" rel="noopener noreferrer" class="flex items-center gap-2 py-0.5 hover:text-emerald-700">
+                <i class="fas fa-file-pdf text-red-500 text-xs"></i> Maharashtra-order dated 12.10.2022
+              </a>
+              <a href="Odisha.pdf" target="_blank" rel="noopener noreferrer" class="flex items-center gap-2 py-0.5 hover:text-emerald-700">
+                <i class="fas fa-file-pdf text-red-500 text-xs"></i> Odisha-order dated 07.06.2023
+              </a>
+              <a href="Rajasthan-MOU%20Bank%20of%20Baroda-Insurance%20of%20forest%20employees_V1.pdf" target="_blank" rel="noopener noreferrer" class="flex items-center gap-2 py-0.5 hover:text-emerald-700">
+                <i class="fas fa-file-pdf text-red-500 text-xs"></i> Rajasthan-order dated 24.09.2025
               </a>
             </div>
           </div>
           <a href="news.html#activities" class="block py-0.5 hover:text-emerald-700">Recent Activities</a>
           <a href="news.html#minutes" class="block py-0.5 hover:text-emerald-700">Minutes of the Meetings</a>
-          <a href="https://forms.gle/VHNhYQBW3nVfu887A" target="_blank" class="block py-0.5 hover:text-emerald-700 text-amber-600 font-medium">Google Form for Assistance</a>
+          <a href="https://forms.gle/VHNhYQBW3nVfu887A" target="_blank" rel="noopener noreferrer" class="block py-0.5 hover:text-emerald-700 text-amber-600 font-medium">Google Form for Assistance</a>
         </div>
       </div>
-      
- <a href="donors.html" class="hover:text-amber-300 transition">List of Donors</a>
+
+      <a href="donors.html" class="hover:text-amber-300 transition">List of Donors</a>
       <a href="contact.html" class="hover:text-amber-300 transition">Contact Us</a>
     </div>
     <div class="flex items-center gap-2">
       <a href="donate.html" class="text-xs bg-amber-400 text-emerald-950 px-4 py-2 rounded-full font-semibold hover:bg-amber-300 transition">Donate</a>
-      <button class="md:hidden text-2xl text-white ml-1"
-        onclick="document.getElementById('mobileMenu').classList.toggle('hidden')">
+      <button class="md:hidden text-2xl text-white ml-1" onclick="document.getElementById('mobileMenu').classList.toggle('hidden')">
         <i class="fas fa-bars"></i>
       </button>
     </div>
   </div>
 </nav>
-<!-- MOBILE MENU -->
-<div id="mobileMenu" class="hidden md:hidden bg-emerald-900 border-b border-emerald-800 text-white text-sm z-40">
 
-<!-- About Us -->
+<!-- MOBILE MENU -->
+<div id="mobileMenu" class="hidden md:hidden bg-emerald-900 border-b border-emerald-800 text-white text-sm z-40 safe-bottom">
+
+  <!-- About Us -->
   <div class="border-b border-emerald-800">
-    <button onclick="mobileToggle('mob-about')"
-      class="w-full flex justify-between items-center px-6 py-4 hover:bg-emerald-800 transition text-left font-medium">
+    <button onclick="mobileToggle('mob-about')" class="w-full flex justify-between items-center px-6 py-4 hover:bg-emerald-800 transition text-left font-medium">
       About Us
       <i id="mob-about-icon" class="fas fa-chevron-down text-amber-300 text-xs transition-transform duration-200"></i>
     </button>
     <div id="mob-about" class="hidden bg-emerald-950 px-6 py-2 space-y-2">
       <a href="about.html" class="block py-1.5 pl-2 border-l-2 border-amber-400 hover:text-amber-300 transition">About the Trust</a>
-      <a href="Original Trust Deed Registered on July 22, 2008-.pdf" target="_blank" class="flex items-center gap-2 py-1.5 pl-6 border-l-2 border-amber-400/40 text-emerald-300 hover:text-amber-300 transition text-xs">
+      <a href="Original%20Trust%20Deed%20Registered%20on%20July%2022%2C%202008-.pdf" target="_blank" rel="noopener noreferrer" class="flex items-center gap-2 py-1.5 pl-6 border-l-2 border-amber-400/40 text-emerald-300 hover:text-amber-300 transition text-xs">
         <i class="fas fa-file-pdf text-red-400"></i> Original Trust Deed
       </a>
-      <a href="Revised Trust Deed Registered on February 11, 2026-.pdf" target="_blank" class="flex items-center gap-2 py-1.5 pl-6 border-l-2 border-amber-400/40 text-emerald-300 hover:text-amber-300 transition text-xs">
+      <a href="Revised%20Trust%20Deed%20Registered%20on%20February%2011%2C%202026-.pdf" target="_blank" rel="noopener noreferrer" class="flex items-center gap-2 py-1.5 pl-6 border-l-2 border-amber-400/40 text-emerald-300 hover:text-amber-300 transition text-xs">
         <i class="fas fa-file-pdf text-red-400"></i> Revised Trust Deed
       </a>
       <a href="about.html#vision" class="block py-1.5 pl-2 border-l-2 border-amber-400 hover:text-amber-300 transition">Vision and Mission</a>
@@ -139,8 +191,7 @@
 
   <!-- Governance -->
   <div class="border-b border-emerald-800">
-    <button onclick="mobileToggle('mob-gov')"
-      class="w-full flex justify-between items-center px-6 py-4 hover:bg-emerald-800 transition text-left font-medium">
+    <button onclick="mobileToggle('mob-gov')" class="w-full flex justify-between items-center px-6 py-4 hover:bg-emerald-800 transition text-left font-medium">
       Governance
       <i id="mob-gov-icon" class="fas fa-chevron-down text-amber-300 text-xs transition-transform duration-200"></i>
     </button>
@@ -149,14 +200,13 @@
       <a href="governingbody.html" class="block py-1.5 pl-2 border-l-2 border-amber-400 hover:text-amber-300 transition">Governing Body</a>
       <a href="csepcommittee.html" class="block py-1.5 pl-2 border-l-2 border-amber-400 hover:text-amber-300 transition">CSEP Committee</a>
       <a href="coordinationcommittee.html" class="block py-1.5 pl-2 border-l-2 border-amber-400 hover:text-amber-300 transition">Coordination Committee</a>
-  <a href="statecoordinators.html" class="block py-1.5 pl-2 border-l-2 border-amber-400 text-amber-300 transition">State Coordinators and Nodal Officers</a>
+      <a href="statecoordinators.html" class="block py-1.5 pl-2 border-l-2 border-amber-400 text-amber-300 transition">State Coordinators and Nodal Officers</a>
     </div>
   </div>
 
-  <!-- Gallery -->
+  <!-- Gallery – active state -->
   <div class="border-b border-emerald-800">
-    <button onclick="mobileToggle('mob-gallery')"
-      class="w-full flex justify-between items-center px-6 py-4 hover:bg-emerald-800 transition text-left font-medium">
+    <button onclick="mobileToggle('mob-gallery')" class="w-full flex justify-between items-center px-6 py-4 hover:bg-emerald-800 transition text-left font-medium bg-emerald-800 text-amber-300">
       Gallery
       <i id="mob-gallery-icon" class="fas fa-chevron-down text-amber-300 text-xs transition-transform duration-200"></i>
     </button>
@@ -167,10 +217,9 @@
     </div>
   </div>
 
- <!-- News & Updates -->
+  <!-- News & Updates -->
   <div class="border-b border-emerald-800">
-    <button onclick="mobileToggle('mob-news')"
-      class="w-full flex justify-between items-center px-6 py-4 hover:bg-emerald-800 transition text-left font-medium">
+    <button onclick="mobileToggle('mob-news')" class="w-full flex justify-between items-center px-6 py-4 hover:bg-emerald-800 transition text-left font-medium">
       News and Updates
       <i id="mob-news-icon" class="fas fa-chevron-down text-amber-300 text-xs transition-transform duration-200"></i>
     </button>
@@ -183,33 +232,35 @@
           <i id="mob-relief-icon" class="fas fa-chevron-down text-amber-300 text-xs transition-transform duration-200 mr-1"></i>
         </button>
         <div id="mob-relief" class="hidden pl-4 mt-1 space-y-1">
-          <a href="Rajasthan-MOU Bank of Baroda-Insurance of forest employees_V1.pdf" target="_blank" class="flex items-center gap-2 py-1 text-xs text-emerald-300 hover:text-amber-300 transition">
-            <i class="fas fa-file-pdf text-red-400"></i> Relief Order – Rajasthan
+          <a href="pdf24_merged%20(1).pdf" target="_blank" rel="noopener noreferrer" class="flex items-center gap-2 py-1 text-xs text-emerald-300 hover:text-amber-300 transition">
+            <i class="fas fa-file-pdf text-red-400"></i> Andhra Pradesh- order dated 30.09.2023
           </a>
-          <a href="MP GOVT ORDER 061023 INCREASING EX-GRATIA AMOUNT.pdf" target="_blank" class="flex items-center gap-2 py-1 text-xs text-emerald-300 hover:text-amber-300 transition">
-            <i class="fas fa-file-pdf text-red-400"></i> Relief Order – Madhya Pradesh
+          <a href="Himachal%20Pradesh.pdf" target="_blank" rel="noopener noreferrer" class="flex items-center gap-2 py-1 text-xs text-emerald-300 hover:text-amber-300 transition">
+            <i class="fas fa-file-pdf text-red-400"></i> Himachal Pradesh- order dated 17.11.2025
           </a>
-           <a href="pdf24_merged (1).pdf" target="_blank" class="flex items-center gap-2 py-0.5 hover:text-emerald-700">
-                <i class="fas fa-file-pdf text-red-500 text-xs"></i> SANJEEVANI Scheme - AP Forest Department
-              </a>
-           <a href="Maharastra-order dated Oct 12, 2022 compensation to Forest Department Employees.pdf" target="_blank" class="flex items-center gap-2 py-0.5 hover:text-emerald-700">
-                <i class="fas fa-file-pdf text-red-500 text-xs"></i> Relief Order – Maharashtra
-              </a>
+          <a href="MP%20GOVT%20ORDER%20061023%20INCREASING%20EX-GRATIA%20AMOUNT.pdf" target="_blank" rel="noopener noreferrer" class="flex items-center gap-2 py-1 text-xs text-emerald-300 hover:text-amber-300 transition">
+            <i class="fas fa-file-pdf text-red-400"></i> Madhya Pradesh-order dated 06.10.2023
+          </a>
+          <a href="Maharastra-order%20dated%20Oct%2012%2C%202022%20compensation%20to%20Forest%20Department%20Employees.pdf" target="_blank" rel="noopener noreferrer" class="flex items-center gap-2 py-1 text-xs text-emerald-300 hover:text-amber-300 transition">
+            <i class="fas fa-file-pdf text-red-400"></i> Maharashtra-order dated 12.10.2022
+          </a>
+          <a href="Odisha.pdf" target="_blank" rel="noopener noreferrer" class="flex items-center gap-2 py-1 text-xs text-emerald-300 hover:text-amber-300 transition">
+            <i class="fas fa-file-pdf text-red-400"></i> Odisha-order dated 07.06.2023
+          </a>
+          <a href="Rajasthan-MOU%20Bank%20of%20Baroda-Insurance%20of%20forest%20employees_V1.pdf" target="_blank" rel="noopener noreferrer" class="flex items-center gap-2 py-1 text-xs text-emerald-300 hover:text-amber-300 transition">
+            <i class="fas fa-file-pdf text-red-400"></i> Rajasthan-order dated 24.09.2025
+          </a>
         </div>
       </div>
       <a href="news.html#activities" class="block py-1.5 pl-2 border-l-2 border-amber-400 hover:text-amber-300 transition">Recent Activities</a>
       <a href="news.html#minutes" class="block py-1.5 pl-2 border-l-2 border-amber-400 hover:text-amber-300 transition">Minutes of the Meetings</a>
-      <a href="https://forms.gle/VHNhYQBW3nVfu887A" target="_blank" class="block py-1.5 pl-2 border-l-2 border-amber-400 text-amber-300 font-medium hover:text-amber-200 transition">Google Form for Assistance</a>
+      <a href="https://forms.gle/VHNhYQBW3nVfu887A" target="_blank" rel="noopener noreferrer" class="block py-1.5 pl-2 border-l-2 border-amber-400 text-amber-300 font-medium hover:text-amber-200 transition">Google Form for Assistance</a>
     </div>
   </div>
 
-  <!-- Direct links -->
-  
-
-<a href="donors.html" class="block px-6 py-4 border-b border-emerald-800 hover:bg-emerald-800 transition font-medium">List of Donors</a>
+  <a href="donors.html" class="block px-6 py-4 border-b border-emerald-800 hover:bg-emerald-800 transition font-medium">List of Donors</a>
   <a href="contact.html" class="block px-6 py-4 border-b border-emerald-800 hover:bg-emerald-800 transition font-medium">Contact Us</a>
   <a href="donate.html" class="block px-6 py-4 text-amber-300 font-semibold hover:bg-emerald-800 transition">Donate →</a>
-
 </div>
 
 <script>
@@ -229,6 +280,7 @@ function mobileToggle(id) {
   }
 }
 </script>
+
 <!-- HERO -->
 <section class="py-20 text-center px-6">
   <h1 class="heading-font text-5xl text-amber-300 mb-4">Gallery</h1>
@@ -253,35 +305,35 @@ function mobileToggle(id) {
   <div class="max-w-7xl mx-auto px-6">
     <div class="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
       <div onclick="openImg(this)" class="cursor-pointer group overflow-hidden rounded-xl border border-emerald-700">
-        <img src="1 Board of Trustees Meeting January 24, 2026.jpeg" class="w-full h-56 object-cover group-hover:scale-110 transition duration-300" alt="Board of Trustees Meeting">
-        <p class="p-2 text-xs text-emerald-300 bg-emerald-900/80"> The Board of Trustees held its first meeting on January 24, 2026 to revive the activities of the Trust</p>
-      </div>
-      <div onclick="openImg(this)" class="cursor-pointer group overflow-hidden rounded-xl border border-emerald-700">
-        <img src="2 Board of Trustees Meeting January 24, 2026.jpeg" class="w-full h-56 object-cover group-hover:scale-110 transition duration-300" alt="Board of Trustees Meeting">
+        <img src="1%20Board%20of%20Trustees%20Meeting%20January%2024%2C%202026.jpeg" class="w-full h-56 object-cover group-hover:scale-110 transition duration-300" alt="Board of Trustees Meeting">
         <p class="p-2 text-xs text-emerald-300 bg-emerald-900/80">The Board of Trustees held its first meeting on January 24, 2026 to revive the activities of the Trust</p>
       </div>
       <div onclick="openImg(this)" class="cursor-pointer group overflow-hidden rounded-xl border border-emerald-700">
-        <img src="4. First Meeting of Governing Body, February 7, 2026.jpeg" class="w-full h-56 object-cover group-hover:scale-110 transition duration-300" alt=" Governing Body Meeting">
+        <img src="2%20Board%20of%20Trustees%20Meeting%20January%2024%2C%202026.jpeg" class="w-full h-56 object-cover group-hover:scale-110 transition duration-300" alt="Board of Trustees Meeting">
+        <p class="p-2 text-xs text-emerald-300 bg-emerald-900/80">The Board of Trustees held its first meeting on January 24, 2026 to revive the activities of the Trust</p>
+      </div>
+      <div onclick="openImg(this)" class="cursor-pointer group overflow-hidden rounded-xl border border-emerald-700">
+        <img src="4.%20First%20Meeting%20of%20Governing%20Body%2C%20February%207%2C%202026.jpeg" class="w-full h-56 object-cover group-hover:scale-110 transition duration-300" alt="Governing Body Meeting">
         <p class="p-2 text-xs text-emerald-300 bg-emerald-900/80">The First Meeting of Governing Body held on February 7, 2026</p>
       </div>
       <div onclick="openImg(this)" class="cursor-pointer group overflow-hidden rounded-xl border border-emerald-700">
-        <img src="5. First Meeting of Governing Body, February 7, 2026.jpeg" class="w-full h-56 object-cover group-hover:scale-110 transition duration-300" alt="Governing Body Meeting">
+        <img src="5.%20First%20Meeting%20of%20Governing%20Body%2C%20February%207%2C%202026.jpeg" class="w-full h-56 object-cover group-hover:scale-110 transition duration-300" alt="Governing Body Meeting">
         <p class="p-2 text-xs text-emerald-300 bg-emerald-900/80">The First Meeting of Governing Body held on February 7, 2026</p>
       </div>
       <div onclick="openImg(this)" class="cursor-pointer group overflow-hidden rounded-xl border border-emerald-700">
-        <img src="6. Handing over financial assistance to First Beneficiary Family of Deceased Personnel.jpeg" class="w-full h-56 object-cover group-hover:scale-110 transition duration-300" alt="Financial Assistance">
-        <p class="p-2 text-xs text-emerald-300 bg-emerald-900/80"> An amount of Rs. 1,35,000/- has been disbursed as a contribution to the bereaved family of late Shri Jitender Singh Shekhawat, Forest Guard, Rajasthan Forest Department</p>
+        <img src="6.%20Handing%20over%20financial%20assistance%20to%20First%20Beneficiary%20Family%20of%20Deceased%20Personnel.jpeg" class="w-full h-56 object-cover group-hover:scale-110 transition duration-300" alt="Financial Assistance">
+        <p class="p-2 text-xs text-emerald-300 bg-emerald-900/80">An amount of Rs. 1,35,000/- has been disbursed as a contribution to the bereaved family of late Shri Jitender Singh Shekhawat, Forest Guard, Rajasthan Forest Department</p>
       </div>
       <div onclick="openImg(this)" class="cursor-pointer group overflow-hidden rounded-xl border border-emerald-700">
-        <img src="Press conference.jpeg" class="w-full h-56 object-cover group-hover:scale-110 transition duration-300" alt="Blank">
+        <img src="Press%20conference.jpeg" class="w-full h-56 object-cover group-hover:scale-110 transition duration-300" alt="Press Conference">
         <p class="p-2 text-xs text-emerald-300 bg-emerald-900/80">The IFSBWT held a press conference on 26.05.2026 at the Press Club of India, New Delhi.</p>
       </div>
       <div onclick="openImg(this)" class="cursor-pointer group overflow-hidden rounded-xl border border-emerald-700">
-        <img src="Fin aid.jpeg" class="w-full h-56 object-cover group-hover:scale-110 transition duration-300" alt="Blank">
+        <img src="Fin%20aid.jpeg" class="w-full h-56 object-cover group-hover:scale-110 transition duration-300" alt="Financial Aid">
         <p class="p-2 text-xs text-emerald-300 bg-emerald-900/80">Financial assistance of Rs. 3 lakh provided to the family of Shri Harikesh Singh Gurjar, Forest Guard, Morena District, Madhya Pradesh, who made a supreme sacrifice fighting the sand mining mafia on April 8, 2026.</p>
       </div>
       <div onclick="openImg(this)" class="cursor-pointer group overflow-hidden rounded-xl border border-emerald-700">
-        <img src="blank.jpeg" class="w-full h-56 object-cover group-hover:scale-110 transition duration-300" alt="Blank">
+        <img src="blank.jpeg" class="w-full h-56 object-cover group-hover:scale-110 transition duration-300" alt="Placeholder">
         <p class="p-2 text-xs text-emerald-300 bg-emerald-900/80">Photos to be uploaded</p>
       </div>
     </div>
@@ -296,80 +348,76 @@ function mobileToggle(id) {
         <div class="relative">
           <img src="video1.jpeg" class="w-full h-44 object-cover" alt="Video thumbnail">
           <div class="absolute inset-0 flex items-center justify-center bg-black/40">
-            <a href="https://youtu.be/eBA4wm2FBfQ?si=trQIZ9NNPQwL-T66" target="_blank" class="w-14 h-14 rounded-full bg-amber-400 flex items-center justify-center hover:bg-amber-300 transition">
+            <a href="https://youtu.be/eBA4wm2FBfQ?si=trQIZ9NNPQwL-T66" target="_blank" rel="noopener noreferrer" class="w-14 h-14 rounded-full bg-amber-400 flex items-center justify-center hover:bg-amber-300 transition">
               <i class="fas fa-play text-emerald-950 text-xl ml-1"></i>
             </a>
           </div>
         </div>
-        <div class="p-4"><p class="text-sm font-semibold text-emerald-100">
-सेना और पुलिस के तर्ज़ पर वन कर्मियों को भी मिले सुरक्षा और सम्मान, आगे आया IFSBWT ट्रस्ट।</p><p class="text-xs text-emerald-500 mt-1">Duration: 04:53</p></div>
+        <div class="p-4">
+          <p class="text-sm font-semibold text-emerald-100">सेना और पुलिस के तर्ज़ पर वन कर्मियों को भी मिले सुरक्षा और सम्मान, आगे आया IFSBWT ट्रस्ट।</p>
+          <p class="text-xs text-emerald-500 mt-1">Duration: 04:53</p>
+        </div>
       </div>
       <div class="rounded-xl overflow-hidden border border-emerald-700 bg-emerald-900/60">
         <div class="relative">
           <img src="blank.jpeg" class="w-full h-44 object-cover" alt="Video thumbnail">
           <div class="absolute inset-0 flex items-center justify-center bg-black/40">
-            <a href="https://www.youtube.com/" target="_blank" class="w-14 h-14 rounded-full bg-amber-400 flex items-center justify-center hover:bg-amber-300 transition">
+            <a href="https://www.youtube.com/" target="_blank" rel="noopener noreferrer" class="w-14 h-14 rounded-full bg-amber-400 flex items-center justify-center hover:bg-amber-300 transition">
               <i class="fas fa-play text-emerald-950 text-xl ml-1"></i>
             </a>
           </div>
         </div>
-        <div class="p-4"><p class="text-sm font-semibold text-emerald-100">Description of the video</p><p class="text-xs text-emerald-500 mt-1">Duration: 00:00</p></div>
+        <div class="p-4">
+          <p class="text-sm font-semibold text-emerald-100">Description of the video</p>
+          <p class="text-xs text-emerald-500 mt-1">Duration: 00:00</p>
+        </div>
       </div>
       <div class="rounded-xl overflow-hidden border border-emerald-700 bg-emerald-900/60">
         <div class="relative">
           <img src="blank.jpeg" class="w-full h-44 object-cover" alt="Video thumbnail">
           <div class="absolute inset-0 flex items-center justify-center bg-black/40">
-            <a href="https://www.youtube.com/" target="_blank" class="w-14 h-14 rounded-full bg-amber-400 flex items-center justify-center hover:bg-amber-300 transition">
+            <a href="https://www.youtube.com/" target="_blank" rel="noopener noreferrer" class="w-14 h-14 rounded-full bg-amber-400 flex items-center justify-center hover:bg-amber-300 transition">
               <i class="fas fa-play text-emerald-950 text-xl ml-1"></i>
             </a>
           </div>
         </div>
-        <div class="p-4"><p class="text-sm font-semibold text-emerald-100">Description of the video</p><p class="text-xs text-emerald-500 mt-1">Duration: 00:00</p></div>
+        <div class="p-4">
+          <p class="text-sm font-semibold text-emerald-100">Description of the video</p>
+          <p class="text-xs text-emerald-500 mt-1">Duration: 00:00</p>
+        </div>
       </div>
     </div>
   </div>
 </section>
 
 <!-- PRESS SECTION -->
- <section id="section-press" class="gallery-section py-10">
+<section id="section-press" class="gallery-section py-10">
   <div class="max-w-7xl mx-auto px-6">
     <div class="grid sm:grid-cols-2 md:grid-cols-3 gap-6">
-  <a href="https://indianmasterminds.com/feature-stories-on-bureaucrats-changemakers/india-forest-guards-dying-on-duty-fighting-for-recognition-205841/"
-   target="_blank" rel="noopener noreferrer"
-   class="cursor-pointer rounded-xl overflow-hidden border border-emerald-700 bg-emerald-900/60 group no-underline block">
+      <a href="https://indianmasterminds.com/feature-stories-on-bureaucrats-changemakers/india-forest-guards-dying-on-duty-fighting-for-recognition-205841/"
+         target="_blank" rel="noopener noreferrer"
+         class="cursor-pointer rounded-xl overflow-hidden border border-emerald-700 bg-emerald-900/60 group no-underline block">
+        <img src="pic22526.png" class="w-full h-44 object-cover object-center group-hover:scale-105 transition duration-300" alt="Killed on Duty, Forgotten in Death — India's forest guards">
+        <div class="p-4">
+          <span class="text-[10px] uppercase tracking-widest text-amber-400 font-semibold">Indian Masterminds</span>
+          <p class="text-sm font-semibold text-emerald-100 mt-1">India's Silent Green Warriors, Dying on Duty, Fighting for Recognition</p>
+          <p class="text-xs text-emerald-500 mt-1">22 May 2026</p>
+        </div>
+      </a>
 
-  <img src="pic22526.png"
-       class="w-full h-44 object-cover object-center group-hover:scale-105 transition duration-300"
-       alt="Killed on Duty, Forgotten in Death — India's forest guards">
-
-  <div class="p-4">
-    <span class="text-[10px] uppercase tracking-widest text-amber-400 font-semibold">Indian Masterminds</span>
-    <p class="text-sm font-semibold text-emerald-100 mt-1">India's Silent Green Warriors, Dying on Duty, Fighting for Recognition</p>
-    <p class="text-xs text-emerald-500 mt-1">22 May 2026</p>
-  </div>
-</a>
-
-       <!-- repeat for each card -->
-       <a href="https://northblocksouthblock.com/indias-silent-green-warriors-are-dying-in-the-line-of-duty/"
-   target="_blank" rel="noopener noreferrer"
-   class="cursor-pointer rounded-xl overflow-hidden border border-emerald-700 bg-emerald-900/60 group no-underline block">
-
-  <img src="pic22526.png"
-       class="w-full h-44 object-cover object-center group-hover:scale-105 transition duration-300"
-       alt="Killed on Duty, Forgotten in Death — India's forest guards">
-
-  <div class="p-4">
-    <span class="text-[10px] uppercase tracking-widest text-amber-400 font-semibold">North Block South Block</span>
-    <p class="text-sm font-semibold text-emerald-100 mt-1">India’s Silent Green Warriors Are Dying in the Line of Duty</p>
-    <p class="text-xs text-emerald-500 mt-1">26 May 2026</p>
-  </div>
-</a>
-
-
+      <a href="https://northblocksouthblock.com/indias-silent-green-warriors-are-dying-in-the-line-of-duty/"
+         target="_blank" rel="noopener noreferrer"
+         class="cursor-pointer rounded-xl overflow-hidden border border-emerald-700 bg-emerald-900/60 group no-underline block">
+        <img src="pic22526.png" class="w-full h-44 object-cover object-center group-hover:scale-105 transition duration-300" alt="Killed on Duty, Forgotten in Death — India's forest guards">
+        <div class="p-4">
+          <span class="text-[10px] uppercase tracking-widest text-amber-400 font-semibold">North Block South Block</span>
+          <p class="text-sm font-semibold text-emerald-100 mt-1">India’s Silent Green Warriors Are Dying in the Line of Duty</p>
+          <p class="text-xs text-emerald-500 mt-1">26 May 2026</p>
+        </div>
+      </a>
     </div>
   </div>
 </section>
-     
 
 <!-- BACK BUTTON -->
 <div class="text-center py-12">
@@ -383,7 +431,7 @@ function mobileToggle(id) {
 </div>
 
 <!-- FOOTER -->
-<footer class="bg-emerald-900 border-t border-emerald-800 py-12">
+<footer class="bg-emerald-900 border-t border-emerald-800 py-12 safe-bottom">
   <div class="max-w-7xl mx-auto px-6 text-center">
     <h3 class="heading-font text-2xl text-amber-300 mb-6">Connect With Us</h3>
     <div class="flex justify-center gap-6 text-2xl mb-8">
@@ -402,20 +450,47 @@ function navToggle(id) {
   document.querySelectorAll('nav .absolute').forEach(el => { if(el.id !== id) el.classList.add('hidden'); });
   document.getElementById(id).classList.toggle('hidden');
 }
+
+// Click outside to close nav dropdowns
 document.addEventListener('click', function(e) {
   if (!e.target.closest('nav')) document.querySelectorAll('nav .absolute').forEach(el => el.classList.add('hidden'));
 });
+
+// Click-based submenu toggle for Compensation Orders (desktop)
+function subToggle(id, event) {
+  if (event) { event.preventDefault(); event.stopPropagation(); }
+  var panel = document.getElementById(id);
+  // Close any other open submenus
+  document.querySelectorAll('nav .relative > .relative > div.hidden').forEach(function(el) {
+    if (el.id !== id) el.classList.add('hidden');
+  });
+  panel.classList.toggle('hidden');
+}
+
+// Click outside to close Compensation Orders submenu
+document.addEventListener('click', function(e) {
+  if (!e.target.closest('button[onclick^="subToggle"]')) {
+    ['compOrdersMenu'].forEach(function(id) {
+      var el = document.getElementById(id);
+      if (el && !el.classList.contains('hidden')) el.classList.add('hidden');
+    });
+  }
+});
+
 let currentLang = "en";
 function toggleLanguage() {
   const en = document.querySelectorAll(".lang.en"), hi = document.querySelectorAll(".lang.hi");
   if (currentLang === "en") { en.forEach(el=>el.classList.add("hidden")); hi.forEach(el=>el.classList.remove("hidden")); currentLang="hi"; }
   else { hi.forEach(el=>el.classList.add("hidden")); en.forEach(el=>el.classList.remove("hidden")); currentLang="en"; }
 }
+
 function switchTab(name) {
   document.querySelectorAll('.gallery-section').forEach(s => s.classList.remove('active'));
   document.querySelectorAll('.gallery-tab').forEach(t => t.classList.remove('active'));
   document.getElementById('section-' + name).classList.add('active');
   document.getElementById('tab-' + name).classList.add('active');
+  // Update URL hash for deep linking
+  window.location.hash = name;
 }
 function openImg(card) {
   const img = card.querySelector("img").src;
@@ -426,6 +501,7 @@ function closeImg() {
   document.getElementById("imgModal").classList.add("hidden");
 }
 document.addEventListener('keydown', function(e) { if(e.key === 'Escape') closeImg(); });
+// Deep linking – open correct tab on page load
 (function() {
   const hash = window.location.hash.replace('#','');
   if (['photo','video','press'].includes(hash)) switchTab(hash);
