@@ -73,36 +73,42 @@
           <a href="gallery.html#press" class="block py-0.5 hover:text-emerald-700">Press Coverage</a>
         </div>
       </div>
-       <div class="relative">
-        <button onclick="navToggle('newsMenu')" class="hover:text-amber-300 transition">News and Updates</button>
-        <div id="newsMenu" class="hidden absolute mt-2 w-56 bg-white text-black shadow-lg p-3 border z-50 text-sm">
-          <a href="news-updates.html" class="block py-0.5 hover:text-emerald-700">News updates</a>
-          <a href="news.html#newsletter" class="block py-0.5 hover:text-emerald-700">e-Newsletter</a>
-          <div class="relative group">
-            <a href="#" class="flex items-center justify-between py-0.5 hover:text-emerald-700 w-full">
-              Compensation Orders by States
-              <i class="fas fa-chevron-right text-[9px] ml-2 text-emerald-400"></i>
-            </a>
-            <div class="hidden group-hover:block absolute left-full top-0 w-64 bg-white text-black shadow-lg p-3 border z-50 text-sm">
-              <a href="Rajasthan-MOU Bank of Baroda-Insurance of forest employees_V1.pdf" target="_blank" class="flex items-center gap-2 py-0.5 hover:text-emerald-700">
-                <i class="fas fa-file-pdf text-red-500 text-xs"></i> Relief Order – Rajasthan
-              </a>
-              <a href="MP GOVT ORDER 061023 INCREASING EX-GRATIA AMOUNT.pdf" target="_blank" class="flex items-center gap-2 py-0.5 hover:text-emerald-700">
-                <i class="fas fa-file-pdf text-red-500 text-xs"></i> Relief Order – Madhya Pradesh
-              </a>
-               <a href="pdf24_merged (1).pdf" target="_blank" class="flex items-center gap-2 py-0.5 hover:text-emerald-700">
-                <i class="fas fa-file-pdf text-red-500 text-xs"></i> SANJEEVANI Scheme - AP Forest Department
-              </a>
-               <a href="Maharastra-order dated Oct 12, 2022 compensation to Forest Department Employees.pdf" target="_blank" class="flex items-center gap-2 py-0.5 hover:text-emerald-700">
-                <i class="fas fa-file-pdf text-red-500 text-xs"></i> Relief Order – Maharashtra
-              </a>
+      <div class="relative">
+          <button onclick="navToggle('newsMenu')" class="hover:text-amber-300 transition">News and Updates</button>
+          <div id="newsMenu" class="hidden absolute mt-2 w-56 bg-white text-black shadow-lg p-3 border z-50 text-sm">
+            <a href="news-updates.html" class="block py-0.5 hover:text-emerald-700">News updates</a>
+            <a href="news.html#newsletter" class="block py-0.5 hover:text-emerald-700">e-Newsletter</a>
+            <!-- FIX #3: Compensation Orders submenu now click-based via subToggle() -->
+            <div class="relative">
+              <button onclick="subToggle('compOrdersMenu', event)" 
+        class="flex items-center justify-between py-0.5 px-0 text-left bg-transparent hover:text-emerald-700 w-full">Compensation Orders by States<i class="fas fa-chevron-right text-[9px] ml-2 text-emerald-400"></i>
+             </button>
+              <div id="compOrdersMenu" class="hidden absolute left-full top-0 w-64 bg-white text-black shadow-lg p-3 border z-50 text-sm">
+                <a href="pdf24_merged%20(1).pdf" target="_blank" rel="noopener noreferrer" class="flex items-center gap-2 py-0.5 hover:text-emerald-700">
+                  <i class="fas fa-file-pdf text-red-500 text-xs"></i> Andhra Pradesh- order dated 30.09.2023
+                </a>
+                <a href="Himachal%20Pradesh.pdf" target="_blank" rel="noopener noreferrer" class="flex items-center gap-2 py-0.5 hover:text-emerald-700">
+                  <i class="fas fa-file-pdf text-red-500 text-xs"></i> Himachal Pradesh- order dated 17.11.2025
+                </a>
+                <a href="MP%20GOVT%20ORDER%20061023%20INCREASING%20EX-GRATIA%20AMOUNT.pdf" target="_blank" rel="noopener noreferrer" class="flex items-center gap-2 py-0.5 hover:text-emerald-700">
+                  <i class="fas fa-file-pdf text-red-500 text-xs"></i> Madhya Pradesh-order dated 06.10.2023
+                </a>
+                <a href="Maharastra-order%20dated%20Oct%2012%2C%202022%20compensation%20to%20Forest%20Department%20Employees.pdf" target="_blank" rel="noopener noreferrer" class="flex items-center gap-2 py-0.5 hover:text-emerald-700">
+                  <i class="fas fa-file-pdf text-red-500 text-xs"></i> Maharashtra-order dated 12.10.2022
+                </a>
+                <a href="Odisha.pdf" target="_blank" rel="noopener noreferrer" class="flex items-center gap-2 py-0.5 hover:text-emerald-700">
+                  <i class="fas fa-file-pdf text-red-500 text-xs"></i> Odisha-order dated 07.06.2023
+                </a>
+                <a href="Rajasthan-MOU%20Bank%20of%20Baroda-Insurance%20of%20forest%20employees_V1.pdf" target="_blank" rel="noopener noreferrer" class="flex items-center gap-2 py-0.5 hover:text-emerald-700">
+                  <i class="fas fa-file-pdf text-red-500 text-xs"></i> Rajasthan-order dated 24.09.2025
+                </a>
+              </div>
             </div>
+            <a href="news.html#activities" class="block py-0.5 hover:text-emerald-700">Recent Activities</a>
+            <a href="news.html#minutes" class="block py-0.5 hover:text-emerald-700">Minutes of the Meetings</a>
+            <a href="https://forms.gle/VHNhYQBW3nVfu887A" target="_blank" rel="noopener noreferrer" class="block py-0.5 hover:text-emerald-700 text-amber-600 font-medium">Google Form for Assistance</a>
           </div>
-          <a href="news.html#activities" class="block py-0.5 hover:text-emerald-700">Recent Activities</a>
-          <a href="news.html#minutes" class="block py-0.5 hover:text-emerald-700">Minutes of the Meetings</a>
-          <a href="https://forms.gle/VHNhYQBW3nVfu887A" target="_blank" class="block py-0.5 hover:text-emerald-700 text-amber-600 font-medium">Google Form for Assistance</a>
         </div>
-      </div>
       
  <a href="donors.html" class="hover:text-amber-300 transition">List of Donors</a>
       <a href="contact.html" class="hover:text-amber-300 transition">Contact Us</a>
@@ -169,42 +175,46 @@
     </div>
   </div>
 
-  <!-- News & Updates -->
-  <div class="border-b border-emerald-800">
-    <button onclick="mobileToggle('mob-news')"
-      class="w-full flex justify-between items-center px-6 py-4 hover:bg-emerald-800 transition text-left font-medium">
-      News and Updates
-      <i id="mob-news-icon" class="fas fa-chevron-down text-amber-300 text-xs transition-transform duration-200"></i>
-    </button>
-    <div id="mob-news" class="hidden bg-emerald-950 px-6 py-2 space-y-2">
-      <a href="news-updates.html" class="block py-1.5 pl-2 border-l-2 border-amber-400 hover:text-amber-300 transition">News updates</a>
-      <a href="news.html#newsletter" class="block py-1.5 pl-2 border-l-2 border-amber-400 hover:text-amber-300 transition">e-Newsletter</a>
-      <div>
-        <button onclick="mobileToggle('mob-relief')" class="w-full flex justify-between items-center py-1.5 pl-2 border-l-2 border-amber-400 hover:text-amber-300 transition text-left text-sm">
-          Compensation Orders by States
-          <i id="mob-relief-icon" class="fas fa-chevron-down text-amber-300 text-xs transition-transform duration-200 mr-1"></i>
-        </button>
-        <div id="mob-relief" class="hidden pl-4 mt-1 space-y-1">
-          <a href="Rajasthan-MOU Bank of Baroda-Insurance of forest employees_V1.pdf" target="_blank" class="flex items-center gap-2 py-1 text-xs text-emerald-300 hover:text-amber-300 transition">
-            <i class="fas fa-file-pdf text-red-400"></i> Relief Order – Rajasthan
-          </a>
-          <a href="MP GOVT ORDER 061023 INCREASING EX-GRATIA AMOUNT.pdf" target="_blank" class="flex items-center gap-2 py-1 text-xs text-emerald-300 hover:text-amber-300 transition">
-            <i class="fas fa-file-pdf text-red-400"></i> Relief Order – Madhya Pradesh
-          </a>
-           <a href="pdf24_merged (1).pdf" target="_blank" class="flex items-center gap-2 py-1 text-xs text-emerald-300 hover:text-amber-300 transition">
-                <i class="fas fa-file-pdf text-red-400"></i> SANJEEVANI Scheme - AP Forest Department
-              </a>
-           <a href="Maharastra-order dated Oct 12, 2022 compensation to Forest Department Employees.pdf" target="_blank" class="flex items-center gap-2 py-0.5 hover:text-emerald-700">
-                <i class="fas fa-file-pdf text-red-500 text-xs"></i> Relief Order – Maharashtra
-              </a>
+ <!-- News & Updates -->
+    <div class="border-b border-emerald-800">
+      <button onclick="mobileToggle('mob-news')" class="w-full flex justify-between items-center px-6 py-4 hover:bg-emerald-800 transition text-left font-medium btn-tap">
+        News and Updates
+        <i id="mob-news-icon" class="fas fa-chevron-down text-amber-300 text-xs transition-transform duration-200"></i>
+      </button>
+      <div id="mob-news" class="hidden bg-emerald-950 px-6 py-2 space-y-2">
+        <a href="news-updates.html" class="block py-1.5 pl-2 border-l-2 border-amber-400 hover:text-amber-300 transition">News updates</a>
+        <a href="news.html#newsletter" class="block py-1.5 pl-2 border-l-2 border-amber-400 hover:text-amber-300 transition">e-Newsletter</a>
+        <div>
+          <button onclick="mobileToggle('mob-relief')" class="w-full flex justify-between items-center py-1.5 pl-2 border-l-2 border-amber-400 hover:text-amber-300 transition text-left text-sm btn-tap">
+            Compensation Orders by States
+            <i id="mob-relief-icon" class="fas fa-chevron-down text-amber-300 text-xs transition-transform duration-200 mr-1"></i>
+          </button>
+          <div id="mob-relief" class="hidden pl-4 mt-1 space-y-1">
+            <a href="pdf24_merged%20(1).pdf" target="_blank" rel="noopener noreferrer" class="flex items-center gap-2 py-1 text-xs text-emerald-300 hover:text-amber-300 transition">
+              <i class="fas fa-file-pdf text-red-400"></i> Andhra Pradesh- order dated 30.09.2023
+            </a>
+            <a href="Himachal%20Pradesh.pdf" target="_blank" rel="noopener noreferrer" class="flex items-center gap-2 py-1 text-xs text-emerald-300 hover:text-amber-300 transition">
+              <i class="fas fa-file-pdf text-red-400"></i> Himachal Pradesh- order dated 17.11.2025
+            </a>
+            <a href="MP%20GOVT%20ORDER%20061023%20INCREASING%20EX-GRATIA%20AMOUNT.pdf" target="_blank" rel="noopener noreferrer" class="flex items-center gap-2 py-1 text-xs text-emerald-300 hover:text-amber-300 transition">
+              <i class="fas fa-file-pdf text-red-400"></i> Madhya Pradesh-order dated 06.10.2023
+            </a>
+            <a href="Maharastra-order%20dated%20Oct%2012%2C%202022%20compensation%20to%20Forest%20Department%20Employees.pdf" target="_blank" rel="noopener noreferrer" class="flex items-center gap-2 py-1 text-xs text-emerald-300 hover:text-amber-300 transition">
+              <i class="fas fa-file-pdf text-red-400"></i> Maharashtra-order dated 12.10.2022
+            </a>
+            <a href="Odisha.pdf" target="_blank" rel="noopener noreferrer" class="flex items-center gap-2 py-1 text-xs text-emerald-300 hover:text-amber-300 transition">
+              <i class="fas fa-file-pdf text-red-400"></i> Odisha-order dated 07.06.2023
+            </a>
+            <a href="Rajasthan-MOU%20Bank%20of%20Baroda-Insurance%20of%20forest%20employees_V1.pdf" target="_blank" rel="noopener noreferrer" class="flex items-center gap-2 py-1 text-xs text-emerald-300 hover:text-amber-300 transition">
+              <i class="fas fa-file-pdf text-red-400"></i> Rajasthan-order dated 24.09.2025
+            </a>
+          </div>
         </div>
+        <a href="news.html#activities" class="block py-1.5 pl-2 border-l-2 border-amber-400 hover:text-amber-300 transition">Recent Activities</a>
+        <a href="news.html#minutes" class="block py-1.5 pl-2 border-l-2 border-amber-400 hover:text-amber-300 transition">Minutes of the Meetings</a>
+        <a href="https://forms.gle/VHNhYQBW3nVfu887A" target="_blank" rel="noopener noreferrer" class="block py-1.5 pl-2 border-l-2 border-amber-400 text-amber-300 font-medium hover:text-amber-200 transition">Google Form for Assistance</a>
       </div>
-    
-      <a href="news.html#activities" class="block py-1.5 pl-2 border-l-2 border-amber-400 hover:text-amber-300 transition">Recent Activities</a>
-      <a href="news.html#minutes" class="block py-1.5 pl-2 border-l-2 border-amber-400 hover:text-amber-300 transition">Minutes of the Meetings</a>
-      <a href="https://forms.gle/VHNhYQBW3nVfu887A" target="_blank" class="block py-1.5 pl-2 border-l-2 border-amber-400 text-amber-300 font-medium hover:text-amber-200 transition">Google Form for Assistance</a>
     </div>
-  </div>
 
   <!-- Direct links -->
   
