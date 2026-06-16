@@ -290,10 +290,10 @@ function mobileToggle(id) {
       <p class="text-emerald-300 text-sm">e-Newsletter PDFs will be uploaded here. Each issue will appear as a downloadable card below.</p>
     </div>
 
-    <!-- e-Newsletter cards grid — placeholders ready for PDFs -->
+    <!-- e-Newsletter cards grid -->
     <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
 
-      <!-- Placeholder card 1 -->
+      <!-- Card 1 -->
       <div class="pdf-card bg-emerald-800/60 border border-emerald-700 rounded-xl p-6 flex flex-col gap-4">
         <div class="flex items-center gap-3">
           <span class="text-4xl text-red-400"><i class="fas fa-file-pdf"></i></span>
@@ -308,7 +308,7 @@ function mobileToggle(id) {
         </a>
       </div>
 
-      <!-- Placeholder card 2 -->
+      <!-- Card 2 -->
       <div class="pdf-card bg-emerald-800/60 border border-emerald-700 rounded-xl p-6 flex flex-col gap-4">
         <div class="flex items-center gap-3">
           <span class="text-4xl text-red-400"><i class="fas fa-file-pdf"></i></span>
@@ -323,7 +323,7 @@ function mobileToggle(id) {
         </a>
       </div>
 
-      <!-- Placeholder card 3 -->
+      <!-- Card 3 -->
       <div class="pdf-card bg-emerald-800/60 border border-emerald-700 rounded-xl p-6 flex flex-col gap-4">
         <div class="flex items-center gap-3">
           <span class="text-4xl text-red-400"><i class="fas fa-file-pdf"></i></span>
@@ -338,7 +338,7 @@ function mobileToggle(id) {
         </a>
       </div>
 
-      <!-- Placeholder card 4 -->
+      <!-- Card 4 -->
       <div class="pdf-card bg-emerald-800/60 border border-emerald-700 rounded-xl p-6 flex flex-col gap-4">
         <div class="flex items-center gap-3">
           <span class="text-4xl text-red-400"><i class="fas fa-file-pdf"></i></span>
@@ -449,7 +449,7 @@ function mobileToggle(id) {
       <span class="w-10 h-10 rounded-full bg-amber-400 text-emerald-950 flex items-center justify-center text-lg"><i class="fas fa-file-alt"></i></span>
       <h2 class="heading-font text-3xl text-amber-300">Minutes of the Meetings</h2>
     </div>
-    <p class="text-emerald-400 italic mb-10 pl-14">Official Records of General Body Meetings, Board of Trustees and Governing Body Proceedings</p>
+    <p class="text-emerald-400 italic mb-10 pl-14">Official Records of General Body Meetings, Board of Trustees, Governing Body, and CSEP Committee Proceedings</p>
 
     <!-- Upload notice -->
     <div class="mb-8 bg-emerald-800/50 border border-dashed border-emerald-600 rounded-xl px-6 py-4 flex items-center gap-4">
@@ -722,6 +722,51 @@ function mobileToggle(id) {
         <div class="px-6 py-4 flex items-center gap-4 opacity-50 hover:opacity-80 transition">
           <span class="w-8 h-8 rounded-full bg-emerald-800 flex items-center justify-center text-emerald-400 text-sm shrink-0"><i class="fas fa-plus"></i></span>
           <p class="text-emerald-400 text-sm">Future Governing Body meeting minutes will appear here</p>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ── FOLDER 4: CSEP COMMITTEE ── (NEW) -->
+    <div class="mb-6 rounded-2xl border border-emerald-700 overflow-hidden shadow-lg">
+
+      <!-- Folder header (clickable) -->
+      <button onclick="toggleFolder('folder-csep')"
+        class="w-full flex items-center justify-between px-6 py-5 bg-emerald-800 hover:bg-emerald-700 transition text-left group">
+        <div class="flex items-center gap-4">
+          <span class="w-11 h-11 rounded-xl bg-amber-400 text-emerald-950 flex items-center justify-center text-lg shrink-0">
+            <i class="fas fa-folder-open"></i>
+          </span>
+          <div>
+            <p class="text-amber-300 font-bold text-base leading-tight heading-font">Meetings of the CSEP Committee</p>
+            <p class="text-emerald-400 text-xs mt-0.5">1 document &nbsp;·&nbsp; Click to expand</p>
+          </div>
+        </div>
+        <i id="folder-csep-icon" class="fas fa-chevron-down text-amber-300 text-sm transition-transform duration-300"></i>
+      </button>
+
+      <!-- Folder contents -->
+      <div id="folder-csep" class="hidden bg-emerald-900/70 divide-y divide-emerald-800">
+
+        <!-- CSEP – Meeting 1 -->
+        <div class="pdf-card px-6 py-4 flex items-center justify-between gap-4 hover:bg-emerald-800/40 transition">
+          <div class="flex items-center gap-4">
+            <span class="text-3xl text-red-400 shrink-0"><i class="fas fa-file-pdf"></i></span>
+            <div>
+              <p class="text-emerald-100 font-semibold text-sm">Minutes of Meeting of CSEP Committee</p>
+              <p class="text-emerald-400 text-xs mt-0.5">Date: 14.06.2026 &nbsp;|&nbsp; PDF • Uploaded</p>
+            </div>
+          </div>
+          <a href="CSEP_MoM.pdf" target="_blank" download
+            class="shrink-0 inline-flex items-center gap-2 bg-amber-400/20 border border-amber-400/40 text-amber-300 text-xs px-4 py-2 rounded-full hover:bg-amber-400 hover:text-emerald-950 transition">
+            <i class="fas fa-download"></i> Download
+          </a>
+        </div>
+
+        <!-- CSEP placeholder -->
+        <div class="px-6 py-4 flex items-center gap-4 opacity-50 hover:opacity-80 transition">
+          <span class="w-8 h-8 rounded-full bg-emerald-800 flex items-center justify-center text-emerald-400 text-sm shrink-0"><i class="fas fa-plus"></i></span>
+          <p class="text-emerald-400 text-sm">Future CSEP Committee meeting minutes will appear here</p>
         </div>
 
       </div>
