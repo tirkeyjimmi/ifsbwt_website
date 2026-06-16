@@ -30,7 +30,20 @@
       <div class="relative">
         <button onclick="navToggle('aboutMenu')" class="hover:text-amber-300 transition">About Us</button>
         <div id="aboutMenu" class="hidden absolute mt-2 w-48 bg-white text-black shadow-lg p-3 border z-50 text-sm">
-          <a href="about.html" class="block py-0.5 hover:text-emerald-700">About the Trust</a>
+           <div class="relative group">
+            <a href="about.html" class="flex items-center justify-between py-0.5 hover:text-emerald-700 w-full">
+              About the Trust
+              <i class="fas fa-chevron-right text-[9px] ml-2 text-emerald-400"></i>
+            </a>
+            <div class="hidden group-hover:block absolute left-full top-0 w-52 bg-white text-black shadow-lg p-3 border z-50 text-sm">
+              <a href="Original Trust Deed Registered on July 22, 2008-.pdf" target="_blank" class="flex items-center gap-2 py-0.5 hover:text-emerald-700">
+                <i class="fas fa-file-pdf text-red-500 text-xs"></i> Original Trust Deed
+              </a>
+              <a href="Revised Trust Deed Registered on February 11, 2026-.pdf" target="_blank" class="flex items-center gap-2 py-0.5 hover:text-emerald-700">
+                <i class="fas fa-file-pdf text-red-500 text-xs"></i> Revised Trust Deed
+              </a>
+            </div>
+          </div>
           <a href="about.html#vision" class="block py-0.5 hover:text-emerald-700">Vision and Mission</a>
           <a href="about.html#objectives" class="block py-0.5 hover:text-emerald-700">Objects and Purposes</a>
           <a href="whoswho.html" class="block py-0.5 hover:text-emerald-700">Who's Who</a>
