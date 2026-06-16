@@ -2,7 +2,9 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <title>State Coordinators and Nodal Officers – IFS Benevolent and Welfare Trust</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
@@ -11,35 +13,74 @@
     html { scroll-behavior: smooth; }
     body { font-family: 'Inter', system-ui, sans-serif; }
     .heading-font { font-family: 'Playfair Display', sans-serif; }
+
+    /* iOS fixes */
+    .nav-blur {
+      -webkit-backdrop-filter: blur(8px);
+      backdrop-filter: blur(8px);
+    }
+    .safe-top { padding-top: env(safe-area-inset-top); }
+    .safe-bottom { padding-bottom: env(safe-area-inset-bottom); }
+    .brand-subtitle {
+      letter-spacing: 0.03em;
+      text-align: left;
+    }
+    button, a.btn-tap {
+      cursor: pointer;
+      -webkit-tap-highlight-color: rgba(255,255,255,0.15);
+      touch-action: manipulation;
+    }
+
+    /* Hover dropdowns */
+    .group:hover .group-hover\:block {
+      display: block;
+    }
+    .group .group-hover\:block {
+      display: none;
+    }
+    .group:hover .group-hover\:block {
+      display: block;
+    }
+    .group .group .group-hover\:block {
+      display: none;
+    }
+    .group .group:hover .group-hover\:block {
+      display: block;
+    }
   </style>
 </head>
 
 <body class="bg-gradient-to-b from-emerald-900 via-emerald-800 to-emerald-950 text-white">
 
 <!-- NAVBAR -->
-<nav class="bg-emerald-900/95 backdrop-blur border-b border-emerald-800 sticky top-0 z-50">
+<nav class="bg-emerald-900/95 nav-blur border-b border-emerald-800 sticky top-0 z-50 safe-top">
   <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+
     <a href="ecombase.html" class="flex items-center gap-3">
       <img src="logo.jpeg" alt="IFS Benevolent and Welfare Trust Logo" class="w-10 h-10 sm:w-14 sm:h-14 md:w-20 md:h-20 rounded-xl object-contain bg-white">
       <div>
         <span class="heading-font text-sm sm:text-base md:text-xl font-bold text-emerald-200 leading-tight">IFS Benevolent and Welfare Trust</span>
-        <span class="block text-[9px] sm:text-[10px] tracking-widest text-emerald-500">Standing with Green Warriors</span>
+        <span class="block text-[9px] sm:text-[10px] brand-subtitle text-emerald-500">Standing with Green Warriors</span>
       </div>
     </a>
+
     <div class="hidden md:flex gap-7 text-sm text-white items-center">
+
+      <!-- About Us – dropdown trigger (click to toggle) -->
       <div class="relative">
         <button onclick="navToggle('aboutMenu')" class="hover:text-amber-300 transition">About Us</button>
         <div id="aboutMenu" class="hidden absolute mt-2 w-48 bg-white text-black shadow-lg p-3 border z-50 text-sm">
-           <div class="relative group">
+          <!-- About the Trust – clickable link + hover submenu for PDFs -->
+          <div class="relative group">
             <a href="about.html" class="flex items-center justify-between py-0.5 hover:text-emerald-700 w-full">
               About the Trust
               <i class="fas fa-chevron-right text-[9px] ml-2 text-emerald-400"></i>
             </a>
             <div class="hidden group-hover:block absolute left-full top-0 w-52 bg-white text-black shadow-lg p-3 border z-50 text-sm">
-              <a href="Original Trust Deed Registered on July 22, 2008-.pdf" target="_blank" class="flex items-center gap-2 py-0.5 hover:text-emerald-700">
+              <a href="Original%20Trust%20Deed%20Registered%20on%20July%2022%2C%202008-.pdf" target="_blank" rel="noopener noreferrer" class="flex items-center gap-2 py-0.5 hover:text-emerald-700">
                 <i class="fas fa-file-pdf text-red-500 text-xs"></i> Original Trust Deed
               </a>
-              <a href="Revised Trust Deed Registered on February 11, 2026-.pdf" target="_blank" class="flex items-center gap-2 py-0.5 hover:text-emerald-700">
+              <a href="Revised%20Trust%20Deed%20Registered%20on%20February%2011%2C%202026-.pdf" target="_blank" rel="noopener noreferrer" class="flex items-center gap-2 py-0.5 hover:text-emerald-700">
                 <i class="fas fa-file-pdf text-red-500 text-xs"></i> Revised Trust Deed
               </a>
             </div>
@@ -49,6 +90,8 @@
           <a href="whoswho.html" class="block py-0.5 hover:text-emerald-700">Who's Who</a>
         </div>
       </div>
+
+      <!-- Governance – highlight "State Coordinators and Nodal Officers" -->
       <div class="relative">
         <button onclick="navToggle('govMenu')" class="hover:text-amber-300 transition">Governance</button>
         <div id="govMenu" class="hidden absolute mt-2 w-60 bg-white text-black shadow-lg p-3 border z-50 text-sm">
@@ -56,9 +99,11 @@
           <a href="governingbody.html" class="block py-0.5 hover:text-emerald-700">Governing Body</a>
           <a href="csepcommittee.html" class="block py-0.5 hover:text-emerald-700">CSEP Committee</a>
           <a href="coordinationcommittee.html" class="block py-0.5 hover:text-emerald-700">Coordination Committee</a>
-          <a href="statecoordinators.html" class="block py-0.5 font-semibold text-emerald-700">State Coordinators and Nodal Officers</a>
+          <a href="statecoordinators.html" class="block py-0.5 font-semibold text-amber-600 border-l-2 border-amber-400 pl-2">State Coordinators and Nodal Officers</a>
         </div>
       </div>
+
+      <!-- Gallery -->
       <div class="relative">
         <button onclick="navToggle('galleryMenu')" class="hover:text-amber-300 transition">Gallery</button>
         <div id="galleryMenu" class="hidden absolute mt-2 w-44 bg-white text-black shadow-lg p-3 border z-50 text-sm">
@@ -67,40 +112,51 @@
           <a href="gallery.html#press" class="block py-0.5 hover:text-emerald-700">Press Coverage</a>
         </div>
       </div>
+
+      <!-- News and Updates -->
       <div class="relative">
         <button onclick="navToggle('newsMenu')" class="hover:text-amber-300 transition">News and Updates</button>
         <div id="newsMenu" class="hidden absolute mt-2 w-56 bg-white text-black shadow-lg p-3 border z-50 text-sm">
           <a href="news-updates.html" class="block py-0.5 hover:text-emerald-700">News updates</a>
           <a href="news.html#newsletter" class="block py-0.5 hover:text-emerald-700">e-Newsletter</a>
-          <div class="relative group">
-            <a href="#" class="flex items-center justify-between py-0.5 hover:text-emerald-700 w-full">
+          <!-- Compensation Orders (click-based submenu) -->
+          <div class="relative">
+            <button onclick="subToggle('compOrdersMenu', event)" 
+                    class="flex items-center justify-between py-0.5 px-0 text-left bg-transparent hover:text-emerald-700 w-full">
               Compensation Orders by States
               <i class="fas fa-chevron-right text-[9px] ml-2 text-emerald-400"></i>
-            </a>
-            <div class="hidden group-hover:block absolute left-full top-0 w-64 bg-white text-black shadow-lg p-3 border z-50 text-sm">
-              <a href="Rajasthan-MOU Bank of Baroda-Insurance of forest employees_V1.pdf" target="_blank" class="flex items-center gap-2 py-0.5 hover:text-emerald-700">
-                <i class="fas fa-file-pdf text-red-500 text-xs"></i> Relief Order – Rajasthan
+            </button>
+            <div id="compOrdersMenu" class="hidden absolute left-full top-0 w-64 bg-white text-black shadow-lg p-3 border z-50 text-sm">
+              <a href="pdf24_merged%20(1).pdf" target="_blank" rel="noopener noreferrer" class="flex items-center gap-2 py-0.5 hover:text-emerald-700">
+                <i class="fas fa-file-pdf text-red-500 text-xs"></i> Andhra Pradesh- order dated 30.09.2023
               </a>
-              <a href="MP GOVT ORDER 061023 INCREASING EX-GRATIA AMOUNT.pdf" target="_blank" class="flex items-center gap-2 py-0.5 hover:text-emerald-700">
-                <i class="fas fa-file-pdf text-red-500 text-xs"></i> Relief Order – Madhya Pradesh
+              <a href="Himachal%20Pradesh.pdf" target="_blank" rel="noopener noreferrer" class="flex items-center gap-2 py-0.5 hover:text-emerald-700">
+                <i class="fas fa-file-pdf text-red-500 text-xs"></i> Himachal Pradesh- order dated 17.11.2025
               </a>
-               <a href="pdf24_merged (1).pdf" target="_blank" class="flex items-center gap-2 py-0.5 hover:text-emerald-700">
-                <i class="fas fa-file-pdf text-red-500 text-xs"></i> SANJEEVANI Scheme - AP Forest Department
+              <a href="MP%20GOVT%20ORDER%20061023%20INCREASING%20EX-GRATIA%20AMOUNT.pdf" target="_blank" rel="noopener noreferrer" class="flex items-center gap-2 py-0.5 hover:text-emerald-700">
+                <i class="fas fa-file-pdf text-red-500 text-xs"></i> Madhya Pradesh-order dated 06.10.2023
               </a>
-               <a href="Maharastra-order dated Oct 12, 2022 compensation to Forest Department Employees.pdf" target="_blank" class="flex items-center gap-2 py-0.5 hover:text-emerald-700">
-                <i class="fas fa-file-pdf text-red-500 text-xs"></i> Relief Order – Maharashtra
+              <a href="Maharastra-order%20dated%20Oct%2012%2C%202022%20compensation%20to%20Forest%20Department%20Employees.pdf" target="_blank" rel="noopener noreferrer" class="flex items-center gap-2 py-0.5 hover:text-emerald-700">
+                <i class="fas fa-file-pdf text-red-500 text-xs"></i> Maharashtra-order dated 12.10.2022
+              </a>
+              <a href="Odisha.pdf" target="_blank" rel="noopener noreferrer" class="flex items-center gap-2 py-0.5 hover:text-emerald-700">
+                <i class="fas fa-file-pdf text-red-500 text-xs"></i> Odisha-order dated 07.06.2023
+              </a>
+              <a href="Rajasthan-MOU%20Bank%20of%20Baroda-Insurance%20of%20forest%20employees_V1.pdf" target="_blank" rel="noopener noreferrer" class="flex items-center gap-2 py-0.5 hover:text-emerald-700">
+                <i class="fas fa-file-pdf text-red-500 text-xs"></i> Rajasthan-order dated 24.09.2025
               </a>
             </div>
           </div>
           <a href="news.html#activities" class="block py-0.5 hover:text-emerald-700">Recent Activities</a>
           <a href="news.html#minutes" class="block py-0.5 hover:text-emerald-700">Minutes of the Meetings</a>
-<a href="https://forms.gle/VHNhYQBW3nVfu887A" target="_blank"
-             class="block py-0.5 hover:text-emerald-700 text-amber-600 font-medium">Google Form for Assistance</a>
+          <a href="https://forms.gle/VHNhYQBW3nVfu887A" target="_blank" rel="noopener noreferrer" class="block py-0.5 hover:text-emerald-700 text-amber-600 font-medium">Google Form for Assistance</a>
         </div>
       </div>
+
       <a href="donors.html" class="hover:text-amber-300 transition">List of Donors</a>
       <a href="contact.html" class="hover:text-amber-300 transition">Contact Us</a>
     </div>
+
     <div class="flex items-center gap-3">
       <a href="donate.html" class="text-xs bg-amber-400 text-emerald-950 px-4 py-2 rounded-full font-semibold hover:bg-amber-300 transition">Donate</a>
       <button class="md:hidden text-2xl text-white" onclick="document.getElementById('mobileMenu').classList.toggle('hidden')">
@@ -111,7 +167,9 @@
 </nav>
 
 <!-- MOBILE MENU -->
-<div id="mobileMenu" class="hidden md:hidden bg-emerald-900 border-b border-emerald-800 text-white text-sm z-40">
+<div id="mobileMenu" class="hidden md:hidden bg-emerald-900 border-b border-emerald-800 text-white text-sm z-40 safe-bottom">
+
+  <!-- About Us -->
   <div class="border-b border-emerald-800">
     <button onclick="mobileToggle('mob-about')" class="w-full flex justify-between items-center px-6 py-4 hover:bg-emerald-800 transition text-left font-medium">
       About Us
@@ -119,11 +177,19 @@
     </button>
     <div id="mob-about" class="hidden bg-emerald-950 px-6 py-2 space-y-2">
       <a href="about.html" class="block py-1.5 pl-2 border-l-2 border-amber-400 hover:text-amber-300 transition">About the Trust</a>
+      <a href="Original%20Trust%20Deed%20Registered%20on%20July%2022%2C%202008-.pdf" target="_blank" rel="noopener noreferrer" class="flex items-center gap-2 py-1.5 pl-6 border-l-2 border-amber-400/40 text-emerald-300 hover:text-amber-300 transition text-xs">
+        <i class="fas fa-file-pdf text-red-400"></i> Original Trust Deed
+      </a>
+      <a href="Revised%20Trust%20Deed%20Registered%20on%20February%2011%2C%202026-.pdf" target="_blank" rel="noopener noreferrer" class="flex items-center gap-2 py-1.5 pl-6 border-l-2 border-amber-400/40 text-emerald-300 hover:text-amber-300 transition text-xs">
+        <i class="fas fa-file-pdf text-red-400"></i> Revised Trust Deed
+      </a>
       <a href="about.html#vision" class="block py-1.5 pl-2 border-l-2 border-amber-400 hover:text-amber-300 transition">Vision and Mission</a>
       <a href="about.html#objectives" class="block py-1.5 pl-2 border-l-2 border-amber-400 hover:text-amber-300 transition">Objects and Purposes</a>
       <a href="whoswho.html" class="block py-1.5 pl-2 border-l-2 border-amber-400 hover:text-amber-300 transition">Who's Who</a>
     </div>
   </div>
+
+  <!-- Governance – highlight "State Coordinators and Nodal Officers" -->
   <div class="border-b border-emerald-800">
     <button onclick="mobileToggle('mob-gov')" class="w-full flex justify-between items-center px-6 py-4 hover:bg-emerald-800 transition text-left font-medium">
       Governance
@@ -137,6 +203,8 @@
       <a href="statecoordinators.html" class="block py-1.5 pl-2 border-l-2 border-amber-400 text-amber-300 font-semibold transition">State Coordinators and Nodal Officers</a>
     </div>
   </div>
+
+  <!-- Gallery -->
   <div class="border-b border-emerald-800">
     <button onclick="mobileToggle('mob-gallery')" class="w-full flex justify-between items-center px-6 py-4 hover:bg-emerald-800 transition text-left font-medium">
       Gallery
@@ -148,15 +216,15 @@
       <a href="gallery.html#press" class="block py-1.5 pl-2 border-l-2 border-amber-400 hover:text-amber-300 transition">Press Coverage</a>
     </div>
   </div>
- <!-- News & Updates -->
+
+  <!-- News & Updates -->
   <div class="border-b border-emerald-800">
-    <button onclick="mobileToggle('mob-news')"
-      class="w-full flex justify-between items-center px-6 py-4 hover:bg-emerald-800 transition text-left font-medium">
+    <button onclick="mobileToggle('mob-news')" class="w-full flex justify-between items-center px-6 py-4 hover:bg-emerald-800 transition text-left font-medium">
       News and Updates
       <i id="mob-news-icon" class="fas fa-chevron-down text-amber-300 text-xs transition-transform duration-200"></i>
     </button>
     <div id="mob-news" class="hidden bg-emerald-950 px-6 py-2 space-y-2">
-		<a href="news-updates.html" class="block py-1.5 pl-2 border-l-2 border-amber-400 hover:text-amber-300 transition">News updates</a>
+      <a href="news-updates.html" class="block py-1.5 pl-2 border-l-2 border-amber-400 hover:text-amber-300 transition">News updates</a>
       <a href="news.html#newsletter" class="block py-1.5 pl-2 border-l-2 border-amber-400 hover:text-amber-300 transition">e-Newsletter</a>
       <div>
         <button onclick="mobileToggle('mob-relief')" class="w-full flex justify-between items-center py-1.5 pl-2 border-l-2 border-amber-400 hover:text-amber-300 transition text-left text-sm">
@@ -164,26 +232,32 @@
           <i id="mob-relief-icon" class="fas fa-chevron-down text-amber-300 text-xs transition-transform duration-200 mr-1"></i>
         </button>
         <div id="mob-relief" class="hidden pl-4 mt-1 space-y-1">
-          <a href="Rajasthan-MOU Bank of Baroda-Insurance of forest employees_V1.pdf" target="_blank" class="flex items-center gap-2 py-1 text-xs text-emerald-300 hover:text-amber-300 transition">
-            <i class="fas fa-file-pdf text-red-400"></i> Relief Order – Rajasthan
+          <a href="pdf24_merged%20(1).pdf" target="_blank" rel="noopener noreferrer" class="flex items-center gap-2 py-1 text-xs text-emerald-300 hover:text-amber-300 transition">
+            <i class="fas fa-file-pdf text-red-400"></i> Andhra Pradesh- order dated 30.09.2023
           </a>
-          <a href="MP GOVT ORDER 061023 INCREASING EX-GRATIA AMOUNT.pdf" target="_blank" class="flex items-center gap-2 py-1 text-xs text-emerald-300 hover:text-amber-300 transition">
-            <i class="fas fa-file-pdf text-red-400"></i> Relief Order – Madhya Pradesh
+          <a href="Himachal%20Pradesh.pdf" target="_blank" rel="noopener noreferrer" class="flex items-center gap-2 py-1 text-xs text-emerald-300 hover:text-amber-300 transition">
+            <i class="fas fa-file-pdf text-red-400"></i> Himachal Pradesh- order dated 17.11.2025
           </a>
-			 <a href="pdf24_merged (1).pdf" target="_blank" class="flex items-center gap-2 py-0.5 hover:text-emerald-700">
-                <i class="fas fa-file-pdf text-red-500 text-xs"></i> SANJEEVANI Scheme - AP Forest Department
-              </a>
-			 <a href="Maharastra-order dated Oct 12, 2022 compensation to Forest Department Employees.pdf" target="_blank" class="flex items-center gap-2 py-0.5 hover:text-emerald-700">
-                <i class="fas fa-file-pdf text-red-500 text-xs"></i> Relief Order – Maharashtra
-              </a>
+          <a href="MP%20GOVT%20ORDER%20061023%20INCREASING%20EX-GRATIA%20AMOUNT.pdf" target="_blank" rel="noopener noreferrer" class="flex items-center gap-2 py-1 text-xs text-emerald-300 hover:text-amber-300 transition">
+            <i class="fas fa-file-pdf text-red-400"></i> Madhya Pradesh-order dated 06.10.2023
+          </a>
+          <a href="Maharastra-order%20dated%20Oct%2012%2C%202022%20compensation%20to%20Forest%20Department%20Employees.pdf" target="_blank" rel="noopener noreferrer" class="flex items-center gap-2 py-1 text-xs text-emerald-300 hover:text-amber-300 transition">
+            <i class="fas fa-file-pdf text-red-400"></i> Maharashtra-order dated 12.10.2022
+          </a>
+          <a href="Odisha.pdf" target="_blank" rel="noopener noreferrer" class="flex items-center gap-2 py-1 text-xs text-emerald-300 hover:text-amber-300 transition">
+            <i class="fas fa-file-pdf text-red-400"></i> Odisha-order dated 07.06.2023
+          </a>
+          <a href="Rajasthan-MOU%20Bank%20of%20Baroda-Insurance%20of%20forest%20employees_V1.pdf" target="_blank" rel="noopener noreferrer" class="flex items-center gap-2 py-1 text-xs text-emerald-300 hover:text-amber-300 transition">
+            <i class="fas fa-file-pdf text-red-400"></i> Rajasthan-order dated 24.09.2025
+          </a>
         </div>
       </div>
       <a href="news.html#activities" class="block py-1.5 pl-2 border-l-2 border-amber-400 hover:text-amber-300 transition">Recent Activities</a>
       <a href="news.html#minutes" class="block py-1.5 pl-2 border-l-2 border-amber-400 hover:text-amber-300 transition">Minutes of the Meetings</a>
-      <a href="https://forms.gle/VHNhYQBW3nVfu887A" target="_blank"
-             class="block py-0.5 hover:text-emerald-700 text-amber-600 font-medium">Google Form for Assistance</a>
+      <a href="https://forms.gle/VHNhYQBW3nVfu887A" target="_blank" rel="noopener noreferrer" class="block py-1.5 pl-2 border-l-2 border-amber-400 text-amber-300 font-medium hover:text-amber-200 transition">Google Form for Assistance</a>
     </div>
   </div>
+
   <a href="donors.html" class="block px-6 py-4 border-b border-emerald-800 hover:bg-emerald-800 transition font-medium">List of Donors</a>
   <a href="contact.html" class="block px-6 py-4 border-b border-emerald-800 hover:bg-emerald-800 transition font-medium">Contact Us</a>
   <a href="donate.html" class="block px-6 py-4 text-amber-300 font-semibold hover:bg-emerald-800 transition">Donate →</a>
@@ -194,9 +268,33 @@ function navToggle(id) {
   document.querySelectorAll('nav .absolute').forEach(el => { if(el.id !== id) el.classList.add('hidden'); });
   document.getElementById(id).classList.toggle('hidden');
 }
+
+// Click outside to close nav dropdowns
 document.addEventListener('click', function(e) {
   if (!e.target.closest('nav')) document.querySelectorAll('nav .absolute').forEach(el => el.classList.add('hidden'));
 });
+
+// Click-based submenu toggle for Compensation Orders (desktop)
+function subToggle(id, event) {
+  if (event) { event.preventDefault(); event.stopPropagation(); }
+  var panel = document.getElementById(id);
+  // Close any other open submenus
+  document.querySelectorAll('nav .relative > .relative > div.hidden').forEach(function(el) {
+    if (el.id !== id) el.classList.add('hidden');
+  });
+  panel.classList.toggle('hidden');
+}
+
+// Click outside to close Compensation Orders submenu
+document.addEventListener('click', function(e) {
+  if (!e.target.closest('button[onclick^="subToggle"]')) {
+    ['compOrdersMenu'].forEach(function(id) {
+      var el = document.getElementById(id);
+      if (el && !el.classList.contains('hidden')) el.classList.add('hidden');
+    });
+  }
+});
+
 function mobileToggle(id) {
   var panel = document.getElementById(id);
   var icon  = document.getElementById(id + '-icon');
@@ -243,7 +341,7 @@ function mobileToggle(id) {
               <td class="px-5 py-4 text-emerald-200">BH: 2016</td>
               <td class="px-5 py-4 text-emerald-200">8285799758</td>
               <td class="px-5 py-4"><a href="mailto:pradyumngaurav@gmail.com" class="text-emerald-200 hover:text-amber-300 transition break-all">pradyumngaurav@gmail.com</a></td>
-              <td class="px-5 py-4"><a href="joining-orders/bihar-pradyumn-gaurav.pdf" target="_blank" rel="noopener" class="inline-flex items-center gap-1.5 bg-red-400 hover:bg-red-500 text-white px-3 py-1.5 rounded-full text-xs font-semibold transition whitespace-nowrap"><i class="fas fa-file-pdf"></i> PDF</a></td>
+              <td class="px-5 py-4"><a href="joining-orders/bihar-pradyumn-gaurav.pdf" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 bg-red-400 hover:bg-red-500 text-white px-3 py-1.5 rounded-full text-xs font-semibold transition whitespace-nowrap"><i class="fas fa-file-pdf"></i> PDF</a></td>
             </tr>
             <tr class="border-t border-emerald-800">
               <td class="px-5 py-4 text-emerald-200">2</td>
@@ -252,7 +350,7 @@ function mobileToggle(id) {
               <td class="px-5 py-4 text-emerald-200">HP: 1987</td>
               <td class="px-5 py-4 text-emerald-200">9418020350</td>
               <td class="px-5 py-4"><a href="mailto:aklal87@gmail.com" class="text-emerald-200 hover:text-amber-300 transition break-all">aklal87@gmail.com</a></td>
-              <td class="px-5 py-4"><a href="joining-orders/dehradun-ajai-kumar-lal.pdf" target="_blank" rel="noopener" class="inline-flex items-center gap-1.5 bg-red-400 hover:bg-red-500 text-white px-3 py-1.5 rounded-full text-xs font-semibold transition whitespace-nowrap"><i class="fas fa-file-pdf"></i> PDF</a></td>
+              <td class="px-5 py-4"><a href="joining-orders/dehradun-ajai-kumar-lal.pdf" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 bg-red-400 hover:bg-red-500 text-white px-3 py-1.5 rounded-full text-xs font-semibold transition whitespace-nowrap"><i class="fas fa-file-pdf"></i> PDF</a></td>
             </tr>
             <tr class="border-t border-emerald-800">
               <td class="px-5 py-4 text-emerald-200">3</td>
@@ -261,7 +359,7 @@ function mobileToggle(id) {
               <td class="px-5 py-4 text-emerald-200">HR: 1982</td>
               <td class="px-5 py-4 text-emerald-200">9876200784</td>
               <td class="px-5 py-4"><a href="mailto:rk_sapraus@yahoo.com" class="text-emerald-200 hover:text-amber-300 transition break-all">rk_sapraus@yahoo.com</a></td>
-              <td class="px-5 py-4"><a href="joining-orders/haryana-rk-sapra.pdf" target="_blank" rel="noopener" class="inline-flex items-center gap-1.5 bg-red-400 hover:bg-red-500 text-white px-3 py-1.5 rounded-full text-xs font-semibold transition whitespace-nowrap"><i class="fas fa-file-pdf"></i> PDF</a></td>
+              <td class="px-5 py-4"><a href="joining-orders/haryana-rk-sapra.pdf" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 bg-red-400 hover:bg-red-500 text-white px-3 py-1.5 rounded-full text-xs font-semibold transition whitespace-nowrap"><i class="fas fa-file-pdf"></i> PDF</a></td>
             </tr>
             <tr class="border-t border-emerald-800">
               <td class="px-5 py-4 text-emerald-200">4</td>
@@ -270,7 +368,7 @@ function mobileToggle(id) {
               <td class="px-5 py-4 text-emerald-200">AGMUT: 1998</td>
               <td class="px-5 py-4 text-emerald-200">9868948253</td>
               <td class="px-5 py-4"><a href="mailto:suneeshb@rediffmail.com" class="text-emerald-200 hover:text-amber-300 transition break-all">suneeshb@rediffmail.com</a></td>
-              <td class="px-5 py-4"><a href="joining-orders/jk-suneesh-buxy.pdf" target="_blank" rel="noopener" class="inline-flex items-center gap-1.5 bg-red-400 hover:bg-red-500 text-white px-3 py-1.5 rounded-full text-xs font-semibold transition whitespace-nowrap"><i class="fas fa-file-pdf"></i> PDF</a></td>
+              <td class="px-5 py-4"><a href="joining-orders/jk-suneesh-buxy.pdf" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 bg-red-400 hover:bg-red-500 text-white px-3 py-1.5 rounded-full text-xs font-semibold transition whitespace-nowrap"><i class="fas fa-file-pdf"></i> PDF</a></td>
             </tr>
             <tr class="border-t border-emerald-800">
               <td class="px-5 py-4 text-emerald-200">5</td>
@@ -279,7 +377,7 @@ function mobileToggle(id) {
               <td class="px-5 py-4 text-emerald-200">IFS (JH: 2017)</td>
               <td class="px-5 py-4 text-emerald-200">9953704018</td>
               <td class="px-5 py-4"><a href="mailto:ankit.ifs2017@gmail.com" class="text-emerald-200 hover:text-amber-300 transition break-all">ankit.ifs2017@gmail.com</a></td>
-              <td class="px-5 py-4"><a href="joining-orders/jharkhand-ankit-singh.pdf" target="_blank" rel="noopener" class="inline-flex items-center gap-1.5 bg-red-400 hover:bg-red-500 text-white px-3 py-1.5 rounded-full text-xs font-semibold transition whitespace-nowrap"><i class="fas fa-file-pdf"></i> PDF</a></td>
+              <td class="px-5 py-4"><a href="joining-orders/jharkhand-ankit-singh.pdf" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 bg-red-400 hover:bg-red-500 text-white px-3 py-1.5 rounded-full text-xs font-semibold transition whitespace-nowrap"><i class="fas fa-file-pdf"></i> PDF</a></td>
             </tr>
             <tr class="border-t border-emerald-800">
               <td class="px-5 py-4 text-emerald-200">6</td>
@@ -288,7 +386,7 @@ function mobileToggle(id) {
               <td class="px-5 py-4 text-emerald-200">KR: 1981</td>
               <td class="px-5 py-4 text-emerald-200">9495116555</td>
               <td class="px-5 py-4"><a href="mailto:nedungotegopi@gmail" class="text-emerald-200 hover:text-amber-300 transition break-all">nedungotegopi@gmail</a></td>
-              <td class="px-5 py-4"><a href="joining-orders/kerala-n-gopinathan.pdf" target="_blank" rel="noopener" class="inline-flex items-center gap-1.5 bg-red-400 hover:bg-red-500 text-white px-3 py-1.5 rounded-full text-xs font-semibold transition whitespace-nowrap"><i class="fas fa-file-pdf"></i> PDF</a></td>
+              <td class="px-5 py-4"><a href="joining-orders/kerala-n-gopinathan.pdf" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 bg-red-400 hover:bg-red-500 text-white px-3 py-1.5 rounded-full text-xs font-semibold transition whitespace-nowrap"><i class="fas fa-file-pdf"></i> PDF</a></td>
             </tr>
             <tr class="border-t border-emerald-800">
               <td class="px-5 py-4 text-emerald-200">7</td>
@@ -297,7 +395,7 @@ function mobileToggle(id) {
               <td class="px-5 py-4 text-emerald-200">SK: 1986</td>
               <td class="px-5 py-4 text-emerald-200">9899189802</td>
               <td class="px-5 py-4"><a href="mailto:anilganeriwala86@gmail.com" class="text-emerald-200 hover:text-amber-300 transition break-all">anilganeriwala86@gmail.com</a></td>
-              <td class="px-5 py-4"><a href="joining-orders/sikkim-anil-kumar-ganeriwala.pdf" target="_blank" rel="noopener" class="inline-flex items-center gap-1.5 bg-red-400 hover:bg-red-500 text-white px-3 py-1.5 rounded-full text-xs font-semibold transition whitespace-nowrap"><i class="fas fa-file-pdf"></i> PDF</a></td>
+              <td class="px-5 py-4"><a href="joining-orders/sikkim-anil-kumar-ganeriwala.pdf" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 bg-red-400 hover:bg-red-500 text-white px-3 py-1.5 rounded-full text-xs font-semibold transition whitespace-nowrap"><i class="fas fa-file-pdf"></i> PDF</a></td>
             </tr>
             <tr class="border-t border-emerald-800">
               <td class="px-5 py-4 text-emerald-200">8</td>
@@ -306,7 +404,7 @@ function mobileToggle(id) {
               <td class="px-5 py-4 text-emerald-200">DCF (HQ)</td>
               <td class="px-5 py-4 text-emerald-200">9436502484</td>
               <td class="px-5 py-4 text-emerald-700 italic">—</td>
-              <td class="px-5 py-4"><a href="joining-orders/tripura-animesh-das.pdf" target="_blank" rel="noopener" class="inline-flex items-center gap-1.5 bg-red-400 hover:bg-red-500 text-white px-3 py-1.5 rounded-full text-xs font-semibold transition whitespace-nowrap"><i class="fas fa-file-pdf"></i> PDF</a></td>
+              <td class="px-5 py-4"><a href="joining-orders/tripura-animesh-das.pdf" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 bg-red-400 hover:bg-red-500 text-white px-3 py-1.5 rounded-full text-xs font-semibold transition whitespace-nowrap"><i class="fas fa-file-pdf"></i> PDF</a></td>
             </tr>
             <tr class="border-t border-emerald-800">
               <td class="px-5 py-4 text-emerald-200">9</td>
@@ -315,7 +413,7 @@ function mobileToggle(id) {
               <td class="px-5 py-4 text-emerald-200">WB: 1983</td>
               <td class="px-5 py-4 text-emerald-200">9830175198</td>
               <td class="px-5 py-4 text-emerald-700 italic">—</td>
-              <td class="px-5 py-4"><a href="joining-orders/wb-pradeep-vyas.pdf" target="_blank" rel="noopener" class="inline-flex items-center gap-1.5 bg-red-400 hover:bg-red-500 text-white px-3 py-1.5 rounded-full text-xs font-semibold transition whitespace-nowrap"><i class="fas fa-file-pdf"></i> PDF</a></td>
+              <td class="px-5 py-4"><a href="joining-orders/wb-pradeep-vyas.pdf" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 bg-red-400 hover:bg-red-500 text-white px-3 py-1.5 rounded-full text-xs font-semibold transition whitespace-nowrap"><i class="fas fa-file-pdf"></i> PDF</a></td>
             </tr>
           </tbody>
         </table>
@@ -355,7 +453,7 @@ function mobileToggle(id) {
               <td class="px-5 py-4 text-emerald-200">PCCF (TR: 1995)</td>
               <td class="px-5 py-4 text-emerald-200">9717403877</td>
               <td class="px-5 py-4 text-emerald-700 italic">—</td>
-              <td class="px-5 py-4"><a href="joining-orders/tripura-chaitanya-murti.pdf" target="_blank" rel="noopener" class="inline-flex items-center gap-1.5 bg-red-400 hover:bg-red-500 text-white px-3 py-1.5 rounded-full text-xs font-semibold transition whitespace-nowrap"><i class="fas fa-file-pdf"></i> PDF</a></td>
+              <td class="px-5 py-4"><a href="joining-orders/tripura-chaitanya-murti.pdf" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 bg-red-400 hover:bg-red-500 text-white px-3 py-1.5 rounded-full text-xs font-semibold transition whitespace-nowrap"><i class="fas fa-file-pdf"></i> PDF</a></td>
             </tr>
           </tbody>
         </table>
@@ -369,7 +467,7 @@ function mobileToggle(id) {
 </section>
 
 <!-- FOOTER -->
-<footer class="bg-emerald-900 border-t border-emerald-800 py-12">
+<footer class="bg-emerald-900 border-t border-emerald-800 py-12 safe-bottom">
   <div class="max-w-7xl mx-auto px-6 text-center">
     <h3 class="heading-font text-2xl text-amber-300 mb-6">Connect With Us</h3>
     <div class="flex justify-center gap-6 text-2xl mb-8">
