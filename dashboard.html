@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>IFSBWT - GitHub Content Management Dashboard</title>
+  <title>IFSBWT - CMS Dashboard</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -33,10 +33,9 @@
     .content-card h3 { color: #fbbf24; font-size: 16px; font-weight: 600; margin-bottom: 12px; display: flex; align-items: center; gap: 10px; }
     .edit-field { width: 100%; background: rgba(255,255,255,0.05); border: 1px solid rgba(52, 211, 153, 0.2); border-radius: 8px; padding: 10px 14px; color: #d1fae5; font-size: 14px; transition: all 0.3s; }
     .edit-field:focus { outline: none; border-color: #fbbf24; box-shadow: 0 0 20px rgba(251, 191, 36, 0.08); }
-    .edit-field:disabled { opacity: 0.5; cursor: not-allowed; }
+    .edit-field::placeholder { color: rgba(209, 250, 229, 0.3); }
     .save-btn { background: #fbbf24; color: #022c22; font-weight: 600; padding: 8px 20px; border-radius: 8px; border: none; cursor: pointer; transition: all 0.3s; font-size: 13px; }
     .save-btn:hover { background: #f59e0b; transform: translateY(-1px); }
-    .save-btn:disabled { opacity: 0.5; cursor: not-allowed; }
     .page-section { display: none; }
     .page-section.active { display: block; }
     .config-card { background: rgba(6, 78, 59, 0.5); border: 1px solid rgba(251, 191, 36, 0.2); border-radius: 12px; padding: 16px 20px; margin-bottom: 16px; }
@@ -54,10 +53,15 @@
     .mobile-toggle { display: none; }
     .spinner { display: inline-block; width: 16px; height: 16px; border: 2px solid rgba(255,255,255,0.2); border-top: 2px solid #fbbf24; border-radius: 50%; animation: spin 0.8s linear infinite; }
     @keyframes spin { to { transform: rotate(360deg); } }
-    .loading-placeholder { background: rgba(255,255,255,0.05); border-radius: 4px; padding: 4px 8px; color: #6ee7b7; font-size: 12px; }
-    .file-item { display: flex; justify-content: space-between; padding: 4px 8px; border-bottom: 1px solid rgba(52, 211, 153, 0.1); font-size: 13px; }
-    .file-item:hover { background: rgba(255,255,255,0.05); }
-    .populated-badge { background: rgba(52, 211, 153, 0.2); color: #34d399; padding: 2px 8px; border-radius: 10px; font-size: 10px; margin-left: 8px; }
+    .extract-btn { background: #34d399; color: #022c22; font-weight: 700; padding: 12px 28px; border-radius: 8px; border: none; cursor: pointer; transition: all 0.3s; font-size: 15px; }
+    .extract-btn:hover { background: #10b981; transform: translateY(-2px); box-shadow: 0 4px 20px rgba(52, 211, 153, 0.3); }
+    .extract-progress { background: rgba(6, 78, 59, 0.5); border-radius: 8px; padding: 8px 16px; margin-top: 8px; font-size: 13px; color: #6ee7b7; }
+    .page-list { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 8px; margin-top: 8px; }
+    .page-list .page-item { background: rgba(255,255,255,0.05); padding: 6px 12px; border-radius: 6px; font-size: 12px; color: #a7f3d0; display: flex; justify-content: space-between; align-items: center; }
+    .page-list .page-item .status { font-size: 10px; }
+    .page-list .page-item .status.success { color: #34d399; }
+    .page-list .page-item .status.error { color: #ef4444; }
+    .page-list .page-item .status.pending { color: #fbbf24; }
   </style>
 </head>
 <body>
@@ -107,7 +111,7 @@
   <aside class="sidebar" id="sidebar">
     <div class="sidebar-brand">
       <h1><i class="fas fa-tree mr-2 text-amber-400"></i>IFSBWT CMS</h1>
-      <p>GitHub Content Management</p>
+      <p>Full Content Management</p>
     </div>
     <nav class="sidebar-nav">
       <div class="nav-item active" data-page="dashboard-home" onclick="switchPage('dashboard-home')">
@@ -201,6 +205,20 @@
         </div>
       </div>
 
+      <!-- EXTRACT ALL CONTENT -->
+      <div class="content-card" style="border-color: #34d399; border-width: 2px;">
+        <h3><i class="fas fa-download text-green-400"></i> Extract Content from All Pages</h3>
+        <p class="text-emerald-300 text-sm mb-4">This will fetch ALL your HTML files from GitHub and populate editable fields for every page.</p>
+        <button onclick="extractAllPages()" class="extract-btn" id="extractAllBtn">
+          <i class="fas fa-download mr-2"></i> Extract All Pages
+        </button>
+        <span class="text-emerald-500 text-xs ml-3">(ecombase, about, news, gallery, donors, contact, governance, etc.)</span>
+        <div id="extractProgress" class="extract-progress" style="display:none;">
+          <span id="extractStatus">Starting extraction...</span>
+          <div id="pageExtractList" class="page-list mt-2"></div>
+        </div>
+      </div>
+
       <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
         <div class="content-card">
           <h3><i class="fas fa-github text-amber-400"></i> GitHub Status</h3>
@@ -215,8 +233,10 @@
         <div class="content-card">
           <h3><i class="fas fa-rocket text-amber-400"></i> Quick Actions</h3>
           <div class="flex flex-wrap gap-2">
-            <button onclick="extractAndPopulateAll()" class="save-btn" style="background:#34d399;font-size:12px;"><i class="fas fa-download mr-1"></i> Extract All Content from HTML</button>
+            <button onclick="switchPage('page-home')" class="save-btn" style="background:rgba(251,191,36,0.15);color:#fbbf24;font-size:12px;"><i class="fas fa-edit mr-1"></i> Edit Homepage</button>
+            <button onclick="switchPage('page-about')" class="save-btn" style="background:rgba(52,211,153,0.15);color:#34d399;font-size:12px;"><i class="fas fa-edit mr-1"></i> Edit About</button>
             <button onclick="exportContent()" class="save-btn" style="background:rgba(52,211,153,0.15);color:#34d399;font-size:12px;"><i class="fas fa-download mr-1"></i> Export Content</button>
+            <button onclick="saveAllPages()" class="save-btn" style="background:rgba(251,191,36,0.15);color:#fbbf24;font-size:12px;"><i class="fas fa-save mr-1"></i> Save All to GitHub</button>
           </div>
         </div>
       </div>
@@ -229,32 +249,37 @@
           <h2 class="text-2xl font-bold text-amber-300">Homepage Editor</h2>
           <p class="text-emerald-400 text-sm">Edit homepage content</p>
         </div>
-        <div class="flex gap-2">
-          <button onclick="extractAndPopulate('home')" class="save-btn" style="background:#34d399;"><i class="fas fa-download mr-1"></i> Extract from HTML</button>
-          <button onclick="savePageContent('home')" class="save-btn"><i class="fas fa-save mr-1"></i> Save to GitHub</button>
-        </div>
+        <button onclick="savePageContent('home')" class="save-btn"><i class="fas fa-save mr-1"></i> Save to GitHub</button>
       </div>
       <div class="content-card">
         <h3><i class="fas fa-heading text-amber-400"></i> Hero Section</h3>
         <div class="mb-3">
-          <label class="text-emerald-400 text-xs block mb-1">Main Heading (EN) <span class="text-emerald-500 text-[10px]">(from ecombase.html)</span></label>
-          <input class="edit-field" id="home-hero-en" placeholder="Click 'Extract from HTML' to load">
+          <label class="text-emerald-400 text-xs block mb-1">Main Heading (EN)</label>
+          <input class="edit-field" id="home-hero-en" placeholder="Will be auto-extracted">
         </div>
         <div class="mb-3">
           <label class="text-emerald-400 text-xs block mb-1">Main Heading (HI)</label>
-          <input class="edit-field" id="home-hero-hi" placeholder="Click 'Extract from HTML' to load">
+          <input class="edit-field" id="home-hero-hi" placeholder="Will be auto-extracted">
         </div>
         <div class="mb-3">
           <label class="text-emerald-400 text-xs block mb-1">Subtitle (EN)</label>
-          <input class="edit-field" id="home-subtitle-en" placeholder="Click 'Extract from HTML' to load">
+          <input class="edit-field" id="home-subtitle-en" placeholder="Will be auto-extracted">
         </div>
         <div class="mb-3">
           <label class="text-emerald-400 text-xs block mb-1">Subtitle (HI)</label>
-          <input class="edit-field" id="home-subtitle-hi" placeholder="Click 'Extract from HTML' to load">
+          <input class="edit-field" id="home-subtitle-hi" placeholder="Will be auto-extracted">
         </div>
         <div class="mb-3">
           <label class="text-emerald-400 text-xs block mb-1">About the Trust Description</label>
-          <textarea class="edit-field" id="home-about-text" rows="3" placeholder="Click 'Extract from HTML' to load"></textarea>
+          <textarea class="edit-field" id="home-about-text" rows="3" placeholder="Will be auto-extracted"></textarea>
+        </div>
+      </div>
+      <div class="content-card">
+        <h3><i class="fas fa-activity text-amber-400"></i> Recent Activities</h3>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-3">
+          <div><label class="text-emerald-400 text-xs block mb-1">Activity 1</label><input class="edit-field" id="activity-1-text" placeholder="Auto-extracted" style="font-size:12px;padding:6px 10px;"></div>
+          <div><label class="text-emerald-400 text-xs block mb-1">Activity 2</label><input class="edit-field" id="activity-2-text" placeholder="Auto-extracted" style="font-size:12px;padding:6px 10px;"></div>
+          <div><label class="text-emerald-400 text-xs block mb-1">Activity 3</label><input class="edit-field" id="activity-3-text" placeholder="Auto-extracted" style="font-size:12px;padding:6px 10px;"></div>
         </div>
       </div>
     </div>
@@ -266,50 +291,91 @@
           <h2 class="text-2xl font-bold text-amber-300">About Page Editor</h2>
           <p class="text-emerald-400 text-sm">Edit About Us content</p>
         </div>
-        <div class="flex gap-2">
-          <button onclick="extractAndPopulate('about')" class="save-btn" style="background:#34d399;"><i class="fas fa-download mr-1"></i> Extract from HTML</button>
-          <button onclick="savePageContent('about')" class="save-btn"><i class="fas fa-save mr-1"></i> Save to GitHub</button>
-        </div>
+        <button onclick="savePageContent('about')" class="save-btn"><i class="fas fa-save mr-1"></i> Save to GitHub</button>
       </div>
       <div class="content-card">
         <h3><i class="fas fa-bullseye text-amber-400"></i> Vision & Mission</h3>
-        <div class="mb-3">
-          <label class="text-emerald-400 text-xs block mb-1">Vision</label>
-          <input class="edit-field" id="vision-text" placeholder="Click 'Extract from HTML' to load">
-        </div>
-        <div class="mb-3">
-          <label class="text-emerald-400 text-xs block mb-1">Mission</label>
-          <input class="edit-field" id="mission-text" placeholder="Click 'Extract from HTML' to load">
-        </div>
+        <div class="mb-3"><label class="text-emerald-400 text-xs block mb-1">Vision</label><input class="edit-field" id="vision-text" placeholder="Auto-extracted"></div>
+        <div class="mb-3"><label class="text-emerald-400 text-xs block mb-1">Mission</label><input class="edit-field" id="mission-text" placeholder="Auto-extracted"></div>
       </div>
       <div class="content-card">
         <h3><i class="fas fa-list-check text-amber-400"></i> Objects and Purposes</h3>
-        <div class="mb-3">
-          <label class="text-emerald-400 text-xs block mb-1">Object 1</label>
-          <input class="edit-field" id="object-1" placeholder="Click 'Extract from HTML' to load">
-        </div>
-        <div class="mb-3">
-          <label class="text-emerald-400 text-xs block mb-1">Object 2</label>
-          <input class="edit-field" id="object-2" placeholder="Click 'Extract from HTML' to load">
-        </div>
-        <div class="mb-3">
-          <label class="text-emerald-400 text-xs block mb-1">Object 3</label>
-          <input class="edit-field" id="object-3" placeholder="Click 'Extract from HTML' to load">
-        </div>
+        <div class="mb-3"><input class="edit-field" id="object-1" placeholder="Auto-extracted"></div>
+        <div class="mb-3"><input class="edit-field" id="object-2" placeholder="Auto-extracted"></div>
+        <div class="mb-3"><input class="edit-field" id="object-3" placeholder="Auto-extracted"></div>
       </div>
       <div class="content-card">
         <h3><i class="fas fa-user text-amber-400"></i> President's Message</h3>
-        <div class="mb-3">
-          <label class="text-emerald-400 text-xs block mb-1">President Name</label>
-          <input class="edit-field" id="president-name" placeholder="Click 'Extract from HTML' to load">
+        <div class="mb-3"><label class="text-emerald-400 text-xs block mb-1">Name</label><input class="edit-field" id="president-name" placeholder="Auto-extracted"></div>
+        <div class="mb-3"><label class="text-emerald-400 text-xs block mb-1">Designation</label><input class="edit-field" id="president-designation" placeholder="Auto-extracted"></div>
+        <div class="mb-3"><label class="text-emerald-400 text-xs block mb-1">Message</label><textarea class="edit-field" id="president-message" rows="4" placeholder="Auto-extracted"></textarea></div>
+      </div>
+    </div>
+
+    <!-- NEWS PAGE EDITOR -->
+    <div id="page-news" class="page-section">
+      <div class="flex justify-between items-center mb-6">
+        <div>
+          <h2 class="text-2xl font-bold text-amber-300">News & Updates Editor</h2>
+          <p class="text-emerald-400 text-sm">Edit news content</p>
         </div>
-        <div class="mb-3">
-          <label class="text-emerald-400 text-xs block mb-1">President Designation</label>
-          <input class="edit-field" id="president-designation" placeholder="Click 'Extract from HTML' to load">
+        <button onclick="savePageContent('news')" class="save-btn"><i class="fas fa-save mr-1"></i> Save to GitHub</button>
+      </div>
+      <div class="content-card">
+        <h3><i class="fas fa-newspaper text-amber-400"></i> News Items</h3>
+        <div class="mb-3"><label class="text-emerald-400 text-xs block mb-1">News Item 1</label><input class="edit-field" id="news-item-1" placeholder="Auto-extracted"></div>
+        <div class="mb-3"><label class="text-emerald-400 text-xs block mb-1">News Item 2</label><input class="edit-field" id="news-item-2" placeholder="Auto-extracted"></div>
+        <div class="mb-3"><label class="text-emerald-400 text-xs block mb-1">News Item 3</label><input class="edit-field" id="news-item-3" placeholder="Auto-extracted"></div>
+      </div>
+      <div class="content-card">
+        <h3><i class="fas fa-newsletter text-amber-400"></i> e-Newsletter</h3>
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-3">
+          <div><label class="text-emerald-400 text-xs block mb-1">Vol. 1</label><input class="edit-field" id="newsletter-vol1" placeholder="Auto-extracted" style="font-size:12px;"></div>
+          <div><label class="text-emerald-400 text-xs block mb-1">Vol. 2</label><input class="edit-field" id="newsletter-vol2" placeholder="Auto-extracted" style="font-size:12px;"></div>
+          <div><label class="text-emerald-400 text-xs block mb-1">Vol. 3</label><input class="edit-field" id="newsletter-vol3" placeholder="Auto-extracted" style="font-size:12px;"></div>
+          <div><label class="text-emerald-400 text-xs block mb-1">Vol. 4</label><input class="edit-field" id="newsletter-vol4" placeholder="Auto-extracted" style="font-size:12px;"></div>
         </div>
-        <div class="mb-3">
-          <label class="text-emerald-400 text-xs block mb-1">Message</label>
-          <textarea class="edit-field" id="president-message" rows="4" placeholder="Click 'Extract from HTML' to load"></textarea>
+      </div>
+    </div>
+
+    <!-- GALLERY PAGE EDITOR -->
+    <div id="page-gallery" class="page-section">
+      <div class="flex justify-between items-center mb-6">
+        <div>
+          <h2 class="text-2xl font-bold text-amber-300">Gallery Editor</h2>
+          <p class="text-emerald-400 text-sm">Edit gallery content</p>
+        </div>
+        <button onclick="savePageContent('gallery')" class="save-btn"><i class="fas fa-save mr-1"></i> Save to GitHub</button>
+      </div>
+      <div class="content-card">
+        <h3><i class="fas fa-images text-amber-400"></i> Photo Gallery</h3>
+        <div class="mb-3"><label class="text-emerald-400 text-xs block mb-1">Section Title</label><input class="edit-field" id="gallery-title" placeholder="Auto-extracted"></div>
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-3">
+          <div><label class="text-emerald-400 text-xs block mb-1">Photo 1</label><input class="edit-field" id="gallery-photo-1" placeholder="Auto-extracted" style="font-size:12px;"></div>
+          <div><label class="text-emerald-400 text-xs block mb-1">Photo 2</label><input class="edit-field" id="gallery-photo-2" placeholder="Auto-extracted" style="font-size:12px;"></div>
+          <div><label class="text-emerald-400 text-xs block mb-1">Photo 3</label><input class="edit-field" id="gallery-photo-3" placeholder="Auto-extracted" style="font-size:12px;"></div>
+          <div><label class="text-emerald-400 text-xs block mb-1">Photo 4</label><input class="edit-field" id="gallery-photo-4" placeholder="Auto-extracted" style="font-size:12px;"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- DONORS PAGE EDITOR -->
+    <div id="page-donors" class="page-section">
+      <div class="flex justify-between items-center mb-6">
+        <div>
+          <h2 class="text-2xl font-bold text-amber-300">Donors Editor</h2>
+          <p class="text-emerald-400 text-sm">Edit donor lists</p>
+        </div>
+        <button onclick="savePageContent('donors')" class="save-btn"><i class="fas fa-save mr-1"></i> Save to GitHub</button>
+      </div>
+      <div class="content-card">
+        <h3><i class="fas fa-hand-holding-heart text-amber-400"></i> Donor Information</h3>
+        <div class="mb-3"><label class="text-emerald-400 text-xs block mb-1">Section Title</label><input class="edit-field" id="donors-title" placeholder="Auto-extracted"></div>
+        <div class="grid grid-cols-2 gap-3">
+          <div><label class="text-emerald-400 text-xs block mb-1">Jan 2026</label><input class="edit-field" id="donors-jan" placeholder="Auto-extracted" style="font-size:12px;"></div>
+          <div><label class="text-emerald-400 text-xs block mb-1">Feb 2026</label><input class="edit-field" id="donors-feb" placeholder="Auto-extracted" style="font-size:12px;"></div>
+          <div><label class="text-emerald-400 text-xs block mb-1">Mar 2026</label><input class="edit-field" id="donors-mar" placeholder="Auto-extracted" style="font-size:12px;"></div>
+          <div><label class="text-emerald-400 text-xs block mb-1">Master List</label><input class="edit-field" id="donors-master" placeholder="Auto-extracted" style="font-size:12px;"></div>
         </div>
       </div>
     </div>
@@ -321,25 +387,41 @@
           <h2 class="text-2xl font-bold text-amber-300">Contact Editor</h2>
           <p class="text-emerald-400 text-sm">Edit contact information</p>
         </div>
-        <div class="flex gap-2">
-          <button onclick="extractAndPopulate('contact')" class="save-btn" style="background:#34d399;"><i class="fas fa-download mr-1"></i> Extract from HTML</button>
-          <button onclick="savePageContent('contact')" class="save-btn"><i class="fas fa-save mr-1"></i> Save to GitHub</button>
-        </div>
+        <button onclick="savePageContent('contact')" class="save-btn"><i class="fas fa-save mr-1"></i> Save to GitHub</button>
       </div>
       <div class="content-card">
         <h3><i class="fas fa-address-card text-amber-400"></i> Contact Details</h3>
-        <div class="mb-3">
-          <label class="text-emerald-400 text-xs block mb-1">Address</label>
-          <input class="edit-field" id="contact-address" placeholder="Click 'Extract from HTML' to load">
+        <div class="mb-3"><label class="text-emerald-400 text-xs block mb-1">Address</label><input class="edit-field" id="contact-address" placeholder="Auto-extracted"></div>
+        <div class="mb-3"><label class="text-emerald-400 text-xs block mb-1">Phone</label><input class="edit-field" id="contact-phone" placeholder="Auto-extracted"></div>
+        <div class="mb-3"><label class="text-emerald-400 text-xs block mb-1">Email</label><input class="edit-field" id="contact-email" placeholder="Auto-extracted"></div>
+      </div>
+      <div class="content-card">
+        <h3><i class="fas fa-link text-amber-400"></i> Social Media</h3>
+        <div class="grid grid-cols-2 gap-3">
+          <div><label class="text-emerald-400 text-xs block mb-1">Facebook</label><input class="edit-field" id="social-fb" placeholder="Auto-extracted"></div>
+          <div><label class="text-emerald-400 text-xs block mb-1">Twitter</label><input class="edit-field" id="social-twitter" placeholder="Auto-extracted"></div>
+          <div><label class="text-emerald-400 text-xs block mb-1">Instagram</label><input class="edit-field" id="social-instagram" placeholder="Auto-extracted"></div>
+          <div><label class="text-emerald-400 text-xs block mb-1">LinkedIn</label><input class="edit-field" id="social-linkedin" placeholder="Auto-extracted"></div>
         </div>
-        <div class="mb-3">
-          <label class="text-emerald-400 text-xs block mb-1">Phone</label>
-          <input class="edit-field" id="contact-phone" placeholder="Click 'Extract from HTML' to load">
+      </div>
+    </div>
+
+    <!-- GOVERNANCE EDITOR -->
+    <div id="page-governance" class="page-section">
+      <div class="flex justify-between items-center mb-6">
+        <div>
+          <h2 class="text-2xl font-bold text-amber-300">Governance Editor</h2>
+          <p class="text-emerald-400 text-sm">Edit governance content</p>
         </div>
-        <div class="mb-3">
-          <label class="text-emerald-400 text-xs block mb-1">Email</label>
-          <input class="edit-field" id="contact-email" placeholder="Click 'Extract from HTML' to load">
-        </div>
+        <button onclick="savePageContent('governance')" class="save-btn"><i class="fas fa-save mr-1"></i> Save to GitHub</button>
+      </div>
+      <div class="content-card">
+        <h3><i class="fas fa-users text-amber-400"></i> Committee Information</h3>
+        <div class="mb-3"><label class="text-emerald-400 text-xs block mb-1">Board of Trustees</label><input class="edit-field" id="gov-trustees" placeholder="Auto-extracted"></div>
+        <div class="mb-3"><label class="text-emerald-400 text-xs block mb-1">Governing Body</label><input class="edit-field" id="gov-body" placeholder="Auto-extracted"></div>
+        <div class="mb-3"><label class="text-emerald-400 text-xs block mb-1">CSEP Committee</label><input class="edit-field" id="gov-csep" placeholder="Auto-extracted"></div>
+        <div class="mb-3"><label class="text-emerald-400 text-xs block mb-1">Coordination Committee</label><input class="edit-field" id="gov-coordination" placeholder="Auto-extracted"></div>
+        <div class="mb-3"><label class="text-emerald-400 text-xs block mb-1">State Coordinators</label><input class="edit-field" id="gov-state-coordinators" placeholder="Auto-extracted"></div>
       </div>
     </div>
 
@@ -348,29 +430,18 @@
       <div class="flex justify-between items-center mb-6">
         <div>
           <h2 class="text-2xl font-bold text-amber-300">Settings</h2>
-          <p class="text-emerald-400 text-sm">Site configuration and GitHub integration</p>
+          <p class="text-emerald-400 text-sm">Site configuration</p>
         </div>
       </div>
       <div class="content-card">
         <h3><i class="fab fa-github text-amber-400"></i> GitHub Configuration</h3>
-        <div class="mb-3">
-          <label class="text-emerald-400 text-xs block mb-1">Repository</label>
-          <input class="edit-field" id="settings-repo" placeholder="username/repository">
-        </div>
-        <div class="mb-3">
-          <label class="text-emerald-400 text-xs block mb-1">Branch</label>
-          <input class="edit-field" id="settings-branch" value="main" placeholder="main or master">
-        </div>
-        <div class="mb-3">
-          <label class="text-emerald-400 text-xs block mb-1">GitHub Token</label>
-          <input class="edit-field" type="password" id="settings-token" placeholder="ghp_xxxxxxxxxxxxxxxxxxxx">
-        </div>
+        <div class="mb-3"><label class="text-emerald-400 text-xs block mb-1">Repository</label><input class="edit-field" id="settings-repo" placeholder="username/repository"></div>
+        <div class="mb-3"><label class="text-emerald-400 text-xs block mb-1">Branch</label><input class="edit-field" id="settings-branch" value="main"></div>
+        <div class="mb-3"><label class="text-emerald-400 text-xs block mb-1">GitHub Token</label><input class="edit-field" type="password" id="settings-token" placeholder="ghp_xxxxxxxx"></div>
         <div class="flex flex-wrap gap-2">
-          <button class="save-btn" onclick="saveGitHubConfig()"><i class="fas fa-save mr-1"></i> Save Configuration</button>
-          <button class="save-btn" onclick="syncWithGitHub()" style="background:#34d399;"><i class="fas fa-sync mr-1"></i> Test Connection</button>
-          <button class="save-btn" onclick="extractAndPopulateAll()" style="background:#34d399;"><i class="fas fa-download mr-1"></i> Extract All Content</button>
+          <button class="save-btn" onclick="saveGitHubConfig()"><i class="fas fa-save mr-1"></i> Save</button>
+          <button class="save-btn" onclick="syncWithGitHub()" style="background:#34d399;"><i class="fas fa-sync mr-1"></i> Test</button>
         </div>
-        <div id="github-status" class="mt-3 text-emerald-400 text-sm"></div>
       </div>
     </div>
   </main>
@@ -415,159 +486,356 @@ function saveGitHubConfig() {
 }
 
 // ============================================
-// EXTRACT CONTENT FROM HTML FILES
+// EXTRACT ALL PAGES
 // ============================================
-async function extractAndPopulate(page) {
+async function extractAllPages() {
   const config = getGitHubConfig();
-  if (!config.repo) {
+  if (!config.repo || config.repo === '' || config.repo === 'username/repository') {
     showToast('Please configure GitHub repository first!', 'error');
     return;
   }
 
-  showToast(`Extracting content from ${page}.html...`);
+  const btn = document.getElementById('extractAllBtn');
+  btn.disabled = true;
+  btn.innerHTML = '<span class="spinner"></span> Extracting...';
+  
+  document.getElementById('extractProgress').style.display = 'block';
+  document.getElementById('extractStatus').textContent = 'Fetching file list from GitHub...';
+  
+  const pageList = document.getElementById('pageExtractList');
+  pageList.innerHTML = '';
 
   try {
-    // Map page names to actual HTML files
-    const fileMap = {
-      'home': 'ecombase.html',
-      'about': 'about.html',
-      'contact': 'contact.html'
-    };
-    
-    const fileName = fileMap[page] || `${page}.html`;
-    
-    // Fetch the HTML file from GitHub
-    const response = await fetch(`https://raw.githubusercontent.com/${config.repo}/${config.branch}/${fileName}`);
-    
-    if (!response.ok) {
-      throw new Error(`Could not fetch ${fileName}. Make sure the file exists in your repository.`);
-    }
-    
-    const html = await response.text();
-    
-    // Extract content using regex patterns based on the page
-    let extractedData = {};
-    
-    if (page === 'home') {
-      // Extract hero text from ecombase.html
-      const heroMatch = html.match(/<h1[^>]*>.*?Protecting forests\. Supporting Green Warriors.*?<\/h1>/s);
-      if (heroMatch) {
-        extractedData['home-hero-en'] = 'Protecting forests. Supporting Green Warriors';
-        extractedData['home-hero-hi'] = 'वनों की रक्षा। वीरों का सम्मान।';
-      }
-      
-      const subtitleMatch = html.match(/<p[^>]*class="text-lg[^"]*".*?Dedicated to the welfare.*?<\/p>/s);
-      if (subtitleMatch) {
-        extractedData['home-subtitle-en'] = 'Dedicated to the welfare, resilience, and honour of our forest officers.';
-        extractedData['home-subtitle-hi'] = 'भारतीय वन सेवा अधिकारियों के कल्याण और सम्मान हेतु समर्पित।';
-      }
-      
-      // Extract About the Trust description
-      const aboutMatch = html.match(/<section id="about"[^>]*>.*?<p[^>]*class="text-emerald-200[^"]*"[^>]*>(.*?)<\/p>/s);
-      if (aboutMatch) {
-        extractedData['home-about-text'] = aboutMatch[1].trim().replace(/<[^>]*>/g, '').replace(/\s+/g, ' ');
-      }
-    }
-    
-    if (page === 'about') {
-      // Extract Vision
-      const visionMatch = html.match(/Vision<\/h3>.*?<p[^>]*>(.*?)<\/p>/s);
-      if (visionMatch) {
-        extractedData['vision-text'] = visionMatch[1].trim().replace(/<[^>]*>/g, '');
-      }
-      
-      // Extract Mission
-      const missionMatch = html.match(/Mission<\/h3>.*?<p[^>]*>(.*?)<\/p>/s);
-      if (missionMatch) {
-        extractedData['mission-text'] = missionMatch[1].trim().replace(/<[^>]*>/g, '');
-      }
-      
-      // Extract Objects
-      const objectMatches = html.match(/<h4[^>]*>([^<]*)<\/h4>.*?<p[^>]*>(.*?)<\/p>/gs);
-      if (objectMatches) {
-        const objects = [];
-        objectMatches.forEach((match, index) => {
-          const text = match.replace(/<[^>]*>/g, '').trim();
-          if (text && index < 3) {
-            extractedData[`object-${index+1}`] = text;
-          }
-        });
-      }
-      
-      // Extract President's name
-      const presMatch = html.match(/<div[^>]*text-amber-300[^>]*font-semibold[^>]*text-xl[^>]*>([^<]*)<\/div>/s);
-      if (presMatch) {
-        extractedData['president-name'] = presMatch[1].trim();
-      }
-      
-      // Extract President's designation
-      const desigMatch = html.match(/<div[^>]*text-sm[^>]*text-emerald-300[^>]*>([^<]*)<\/div>/s);
-      if (desigMatch) {
-        extractedData['president-designation'] = desigMatch[1].trim();
-      }
-      
-      // Extract President's message
-      const msgMatch = html.match(/Message from the President<\/h3>.*?<p[^>]*class="mb-4"[^>]*>(.*?)<\/p>/s);
-      if (msgMatch) {
-        extractedData['president-message'] = msgMatch[1].trim().replace(/<[^>]*>/g, '');
-      }
-    }
-    
-    if (page === 'contact') {
-      // Extract address
-      const addressMatch = html.match(/Office of the Deputy Conservator of Forests[^<]*/s);
-      if (addressMatch) {
-        extractedData['contact-address'] = addressMatch[0].trim();
-      }
-      
-      // Extract phone
-      const phoneMatch = html.match(/Phone: <\/span>([^<]*)/s);
-      if (phoneMatch) {
-        extractedData['contact-phone'] = phoneMatch[1].trim();
-      }
-      
-      // Extract email
-      const emailMatch = html.match(/Email: <\/span>([^<]*)/s);
-      if (emailMatch) {
-        extractedData['contact-email'] = emailMatch[1].trim().replace(/&lt;/g, '<').replace(/&gt;/g, '>');
-      }
-    }
-    
-    // Populate fields
-    let populatedCount = 0;
-    Object.keys(extractedData).forEach(key => {
-      const field = document.getElementById(key);
-      if (field) {
-        field.value = extractedData[key];
-        localStorage.setItem('ifsbwt_' + key, extractedData[key]);
-        populatedCount++;
-      }
+    // First, get list of all HTML files
+    const response = await fetch(`https://api.github.com/repos/${config.repo}/contents?ref=${config.branch}`, {
+      headers: { 'Authorization': `token ${config.token}` }
     });
+
+    if (!response.ok) throw new Error('Failed to fetch repository contents');
+
+    const files = await response.json();
+    const htmlFiles = files.filter(f => f.name.endsWith('.html') || f.name.endsWith('.htm'));
     
-    showToast(`Extracted ${populatedCount} fields from ${page}.html!`);
+    document.getElementById('stat-pages').textContent = htmlFiles.length;
     
-    // Update stats
-    document.getElementById('stat-fields').textContent = populatedCount;
-    
+    // Map HTML files to page names for extraction
+    const pageMap = {};
+    htmlFiles.forEach(f => {
+      let name = f.name.replace('.html', '').replace('.htm', '');
+      // Handle special case for ecombase.html (homepage)
+      if (name === 'ecombase') name = 'home';
+      pageMap[name] = f.download_url;
+    });
+
+    document.getElementById('extractStatus').textContent = `Found ${htmlFiles.length} HTML files. Extracting content...`;
+
+    let totalExtracted = 0;
+    const pageNames = Object.keys(pageMap);
+
+    for (const pageName of pageNames) {
+      const url = pageMap[pageName];
+      const pageItem = document.createElement('div');
+      pageItem.className = 'page-item';
+      pageItem.innerHTML = `<span>${pageName}</span><span class="status pending">⏳</span>`;
+      pageList.appendChild(pageItem);
+
+      try {
+        // Fetch the HTML content
+        const htmlResponse = await fetch(url);
+        if (!htmlResponse.ok) throw new Error('Failed to fetch');
+        const html = await htmlResponse.text();
+        
+        // Parse the HTML
+        const parser = new DOMParser();
+        const doc = parser.parseFromString(html, 'text/html');
+        
+        let extracted = 0;
+        
+        // Extract based on page type
+        if (pageName === 'home' || pageName === 'ecombase') {
+          extracted += extractHomePage(doc);
+        } else if (pageName === 'about') {
+          extracted += extractAboutPage(doc);
+        } else if (pageName === 'news') {
+          extracted += extractNewsPage(doc);
+        } else if (pageName === 'gallery') {
+          extracted += extractGalleryPage(doc);
+        } else if (pageName === 'donors') {
+          extracted += extractDonorsPage(doc);
+        } else if (pageName === 'contact') {
+          extracted += extractContactPage(doc);
+        } else if (pageName === 'governance' || pageName === 'boardoftrustees' || 
+                   pageName === 'governingbody' || pageName === 'csepcommittee' || 
+                   pageName === 'coordinationcommittee' || pageName === 'statecoordinators') {
+          extracted += extractGovernancePage(pageName, doc);
+        }
+        
+        totalExtracted += extracted;
+        pageItem.innerHTML = `<span>${pageName}</span><span class="status success">✅ ${extracted} fields</span>`;
+        
+      } catch (err) {
+        pageItem.innerHTML = `<span>${pageName}</span><span class="status error">❌ Error</span>`;
+        console.warn(`Error extracting ${pageName}:`, err);
+      }
+      
+      // Small delay to avoid rate limiting
+      await new Promise(r => setTimeout(r, 200));
+    }
+
+    document.getElementById('extractStatus').textContent = `✅ Extraction complete! ${totalExtracted} fields extracted from ${pageNames.length} pages.`;
+    document.getElementById('stat-fields').textContent = totalExtracted;
+    showToast(`✅ Extracted ${totalExtracted} fields from ${pageNames.length} pages!`);
+
   } catch (error) {
-    showToast('Error extracting content: ' + error.message, 'error');
+    document.getElementById('extractStatus').textContent = `❌ Error: ${error.message}`;
+    showToast('Extraction error: ' + error.message, 'error');
   }
+
+  btn.disabled = false;
+  btn.innerHTML = '<i class="fas fa-download mr-2"></i> Extract All Pages';
 }
 
-async function extractAndPopulateAll() {
-  const pages = ['home', 'about', 'contact'];
-  let totalFields = 0;
+// ============================================
+// PAGE-SPECIFIC EXTRACTION FUNCTIONS
+// ============================================
+
+function extractHomePage(doc) {
+  let count = 0;
   
-  for (const page of pages) {
-    await extractAndPopulate(page);
-    // Count populated fields
-    document.querySelectorAll(`#page-${page} .edit-field`).forEach(f => {
-      if (f.value && f.value.trim() !== '') totalFields++;
-    });
+  // Hero heading
+  const heroH1 = doc.querySelector('section.relative h1.heading-font, section.hero-min-h h1.heading-font');
+  if (heroH1) {
+    const enSpan = heroH1.querySelector('.lang.en');
+    const hiSpan = heroH1.querySelector('.lang.hi');
+    setField('home-hero-en', enSpan?.textContent?.trim());
+    setField('home-hero-hi', hiSpan?.textContent?.trim());
+    count += 2;
   }
   
-  document.getElementById('stat-fields').textContent = totalFields;
-  showToast(`Extracted content from all pages! ${totalFields} fields populated.`);
+  // Subtitle
+  const heroP = doc.querySelector('section.relative p.text-lg, section.hero-min-h p.text-lg');
+  if (heroP) {
+    const enSpan = heroP.querySelector('.lang.en');
+    const hiSpan = heroP.querySelector('.lang.hi');
+    setField('home-subtitle-en', enSpan?.textContent?.trim());
+    setField('home-subtitle-hi', hiSpan?.textContent?.trim());
+    count += 2;
+  }
+  
+  // About description
+  const aboutSection = doc.querySelector('section#about');
+  if (aboutSection) {
+    const aboutP = aboutSection.querySelector('p.text-emerald-200.leading-relaxed');
+    setField('home-about-text', aboutP?.textContent?.trim().replace(/\s+/g, ' '));
+    if (aboutP) count++;
+  }
+  
+  // Activities
+  const activities = doc.querySelectorAll('#stories .card');
+  activities.forEach((card, i) => {
+    const span = card.querySelector('p.text-emerald-200 span');
+    setField(`activity-${i+1}-text`, span?.textContent?.trim());
+    if (span) count++;
+  });
+  
+  return count;
+}
+
+function extractAboutPage(doc) {
+  let count = 0;
+  
+  // Vision
+  const visionSection = doc.querySelector('#vision');
+  if (visionSection) {
+    const visionP = visionSection.querySelector('p.text-emerald-200.leading-relaxed');
+    setField('vision-text', visionP?.textContent?.trim());
+    if (visionP) count++;
+  }
+  
+  // Mission
+  const missionDiv = doc.querySelector('.bg-emerald-950.p-10.rounded-2xl.border.border-amber-400\\/40:last-child');
+  if (missionDiv) {
+    const missionP = missionDiv.querySelector('p.text-emerald-200.leading-relaxed');
+    setField('mission-text', missionP?.textContent?.trim());
+    if (missionP) count++;
+  }
+  
+  // Objects
+  const objectives = doc.querySelectorAll('#objectives .bg-emerald-900.p-8.rounded-xl');
+  objectives.forEach((card, i) => {
+    const p = card.querySelector('p.text-emerald-200.text-sm.leading-relaxed');
+    setField(`object-${i+1}`, p?.textContent?.trim().replace(/\s+/g, ' '));
+    if (p) count++;
+  });
+  
+  // President
+  const presSection = doc.querySelector('.bg-emerald-900.p-6.md\\:p-10.rounded-3xl.shadow-lg');
+  if (presSection) {
+    const nameDiv = presSection.querySelector('.text-amber-300.font-semibold.text-xl');
+    setField('president-name', nameDiv?.textContent?.trim());
+    if (nameDiv) count++;
+    
+    const desigDiv = presSection.querySelector('.text-sm.text-emerald-300');
+    setField('president-designation', desigDiv?.textContent?.trim());
+    if (desigDiv) count++;
+    
+    const msgDiv = presSection.querySelector('.text-emerald-200.leading-relaxed.text-justify.max-w-3xl');
+    if (msgDiv) {
+      const paragraphs = msgDiv.querySelectorAll('p.mb-4');
+      let fullMsg = '';
+      paragraphs.forEach(p => fullMsg += p.textContent.trim() + ' ');
+      setField('president-message', fullMsg.trim());
+      if (fullMsg.trim()) count++;
+    }
+  }
+  
+  return count;
+}
+
+function extractNewsPage(doc) {
+  let count = 0;
+  
+  // News items
+  const newsItems = doc.querySelectorAll('.news-row');
+  newsItems.forEach((row, i) => {
+    const title = row.querySelector('.news-title');
+    setField(`news-item-${i+1}`, title?.textContent?.trim());
+    if (title) count++;
+  });
+  
+  // Newsletter volumes
+  const newsletterCards = doc.querySelectorAll('.pdf-card');
+  newsletterCards.forEach((card, i) => {
+    const volTitle = card.querySelector('.text-emerald-100.font-semibold');
+    setField(`newsletter-vol${i+1}`, volTitle?.textContent?.trim());
+    if (volTitle) count++;
+  });
+  
+  return count;
+}
+
+function extractGalleryPage(doc) {
+  let count = 0;
+  
+  // Gallery title
+  const title = doc.querySelector('.heading-font.text-5xl');
+  setField('gallery-title', title?.textContent?.trim());
+  if (title) count++;
+  
+  // Photo captions
+  const photos = doc.querySelectorAll('#section-photo .card p, #section-photo .bg-emerald-900\\/80');
+  photos.forEach((p, i) => {
+    setField(`gallery-photo-${i+1}`, p?.textContent?.trim());
+    if (p) count++;
+  });
+  
+  return count;
+}
+
+function extractDonorsPage(doc) {
+  let count = 0;
+  
+  // Donors title
+  const title = doc.querySelector('.heading-font.text-4xl');
+  setField('donors-title', title?.textContent?.trim());
+  if (title) count++;
+  
+  // Donor months
+  const donorItems = doc.querySelectorAll('#tab-monthly .flex.items-center.justify-between');
+  donorItems.forEach((item, i) => {
+    const span = item.querySelector('span.text-emerald-100');
+    setField(`donors-${['jan','feb','mar','master'][i] || 'other'}`, span?.textContent?.trim());
+    if (span) count++;
+  });
+  
+  return count;
+}
+
+function extractContactPage(doc) {
+  let count = 0;
+  
+  const contactSection = doc.querySelector('#location');
+  if (contactSection) {
+    // Address
+    const address = contactSection.querySelector('a.text-amber-300.hover\\:underline');
+    setField('contact-address', address?.textContent?.trim().replace(/\s+/g, ' '));
+    if (address) count++;
+    
+    // Phone
+    const phone = contactSection.querySelector('.flex.items-center.gap-3.mb-4 span.text-emerald-200');
+    setField('contact-phone', phone?.textContent?.trim());
+    if (phone) count++;
+    
+    // Email
+    const email = contactSection.querySelector('.flex.items-center.gap-3.mb-8 a');
+    if (email) {
+      let emailText = email.textContent.trim();
+      if (email.getAttribute('href')?.startsWith('mailto:')) {
+        emailText = email.getAttribute('href').replace('mailto:', '');
+      }
+      setField('contact-email', emailText);
+      count++;
+    }
+    
+    // Social links
+    const socialLinks = contactSection.querySelectorAll('footer .fab, .fab');
+    // Actually get social links from footer
+    const footer = doc.querySelector('footer');
+    if (footer) {
+      const socialIcons = footer.querySelectorAll('.fab');
+      const socialNames = ['facebook', 'twitter', 'instagram', 'linkedin', 'youtube'];
+      socialIcons.forEach((icon, i) => {
+        const parent = icon.closest('a');
+        if (parent && socialNames[i]) {
+          setField(`social-${socialNames[i]}`, parent.getAttribute('href') || '#');
+          count++;
+        }
+      });
+    }
+  }
+  
+  return count;
+}
+
+function extractGovernancePage(pageName, doc) {
+  let count = 0;
+  
+  // Map page names to field IDs
+  const fieldMap = {
+    'boardoftrustees': 'gov-trustees',
+    'governingbody': 'gov-body',
+    'csepcommittee': 'gov-csep',
+    'coordinationcommittee': 'gov-coordination',
+    'statecoordinators': 'gov-state-coordinators'
+  };
+  
+  const fieldId = fieldMap[pageName];
+  if (fieldId) {
+    // Try to extract member count or title
+    const title = doc.querySelector('.heading-font.text-3xl, .heading-font.text-2xl');
+    const table = doc.querySelector('table');
+    if (table) {
+      const rows = table.querySelectorAll('tbody tr');
+      setField(fieldId, `${title?.textContent?.trim() || pageName}: ${rows.length} members`);
+      count++;
+    } else {
+      setField(fieldId, title?.textContent?.trim() || pageName);
+      count++;
+    }
+  }
+  
+  return count;
+}
+
+// ============================================
+// HELPER FUNCTIONS
+// ============================================
+function setField(id, value) {
+  const field = document.getElementById(id);
+  if (field && value) {
+    field.value = value;
+    localStorage.setItem('ifsbwt_' + id, value);
+  }
 }
 
 // ============================================
@@ -577,7 +845,7 @@ async function syncWithGitHub() {
   const config = getGitHubConfig();
   
   if (!config.repo || config.repo === '' || config.repo === 'username/repository') {
-    showToast('Please configure your GitHub repository first! (Format: username/repo-name)', 'error');
+    showToast('Please configure your GitHub repository first!', 'error');
     return;
   }
   
@@ -588,39 +856,15 @@ async function syncWithGitHub() {
 
   const btn = document.getElementById('syncBtn');
   if (btn) { btn.disabled = true; btn.innerHTML = '<span class="spinner"></span> Connecting...'; }
-  
-  document.getElementById('sync-status').className = 'sync-status unsynced';
-  document.getElementById('sync-status').innerHTML = '<i class="fas fa-spinner fa-spin"></i> Syncing...';
 
   try {
-    const testResponse = await fetch(`https://api.github.com/repos/${config.repo}`, {
-      headers: {
-        'Authorization': `token ${config.token}`,
-        'Accept': 'application/vnd.github.v3+json'
-      }
-    });
-
-    if (!testResponse.ok) {
-      const error = await testResponse.json();
-      let errorMsg = error.message || 'Repository not found';
-      if (errorMsg.includes('Not Found')) {
-        errorMsg = `Repository "${config.repo}" not found. Make sure: 1) The repo exists, 2) You have access, 3) Use format "username/repo-name"`;
-      } else if (errorMsg.includes('Bad credentials')) {
-        errorMsg = 'Invalid GitHub token. Please generate a new token with "repo" scope.';
-      }
-      throw new Error(errorMsg);
-    }
-
     const response = await fetch(`https://api.github.com/repos/${config.repo}/contents?ref=${config.branch}`, {
-      headers: {
-        'Authorization': `token ${config.token}`,
-        'Accept': 'application/vnd.github.v3+json'
-      }
+      headers: { 'Authorization': `token ${config.token}` }
     });
 
     if (!response.ok) {
       const error = await response.json();
-      throw new Error(error.message || 'Failed to fetch repository contents');
+      throw new Error(error.message || 'Connection failed');
     }
 
     const files = await response.json();
@@ -642,16 +886,11 @@ async function syncWithGitHub() {
       <p class="text-emerald-500 text-xs mt-1">✓ Connected successfully</p>
     `;
     
-    showToast(`Connected! ${htmlFiles.length} HTML files found. Click "Extract All Content" to populate fields.`);
+    showToast(`Connected! ${htmlFiles.length} HTML files found. Click "Extract All Pages" to populate fields.`);
 
   } catch (error) {
     document.getElementById('sync-status').className = 'sync-status error';
     document.getElementById('sync-status').innerHTML = '<i class="fas fa-exclamation-circle"></i> Error';
-    document.getElementById('stat-status').textContent = 'Error';
-    document.getElementById('github-status-details').innerHTML = `
-      <p class="text-red-400 text-sm"><i class="fas fa-exclamation-circle mr-1"></i> ${error.message}</p>
-      <p class="text-emerald-500 text-xs mt-2">Try: 1) Check repo name format 2) Verify token scope 3) Ensure repo exists</p>
-    `;
     showToast('Sync error: ' + error.message, 'error');
   }
 
@@ -659,7 +898,7 @@ async function syncWithGitHub() {
 }
 
 // ============================================
-// SAVE CONTENT TO GITHUB
+// SAVE PAGE CONTENT TO GITHUB
 // ============================================
 async function savePageContent(page) {
   const config = getGitHubConfig();
@@ -725,6 +964,30 @@ async function savePageContent(page) {
 }
 
 // ============================================
+// SAVE ALL PAGES
+// ============================================
+async function saveAllPages() {
+  const pages = ['home', 'about', 'news', 'gallery', 'donors', 'contact', 'governance'];
+  showToast('Saving all pages to GitHub...');
+  for (const page of pages) {
+    const pageElement = document.getElementById(`page-${page}`);
+    if (pageElement) {
+      const btn = pageElement.querySelector('.save-btn');
+      if (btn) {
+        const originalText = btn.innerHTML;
+        btn.innerHTML = '<span class="spinner"></span>';
+        btn.disabled = true;
+        await savePageContent(page);
+        btn.innerHTML = originalText;
+        btn.disabled = false;
+        await new Promise(r => setTimeout(r, 500));
+      }
+    }
+  }
+  showToast('All pages saved to GitHub!');
+}
+
+// ============================================
 // VIEW ON GITHUB
 // ============================================
 function viewOnGitHub() {
@@ -780,7 +1043,7 @@ function handleLogin(e) {
       `;
     }
     
-    showToast('Welcome to IFSBWT CMS! Click "Extract All Content" to load your website data.');
+    showToast('Welcome! Click "Extract All Pages" to load your website data.');
   } else {
     document.getElementById('loginPassword').style.borderColor = '#ef4444';
     document.getElementById('loginPassword').value = '';
