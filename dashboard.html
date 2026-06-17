@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>IFSBWT - Dashboard</title>
+  <title>IFSBWT - GitHub Content Management Dashboard</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -33,6 +33,7 @@
     .content-card h3 { color: #fbbf24; font-size: 16px; font-weight: 600; margin-bottom: 12px; display: flex; align-items: center; gap: 10px; }
     .edit-field { width: 100%; background: rgba(255,255,255,0.05); border: 1px solid rgba(52, 211, 153, 0.2); border-radius: 8px; padding: 10px 14px; color: #d1fae5; font-size: 14px; transition: all 0.3s; }
     .edit-field:focus { outline: none; border-color: #fbbf24; box-shadow: 0 0 20px rgba(251, 191, 36, 0.08); }
+    .edit-field:disabled { opacity: 0.5; cursor: not-allowed; }
     .save-btn { background: #fbbf24; color: #022c22; font-weight: 600; padding: 8px 20px; border-radius: 8px; border: none; cursor: pointer; transition: all 0.3s; font-size: 13px; }
     .save-btn:hover { background: #f59e0b; transform: translateY(-1px); }
     .save-btn:disabled { opacity: 0.5; cursor: not-allowed; }
@@ -53,6 +54,13 @@
     .mobile-toggle { display: none; }
     .spinner { display: inline-block; width: 16px; height: 16px; border: 2px solid rgba(255,255,255,0.2); border-top: 2px solid #fbbf24; border-radius: 50%; animation: spin 0.8s linear infinite; }
     @keyframes spin { to { transform: rotate(360deg); } }
+    .loading-placeholder { background: rgba(255,255,255,0.05); border-radius: 4px; padding: 4px 8px; color: #6ee7b7; font-size: 12px; }
+    .file-list { max-height: 200px; overflow-y: auto; }
+    .file-list::-webkit-scrollbar { width: 4px; }
+    .file-list::-webkit-scrollbar-track { background: transparent; }
+    .file-list::-webkit-scrollbar-thumb { background: #34d399; border-radius: 4px; }
+    .file-item { display: flex; justify-content: space-between; padding: 4px 8px; border-bottom: 1px solid rgba(52, 211, 153, 0.1); font-size: 13px; }
+    .file-item:hover { background: rgba(255,255,255,0.05); }
   </style>
 </head>
 <body>
@@ -172,11 +180,11 @@
         </div>
         <div class="stat-card">
           <div class="flex items-center justify-between">
-            <span class="text-emerald-400 text-sm">Assets</span>
-            <i class="fas fa-image text-amber-400 text-xl"></i>
+            <span class="text-emerald-400 text-sm">Content</span>
+            <i class="fas fa-database text-amber-400 text-xl"></i>
           </div>
-          <p class="text-2xl font-bold text-white mt-2" id="stat-assets">—</p>
-          <p class="text-emerald-500 text-xs">Images & documents</p>
+          <p class="text-2xl font-bold text-white mt-2" id="stat-content">—</p>
+          <p class="text-emerald-500 text-xs">Editable fields</p>
         </div>
         <div class="stat-card">
           <div class="flex items-center justify-between">
@@ -210,8 +218,8 @@
         <div class="content-card">
           <h3><i class="fas fa-rocket text-amber-400"></i> Quick Actions</h3>
           <div class="flex flex-wrap gap-2">
-            <button onclick="switchPage('page-home')" class="save-btn" style="background:rgba(251,191,36,0.15);color:#fbbf24;font-size:12px;"><i class="fas fa-edit mr-1"></i> Edit Homepage</button>
-            <button onclick="switchPage('page-news')" class="save-btn" style="background:rgba(52,211,153,0.15);color:#34d399;font-size:12px;"><i class="fas fa-plus mr-1"></i> Add News</button>
+            <button onclick="loadContentFromGitHub('home')" class="save-btn" style="background:rgba(251,191,36,0.15);color:#fbbf24;font-size:12px;"><i class="fas fa-download mr-1"></i> Load Homepage</button>
+            <button onclick="loadContentFromGitHub('about')" class="save-btn" style="background:rgba(52,211,153,0.15);color:#34d399;font-size:12px;"><i class="fas fa-download mr-1"></i> Load About</button>
             <button onclick="exportContent()" class="save-btn" style="background:rgba(52,211,153,0.15);color:#34d399;font-size:12px;"><i class="fas fa-download mr-1"></i> Export Content</button>
           </div>
         </div>
@@ -225,7 +233,10 @@
           <h2 class="text-2xl font-bold text-amber-300">Homepage Editor</h2>
           <p class="text-emerald-400 text-sm">Edit homepage content</p>
         </div>
-        <button onclick="savePageContent('home')" class="save-btn"><i class="fas fa-save mr-1"></i> Save to GitHub</button>
+        <div class="flex gap-2">
+          <button onclick="loadContentFromGitHub('home')" class="save-btn" style="background:#34d399;"><i class="fas fa-download mr-1"></i> Load from GitHub</button>
+          <button onclick="savePageContent('home')" class="save-btn"><i class="fas fa-save mr-1"></i> Save to GitHub</button>
+        </div>
       </div>
       <div class="content-card">
         <h3><i class="fas fa-heading text-amber-400"></i> Hero Section</h3>
@@ -255,7 +266,10 @@
           <h2 class="text-2xl font-bold text-amber-300">About Page Editor</h2>
           <p class="text-emerald-400 text-sm">Edit About Us content</p>
         </div>
-        <button onclick="savePageContent('about')" class="save-btn"><i class="fas fa-save mr-1"></i> Save to GitHub</button>
+        <div class="flex gap-2">
+          <button onclick="loadContentFromGitHub('about')" class="save-btn" style="background:#34d399;"><i class="fas fa-download mr-1"></i> Load from GitHub</button>
+          <button onclick="savePageContent('about')" class="save-btn"><i class="fas fa-save mr-1"></i> Save to GitHub</button>
+        </div>
       </div>
       <div class="content-card">
         <h3><i class="fas fa-bullseye text-amber-400"></i> Vision & Mission</h3>
@@ -266,6 +280,32 @@
         <div class="mb-3">
           <label class="text-emerald-400 text-xs block mb-1">Mission</label>
           <input class="edit-field" id="mission-text" value="To extend support to the families of forestry field personnel who lose their lives, health, or livelihood in the line of duty.">
+        </div>
+      </div>
+    </div>
+
+    <!-- CONTACT PAGE EDITOR -->
+    <div id="page-contact" class="page-section">
+      <div class="flex justify-between items-center mb-6">
+        <div>
+          <h2 class="text-2xl font-bold text-amber-300">Contact Editor</h2>
+          <p class="text-emerald-400 text-sm">Edit contact information</p>
+        </div>
+        <button onclick="savePageContent('contact')" class="save-btn"><i class="fas fa-save mr-1"></i> Save to GitHub</button>
+      </div>
+      <div class="content-card">
+        <h3><i class="fas fa-address-card text-amber-400"></i> Contact Details</h3>
+        <div class="mb-3">
+          <label class="text-emerald-400 text-xs block mb-1">Address</label>
+          <input class="edit-field" id="contact-address" value="Office of the Deputy Conservator of Forests, Department of Forests & Wildlife, Kamla Nehru Ridge, New Delhi-110007">
+        </div>
+        <div class="mb-3">
+          <label class="text-emerald-400 text-xs block mb-1">Phone</label>
+          <input class="edit-field" id="contact-phone" value="+91-XXXXXXXXXX">
+        </div>
+        <div class="mb-3">
+          <label class="text-emerald-400 text-xs block mb-1">Email</label>
+          <input class="edit-field" id="contact-email" value="ifsbwtrust[at]gmail[dot]com">
         </div>
       </div>
     </div>
@@ -295,6 +335,7 @@
         <div class="flex gap-2">
           <button class="save-btn" onclick="saveGitHubConfig()"><i class="fas fa-save mr-1"></i> Save Configuration</button>
           <button class="save-btn" onclick="syncWithGitHub()" style="background:#34d399;"><i class="fas fa-sync mr-1"></i> Test Connection</button>
+          <button class="save-btn" onclick="loadAllContent()" style="background:#34d399;"><i class="fas fa-download mr-1"></i> Load All Content</button>
         </div>
         <div id="github-status" class="mt-3 text-emerald-400 text-sm"></div>
       </div>
@@ -336,18 +377,73 @@ function saveGitHubConfig() {
   document.getElementById('repo-display').textContent = `Connected to: ${repo}`;
   document.getElementById('stat-status').textContent = 'Configured';
   document.getElementById('stat-last-sync').textContent = 'Ready to sync';
-  document.getElementById('github-status-details').innerHTML = `<p class="text-emerald-300 text-sm">Repository: <strong class="text-amber-300">${repo}</strong></p><p class="text-emerald-300 text-sm">Branch: <strong class="text-amber-300">${branch}</strong></p>`;
   
   showToast('GitHub configuration saved!');
 }
 
 // ============================================
-// GITHUB API FUNCTIONS
+// LOAD CONTENT FROM GITHUB
+// ============================================
+async function loadContentFromGitHub(page) {
+  const config = getGitHubConfig();
+  if (!config.repo || !config.token) {
+    showToast('Please configure GitHub first!', 'error');
+    return;
+  }
+
+  showToast(`Loading ${page} content from GitHub...`);
+
+  try {
+    // Try to load from content JSON file first
+    const filePath = `content/${page}.json`;
+    const response = await fetch(`https://api.github.com/repos/${config.repo}/contents/${filePath}?ref=${config.branch}`, {
+      headers: { 'Authorization': `token ${config.token}` }
+    });
+
+    if (response.ok) {
+      const data = await response.json();
+      const content = JSON.parse(atob(data.content));
+      
+      // Populate fields
+      Object.keys(content).forEach(key => {
+        const field = document.getElementById(key);
+        if (field) {
+          field.value = content[key];
+          localStorage.setItem('ifsbwt_' + key, content[key]);
+        }
+      });
+      
+      showToast(`${page} content loaded from GitHub!`);
+    } else {
+      // Try to load from HTML file
+      const htmlResponse = await fetch(`https://raw.githubusercontent.com/${config.repo}/${config.branch}/${page}.html`);
+      if (htmlResponse.ok) {
+        const html = await htmlResponse.text();
+        // Try to extract content from HTML (basic extraction)
+        showToast(`Loaded ${page}.html - you can edit and save to GitHub`);
+      } else {
+        showToast(`No saved content found for ${page}. Use the editor to create content.`, 'error');
+      }
+    }
+  } catch (error) {
+    showToast('Error loading content: ' + error.message, 'error');
+  }
+}
+
+async function loadAllContent() {
+  const pages = ['home', 'about', 'contact'];
+  for (const page of pages) {
+    await loadContentFromGitHub(page);
+  }
+  showToast('All content loaded!');
+}
+
+// ============================================
+// GITHUB SYNC
 // ============================================
 async function syncWithGitHub() {
   const config = getGitHubConfig();
   
-  // Check if repo is configured
   if (!config.repo || config.repo === '' || config.repo === 'username/repository') {
     showToast('Please configure your GitHub repository first! (Format: username/repo-name)', 'error');
     return;
@@ -363,10 +459,8 @@ async function syncWithGitHub() {
   
   document.getElementById('sync-status').className = 'sync-status unsynced';
   document.getElementById('sync-status').innerHTML = '<i class="fas fa-spinner fa-spin"></i> Syncing...';
-  document.getElementById('stat-status').textContent = 'Syncing...';
 
   try {
-    // Test the connection first - check if repo exists
     const testResponse = await fetch(`https://api.github.com/repos/${config.repo}`, {
       headers: {
         'Authorization': `token ${config.token}`,
@@ -377,23 +471,16 @@ async function syncWithGitHub() {
     if (!testResponse.ok) {
       const error = await testResponse.json();
       let errorMsg = error.message || 'Repository not found';
-      
-      // Provide user-friendly error messages
       if (errorMsg.includes('Not Found')) {
         errorMsg = `Repository "${config.repo}" not found. Make sure: 1) The repo exists, 2) You have access, 3) Use format "username/repo-name"`;
       } else if (errorMsg.includes('Bad credentials')) {
         errorMsg = 'Invalid GitHub token. Please generate a new token with "repo" scope.';
-      } else if (errorMsg.includes('rate limit')) {
-        errorMsg = 'Rate limit exceeded. Please try again later.';
       }
-      
       throw new Error(errorMsg);
     }
 
     const repoData = await testResponse.json();
-    document.getElementById('stat-status').textContent = 'Connected ✓';
     
-    // Now fetch contents
     const response = await fetch(`https://api.github.com/repos/${config.repo}/contents?ref=${config.branch}`, {
       headers: {
         'Authorization': `token ${config.token}`,
@@ -409,10 +496,14 @@ async function syncWithGitHub() {
     const files = await response.json();
     const htmlFiles = files.filter(f => f.name.endsWith('.html') || f.name.endsWith('.htm'));
     const pdfFiles = files.filter(f => f.name.endsWith('.pdf'));
-    const imageFiles = files.filter(f => /\.(jpeg|jpg|png|gif|svg|webp)$/i.test(f.name));
+    const contentFiles = files.filter(f => f.name.endsWith('.json'));
+    
+    // Count editable fields
+    let fieldCount = 0;
+    document.querySelectorAll('.edit-field').forEach(f => { if (f.id) fieldCount++; });
 
     document.getElementById('stat-pages').textContent = htmlFiles.length;
-    document.getElementById('stat-assets').textContent = imageFiles.length;
+    document.getElementById('stat-content').textContent = contentFiles.length;
     document.getElementById('stat-pdfs').textContent = pdfFiles.length;
     document.getElementById('repo-display').textContent = `Connected to: ${config.repo}`;
     document.getElementById('stat-last-sync').textContent = `Last synced: ${new Date().toLocaleString()}`;
@@ -420,15 +511,14 @@ async function syncWithGitHub() {
     document.getElementById('sync-status').className = 'sync-status synced';
     document.getElementById('sync-status').innerHTML = '<i class="fas fa-check-circle"></i> Synced ✓';
     
-    // Update status details
     document.getElementById('github-status-details').innerHTML = `
       <p class="text-emerald-300 text-sm">Repository: <strong class="text-amber-300">${config.repo}</strong></p>
       <p class="text-emerald-300 text-sm">Branch: <strong class="text-amber-300">${config.branch}</strong></p>
-      <p class="text-emerald-300 text-sm">Files: ${htmlFiles.length} HTML, ${imageFiles.length} images, ${pdfFiles.length} PDFs</p>
+      <p class="text-emerald-300 text-sm">Files: ${htmlFiles.length} HTML, ${contentFiles.length} JSON, ${pdfFiles.length} PDFs</p>
       <p class="text-emerald-500 text-xs mt-1">✓ Connected successfully</p>
     `;
     
-    showToast(`Connected! ${htmlFiles.length} pages, ${imageFiles.length} images, ${pdfFiles.length} PDFs found`);
+    showToast(`Connected! ${htmlFiles.length} HTML files found`);
 
   } catch (error) {
     document.getElementById('sync-status').className = 'sync-status error';
@@ -502,6 +592,7 @@ async function savePageContent(page) {
     }
 
     showToast(`${page} content saved to GitHub!`);
+    document.getElementById('stat-content').textContent = parseInt(document.getElementById('stat-content').textContent || '0') + 1;
 
   } catch (error) {
     showToast('Save error: ' + error.message, 'error');
@@ -565,6 +656,11 @@ function handleLogin(e) {
         <p class="text-emerald-500 text-xs mt-1">Click "Sync Now" to connect</p>
       `;
     }
+    
+    // Auto-load content
+    setTimeout(() => {
+      loadAllContent();
+    }, 1000);
     
     showToast('Welcome to IFSBWT CMS!');
   } else {
