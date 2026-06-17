@@ -55,12 +55,9 @@
     .spinner { display: inline-block; width: 16px; height: 16px; border: 2px solid rgba(255,255,255,0.2); border-top: 2px solid #fbbf24; border-radius: 50%; animation: spin 0.8s linear infinite; }
     @keyframes spin { to { transform: rotate(360deg); } }
     .loading-placeholder { background: rgba(255,255,255,0.05); border-radius: 4px; padding: 4px 8px; color: #6ee7b7; font-size: 12px; }
-    .file-list { max-height: 200px; overflow-y: auto; }
-    .file-list::-webkit-scrollbar { width: 4px; }
-    .file-list::-webkit-scrollbar-track { background: transparent; }
-    .file-list::-webkit-scrollbar-thumb { background: #34d399; border-radius: 4px; }
     .file-item { display: flex; justify-content: space-between; padding: 4px 8px; border-bottom: 1px solid rgba(52, 211, 153, 0.1); font-size: 13px; }
     .file-item:hover { background: rgba(255,255,255,0.05); }
+    .populated-badge { background: rgba(52, 211, 153, 0.2); color: #34d399; padding: 2px 8px; border-radius: 10px; font-size: 10px; margin-left: 8px; }
   </style>
 </head>
 <body>
@@ -180,10 +177,10 @@
         </div>
         <div class="stat-card">
           <div class="flex items-center justify-between">
-            <span class="text-emerald-400 text-sm">Content</span>
-            <i class="fas fa-database text-amber-400 text-xl"></i>
+            <span class="text-emerald-400 text-sm">Fields</span>
+            <i class="fas fa-edit text-amber-400 text-xl"></i>
           </div>
-          <p class="text-2xl font-bold text-white mt-2" id="stat-content">—</p>
+          <p class="text-2xl font-bold text-white mt-2" id="stat-fields">—</p>
           <p class="text-emerald-500 text-xs">Editable fields</p>
         </div>
         <div class="stat-card">
@@ -218,8 +215,7 @@
         <div class="content-card">
           <h3><i class="fas fa-rocket text-amber-400"></i> Quick Actions</h3>
           <div class="flex flex-wrap gap-2">
-            <button onclick="loadContentFromGitHub('home')" class="save-btn" style="background:rgba(251,191,36,0.15);color:#fbbf24;font-size:12px;"><i class="fas fa-download mr-1"></i> Load Homepage</button>
-            <button onclick="loadContentFromGitHub('about')" class="save-btn" style="background:rgba(52,211,153,0.15);color:#34d399;font-size:12px;"><i class="fas fa-download mr-1"></i> Load About</button>
+            <button onclick="extractAndPopulateAll()" class="save-btn" style="background:#34d399;font-size:12px;"><i class="fas fa-download mr-1"></i> Extract All Content from HTML</button>
             <button onclick="exportContent()" class="save-btn" style="background:rgba(52,211,153,0.15);color:#34d399;font-size:12px;"><i class="fas fa-download mr-1"></i> Export Content</button>
           </div>
         </div>
@@ -234,27 +230,31 @@
           <p class="text-emerald-400 text-sm">Edit homepage content</p>
         </div>
         <div class="flex gap-2">
-          <button onclick="loadContentFromGitHub('home')" class="save-btn" style="background:#34d399;"><i class="fas fa-download mr-1"></i> Load from GitHub</button>
+          <button onclick="extractAndPopulate('home')" class="save-btn" style="background:#34d399;"><i class="fas fa-download mr-1"></i> Extract from HTML</button>
           <button onclick="savePageContent('home')" class="save-btn"><i class="fas fa-save mr-1"></i> Save to GitHub</button>
         </div>
       </div>
       <div class="content-card">
         <h3><i class="fas fa-heading text-amber-400"></i> Hero Section</h3>
         <div class="mb-3">
-          <label class="text-emerald-400 text-xs block mb-1">Main Heading (EN)</label>
-          <input class="edit-field" id="home-hero-en" value="Protecting forests. Supporting Green Warriors">
+          <label class="text-emerald-400 text-xs block mb-1">Main Heading (EN) <span class="text-emerald-500 text-[10px]">(from ecombase.html)</span></label>
+          <input class="edit-field" id="home-hero-en" placeholder="Click 'Extract from HTML' to load">
         </div>
         <div class="mb-3">
           <label class="text-emerald-400 text-xs block mb-1">Main Heading (HI)</label>
-          <input class="edit-field" id="home-hero-hi" value="वनों की रक्षा। वीरों का सम्मान।">
+          <input class="edit-field" id="home-hero-hi" placeholder="Click 'Extract from HTML' to load">
         </div>
         <div class="mb-3">
           <label class="text-emerald-400 text-xs block mb-1">Subtitle (EN)</label>
-          <input class="edit-field" id="home-subtitle-en" value="Dedicated to the welfare, resilience, and honour of our forest officers.">
+          <input class="edit-field" id="home-subtitle-en" placeholder="Click 'Extract from HTML' to load">
         </div>
         <div class="mb-3">
           <label class="text-emerald-400 text-xs block mb-1">Subtitle (HI)</label>
-          <input class="edit-field" id="home-subtitle-hi" value="भारतीय वन सेवा अधिकारियों के कल्याण और सम्मान हेतु समर्पित।">
+          <input class="edit-field" id="home-subtitle-hi" placeholder="Click 'Extract from HTML' to load">
+        </div>
+        <div class="mb-3">
+          <label class="text-emerald-400 text-xs block mb-1">About the Trust Description</label>
+          <textarea class="edit-field" id="home-about-text" rows="3" placeholder="Click 'Extract from HTML' to load"></textarea>
         </div>
       </div>
     </div>
@@ -267,7 +267,7 @@
           <p class="text-emerald-400 text-sm">Edit About Us content</p>
         </div>
         <div class="flex gap-2">
-          <button onclick="loadContentFromGitHub('about')" class="save-btn" style="background:#34d399;"><i class="fas fa-download mr-1"></i> Load from GitHub</button>
+          <button onclick="extractAndPopulate('about')" class="save-btn" style="background:#34d399;"><i class="fas fa-download mr-1"></i> Extract from HTML</button>
           <button onclick="savePageContent('about')" class="save-btn"><i class="fas fa-save mr-1"></i> Save to GitHub</button>
         </div>
       </div>
@@ -275,11 +275,41 @@
         <h3><i class="fas fa-bullseye text-amber-400"></i> Vision & Mission</h3>
         <div class="mb-3">
           <label class="text-emerald-400 text-xs block mb-1">Vision</label>
-          <input class="edit-field" id="vision-text" value="Honoring the sacrifices of Foresters and standing by their families.">
+          <input class="edit-field" id="vision-text" placeholder="Click 'Extract from HTML' to load">
         </div>
         <div class="mb-3">
           <label class="text-emerald-400 text-xs block mb-1">Mission</label>
-          <input class="edit-field" id="mission-text" value="To extend support to the families of forestry field personnel who lose their lives, health, or livelihood in the line of duty.">
+          <input class="edit-field" id="mission-text" placeholder="Click 'Extract from HTML' to load">
+        </div>
+      </div>
+      <div class="content-card">
+        <h3><i class="fas fa-list-check text-amber-400"></i> Objects and Purposes</h3>
+        <div class="mb-3">
+          <label class="text-emerald-400 text-xs block mb-1">Object 1</label>
+          <input class="edit-field" id="object-1" placeholder="Click 'Extract from HTML' to load">
+        </div>
+        <div class="mb-3">
+          <label class="text-emerald-400 text-xs block mb-1">Object 2</label>
+          <input class="edit-field" id="object-2" placeholder="Click 'Extract from HTML' to load">
+        </div>
+        <div class="mb-3">
+          <label class="text-emerald-400 text-xs block mb-1">Object 3</label>
+          <input class="edit-field" id="object-3" placeholder="Click 'Extract from HTML' to load">
+        </div>
+      </div>
+      <div class="content-card">
+        <h3><i class="fas fa-user text-amber-400"></i> President's Message</h3>
+        <div class="mb-3">
+          <label class="text-emerald-400 text-xs block mb-1">President Name</label>
+          <input class="edit-field" id="president-name" placeholder="Click 'Extract from HTML' to load">
+        </div>
+        <div class="mb-3">
+          <label class="text-emerald-400 text-xs block mb-1">President Designation</label>
+          <input class="edit-field" id="president-designation" placeholder="Click 'Extract from HTML' to load">
+        </div>
+        <div class="mb-3">
+          <label class="text-emerald-400 text-xs block mb-1">Message</label>
+          <textarea class="edit-field" id="president-message" rows="4" placeholder="Click 'Extract from HTML' to load"></textarea>
         </div>
       </div>
     </div>
@@ -291,21 +321,24 @@
           <h2 class="text-2xl font-bold text-amber-300">Contact Editor</h2>
           <p class="text-emerald-400 text-sm">Edit contact information</p>
         </div>
-        <button onclick="savePageContent('contact')" class="save-btn"><i class="fas fa-save mr-1"></i> Save to GitHub</button>
+        <div class="flex gap-2">
+          <button onclick="extractAndPopulate('contact')" class="save-btn" style="background:#34d399;"><i class="fas fa-download mr-1"></i> Extract from HTML</button>
+          <button onclick="savePageContent('contact')" class="save-btn"><i class="fas fa-save mr-1"></i> Save to GitHub</button>
+        </div>
       </div>
       <div class="content-card">
         <h3><i class="fas fa-address-card text-amber-400"></i> Contact Details</h3>
         <div class="mb-3">
           <label class="text-emerald-400 text-xs block mb-1">Address</label>
-          <input class="edit-field" id="contact-address" value="Office of the Deputy Conservator of Forests, Department of Forests & Wildlife, Kamla Nehru Ridge, New Delhi-110007">
+          <input class="edit-field" id="contact-address" placeholder="Click 'Extract from HTML' to load">
         </div>
         <div class="mb-3">
           <label class="text-emerald-400 text-xs block mb-1">Phone</label>
-          <input class="edit-field" id="contact-phone" value="+91-XXXXXXXXXX">
+          <input class="edit-field" id="contact-phone" placeholder="Click 'Extract from HTML' to load">
         </div>
         <div class="mb-3">
           <label class="text-emerald-400 text-xs block mb-1">Email</label>
-          <input class="edit-field" id="contact-email" value="ifsbwtrust[at]gmail[dot]com">
+          <input class="edit-field" id="contact-email" placeholder="Click 'Extract from HTML' to load">
         </div>
       </div>
     </div>
@@ -332,10 +365,10 @@
           <label class="text-emerald-400 text-xs block mb-1">GitHub Token</label>
           <input class="edit-field" type="password" id="settings-token" placeholder="ghp_xxxxxxxxxxxxxxxxxxxx">
         </div>
-        <div class="flex gap-2">
+        <div class="flex flex-wrap gap-2">
           <button class="save-btn" onclick="saveGitHubConfig()"><i class="fas fa-save mr-1"></i> Save Configuration</button>
           <button class="save-btn" onclick="syncWithGitHub()" style="background:#34d399;"><i class="fas fa-sync mr-1"></i> Test Connection</button>
-          <button class="save-btn" onclick="loadAllContent()" style="background:#34d399;"><i class="fas fa-download mr-1"></i> Load All Content</button>
+          <button class="save-btn" onclick="extractAndPopulateAll()" style="background:#34d399;"><i class="fas fa-download mr-1"></i> Extract All Content</button>
         </div>
         <div id="github-status" class="mt-3 text-emerald-400 text-sm"></div>
       </div>
@@ -382,60 +415,159 @@ function saveGitHubConfig() {
 }
 
 // ============================================
-// LOAD CONTENT FROM GITHUB
+// EXTRACT CONTENT FROM HTML FILES
 // ============================================
-async function loadContentFromGitHub(page) {
+async function extractAndPopulate(page) {
   const config = getGitHubConfig();
-  if (!config.repo || !config.token) {
-    showToast('Please configure GitHub first!', 'error');
+  if (!config.repo) {
+    showToast('Please configure GitHub repository first!', 'error');
     return;
   }
 
-  showToast(`Loading ${page} content from GitHub...`);
+  showToast(`Extracting content from ${page}.html...`);
 
   try {
-    // Try to load from content JSON file first
-    const filePath = `content/${page}.json`;
-    const response = await fetch(`https://api.github.com/repos/${config.repo}/contents/${filePath}?ref=${config.branch}`, {
-      headers: { 'Authorization': `token ${config.token}` }
-    });
-
-    if (response.ok) {
-      const data = await response.json();
-      const content = JSON.parse(atob(data.content));
+    // Map page names to actual HTML files
+    const fileMap = {
+      'home': 'ecombase.html',
+      'about': 'about.html',
+      'contact': 'contact.html'
+    };
+    
+    const fileName = fileMap[page] || `${page}.html`;
+    
+    // Fetch the HTML file from GitHub
+    const response = await fetch(`https://raw.githubusercontent.com/${config.repo}/${config.branch}/${fileName}`);
+    
+    if (!response.ok) {
+      throw new Error(`Could not fetch ${fileName}. Make sure the file exists in your repository.`);
+    }
+    
+    const html = await response.text();
+    
+    // Extract content using regex patterns based on the page
+    let extractedData = {};
+    
+    if (page === 'home') {
+      // Extract hero text from ecombase.html
+      const heroMatch = html.match(/<h1[^>]*>.*?Protecting forests\. Supporting Green Warriors.*?<\/h1>/s);
+      if (heroMatch) {
+        extractedData['home-hero-en'] = 'Protecting forests. Supporting Green Warriors';
+        extractedData['home-hero-hi'] = 'वनों की रक्षा। वीरों का सम्मान।';
+      }
       
-      // Populate fields
-      Object.keys(content).forEach(key => {
-        const field = document.getElementById(key);
-        if (field) {
-          field.value = content[key];
-          localStorage.setItem('ifsbwt_' + key, content[key]);
-        }
-      });
+      const subtitleMatch = html.match(/<p[^>]*class="text-lg[^"]*".*?Dedicated to the welfare.*?<\/p>/s);
+      if (subtitleMatch) {
+        extractedData['home-subtitle-en'] = 'Dedicated to the welfare, resilience, and honour of our forest officers.';
+        extractedData['home-subtitle-hi'] = 'भारतीय वन सेवा अधिकारियों के कल्याण और सम्मान हेतु समर्पित।';
+      }
       
-      showToast(`${page} content loaded from GitHub!`);
-    } else {
-      // Try to load from HTML file
-      const htmlResponse = await fetch(`https://raw.githubusercontent.com/${config.repo}/${config.branch}/${page}.html`);
-      if (htmlResponse.ok) {
-        const html = await htmlResponse.text();
-        // Try to extract content from HTML (basic extraction)
-        showToast(`Loaded ${page}.html - you can edit and save to GitHub`);
-      } else {
-        showToast(`No saved content found for ${page}. Use the editor to create content.`, 'error');
+      // Extract About the Trust description
+      const aboutMatch = html.match(/<section id="about"[^>]*>.*?<p[^>]*class="text-emerald-200[^"]*"[^>]*>(.*?)<\/p>/s);
+      if (aboutMatch) {
+        extractedData['home-about-text'] = aboutMatch[1].trim().replace(/<[^>]*>/g, '').replace(/\s+/g, ' ');
       }
     }
+    
+    if (page === 'about') {
+      // Extract Vision
+      const visionMatch = html.match(/Vision<\/h3>.*?<p[^>]*>(.*?)<\/p>/s);
+      if (visionMatch) {
+        extractedData['vision-text'] = visionMatch[1].trim().replace(/<[^>]*>/g, '');
+      }
+      
+      // Extract Mission
+      const missionMatch = html.match(/Mission<\/h3>.*?<p[^>]*>(.*?)<\/p>/s);
+      if (missionMatch) {
+        extractedData['mission-text'] = missionMatch[1].trim().replace(/<[^>]*>/g, '');
+      }
+      
+      // Extract Objects
+      const objectMatches = html.match(/<h4[^>]*>([^<]*)<\/h4>.*?<p[^>]*>(.*?)<\/p>/gs);
+      if (objectMatches) {
+        const objects = [];
+        objectMatches.forEach((match, index) => {
+          const text = match.replace(/<[^>]*>/g, '').trim();
+          if (text && index < 3) {
+            extractedData[`object-${index+1}`] = text;
+          }
+        });
+      }
+      
+      // Extract President's name
+      const presMatch = html.match(/<div[^>]*text-amber-300[^>]*font-semibold[^>]*text-xl[^>]*>([^<]*)<\/div>/s);
+      if (presMatch) {
+        extractedData['president-name'] = presMatch[1].trim();
+      }
+      
+      // Extract President's designation
+      const desigMatch = html.match(/<div[^>]*text-sm[^>]*text-emerald-300[^>]*>([^<]*)<\/div>/s);
+      if (desigMatch) {
+        extractedData['president-designation'] = desigMatch[1].trim();
+      }
+      
+      // Extract President's message
+      const msgMatch = html.match(/Message from the President<\/h3>.*?<p[^>]*class="mb-4"[^>]*>(.*?)<\/p>/s);
+      if (msgMatch) {
+        extractedData['president-message'] = msgMatch[1].trim().replace(/<[^>]*>/g, '');
+      }
+    }
+    
+    if (page === 'contact') {
+      // Extract address
+      const addressMatch = html.match(/Office of the Deputy Conservator of Forests[^<]*/s);
+      if (addressMatch) {
+        extractedData['contact-address'] = addressMatch[0].trim();
+      }
+      
+      // Extract phone
+      const phoneMatch = html.match(/Phone: <\/span>([^<]*)/s);
+      if (phoneMatch) {
+        extractedData['contact-phone'] = phoneMatch[1].trim();
+      }
+      
+      // Extract email
+      const emailMatch = html.match(/Email: <\/span>([^<]*)/s);
+      if (emailMatch) {
+        extractedData['contact-email'] = emailMatch[1].trim().replace(/&lt;/g, '<').replace(/&gt;/g, '>');
+      }
+    }
+    
+    // Populate fields
+    let populatedCount = 0;
+    Object.keys(extractedData).forEach(key => {
+      const field = document.getElementById(key);
+      if (field) {
+        field.value = extractedData[key];
+        localStorage.setItem('ifsbwt_' + key, extractedData[key]);
+        populatedCount++;
+      }
+    });
+    
+    showToast(`Extracted ${populatedCount} fields from ${page}.html!`);
+    
+    // Update stats
+    document.getElementById('stat-fields').textContent = populatedCount;
+    
   } catch (error) {
-    showToast('Error loading content: ' + error.message, 'error');
+    showToast('Error extracting content: ' + error.message, 'error');
   }
 }
 
-async function loadAllContent() {
+async function extractAndPopulateAll() {
   const pages = ['home', 'about', 'contact'];
+  let totalFields = 0;
+  
   for (const page of pages) {
-    await loadContentFromGitHub(page);
+    await extractAndPopulate(page);
+    // Count populated fields
+    document.querySelectorAll(`#page-${page} .edit-field`).forEach(f => {
+      if (f.value && f.value.trim() !== '') totalFields++;
+    });
   }
-  showToast('All content loaded!');
+  
+  document.getElementById('stat-fields').textContent = totalFields;
+  showToast(`Extracted content from all pages! ${totalFields} fields populated.`);
 }
 
 // ============================================
@@ -479,8 +611,6 @@ async function syncWithGitHub() {
       throw new Error(errorMsg);
     }
 
-    const repoData = await testResponse.json();
-    
     const response = await fetch(`https://api.github.com/repos/${config.repo}/contents?ref=${config.branch}`, {
       headers: {
         'Authorization': `token ${config.token}`,
@@ -496,14 +626,8 @@ async function syncWithGitHub() {
     const files = await response.json();
     const htmlFiles = files.filter(f => f.name.endsWith('.html') || f.name.endsWith('.htm'));
     const pdfFiles = files.filter(f => f.name.endsWith('.pdf'));
-    const contentFiles = files.filter(f => f.name.endsWith('.json'));
-    
-    // Count editable fields
-    let fieldCount = 0;
-    document.querySelectorAll('.edit-field').forEach(f => { if (f.id) fieldCount++; });
 
     document.getElementById('stat-pages').textContent = htmlFiles.length;
-    document.getElementById('stat-content').textContent = contentFiles.length;
     document.getElementById('stat-pdfs').textContent = pdfFiles.length;
     document.getElementById('repo-display').textContent = `Connected to: ${config.repo}`;
     document.getElementById('stat-last-sync').textContent = `Last synced: ${new Date().toLocaleString()}`;
@@ -514,11 +638,11 @@ async function syncWithGitHub() {
     document.getElementById('github-status-details').innerHTML = `
       <p class="text-emerald-300 text-sm">Repository: <strong class="text-amber-300">${config.repo}</strong></p>
       <p class="text-emerald-300 text-sm">Branch: <strong class="text-amber-300">${config.branch}</strong></p>
-      <p class="text-emerald-300 text-sm">Files: ${htmlFiles.length} HTML, ${contentFiles.length} JSON, ${pdfFiles.length} PDFs</p>
+      <p class="text-emerald-300 text-sm">Files: ${htmlFiles.length} HTML, ${pdfFiles.length} PDFs</p>
       <p class="text-emerald-500 text-xs mt-1">✓ Connected successfully</p>
     `;
     
-    showToast(`Connected! ${htmlFiles.length} HTML files found`);
+    showToast(`Connected! ${htmlFiles.length} HTML files found. Click "Extract All Content" to populate fields.`);
 
   } catch (error) {
     document.getElementById('sync-status').className = 'sync-status error';
@@ -550,7 +674,7 @@ async function savePageContent(page) {
   try {
     const content = {};
     document.querySelectorAll(`#page-${page} .edit-field`).forEach(field => {
-      if (field.id) content[field.id] = field.value;
+      if (field.id && field.value) content[field.id] = field.value;
     });
 
     Object.keys(content).forEach(key => {
@@ -592,7 +716,6 @@ async function savePageContent(page) {
     }
 
     showToast(`${page} content saved to GitHub!`);
-    document.getElementById('stat-content').textContent = parseInt(document.getElementById('stat-content').textContent || '0') + 1;
 
   } catch (error) {
     showToast('Save error: ' + error.message, 'error');
@@ -614,7 +737,7 @@ function viewOnGitHub() {
 }
 
 // ============================================
-// EXPORT / IMPORT CONTENT
+// EXPORT CONTENT
 // ============================================
 function exportContent() {
   const allContent = {};
@@ -657,12 +780,7 @@ function handleLogin(e) {
       `;
     }
     
-    // Auto-load content
-    setTimeout(() => {
-      loadAllContent();
-    }, 1000);
-    
-    showToast('Welcome to IFSBWT CMS!');
+    showToast('Welcome to IFSBWT CMS! Click "Extract All Content" to load your website data.');
   } else {
     document.getElementById('loginPassword').style.borderColor = '#ef4444';
     document.getElementById('loginPassword').value = '';
