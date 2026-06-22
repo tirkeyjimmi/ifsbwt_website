@@ -32,9 +32,6 @@
     }
 
     /* Hover dropdowns */
-    .group:hover .group-hover\:block {
-      display: block;
-    }
     .group .group-hover\:block {
       display: none;
     }
@@ -365,11 +362,24 @@
     <!-- List container -->
     <div class="rounded-2xl border border-emerald-700 overflow-hidden shadow-xl divide-y divide-emerald-700/60">
 
-           <!-- Row 3 — expandable text (no PDF) -->
+      <!-- Row 1 — PDF link -->
+      <div class="news-row flex items-center gap-4 px-6 py-4 bg-emerald-800/50">
+        <span class="text-emerald-400 font-semibold text-sm w-6 shrink-0 text-right">1.</span>
+        <span class="news-title flex-1 text-sm font-medium leading-snug" onclick="toggleNews(this)">
+          The Lesser Known Khaki — IGNFA Publication
+        </span>
+        <a href="https://www.ignfa.gov.in/publications/1743811-the-lesser-known-khaki-91020.pdf"
+           target="_blank" rel="noopener noreferrer"
+           title="Open PDF" class="pdf-icon shrink-0 text-red-400 text-2xl ml-2">
+          <i class="fas fa-file-pdf"></i>
+        </a>
+      </div>
+
+      <!-- Row 2 — expandable text (no PDF) -->
       <div>
         <div class="news-row flex items-center gap-4 px-6 py-4 bg-emerald-800/50 cursor-pointer"
              onclick="toggleExpand('msg-radhakrishnan', this)">
-          <span class="text-emerald-400 font-semibold text-sm w-6 shrink-0 text-right">1.</span>
+          <span class="text-emerald-400 font-semibold text-sm w-6 shrink-0 text-right">2.</span>
           <span class="news-title flex-1 text-sm font-medium leading-snug">
             Tragic case of late Shri Sohan Singh, Forest Guard, Uttarakhand
           </span>
@@ -387,11 +397,11 @@
         </div>
       </div>
 
-      <!-- Row 2 — expandable text (no PDF) -->
+      <!-- Row 3 — expandable text (no PDF) -->
       <div>
         <div class="news-row flex items-center gap-4 px-6 py-4 bg-emerald-800/50 cursor-pointer"
              onclick="toggleExpand('msg-rasmita', this)">
-          <span class="text-emerald-400 font-semibold text-sm w-6 shrink-0 text-right">2.</span>
+          <span class="text-emerald-400 font-semibold text-sm w-6 shrink-0 text-right">3.</span>
           <span class="news-title flex-1 text-sm font-medium leading-snug">
             Case of Ms Rasmita Subuddhi, Forest Guard, Malkangiri Forest Division, Odisha
           </span>
@@ -408,9 +418,9 @@
         </div>
       </div>
 
-      <!-- Row 1 -->
+      <!-- Row 4 -->
       <div class="news-row flex items-center gap-4 px-6 py-4 bg-emerald-800/50">
-        <span class="text-emerald-400 font-semibold text-sm w-6 shrink-0 text-right">3.</span>
+        <span class="text-emerald-400 font-semibold text-sm w-6 shrink-0 text-right">4.</span>
         <span class="news-title flex-1 text-sm font-medium leading-snug" onclick="toggleNews(this)">
           The Trust makes an appeal to the Young IFS officers.
         </span>
@@ -420,9 +430,9 @@
         </a>
       </div>
 
-      <!-- Row 2 -->
+      <!-- Row 5 -->
       <div class="news-row flex items-center gap-4 px-6 py-4 bg-emerald-800/50">
-        <span class="text-emerald-400 font-semibold text-sm w-6 shrink-0 text-right">4.</span>
+        <span class="text-emerald-400 font-semibold text-sm w-6 shrink-0 text-right">5.</span>
         <span class="news-title flex-1 text-sm font-medium leading-snug" onclick="toggleNews(this)">
           The Trust writes to PCCFs( HoFF) to nominate state co-ordinators and nodal officers for the Trust.
         </span>
@@ -432,11 +442,11 @@
         </a>
       </div>
 
-      <!-- Row 3 — expandable text (no PDF) -->
+      <!-- Row 6 — expandable text (no PDF) -->
       <div>
         <div class="news-row flex items-center gap-4 px-6 py-4 bg-emerald-800/50 cursor-pointer"
-             onclick="toggleExpand('msg-radhakrishnan', this)">
-          <span class="text-emerald-400 font-semibold text-sm w-6 shrink-0 text-right">5.</span>
+             onclick="toggleExpand('msg-radhakrishnan2', this)">
+          <span class="text-emerald-400 font-semibold text-sm w-6 shrink-0 text-right">6.</span>
           <span class="news-title flex-1 text-sm font-medium leading-snug">
             Financial Assistance to the family of Thiru S Radhakrishan, ACF, TN Forest Academy
           </span>
@@ -444,7 +454,7 @@
             <i class="fas fa-chevron-down"></i>
           </span>
         </div>
-        <div id="msg-radhakrishnan" class="msg-panel">
+        <div id="msg-radhakrishnan2" class="msg-panel">
           <p>
             On <strong>May 30, 2026</strong>, the Trust provided financial assistance to the family of
             <strong>Thiru S Radhakrishan</strong>, Assistant Conservator of Forests, Tamil Nadu Forest Academy,
@@ -454,9 +464,9 @@
         </div>
       </div>
 
-      <!-- Row 4 -->
+      <!-- Row 7 -->
       <div class="news-row flex items-center gap-4 px-6 py-4 bg-emerald-800/50">
-        <span class="text-emerald-400 font-semibold text-sm w-6 shrink-0 text-right">6.</span>
+        <span class="text-emerald-400 font-semibold text-sm w-6 shrink-0 text-right">7.</span>
         <span class="news-title flex-1 text-sm font-medium leading-snug" onclick="toggleNews(this)">
           IFSBWT-Presentation Made to the Press on May 26, 2026 at Press Club of India.
         </span>
@@ -466,9 +476,9 @@
         </a>
       </div>
 
-      <!-- Row 5 -->
+      <!-- Row 8 -->
       <div class="news-row flex items-center gap-4 px-6 py-4 bg-emerald-800/40">
-        <span class="text-emerald-400 font-semibold text-sm w-6 shrink-0 text-right">7.</span>
+        <span class="text-emerald-400 font-semibold text-sm w-6 shrink-0 text-right">8.</span>
         <span class="news-title flex-1 text-sm font-medium leading-snug" onclick="toggleNews(this)">
           A copy of the presentation delivered during the Trust’s First General Body Meeting, held on May 24, 2026.
         </span>
@@ -478,9 +488,9 @@
         </a>
       </div>
 
-      <!-- Row 6 -->
+      <!-- Row 9 -->
       <div class="news-row flex items-center gap-4 px-6 py-4 bg-emerald-800/40">
-        <span class="text-emerald-400 font-semibold text-sm w-6 shrink-0 text-right">8.</span>
+        <span class="text-emerald-400 font-semibold text-sm w-6 shrink-0 text-right">9.</span>
         <span class="news-title flex-1 text-sm font-medium leading-snug" onclick="toggleNews(this)">
           IFSBWT-A Presentation Made to  Forestry Associations on May 23, 2026.
         </span>
