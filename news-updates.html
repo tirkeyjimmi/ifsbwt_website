@@ -362,17 +362,31 @@
     <!-- List container -->
     <div class="rounded-2xl border border-emerald-700 overflow-hidden shadow-xl divide-y divide-emerald-700/60">
 
-      <!-- Row 1 — PDF link -->
-      <div class="news-row flex items-center gap-4 px-6 py-4 bg-emerald-800/50">
-        <span class="text-emerald-400 font-semibold text-sm w-6 shrink-0 text-right">1.</span>
-        <span class="news-title flex-1 text-sm font-medium leading-snug" onclick="toggleNews(this)">
-          The Lesser Known Khaki — IGNFA Publication
-        </span>
-        <a href="https://www.ignfa.gov.in/publications/1743811-the-lesser-known-khaki-91020.pdf"
-           target="_blank" rel="noopener noreferrer"
-           title="Open PDF" class="pdf-icon shrink-0 text-red-400 text-2xl ml-2">
-          <i class="fas fa-file-pdf"></i>
-        </a>
+      <!-- Row 1 — expandable text + PDF link -->
+      <div>
+        <div class="news-row flex items-center gap-4 px-6 py-4 bg-emerald-800/50 cursor-pointer"
+             onclick="toggleExpand('msg-lesser-known-khaki', this)">
+          <span class="text-emerald-400 font-semibold text-sm w-6 shrink-0 text-right">1.</span>
+          <span class="news-title flex-1 text-sm font-medium leading-snug">
+            The Lesser Known Khaki — IGNFA Publication
+          </span>
+          <a href="https://www.ignfa.gov.in/publications/1743811-the-lesser-known-khaki-91020.pdf"
+             target="_blank" rel="noopener noreferrer"
+             title="Open PDF" class="pdf-icon shrink-0 text-red-400 text-2xl ml-2"
+             onclick="event.stopPropagation()">
+            <i class="fas fa-file-pdf"></i>
+          </a>
+          <span class="expand-icon shrink-0 text-xl ml-2">
+            <i class="fas fa-chevron-down"></i>
+          </span>
+        </div>
+        <div id="msg-lesser-known-khaki" class="msg-panel">
+          <p>
+            <strong>The Lesser Known Khaki</strong><br><br>
+            "Jungle mein mor nacha, kisne dekha?" — When the peacock dances deep in the forest, who sees it?<br><br>
+            In this striking artwork, <strong>Ms. Piyusha Pramod Jagtap, IFS (2014, Maharashtra)</strong>, reveals the unseen world of the forester — and the quiet, demanding work behind the khaki we rarely notice.
+          </p>
+        </div>
       </div>
 
       <!-- Row 2 — expandable text (no PDF) -->
