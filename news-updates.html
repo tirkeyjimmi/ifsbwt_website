@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
   <title>News Updates – IFS Benevolent and Welfare Trust</title>
   <script src="https://cdn.tailwindcss.com"></script>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:wght@700&display=swap" rel="stylesheet" />
   <style>
     html { scroll-behavior: smooth; }
     body { font-family: 'Inter', system-ui, sans-serif; }
@@ -96,14 +96,14 @@
 <body class="bg-gradient-to-b from-emerald-900 via-emerald-800 to-emerald-950 text-white min-h-screen">
 
 <!-- ════════════════════════════════════════════
-     NAVBAR  (corrected)
+     NAVBAR
 ════════════════════════════════════════════ -->
 <nav class="bg-emerald-900/95 nav-blur border-b border-emerald-800 sticky top-0 z-50 safe-top">
   <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
 
     <a href="ecombase.html" class="flex items-center gap-3">
       <img src="logo.jpeg" alt="IFS Benevolent and Welfare Trust Logo"
-           class="w-10 h-10 sm:w-14 sm:h-14 md:w-20 md:h-20 rounded-xl object-contain bg-white">
+           class="w-10 h-10 sm:w-14 sm:h-14 md:w-20 md:h-20 rounded-xl object-contain bg-white" />
       <div>
         <span class="heading-font text-sm sm:text-base md:text-xl font-bold text-emerald-200 leading-tight">
           IFS Benevolent and Welfare Trust
@@ -120,7 +120,6 @@
       <div class="relative">
         <button onclick="navToggle('aboutMenu')" class="hover:text-amber-300 transition">About Us</button>
         <div id="aboutMenu" class="hidden absolute mt-2 w-48 bg-white text-black shadow-lg p-3 border z-50 text-sm">
-          <!-- About the Trust – clickable link + hover submenu for PDFs -->
           <div class="relative group">
             <a href="about.html" class="flex items-center justify-between py-0.5 hover:text-emerald-700 w-full">
               About the Trust
@@ -224,7 +223,7 @@
 </nav>
 
 <!-- ════════════════════════════════════════════
-     MOBILE MENU  (corrected)
+     MOBILE MENU
 ════════════════════════════════════════════ -->
 <div id="mobileMenu" class="hidden md:hidden bg-emerald-900 border-b border-emerald-800 text-white text-sm z-40 safe-bottom">
 
@@ -360,10 +359,10 @@
     <!-- List container -->
     <div class="rounded-2xl border border-emerald-700 overflow-hidden shadow-xl divide-y divide-emerald-700/60">
 
-       <!-- Row 1 — expandable text + PDF link -->
+      <!-- Row 1 — SBI Statement (NEW unique ID) -->
       <div>
         <div class="news-row flex items-center gap-4 px-6 py-4 bg-emerald-800/50 cursor-pointer"
-             onclick="toggleExpand('msg-lesser-known-khaki', this)">
+             onclick="toggleExpand('msg-sbi-statement', this)">
           <span class="text-emerald-400 font-semibold text-sm w-6 shrink-0 text-right">1.</span>
           <span class="news-title flex-1 text-sm font-medium leading-snug">
             IFSBWT -SBI Statement of account as on July 15, 2026
@@ -378,7 +377,7 @@
             <i class="fas fa-chevron-down"></i>
           </span>
         </div>
-        <div id="msg-lesser-known-khaki" class="msg-panel">
+        <div id="msg-sbi-statement" class="msg-panel">
           <p>
             <strong>As of today, the Trust has the following funds in its bank account:</strong><br><br>
             Fixed Deposits: ₹10,00,000 (₹ 5+3+2 lakh)
@@ -389,7 +388,8 @@
           </p>
         </div>
       </div>
-      <!-- Row 1 — expandable text + PDF link -->
+
+      <!-- Row 2 — Lesser Known Khaki (kept original ID) -->
       <div>
         <div class="news-row flex items-center gap-4 px-6 py-4 bg-emerald-800/50 cursor-pointer"
              onclick="toggleExpand('msg-lesser-known-khaki', this)">
@@ -416,10 +416,10 @@
         </div>
       </div>
 
-      <!-- Row 2 — expandable text (no PDF) -->
+      <!-- Row 3 — Sohan Singh (no PDF) -->
       <div>
         <div class="news-row flex items-center gap-4 px-6 py-4 bg-emerald-800/50 cursor-pointer"
-             onclick="toggleExpand('msg-radhakrishnan', this)">
+             onclick="toggleExpand('msg-sohan-singh', this)">
           <span class="text-emerald-400 font-semibold text-sm w-6 shrink-0 text-right">3.</span>
           <span class="news-title flex-1 text-sm font-medium leading-snug">
             Tragic case of late Shri Sohan Singh, Forest Guard, Uttarakhand
@@ -428,7 +428,7 @@
             <i class="fas fa-chevron-down"></i>
           </span>
         </div>
-        <div id="msg-radhakrishnan" class="msg-panel">
+        <div id="msg-sohan-singh" class="msg-panel">
           <p>
             Shri Sohan Singh, a Forest Guard, Tons Forest Division, Uttarakhand, lost his life after falling in a deep gorge while battling a forest fire on June 17, 2026. 
             Following a news clip shared by a member, the IFSBWT at once approached the concerned DFO for the details of the case in the prescribed format. 
@@ -438,7 +438,7 @@
         </div>
       </div>
 
-      <!-- Row 3 — expandable text (no PDF) -->
+      <!-- Row 4 — Rasmita Subuddhi -->
       <div>
         <div class="news-row flex items-center gap-4 px-6 py-4 bg-emerald-800/50 cursor-pointer"
              onclick="toggleExpand('msg-rasmita', this)">
@@ -459,7 +459,7 @@
         </div>
       </div>
 
-      <!-- Row 4 -->
+      <!-- Row 5 — Appeal to Young IFS officers -->
       <div class="news-row flex items-center gap-4 px-6 py-4 bg-emerald-800/50">
         <span class="text-emerald-400 font-semibold text-sm w-6 shrink-0 text-right">5.</span>
         <span class="news-title flex-1 text-sm font-medium leading-snug" onclick="toggleNews(this)">
@@ -471,7 +471,7 @@
         </a>
       </div>
 
-      <!-- Row 5 -->
+      <!-- Row 6 — Letter to PCCFs -->
       <div class="news-row flex items-center gap-4 px-6 py-4 bg-emerald-800/50">
         <span class="text-emerald-400 font-semibold text-sm w-6 shrink-0 text-right">6.</span>
         <span class="news-title flex-1 text-sm font-medium leading-snug" onclick="toggleNews(this)">
@@ -483,7 +483,7 @@
         </a>
       </div>
 
-      <!-- Row 6 — expandable text (no PDF) -->
+      <!-- Row 7 — Radhakrishnan assistance -->
       <div>
         <div class="news-row flex items-center gap-4 px-6 py-4 bg-emerald-800/50 cursor-pointer"
              onclick="toggleExpand('msg-radhakrishnan2', this)">
@@ -505,7 +505,7 @@
         </div>
       </div>
 
-      <!-- Row 7 -->
+      <!-- Row 8 — Presentation to Press -->
       <div class="news-row flex items-center gap-4 px-6 py-4 bg-emerald-800/50">
         <span class="text-emerald-400 font-semibold text-sm w-6 shrink-0 text-right">8.</span>
         <span class="news-title flex-1 text-sm font-medium leading-snug" onclick="toggleNews(this)">
@@ -517,7 +517,7 @@
         </a>
       </div>
 
-      <!-- Row 8 -->
+      <!-- Row 9 — GBM Presentation -->
       <div class="news-row flex items-center gap-4 px-6 py-4 bg-emerald-800/40">
         <span class="text-emerald-400 font-semibold text-sm w-6 shrink-0 text-right">9.</span>
         <span class="news-title flex-1 text-sm font-medium leading-snug" onclick="toggleNews(this)">
@@ -529,7 +529,7 @@
         </a>
       </div>
 
-      <!-- Row 9 -->
+      <!-- Row 10 — Presentation to Forestry Associations -->
       <div class="news-row flex items-center gap-4 px-6 py-4 bg-emerald-800/40">
         <span class="text-emerald-400 font-semibold text-sm w-6 shrink-0 text-right">10.</span>
         <span class="news-title flex-1 text-sm font-medium leading-snug" onclick="toggleNews(this)">
