@@ -359,14 +359,36 @@
       Click the <i class="fas fa-file-pdf text-red-400"></i> icon to open or download the document.
     </p>
 
-    <!-- List container -->
+      <!-- List container -->
     <div class="rounded-2xl border border-emerald-700 overflow-hidden shadow-xl divide-y divide-emerald-700/60">
 
+      <!-- Row 1 — IFSBWT extends ₹3 lakh assistance to family of Late Sh. Hari Om-->
+      <div>
+        <div class="news-row flex items-center gap-4 px-6 py-4 bg-emerald-800/50 cursor-pointer"
+             onclick="toggleExpand('hari-om', this)">
+          <span class="text-emerald-400 font-semibold text-sm w-6 shrink-0 text-right">1.</span>
+          <span class="news-title flex-1 text-sm font-medium leading-snug">
+            IFSBWT extends ₹3 lakh assistance to family of Late Sh. Hari Om
+          </span>
+          <span class="expand-icon shrink-0 text-xl ml-2">
+            <i class="fas fa-chevron-down"></i>
+          </span>
+        </div>
+        <div id="hari-om" class="msg-panel">
+          <p>
+            The Trust on July 28,  2026 released ₹3 lakh to the family of Late Sh. Hari Om, Forester, Mahendergarh Forest Division, Haryana.
+Sh. Hari Om (31) lost his life on July 13, 2026, when a truck hit his motorcycle from behind while he was proceeding to attend an official meeting at the SDM office, Kanina. Married only in February 2026, he was the sole breadwinner of his family.
+Based on inputs received from the HFD regarding the family's financial condition, the Trust approved ₹2 lakh for his father and ₹1 lakh for his spouse.
+This is the 6th financial assistance extended by IFSBWT since its revival, reaffirming its commitment to supporting the families of forestry personnel in times of distress.
+          </p>
+        </div>
+      </div>
+      
       <!-- Row 1 — Draft Guidelines for Financial Assistance (NEW) -->
       <div>
         <div class="news-row flex items-center gap-4 px-6 py-4 bg-emerald-800/50 cursor-pointer"
              onclick="toggleExpand('msg-draft-guidelines', this)">
-          <span class="text-emerald-400 font-semibold text-sm w-6 shrink-0 text-right">1.</span>
+          <span class="text-emerald-400 font-semibold text-sm w-6 shrink-0 text-right">2.</span>
           <span class="news-title flex-1 text-sm font-medium leading-snug">
             Draft Guidelines for the scrutiny and evaluation of proposals — Open for Comments till July 30, 2026
           </span>
@@ -388,7 +410,7 @@
       <div>
         <div class="news-row flex items-center gap-4 px-6 py-4 bg-emerald-800/50 cursor-pointer"
              onclick="toggleExpand('msg-sbi-statement', this)">
-          <span class="text-emerald-400 font-semibold text-sm w-6 shrink-0 text-right">2.</span>
+          <span class="text-emerald-400 font-semibold text-sm w-6 shrink-0 text-right">3.</span>
           <span class="news-title flex-1 text-sm font-medium leading-snug">
             IFSBWT -SBI Statement of account as on July 15, 2026
           </span>
@@ -418,7 +440,7 @@
       <div>
         <div class="news-row flex items-center gap-4 px-6 py-4 bg-emerald-800/50 cursor-pointer"
              onclick="toggleExpand('msg-lesser-known-khaki', this)">
-          <span class="text-emerald-400 font-semibold text-sm w-6 shrink-0 text-right">3.</span>
+          <span class="text-emerald-400 font-semibold text-sm w-6 shrink-0 text-right">4.</span>
           <span class="news-title flex-1 text-sm font-medium leading-snug">
             The Lesser Known Khaki — IGNFA Publication
           </span>
@@ -445,7 +467,7 @@
       <div>
         <div class="news-row flex items-center gap-4 px-6 py-4 bg-emerald-800/50 cursor-pointer"
              onclick="toggleExpand('msg-sohan-singh', this)">
-          <span class="text-emerald-400 font-semibold text-sm w-6 shrink-0 text-right">4.</span>
+          <span class="text-emerald-400 font-semibold text-sm w-6 shrink-0 text-right">5.</span>
           <span class="news-title flex-1 text-sm font-medium leading-snug">
             Tragic case of late Shri Sohan Singh, Forest Guard, Uttarakhand
           </span>
@@ -467,7 +489,7 @@
       <div>
         <div class="news-row flex items-center gap-4 px-6 py-4 bg-emerald-800/50 cursor-pointer"
              onclick="toggleExpand('msg-rasmita', this)">
-          <span class="text-emerald-400 font-semibold text-sm w-6 shrink-0 text-right">5.</span>
+          <span class="text-emerald-400 font-semibold text-sm w-6 shrink-0 text-right">6.</span>
           <span class="news-title flex-1 text-sm font-medium leading-snug">
             Case of Ms Rasmita Subuddhi, Forest Guard, Malkangiri Forest Division, Odisha
           </span>
@@ -486,7 +508,7 @@
 
       <!-- Row 5 — Appeal to Young IFS officers -->
       <div class="news-row flex items-center gap-4 px-6 py-4 bg-emerald-800/50">
-        <span class="text-emerald-400 font-semibold text-sm w-6 shrink-0 text-right">6.</span>
+        <span class="text-emerald-400 font-semibold text-sm w-6 shrink-0 text-right">7.</span>
         <span class="news-title flex-1 text-sm font-medium leading-snug" onclick="toggleNews(this)">
           The Trust makes an appeal to the Young IFS officers.
         </span>
@@ -498,7 +520,7 @@
 
       <!-- Row 6 — Letter to PCCFs -->
       <div class="news-row flex items-center gap-4 px-6 py-4 bg-emerald-800/50">
-        <span class="text-emerald-400 font-semibold text-sm w-6 shrink-0 text-right">7.</span>
+        <span class="text-emerald-400 font-semibold text-sm w-6 shrink-0 text-right">8.</span>
         <span class="news-title flex-1 text-sm font-medium leading-snug" onclick="toggleNews(this)">
           The Trust writes to PCCFs( HoFF) to nominate state co-ordinators and nodal officers for the Trust.
         </span>
@@ -512,7 +534,7 @@
       <div>
         <div class="news-row flex items-center gap-4 px-6 py-4 bg-emerald-800/50 cursor-pointer"
              onclick="toggleExpand('msg-radhakrishnan2', this)">
-          <span class="text-emerald-400 font-semibold text-sm w-6 shrink-0 text-right">8.</span>
+          <span class="text-emerald-400 font-semibold text-sm w-6 shrink-0 text-right">9.</span>
           <span class="news-title flex-1 text-sm font-medium leading-snug">
             Financial Assistance to the family of Thiru S Radhakrishan, ACF, TN Forest Academy
           </span>
@@ -532,7 +554,7 @@
 
       <!-- Row 8 — Presentation to Press -->
       <div class="news-row flex items-center gap-4 px-6 py-4 bg-emerald-800/50">
-        <span class="text-emerald-400 font-semibold text-sm w-6 shrink-0 text-right">9.</span>
+        <span class="text-emerald-400 font-semibold text-sm w-6 shrink-0 text-right">10.</span>
         <span class="news-title flex-1 text-sm font-medium leading-snug" onclick="toggleNews(this)">
           IFSBWT-Presentation Made to the Press on May 26, 2026 at Press Club of India.
         </span>
@@ -544,7 +566,7 @@
 
       <!-- Row 9 — GBM Presentation -->
       <div class="news-row flex items-center gap-4 px-6 py-4 bg-emerald-800/40">
-        <span class="text-emerald-400 font-semibold text-sm w-6 shrink-0 text-right">10.</span>
+        <span class="text-emerald-400 font-semibold text-sm w-6 shrink-0 text-right">11.</span>
         <span class="news-title flex-1 text-sm font-medium leading-snug" onclick="toggleNews(this)">
           A copy of the presentation delivered during the Trust’s First General Body Meeting, held on May 24, 2026.
         </span>
@@ -556,7 +578,7 @@
 
       <!-- Row 10 — Presentation to Forestry Associations -->
       <div class="news-row flex items-center gap-4 px-6 py-4 bg-emerald-800/40">
-        <span class="text-emerald-400 font-semibold text-sm w-6 shrink-0 text-right">11.</span>
+        <span class="text-emerald-400 font-semibold text-sm w-6 shrink-0 text-right">12.</span>
         <span class="news-title flex-1 text-sm font-medium leading-snug" onclick="toggleNews(this)">
           IFSBWT-A Presentation Made to  Forestry Associations on May 23, 2026.
         </span>
