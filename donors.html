@@ -243,6 +243,16 @@
         class="tab-btn px-5 py-2 rounded-full text-sm font-semibold border border-emerald-600 text-emerald-300 hover:border-amber-400 hover:text-amber-300 transition">
         <i class="fas fa-layer-group mr-1.5"></i> Consolidated Reports
       </button>
+      <button onclick="switchTab('tab-batchwise')"
+        id="tab-batchwise-btn"
+        class="tab-btn px-5 py-2 rounded-full text-sm font-semibold border border-emerald-600 text-emerald-300 hover:border-amber-400 hover:text-amber-300 transition">
+        <i class="fas fa-users mr-1.5"></i> Batch-wise Donor's List
+      </button>
+      <button onclick="switchTab('tab-cadrewise')"
+        id="tab-cadrewise-btn"
+        class="tab-btn px-5 py-2 rounded-full text-sm font-semibold border border-emerald-600 text-emerald-300 hover:border-amber-400 hover:text-amber-300 transition">
+        <i class="fas fa-sitemap mr-1.5"></i> Cadre-wise Donor's List
+      </button>
     </div>
 
     <!-- ══ TAB: MONTH-WISE ════════════════════════════════════════════════ -->
@@ -386,6 +396,44 @@
 
     </div><!-- end tab-consolidated -->
 
+    <!-- ══ TAB: BATCH-WISE ════════════════════════════════════════════════ -->
+    <div id="tab-batchwise" class="hidden">
+
+      <div class="border border-amber-400/40 rounded-lg overflow-hidden">
+        <div class="flex items-center justify-between px-5 py-4 bg-emerald-900">
+          <span class="flex items-center gap-3">
+            <i class="fas fa-users text-amber-400"></i>
+            <span class="text-amber-300 font-semibold text-base">Batch-wise Donor's List</span>
+          </span>
+          <a href="https://docs.google.com/spreadsheets/d/1l5wcqccKZjq0r6OOQOAP8a4CksGD7e6D7bFFpmiYmWI/edit?usp=sharing"
+             target="_blank" rel="noopener noreferrer"
+             class="inline-flex items-center gap-1.5 text-xs font-semibold text-amber-300 hover:text-amber-200 transition">
+            <i class="fas fa-table text-emerald-300"></i> Open
+          </a>
+        </div>
+      </div>
+
+    </div><!-- end tab-batchwise -->
+
+    <!-- ══ TAB: CADRE-WISE ════════════════════════════════════════════════ -->
+    <div id="tab-cadrewise" class="hidden">
+
+      <div class="border border-amber-400/40 rounded-lg overflow-hidden">
+        <div class="flex items-center justify-between px-5 py-4 bg-emerald-900">
+          <span class="flex items-center gap-3">
+            <i class="fas fa-sitemap text-amber-400"></i>
+            <span class="text-amber-300 font-semibold text-base">Cadre-wise Donor's List</span>
+          </span>
+          <a href="https://docs.google.com/spreadsheets/d/1XZu4RkTNE-eppwtUopnZ1glhRxUSMTqc/edit?usp=sharing&ouid=115406180148626851410&rtpof=true&sd=true"
+             target="_blank" rel="noopener noreferrer"
+             class="inline-flex items-center gap-1.5 text-xs font-semibold text-amber-300 hover:text-amber-200 transition">
+            <i class="fas fa-table text-emerald-300"></i> Open
+          </a>
+        </div>
+      </div>
+
+    </div><!-- end tab-cadrewise -->
+
     </div>
 </section>
 
@@ -429,7 +477,7 @@ function toggleYear(id) {
 
 /* ─── Tab switcher ───────────────────────────────────────────────────────── */
 function switchTab(tab) {
-  ['tab-monthly', 'tab-consolidated'].forEach(function(t) {
+  ['tab-monthly', 'tab-consolidated', 'tab-batchwise', 'tab-cadrewise'].forEach(function(t) {
     document.getElementById(t).classList.add('hidden');
     var btn = document.getElementById(t + '-btn');
     btn.classList.remove('bg-amber-400', 'text-emerald-950', 'border-amber-400');
