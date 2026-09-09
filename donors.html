@@ -1,18 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-  <meta name="apple-mobile-web-app-capable" content="yes" />
-  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
-  <title>News Updates – IFS Benevolent and Welfare Trust</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <title>List of Donors – IFS Benevolent and Welfare Trust</title>
   <script src="https://cdn.tailwindcss.com"></script>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:wght@700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
   <style>
     html { scroll-behavior: smooth; }
     body { font-family: 'Inter', system-ui, sans-serif; }
     .heading-font { font-family: 'Playfair Display', serif; }
+    p { font-size: 15px; }
+    @media (min-width: 768px) { p { font-size: 16px; } }
 
     /* iOS fixes */
     .nav-blur {
@@ -32,6 +34,9 @@
     }
 
     /* Hover dropdowns */
+    .group:hover .group-hover\:block {
+      display: block;
+    }
     .group .group-hover\:block {
       display: none;
     }
@@ -44,86 +49,28 @@
     .group .group:hover .group-hover\:block {
       display: block;
     }
-
-    /* Row hover */
-    .news-row { transition: background 0.15s ease; }
-    .news-row:hover { background: rgba(16, 85, 56, 0.45); }
-
-    /* PDF icon on row hover */
-    .news-row:hover .pdf-icon { color: #f87171; transform: scale(1.15); }
-    .pdf-icon { transition: color 0.15s ease, transform 0.15s ease; }
-
-    /* Title */
-    .news-title {
-      color: #6ee7b7;
-      transition: color 0.15s ease;
-      cursor: pointer;
-      user-select: none;
-    }
-    .news-row:hover .news-title { color: #fbbf24; }
-    .news-row.open  .news-title { color: #fbbf24; }
-
-    /* Expandable message panel */
-    .msg-panel {
-      display: none;
-      background: rgba(6, 78, 59, 0.7);
-      border-top: 1px solid rgba(52, 211, 153, 0.25);
-      padding: 14px 20px 14px 52px;
-      font-size: 0.82rem;
-      line-height: 1.65;
-      color: #a7f3d0;
-      animation: fadeSlide 0.2s ease;
-    }
-    .msg-panel.open { display: block; }
-    @keyframes fadeSlide {
-      from { opacity: 0; transform: translateY(-4px); }
-      to   { opacity: 1; transform: translateY(0); }
-    }
-
-    /* Expand icon */
-    .expand-icon { transition: transform 0.2s ease; color: #6ee7b7; }
-    .news-row.open .expand-icon { transform: rotate(180deg); color: #fbbf24; }
-
-    /* Bounce arrow in hero */
-    .bounce-down { display: inline-block; animation: bounceDown 1.1s infinite; }
-    @keyframes bounceDown {
-      0%, 100% { transform: translateY(0); }
-      50%       { transform: translateY(6px); }
-    }
-
-    /* Pagination: force hidden pages out of view even though rows
-       also carry Tailwind's "flex" display class */
-    [hidden] { display: none !important; }
   </style>
 </head>
 
-<body class="bg-gradient-to-b from-emerald-900 via-emerald-800 to-emerald-950 text-white min-h-screen">
+<body class="bg-gradient-to-b from-emerald-900 via-emerald-800 to-emerald-950 text-white">
 
-<!-- ════════════════════════════════════════════
-     NAVBAR
-════════════════════════════════════════════ -->
+<!-- NAVBAR -->
 <nav class="bg-emerald-900/95 nav-blur border-b border-emerald-800 sticky top-0 z-50 safe-top">
   <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
-
     <a href="ecombase.html" class="flex items-center gap-3">
-      <img src="logo.jpeg" alt="IFS Benevolent and Welfare Trust Logo"
-           class="w-10 h-10 sm:w-14 sm:h-14 md:w-20 md:h-20 rounded-xl object-contain bg-white" />
+      <img src="logo.jpeg" alt="IFS Benevolent and Welfare Trust Logo" class="w-10 h-10 sm:w-14 sm:h-14 md:w-20 md:h-20 rounded-xl object-contain bg-white">
       <div>
-        <span class="heading-font text-sm sm:text-base md:text-xl font-bold text-emerald-200 leading-tight">
-          IFS Benevolent and Welfare Trust
-        </span>
-        <span class="block text-[9px] sm:text-[10px] brand-subtitle text-emerald-500">
-          Standing with Green Warriors
-        </span>
+        <span class="heading-font text-sm sm:text-base md:text-xl font-bold text-emerald-200 leading-tight">IFS Benevolent and Welfare Trust</span>
+        <span class="block text-[9px] sm:text-[10px] brand-subtitle text-emerald-500">Standing with Green Warriors</span>
       </div>
     </a>
-
     <div class="hidden md:flex gap-3 text-xs text-white items-center">
 
       <!-- About Us – dropdown trigger (click to toggle) -->
       <div class="relative">
         <button onclick="navToggle('aboutMenu')" class="hover:text-amber-300 transition">About Us</button>
         <div id="aboutMenu" class="hidden absolute mt-2 w-48 bg-white text-black shadow-lg p-3 border z-50 text-sm">
+          <!-- About the Trust – clickable link + hover submenu for PDFs -->
           <div class="relative group">
             <a href="about.html" class="flex items-center justify-between py-0.5 hover:text-emerald-700 w-full">
               About the Trust
@@ -138,25 +85,25 @@
               </a>
             </div>
           </div>
-          <a href="about.html#vision"     class="block py-0.5 hover:text-emerald-700">Vision and Mission</a>
+          <a href="about.html#vision" class="block py-0.5 hover:text-emerald-700">Vision and Mission</a>
           <a href="about.html#objectives" class="block py-0.5 hover:text-emerald-700">Objects and Purposes</a>
-          <a href="whoswho.html"           class="block py-0.5 hover:text-emerald-700">Who's Who</a>
+          <a href="whoswho.html" class="block py-0.5 hover:text-emerald-700">Who's Who</a>
         </div>
       </div>
 
-      <!-- Governance -->
+      <!-- Governance (dropdown toggle) -->
       <div class="relative">
         <button onclick="navToggle('govMenu')" class="hover:text-amber-300 transition">Governance</button>
         <div id="govMenu" class="hidden absolute mt-2 w-60 bg-white text-black shadow-lg p-3 border z-50 text-sm">
-          <a href="boardoftrustees.html"      class="block py-0.5 hover:text-emerald-700">Board of Trustees</a>
-          <a href="governingbody.html"         class="block py-0.5 hover:text-emerald-700">Governing Body</a>
-          <a href="csepcommittee.html"         class="block py-0.5 hover:text-emerald-700">CSEP Committee</a>
+          <a href="boardoftrustees.html" class="block py-0.5 hover:text-emerald-700">Board of Trustees</a>
+          <a href="governingbody.html" class="block py-0.5 hover:text-emerald-700">Governing Body</a>
+          <a href="csepcommittee.html" class="block py-0.5 hover:text-emerald-700">CSEP Committee</a>
           <a href="coordinationcommittee.html" class="block py-0.5 hover:text-emerald-700">Coordination Committee</a>
           <a href="statecoordinators.html" class="block py-0.5 hover:text-emerald-700">State Coordinators and Nodal Officers</a>
         </div>
       </div>
 
-      <!-- Gallery -->
+      <!-- Gallery (dropdown toggle) -->
       <div class="relative">
         <button onclick="navToggle('galleryMenu')" class="hover:text-amber-300 transition">Gallery</button>
         <div id="galleryMenu" class="hidden absolute mt-2 w-44 bg-white text-black shadow-lg p-3 border z-50 text-sm">
@@ -166,86 +113,74 @@
         </div>
       </div>
 
-      <!-- News and Updates — active page highlight -->
+      <!-- News and Updates (dropdown toggle) -->
       <div class="relative">
-        <button onclick="navToggle('newsMenu')" class="hover:text-amber-300 transition">
-          News and Updates
-        </button>
+        <button onclick="navToggle('newsMenu')" class="hover:text-amber-300 transition">News and Updates</button>
         <div id="newsMenu" class="hidden absolute mt-2 w-56 bg-white text-black shadow-lg p-3 border z-50 text-sm">
-          <a href="news-updates.html" class="block py-0.5 font-bold text-emerald-800 hover:text-emerald-700">News updates</a>
-          <a href="news.html#newsletter"  class="block py-0.5 hover:text-emerald-700">e-Newsletter</a>
-          <a href="compensation-orders-by-states.html" class="block py-0.5 hover:text-emerald-700">Compensation/Other Orders by States</a>
+          <a href="news-updates.html" class="block py-0.5 hover:text-emerald-700">News updates</a>
+          <a href="news.html#newsletter" class="block py-0.5 hover:text-emerald-700">e-Newsletter</a>
+           <a href="compensation-orders-by-states.html" class="block py-0.5 hover:text-emerald-700">Compensation/Other Orders by States</a>
           <a href="news.html#activities" class="block py-0.5 hover:text-emerald-700">Recent Activities</a>
-          <a href="news.html#minutes"    class="block py-0.5 hover:text-emerald-700">Minutes of the Meetings</a>
+          <a href="news.html#minutes" class="block py-0.5 hover:text-emerald-700">Minutes of the Meetings</a>
         </div>
       </div>
 
-      <a href="https://forms.gle/VHNhYQBW3nVfu887A" target="_blank" rel="noopener noreferrer"
-         class="hover:text-amber-300 transition font-medium">Assistance Form</a>
+      <a href="https://forms.gle/VHNhYQBW3nVfu887A" target="_blank" rel="noopener noreferrer" class="hover:text-amber-300 transition font-medium">Assistance Form</a>
       <!-- NEW: Beneficiaries link added here -->
       <a href="BENEFICIARIES.pdf" target="_blank" rel="noopener noreferrer" class="hover:text-amber-300 transition">Beneficiaries</a>
-      <a href="donors.html"  class="hover:text-amber-300 transition">List of Donors</a>
+      <a href="donors.html" class="hover:text-amber-300 transition">List of Donors</a>
       <a href="contact.html" class="hover:text-amber-300 transition">Contact Us</a>
     </div>
-
-    <div class="flex items-center gap-2">
-      <a href="donate.html"
-         class="text-xs bg-amber-400 text-emerald-950 px-4 py-2 rounded-full font-semibold hover:bg-amber-300 transition">
-        Donate
-      </a>
-      <button class="md:hidden text-2xl text-white ml-1"
-              onclick="document.getElementById('mobileMenu').classList.toggle('hidden')">
+    <div class="flex items-center gap-3">
+      <a href="donate.html" class="text-xs bg-amber-400 text-emerald-950 px-4 py-2 rounded-full font-semibold hover:bg-amber-300 transition">Donate</a>
+      <button class="md:hidden text-2xl text-white" onclick="document.getElementById('mobileMenu').classList.toggle('hidden')">
         <i class="fas fa-bars"></i>
       </button>
     </div>
   </div>
 </nav>
 
-<!-- ════════════════════════════════════════════
-     MOBILE MENU
-════════════════════════════════════════════ -->
+<!-- MOBILE MENU -->
 <div id="mobileMenu" class="hidden md:hidden bg-emerald-900 border-b border-emerald-800 text-white text-sm z-40 safe-bottom">
 
+  <!-- About Us -->
   <div class="border-b border-emerald-800">
-    <button onclick="mobileToggle('mob-about')"
-      class="w-full flex justify-between items-center px-6 py-4 hover:bg-emerald-800 transition text-left font-medium">
+    <button onclick="mobileToggle('mob-about')" class="w-full flex justify-between items-center px-6 py-4 hover:bg-emerald-800 transition text-left font-medium">
       About Us
       <i id="mob-about-icon" class="fas fa-chevron-down text-amber-300 text-xs transition-transform duration-200"></i>
     </button>
     <div id="mob-about" class="hidden bg-emerald-950 px-6 py-2 space-y-2">
-      <a href="about.html"            class="block py-1.5 pl-2 border-l-2 border-amber-400 hover:text-amber-300 transition">About the Trust</a>
-      <a href="Original%20Trust%20Deed%20Registered%20on%20July%2022%2C%202008-.pdf" target="_blank" rel="noopener noreferrer"
-         class="flex items-center gap-2 py-1.5 pl-6 border-l-2 border-amber-400/40 text-emerald-300 hover:text-amber-300 transition text-xs">
+      <a href="about.html" class="block py-1.5 pl-2 border-l-2 border-amber-400 hover:text-amber-300 transition">About the Trust</a>
+      <a href="Original%20Trust%20Deed%20Registered%20on%20July%2022%2C%202008-.pdf" target="_blank" rel="noopener noreferrer" class="flex items-center gap-2 py-1.5 pl-6 border-l-2 border-amber-400/40 text-emerald-300 hover:text-amber-300 transition text-xs">
         <i class="fas fa-file-pdf text-red-400"></i> Original Trust Deed
       </a>
-      <a href="Revised%20Trust%20Deed%20Registered%20on%20February%2011%2C%202026-.pdf" target="_blank" rel="noopener noreferrer"
-         class="flex items-center gap-2 py-1.5 pl-6 border-l-2 border-amber-400/40 text-emerald-300 hover:text-amber-300 transition text-xs">
+      <a href="Revised%20Trust%20Deed%20Registered%20on%20February%2011%2C%202026-.pdf" target="_blank" rel="noopener noreferrer" class="flex items-center gap-2 py-1.5 pl-6 border-l-2 border-amber-400/40 text-emerald-300 hover:text-amber-300 transition text-xs">
         <i class="fas fa-file-pdf text-red-400"></i> Revised Trust Deed
       </a>
-      <a href="about.html#vision"     class="block py-1.5 pl-2 border-l-2 border-amber-400 hover:text-amber-300 transition">Vision and Mission</a>
+      <a href="about.html#vision" class="block py-1.5 pl-2 border-l-2 border-amber-400 hover:text-amber-300 transition">Vision and Mission</a>
       <a href="about.html#objectives" class="block py-1.5 pl-2 border-l-2 border-amber-400 hover:text-amber-300 transition">Objects and Purposes</a>
-      <a href="whoswho.html"          class="block py-1.5 pl-2 border-l-2 border-amber-400 hover:text-amber-300 transition">Who's Who</a>
+      <a href="whoswho.html" class="block py-1.5 pl-2 border-l-2 border-amber-400 hover:text-amber-300 transition">Who's Who</a>
     </div>
   </div>
 
+  <!-- Governance -->
   <div class="border-b border-emerald-800">
-    <button onclick="mobileToggle('mob-gov')"
-      class="w-full flex justify-between items-center px-6 py-4 hover:bg-emerald-800 transition text-left font-medium">
+    <button onclick="mobileToggle('mob-gov')" class="w-full flex justify-between items-center px-6 py-4 hover:bg-emerald-800 transition text-left font-medium">
       Governance
       <i id="mob-gov-icon" class="fas fa-chevron-down text-amber-300 text-xs transition-transform duration-200"></i>
     </button>
     <div id="mob-gov" class="hidden bg-emerald-950 px-6 py-2 space-y-2">
-      <a href="boardoftrustees.html"      class="block py-1.5 pl-2 border-l-2 border-amber-400 hover:text-amber-300 transition">Board of Trustees</a>
-      <a href="governingbody.html"         class="block py-1.5 pl-2 border-l-2 border-amber-400 hover:text-amber-300 transition">Governing Body</a>
-      <a href="csepcommittee.html"         class="block py-1.5 pl-2 border-l-2 border-amber-400 hover:text-amber-300 transition">CSEP Committee</a>
+      <a href="boardoftrustees.html" class="block py-1.5 pl-2 border-l-2 border-amber-400 hover:text-amber-300 transition">Board of Trustees</a>
+      <a href="governingbody.html" class="block py-1.5 pl-2 border-l-2 border-amber-400 hover:text-amber-300 transition">Governing Body</a>
+      <a href="csepcommittee.html" class="block py-1.5 pl-2 border-l-2 border-amber-400 hover:text-amber-300 transition">CSEP Committee</a>
       <a href="coordinationcommittee.html" class="block py-1.5 pl-2 border-l-2 border-amber-400 hover:text-amber-300 transition">Coordination Committee</a>
       <a href="statecoordinators.html" class="block py-1.5 pl-2 border-l-2 border-amber-400 text-amber-300 transition">State Coordinators and Nodal Officers</a>
     </div>
   </div>
 
+  <!-- Gallery -->
   <div class="border-b border-emerald-800">
-    <button onclick="mobileToggle('mob-gallery')"
-      class="w-full flex justify-between items-center px-6 py-4 hover:bg-emerald-800 transition text-left font-medium">
+    <button onclick="mobileToggle('mob-gallery')" class="w-full flex justify-between items-center px-6 py-4 hover:bg-emerald-800 transition text-left font-medium">
       Gallery
       <i id="mob-gallery-icon" class="fas fa-chevron-down text-amber-300 text-xs transition-transform duration-200"></i>
     </button>
@@ -256,440 +191,266 @@
     </div>
   </div>
 
+  <!-- News & Updates -->
   <div class="border-b border-emerald-800">
-    <button onclick="mobileToggle('mob-news')"
-      class="w-full flex justify-between items-center px-6 py-4 hover:bg-emerald-800 transition text-left font-medium text-amber-300">
+    <button onclick="mobileToggle('mob-news')" class="w-full flex justify-between items-center px-6 py-4 hover:bg-emerald-800 transition text-left font-medium">
       News and Updates
       <i id="mob-news-icon" class="fas fa-chevron-down text-amber-300 text-xs transition-transform duration-200"></i>
     </button>
     <div id="mob-news" class="hidden bg-emerald-950 px-6 py-2 space-y-2">
-      <a href="news-updates.html" class="block py-1.5 pl-2 border-l-2 border-amber-400 text-amber-200 font-bold hover:text-amber-300 transition">News updates</a>
+      <a href="news-updates.html" class="block py-1.5 pl-2 border-l-2 border-amber-400 hover:text-amber-300 transition">News updates</a>
       <a href="news.html#newsletter" class="block py-1.5 pl-2 border-l-2 border-amber-400 hover:text-amber-300 transition">e-Newsletter</a>
-     <a href="compensation-orders-by-states.html" class="block py-1.5 pl-2 border-l-2 border-amber-400 hover:text-amber-300 transition">Compensation/Other Orders by States</a>
+      <a href="compensation-orders-by-states.html" class="block py-1.5 pl-2 border-l-2 border-amber-400 hover:text-amber-300 transition">Compensation/Other Orders by States</a>
       <a href="news.html#activities" class="block py-1.5 pl-2 border-l-2 border-amber-400 hover:text-amber-300 transition">Recent Activities</a>
-      <a href="news.html#minutes"    class="block py-1.5 pl-2 border-l-2 border-amber-400 hover:text-amber-300 transition">Minutes of the Meetings</a>
+      <a href="news.html#minutes" class="block py-1.5 pl-2 border-l-2 border-amber-400 hover:text-amber-300 transition">Minutes of the Meetings</a>
     </div>
   </div>
 
-  <a href="https://forms.gle/VHNhYQBW3nVfu887A" target="_blank" rel="noopener noreferrer"
-     class="block px-6 py-4 border-b border-emerald-800 hover:bg-emerald-800 transition font-medium">Assistance Form</a>
+  <a href="https://forms.gle/VHNhYQBW3nVfu887A" target="_blank" rel="noopener noreferrer" class="block px-6 py-4 border-b border-emerald-800 hover:bg-emerald-800 transition font-medium">Assistance Form</a>
   <!-- NEW: Beneficiaries link in mobile menu -->
   <a href="BENEFICIARIES.pdf" target="_blank" rel="noopener noreferrer" class="block px-6 py-4 border-b border-emerald-800 hover:bg-emerald-800 transition font-medium">Beneficiaries</a>
-  <a href="donors.html"  class="block px-6 py-4 border-b border-emerald-800 hover:bg-emerald-800 transition font-medium">List of Donors</a>
+  <a href="donors.html" class="block px-6 py-4 border-b border-emerald-800 hover:bg-emerald-800 transition font-medium">List of Donors</a>
   <a href="contact.html" class="block px-6 py-4 border-b border-emerald-800 hover:bg-emerald-800 transition font-medium">Contact Us</a>
-  <a href="donate.html"  class="block px-6 py-4 text-amber-300 font-semibold hover:bg-emerald-800 transition">Donate →</a>
+  <a href="donate.html" class="block px-6 py-4 text-amber-300 font-semibold hover:bg-emerald-800 transition">Donate →</a>
 </div>
 
-<!-- ════════════════════════════════════════════
-     PAGE HERO
-════════════════════════════════════════════ -->
-<section class="py-16 text-center px-6 bg-emerald-950 border-b border-emerald-800">
-  <div class="inline-flex items-center gap-2 bg-amber-400/10 border border-amber-400/30 text-amber-300
-              text-[11px] px-4 py-1.5 rounded-full mb-5 uppercase tracking-widest font-semibold">
-    <i class="fas fa-bullhorn text-[10px]"></i>&nbsp;Official Communications
-  </div>
-  <h1 class="heading-font text-5xl md:text-6xl text-amber-300 mb-4">News Updates</h1>
-  <p class="text-emerald-300 max-w-2xl mx-auto text-sm leading-relaxed">
-    Official communications, announcements and documents from the IFS Benevolent and Welfare Trust.
-  </p>
-</section>
-
-<!-- ════════════════════════════════════════════
-     NEWS UPDATES — NUMBERED LIST
-════════════════════════════════════════════ -->
-<section id="updates" class="py-16 bg-emerald-900">
-  <div class="max-w-5xl mx-auto px-6">
-
-    <div class="flex items-center gap-3 mb-2">
-      <span class="w-10 h-10 rounded-full bg-amber-400 text-emerald-950 flex items-center justify-center text-lg shrink-0">
-        <i class="fas fa-newspaper"></i>
-      </span>
-      <h2 class="heading-font text-3xl text-amber-300">News Updates</h2>
+<!-- PAGE HERO -->
+<section class="py-14 md:py-20 bg-emerald-900 border-b border-emerald-800">
+  <div class="max-w-5xl mx-auto px-6 text-center">
+    <div class="inline-flex items-center gap-2 bg-amber-400/10 border border-amber-400/30 text-amber-300 text-xs font-semibold uppercase tracking-widest px-4 py-1.5 rounded-full mb-6">
+      <i class="fas fa-heart text-amber-400"></i> Our Generous Supporters
     </div>
-    <p class="text-emerald-400 italic mb-8 pl-14 text-sm">
-      Click the <i class="fas fa-file-pdf text-red-400"></i> icon to open or download the document.
+    <h1 class="heading-font text-4xl md:text-5xl text-amber-300 mb-4">List of Donors</h1>
+    <p class="text-emerald-200 max-w-2xl mx-auto leading-relaxed">
+      We express our heartfelt gratitude to all donors whose generous contributions help the Trust fulfil its mission of supporting the families of our brave forest personnel. Month-wise donor lists are available below for download.
     </p>
-
-      <!-- List container -->
-    <div class="rounded-2xl border border-emerald-700 overflow-hidden shadow-xl divide-y divide-emerald-700/60">
-
-
-        <div class="news-item">
-        <div class="news-row flex items-center gap-4 px-6 py-4 bg-emerald-800/50 cursor-pointer"
-             onclick="toggleExpand('msg-pccf2-odisha', this)">
-          <span class="text-emerald-400 font-semibold text-sm w-6 shrink-0 text-right">1.</span>
-          <span class="news-title flex-1 text-sm font-medium leading-snug">
-            16th National Conference of State Biodiversity Boards/Union Territories Biodiversity Councils, Chandigarh, September 6–7,2026
-          </a>
-          <span class="expand-icon shrink-0 text-xl ml-2">
-            <i class="fas fa-chevron-down"></i>
-          </span>
-        </div>
-        <div id="msg-pccf2-odisha" class="msg-panel">
-          <p>
-          The Trust addressed the Chairpersons, Member Secretaries and other officials of the State Biodiversity Boards (SBBs) 
-            and Union Territories Biodiversity Councils (UTBCs) attending the two-day national conference and briefed them
-            on the Trust’s mandate and activities. They were requested to create awareness among forest field personnel in 
-            their respective States/UTs about the Trust and its mandate, and to extend their support in furthering its efforts
-            to serve the families of those who make supreme sacrifices or face life-threatening injuries while protecting our 
-            natural wealth.
-          </p>
-        </div>
-      </div>
-      
-       <div class="news-item">
-        <div class="news-row flex items-center gap-4 px-6 py-4 bg-emerald-800/50 cursor-pointer"
-             onclick="toggleExpand('msg-pccf1-odisha', this)">
-          <span class="text-emerald-400 font-semibold text-sm w-6 shrink-0 text-right">2.</span>
-          <a href="IGNFA Dehradun.png" target="_blank" rel="noopener noreferrer"
-             class="news-title flex-1 text-sm font-medium leading-snug">
-            Trust officials addressed the ifs officers undergoing Skills Upgradation course and IFS probationers at IGNFA Dehradun.
-          </a>
-          <span class="expand-icon shrink-0 text-xl ml-2">
-            <i class="fas fa-chevron-down"></i>
-          </span>
-        </div>
-        <div id="msg-pccf1-odisha" class="msg-panel">
-          <p>
-          IGNFA, Dehradun—August 17, 2026. The Trust addressed the officers attending the Skills Upgradation Course 
-          and the IFS probationers of the 2025 batch — on why the Trust was revived, what it has done in its first seven months,
-          and what the senior members already working in SFDs for a long time and the youngest members of the Service can do to 
-          carry it forward.
-          </p>
-        </div>
-      </div>
-      
-      <!-- Row 1 — Online meeting with PCCF (HoFF), Odisha -->
-      <div class="news-item">
-        <div class="news-row flex items-center gap-4 px-6 py-4 bg-emerald-800/50 cursor-pointer"
-             onclick="toggleExpand('msg-pccf-odisha', this)">
-          <span class="text-emerald-400 font-semibold text-sm w-6 shrink-0 text-right">3.</span>
-          <a href="Interaction meeting.jpeg" target="_blank" rel="noopener noreferrer"
-             class="news-title flex-1 text-sm font-medium leading-snug">
-            Trust officials had an online interaction meeting with PCCF (HoFF), Odisha.
-          </a>
-          <span class="expand-icon shrink-0 text-xl ml-2">
-            <i class="fas fa-chevron-down"></i>
-          </span>
-        </div>
-        <div id="msg-pccf-odisha" class="msg-panel">
-          <p>
-            Pursuant to the decision of the GB, an online meeting was held with the PCCF (HoFF), Odisha.
-            The Trust's objectives and assistance record were presented, along with the ways in which the
-            State's field formations can partner with the Trust — in verifying case particulars promptly
-            and in spreading the word among staff. Similar meetings with PCCF (HoFF) of other States/UTs
-            follow in September and subsequently.
-          </p>
-        </div>
-      </div>
-
-      <!-- Row 2 — SBI Statement (NEW unique ID) -->
-      <div class="news-item">
-        <div class="news-row flex items-center gap-4 px-6 py-4 bg-emerald-800/50 cursor-pointer"
-             onclick="toggleExpand('msg-sbi-statement1', this)">
-          <span class="text-emerald-400 font-semibold text-sm w-6 shrink-0 text-right">4.</span>
-          <span class="news-title flex-1 text-sm font-medium leading-snug">
-            IFSBWT -SBI Statement of account from 1 August 2026 to 31 August 2026
-          </span>
-          <a href="Account Statement-August 2026.pdf"
-             target="_blank" rel="noopener noreferrer"
-             title="Open PDF" class="pdf-icon shrink-0 text-red-400 text-2xl ml-2"
-             onclick="event.stopPropagation()">
-            <i class="fas fa-file-pdf"></i>
-          </a>
-          <span class="expand-icon shrink-0 text-xl ml-2">
-            <i class="fas fa-chevron-down"></i>
-          </span>
-        </div>
-        <div id="msg-sbi-statement1" class="msg-panel">
-          <p>
-           All new donors are requested to kindly share the details of their donations <strong>with Mr. Vikas (Mobile: 9650029582) to facilitate the prompt issuance of acknowledgement receipts.
-        </strong> Thank you for your continued support and generosity.
-          </p>
-        </div>
-      </div>   
-      
-      
-      <!-- Row 2 — Letter to Hon'ble CM Gujarat -->
-      <div class="news-item">
-        <div class="news-row flex items-center gap-4 px-6 py-4 bg-emerald-800/50 cursor-pointer"
-             onclick="toggleExpand('letter-CM-GJ', this)">
-          <span class="text-emerald-400 font-semibold text-sm w-6 shrink-0 text-right">5.</span>
-          <span class="news-title flex-1 text-sm font-medium leading-snug">
-            IFSBWT-Appeal letter to Hon'ble CM Gujarat.
-          </span>
-          <a href="IFSBWT-Letter to Hon'ble CM, Gujarat.pdf"
-             target="_blank" rel="noopener noreferrer"
-             title="Open PDF" class="pdf-icon shrink-0 text-red-400 text-2xl ml-2"
-             onclick="event.stopPropagation()">
-            <i class="fas fa-file-pdf"></i>
-          </a>
-          <span class="expand-icon shrink-0 text-xl ml-2">
-            <i class="fas fa-chevron-down"></i>
-          </span>
-        </div>
-        <div id="letter-CM-GJ" class="msg-panel">
-          <p>
-           The IFSBWT has written an appeal letter to the Honourable Chief Minister of Gujarat requesting
-          the issuance of broad-based compensation orders for the forest field personnel who lay down their lives or get 
-            grievously injured in the line of duty.<br><br>
-
-            The Trust is hopeful that the Government of Gujarat will take this request into consideration. We have provided an example of such a good order issued by the Government of Maharashtra.<br><br>
-            
-            The Trust proposes to write to the Chief Ministers of all those states where such general compensation orders are not available for forest field staff.
-          </p>
-        </div>
-      </div>
-           
-      <!-- Row 3 — Letter to Hon'ble CM West Bengal -->
-      <div class="news-item">
-        <div class="news-row flex items-center gap-4 px-6 py-4 bg-emerald-800/50 cursor-pointer"
-             onclick="toggleExpand('letter-CM-WB', this)">
-          <span class="text-emerald-400 font-semibold text-sm w-6 shrink-0 text-right">6.</span>
-          <span class="news-title flex-1 text-sm font-medium leading-snug">
-            IFSBWT-Appeal letter to Hon'ble CM West Bengal.
-          </span>
-          <a href="IFSBWT-Appeal letter to Hon'ble CM West Bengal.pdf"
-             target="_blank" rel="noopener noreferrer"
-             title="Open PDF" class="pdf-icon shrink-0 text-red-400 text-2xl ml-2"
-             onclick="event.stopPropagation()">
-            <i class="fas fa-file-pdf"></i>
-          </a>
-          <span class="expand-icon shrink-0 text-xl ml-2">
-            <i class="fas fa-chevron-down"></i>
-          </span>
-        </div>
-        <div id="letter-CM-WB" class="msg-panel">
-          <p>
-           The IFSBWT has written an appeal letter to the Honourable Chief Minister of West Bengal requesting
-          the issuance of broad-based compensation orders for the forest field personnel who lay down their lives or get 
-            grievously injured in the line of duty.<br><br>
-
-            The Trust is hopeful that the Government of West Bengal will take this request into consideration. We have provided an example of such a good order issued by the Government of Maharashtra.<br><br>
-            
-            The Trust proposes to write to the Chief Ministers of all those states where such general compensation orders are not available for forest field staff.
-          </p>
-        </div>
-      </div>
-
-       <!-- Row 4 — -->
-      <div class="news-row news-item flex items-center gap-4 px-6 py-4 bg-emerald-800/50">
-        <span class="text-emerald-400 font-semibold text-sm w-6 shrink-0 text-right">7.</span>
-        <span class="news-title flex-1 text-sm font-medium leading-snug" onclick="toggleNews(this)">
-           The IFSBWT provided financial assistance in ten cases so far.
-        </span>
-        <a href="IFSBWT_Activities.pdf" target="_blank" rel="noopener noreferrer"
-           title="Open PDF" class="pdf-icon shrink-0 text-red-400 text-2xl ml-2">
-          <i class="fas fa-file-pdf"></i>
-        </a>
-      </div>
-      
-      <!-- Row 5 — SBI Statement (NEW unique ID) -->
-      <div class="news-item">
-        <div class="news-row flex items-center gap-4 px-6 py-4 bg-emerald-800/50 cursor-pointer"
-             onclick="toggleExpand('msg-sbi-statement', this)">
-          <span class="text-emerald-400 font-semibold text-sm w-6 shrink-0 text-right">8.</span>
-          <span class="news-title flex-1 text-sm font-medium leading-snug">
-            IFSBWT -SBI Statement of account as on August 03, 2026
-          </span>
-          <a href="030826 Aprl 01 to Aug 03, 2026.pdf"
-             target="_blank" rel="noopener noreferrer"
-             title="Open PDF" class="pdf-icon shrink-0 text-red-400 text-2xl ml-2"
-             onclick="event.stopPropagation()">
-            <i class="fas fa-file-pdf"></i>
-          </a>
-          <span class="expand-icon shrink-0 text-xl ml-2">
-            <i class="fas fa-chevron-down"></i>
-          </span>
-        </div>
-        <div id="msg-sbi-statement" class="msg-panel">
-          <p>
-           All new donors are requested to kindly share the details of their donations <strong>with Mr. Vikas (Mobile: 9650029582) to facilitate the prompt issuance of acknowledgement receipts.
-        </strong> Thank you for your continued support and generosity.
-          </p>
-        </div>
-      </div>
-
-      <!-- Row 6 — Lesser Known Khaki (kept original ID) -->
-      <div class="news-item">
-        <div class="news-row flex items-center gap-4 px-6 py-4 bg-emerald-800/50 cursor-pointer"
-             onclick="toggleExpand('msg-lesser-known-khaki', this)">
-          <span class="text-emerald-400 font-semibold text-sm w-6 shrink-0 text-right">9.</span>
-          <span class="news-title flex-1 text-sm font-medium leading-snug">
-            The Lesser Known Khaki — IGNFA Publication
-          </span>
-          <a href="https://www.ignfa.gov.in/publications/1743811-the-lesser-known-khaki-91020.pdf"
-             target="_blank" rel="noopener noreferrer"
-             title="Open PDF" class="pdf-icon shrink-0 text-red-400 text-2xl ml-2"
-             onclick="event.stopPropagation()">
-            <i class="fas fa-file-pdf"></i>
-          </a>
-          <span class="expand-icon shrink-0 text-xl ml-2">
-            <i class="fas fa-chevron-down"></i>
-          </span>
-        </div>
-        <div id="msg-lesser-known-khaki" class="msg-panel">
-          <p>
-            <strong>The Lesser Known Khaki</strong><br><br>
-            "Jungle mein mor nacha, kisne dekha?" — When the peacock dances deep in the forest, who sees it?<br><br>
-            In this striking artwork, <strong>Ms. Piyusha Pramod Jagtap, IFS (2014, Maharashtra)</strong>, reveals the unseen world of the forester — and the quiet, demanding work behind the khaki we rarely notice.
-          </p>
-        </div>
-      </div>
-
-      <!-- Row 7 — Sohan Singh (no PDF) -->
-      <div class="news-item">
-        <div class="news-row flex items-center gap-4 px-6 py-4 bg-emerald-800/50 cursor-pointer"
-             onclick="toggleExpand('msg-sohan-singh', this)">
-          <span class="text-emerald-400 font-semibold text-sm w-6 shrink-0 text-right">10.</span>
-          <span class="news-title flex-1 text-sm font-medium leading-snug">
-            Tragic case of late Shri Sohan Singh, Forest Guard, Uttarakhand
-          </span>
-          <span class="expand-icon shrink-0 text-xl ml-2">
-            <i class="fas fa-chevron-down"></i>
-          </span>
-        </div>
-        <div id="msg-sohan-singh" class="msg-panel">
-          <p>
-            Shri Sohan Singh, a Forest Guard, Tons Forest Division, Uttarakhand, lost his life after falling in a deep gorge while battling a forest fire on June 17, 2026. 
-            Following a news clip shared by a member, the IFSBWT at once approached the concerned DFO for the details of the case in the prescribed format. 
-            The DFO responded with commendable promptness. The Trust, on June 21, 2026,  approved  financial assistance of ₹2 lakh to the mother of the deceased 
-            and the amount was credited to her account on June 22, 2026.
-          </p>
-        </div>
-      </div>
-
-      <!-- Row 8 — Rasmita Subuddhi -->
-      <div class="news-item">
-        <div class="news-row flex items-center gap-4 px-6 py-4 bg-emerald-800/50 cursor-pointer"
-             onclick="toggleExpand('msg-rasmita', this)">
-          <span class="text-emerald-400 font-semibold text-sm w-6 shrink-0 text-right">11.</span>
-          <span class="news-title flex-1 text-sm font-medium leading-snug">
-            Case of Ms Rasmita Subuddhi, Forest Guard, Malkangiri Forest Division, Odisha
-          </span>
-          <span class="expand-icon shrink-0 text-xl ml-2">
-            <i class="fas fa-chevron-down"></i>
-          </span>
-        </div>
-        <div id="msg-rasmita" class="msg-panel">
-          <p>
-            Ms Rasmita Subuddhi, Forest Guard, Malkangiri Forest Division, Odisha, was grievously injured on the night of June 12, 2026, while returning home from patrol duty. 
-            Acting on a message received in a WhatsApp group, the IFSBWT took cognisance of her condition, approved financial assistance of ₹2.5 lakh for her medical treatment on June 15, 2026, 
-            and released the amount on June 17, 2026.
-          </p>
-        </div>
-      </div>
-
-      <!-- Row 9 — Appeal to Young IFS officers -->
-      <div class="news-row news-item flex items-center gap-4 px-6 py-4 bg-emerald-800/50">
-        <span class="text-emerald-400 font-semibold text-sm w-6 shrink-0 text-right">12.</span>
-        <span class="news-title flex-1 text-sm font-medium leading-snug" onclick="toggleNews(this)">
-          The Trust makes an appeal to the Young IFS officers.
-        </span>
-        <a href="Trust%20letter%20dtd%2005.06.2026.pdf" target="_blank" rel="noopener noreferrer"
-           title="Open PDF" class="pdf-icon shrink-0 text-red-400 text-2xl ml-2">
-          <i class="fas fa-file-pdf"></i>
-        </a>
-      </div>
-
-      <!-- Row 10 — Letter to PCCFs -->
-      <div class="news-row news-item flex items-center gap-4 px-6 py-4 bg-emerald-800/50">
-        <span class="text-emerald-400 font-semibold text-sm w-6 shrink-0 text-right">13.</span>
-        <span class="news-title flex-1 text-sm font-medium leading-snug" onclick="toggleNews(this)">
-          The Trust writes to PCCFs( HoFF) to nominate state co-ordinators and nodal officers for the Trust.
-        </span>
-        <a href="Trust%20Letter%20to%20PCCF(HoFF)%20dtd%205.6.2026.pdf" target="_blank" rel="noopener noreferrer"
-           title="Open PDF" class="pdf-icon shrink-0 text-red-400 text-2xl ml-2">
-          <i class="fas fa-file-pdf"></i>
-        </a>
-      </div>
-
-      <!-- Row 11 — Radhakrishnan assistance -->
-      <div class="news-item">
-        <div class="news-row flex items-center gap-4 px-6 py-4 bg-emerald-800/50 cursor-pointer"
-             onclick="toggleExpand('msg-radhakrishnan2', this)">
-          <span class="text-emerald-400 font-semibold text-sm w-6 shrink-0 text-right">14.</span>
-          <span class="news-title flex-1 text-sm font-medium leading-snug">
-            Financial Assistance to the family of Thiru S Radhakrishan, ACF, TN Forest Academy
-          </span>
-          <span class="expand-icon shrink-0 text-xl ml-2">
-            <i class="fas fa-chevron-down"></i>
-          </span>
-        </div>
-        <div id="msg-radhakrishnan2" class="msg-panel">
-          <p>
-            On <strong>May 30, 2026</strong>, the Trust provided financial assistance to the family of
-            <strong>Thiru S Radhakrishan</strong>, Assistant Conservator of Forests, Tamil Nadu Forest Academy,
-            Coimbatore, who got seriously injured in the line of duty and is presently undergoing emergency
-            treatment in a hospital in Coimbatore.
-          </p>
-        </div>
-      </div>
-
-      <!-- Row 12 — Presentation to Press -->
-      <div class="news-row news-item flex items-center gap-4 px-6 py-4 bg-emerald-800/50">
-        <span class="text-emerald-400 font-semibold text-sm w-6 shrink-0 text-right">15.</span>
-        <span class="news-title flex-1 text-sm font-medium leading-snug" onclick="toggleNews(this)">
-          IFSBWT-Presentation Made to the Press on May 26, 2026 at Press Club of India.
-        </span>
-        <a href="IFSBWT-Presentation%20Made%20to%20the%20Press%20on%20May%2026%2C%202026%20at%20Press%20Club%20of%20India.pdf" target="_blank" rel="noopener noreferrer"
-           title="Open PDF" class="pdf-icon shrink-0 text-red-400 text-2xl ml-2">
-          <i class="fas fa-file-pdf"></i>
-        </a>
-      </div>
-
-      <!-- Row 13 — GBM Presentation -->
-      <div class="news-row news-item flex items-center gap-4 px-6 py-4 bg-emerald-800/40">
-        <span class="text-emerald-400 font-semibold text-sm w-6 shrink-0 text-right">16.</span>
-        <span class="news-title flex-1 text-sm font-medium leading-snug" onclick="toggleNews(this)">
-          A copy of the presentation delivered during the Trust's First General Body Meeting, held on May 24, 2026.
-        </span>
-        <a href="240526-IFSBWT-Final%20Presentation%20for%20Deemed%20Members%20at%201900%20hours%20(1).pdf" target="_blank" rel="noopener noreferrer"
-           title="Open PDF" class="pdf-icon shrink-0 text-red-400 text-2xl ml-2">
-          <i class="fas fa-file-pdf"></i>
-        </a>
-      </div>
-
-      <!-- Row 14 — Presentation to Forestry Associations -->
-      <div class="news-row news-item flex items-center gap-4 px-6 py-4 bg-emerald-800/40">
-        <span class="text-emerald-400 font-semibold text-sm w-6 shrink-0 text-right">17.</span>
-        <span class="news-title flex-1 text-sm font-medium leading-snug" onclick="toggleNews(this)">
-          IFSBWT-A Presentation Made to  Forestry Associations on May 23, 2026.
-        </span>
-        <a href="IFSBWT-A%20Presentation%20Made%20to%20%20Forestry%20Associations%20on%20May%2023%2C%202026.pdf" target="_blank" rel="noopener noreferrer"
-           title="Open PDF" class="pdf-icon shrink-0 text-red-400 text-2xl ml-2">
-          <i class="fas fa-file-pdf"></i>
-        </a>
-      </div>
-
-      <!-- Placeholder row -->
-      <div id="futureUpdatesRow" class="flex items-center gap-4 px-6 py-4 bg-emerald-900/60 opacity-50">
-        <span class="text-emerald-600 font-semibold text-sm w-6 shrink-0 text-right">+</span>
-        <span class="flex-1 text-emerald-500 text-sm italic">Future updates will appear here…</span>
-        <span class="shrink-0 text-emerald-700 text-2xl ml-2"><i class="fas fa-file-pdf"></i></span>
-      </div>
-
-    </div><!-- end list container -->
-
-    <!-- ════════════════════════════════════════════
-         PAGINATION
-    ════════════════════════════════════════════ -->
-    <div id="newsPagination" class="mt-8" aria-label="News pagination"></div>
-
   </div>
 </section>
 
-<!-- Back strip -->
-<section class="py-10 text-center bg-emerald-950 border-t border-emerald-800">
-  <a href="ecombase.html"
-     class="inline-block bg-amber-400 text-emerald-950 px-8 py-3 rounded-full font-semibold text-sm hover:bg-amber-300 transition">
-    ← Back to Home
-  </a>
+<!-- DONOR FILES LIST -->
+<section class="py-12 md:py-16 bg-emerald-950">
+  <div class="max-w-3xl mx-auto px-4 sm:px-6">
+
+    <!-- ══ SECTION TABS ══════════════════════════════════════════════════ -->
+    <div class="flex gap-3 mb-8 justify-center">
+      <button onclick="switchTab('tab-monthly')"
+        id="tab-monthly-btn"
+        class="tab-btn px-5 py-2 rounded-full text-sm font-semibold border border-amber-400 bg-amber-400 text-emerald-950 transition">
+        <i class="fas fa-calendar-alt mr-1.5"></i> Month-wise Lists
+      </button>
+      <button onclick="switchTab('tab-consolidated')"
+        id="tab-consolidated-btn"
+        class="tab-btn px-5 py-2 rounded-full text-sm font-semibold border border-emerald-600 text-emerald-300 hover:border-amber-400 hover:bg-amber-400 hover:text-emerald-950 transition">
+        <i class="fas fa-layer-group mr-1.5"></i> Consolidated Reports
+      </button>
+      <button onclick="switchTab('tab-batchwise')"
+        id="tab-batchwise-btn"
+        class="tab-btn px-5 py-2 rounded-full text-sm font-semibold border border-emerald-600 text-emerald-300 hover:border-amber-400 hover:bg-amber-400 hover:text-emerald-950 transition">
+        <i class="fas fa-users mr-1.5"></i> Batch-wise Donor's List
+      </button>
+      <button onclick="switchTab('tab-cadrewise')"
+        id="tab-cadrewise-btn"
+        class="tab-btn px-5 py-2 rounded-full text-sm font-semibold border border-emerald-600 text-emerald-300 hover:border-amber-400 hover:bg-amber-400 hover:text-emerald-950 transition">
+        <i class="fas fa-sitemap mr-1.5"></i> Cadre-wise Donor's List
+      </button>
+    </div>
+
+    <!-- ══ TAB: MONTH-WISE ════════════════════════════════════════════════ -->
+    <div id="tab-monthly">
+
+    <div class="space-y-3">
+
+      <!-- ── YEAR BLOCK: 2026 ─────────────────────────────────────── -->
+      <div class="border border-emerald-700 rounded-lg overflow-hidden">
+
+        <button onclick="toggleYear('y2026')"
+          class="w-full flex items-center justify-between px-5 py-4 bg-emerald-900 hover:bg-emerald-800 transition text-left">
+          <span class="flex items-center gap-3">
+            <i class="fas fa-calendar-alt text-amber-400"></i>
+            <span class="text-amber-300 font-semibold text-base">2026</span>
+            <span class="text-emerald-400 text-xs font-normal">8 months</span>
+          </span>
+          <i id="y2026-icon" class="fas fa-chevron-down text-amber-400 text-xs transition-transform duration-200"></i>
+        </button>
+
+        <ul id="y2026" class="hidden divide-y divide-emerald-800 bg-emerald-950">
+
+            <li class="flex items-center justify-between px-6 py-3 hover:bg-emerald-900/60 transition">
+            <span class="text-emerald-100 text-sm">August 2026</span>
+            <a href="Donor List August 26.pdf" target="_blank" rel="noopener noreferrer"
+               class="inline-flex items-center gap-1.5 text-xs font-semibold text-amber-300 hover:text-amber-200 transition">
+              <i class="fas fa-file-pdf text-red-400"></i> Open
+            </a>
+          </li>
+
+          <li class="flex items-center justify-between px-6 py-3 hover:bg-emerald-900/60 transition">
+            <span class="text-emerald-100 text-sm">July 2026</span>
+            <a href="Donor List July 2026.pdf" target="_blank" rel="noopener noreferrer"
+               class="inline-flex items-center gap-1.5 text-xs font-semibold text-amber-300 hover:text-amber-200 transition">
+              <i class="fas fa-file-pdf text-red-400"></i> Open
+            </a>
+          </li>
+        
+          <li class="flex items-center justify-between px-6 py-3 hover:bg-emerald-900/60 transition">
+            <span class="text-emerald-100 text-sm">June 2026</span>
+            <a href="June 2026.pdf" target="_blank" rel="noopener noreferrer"
+               class="inline-flex items-center gap-1.5 text-xs font-semibold text-amber-300 hover:text-amber-200 transition">
+              <i class="fas fa-file-pdf text-red-400"></i> Open
+            </a>
+          </li>
+         <li class="flex items-center justify-between px-6 py-3 hover:bg-emerald-900/60 transition">
+            <span class="text-emerald-100 text-sm">May 2026</span>
+            <a href="May%202026%20to%20IFSBWT.pdf" target="_blank" rel="noopener noreferrer"
+               class="inline-flex items-center gap-1.5 text-xs font-semibold text-amber-300 hover:text-amber-200 transition">
+              <i class="fas fa-file-pdf text-red-400"></i> Open
+            </a>
+          </li>
+
+           <li class="flex items-center justify-between px-6 py-3 hover:bg-emerald-900/60 transition">
+            <span class="text-emerald-100 text-sm">April 2026</span>
+            <a href="List%20of%20Donors-April%202026.pdf" target="_blank" rel="noopener noreferrer"
+               class="inline-flex items-center gap-1.5 text-xs font-semibold text-amber-300 hover:text-amber-200 transition">
+              <i class="fas fa-file-pdf text-red-400"></i> Open
+            </a>
+          </li>
+         <li class="flex items-center justify-between px-6 py-3 hover:bg-emerald-900/60 transition">
+            <span class="text-emerald-100 text-sm">March 2026</span>
+            <a href="List%20of%20Donors-March%202026.pdf" target="_blank" rel="noopener noreferrer"
+               class="inline-flex items-center gap-1.5 text-xs font-semibold text-amber-300 hover:text-amber-200 transition">
+              <i class="fas fa-file-pdf text-red-400"></i> Open
+            </a>
+          </li>
+
+          <li class="flex items-center justify-between px-6 py-3 hover:bg-emerald-900/60 transition">
+            <span class="text-emerald-100 text-sm">February 2026</span>
+            <a href="List%20of%20Donors-February%202026.pdf" target="_blank" rel="noopener noreferrer"
+               class="inline-flex items-center gap-1.5 text-xs font-semibold text-amber-300 hover:text-amber-200 transition">
+              <i class="fas fa-file-pdf text-red-400"></i> Open
+            </a>
+          </li>
+          <li class="flex items-center justify-between px-6 py-3 hover:bg-emerald-900/60 transition">
+            <span class="text-emerald-100 text-sm">January 2026</span>
+            <a href="List%20of%20Donors-Jan%202026.pdf" target="_blank" rel="noopener noreferrer"
+               class="inline-flex items-center gap-1.5 text-xs font-semibold text-amber-300 hover:text-amber-200 transition">
+              <i class="fas fa-file-pdf text-red-400"></i> Open
+            </a>
+          </li>
+
+          <!-- Add future months here -->
+
+        </ul>
+      </div>
+      <!-- ── END YEAR BLOCK: 2026 ──────────────────────────────────── -->
+
+      <!-- Add future year blocks here -->
+
+    </div>
+    </div><!-- end tab-monthly -->
+
+    <!-- ══ TAB: CONSOLIDATED ══════════════════════════════════════════════ -->
+    <div id="tab-consolidated" class="hidden">
+
+    <div class="border border-emerald-700 rounded-lg overflow-hidden">
+
+      <!-- Annual consolidated — collapsible -->
+      <button onclick="toggleYear('c-annual')"
+        class="w-full flex items-center justify-between px-5 py-4 bg-emerald-900 hover:bg-emerald-800 transition text-left">
+        <span class="flex items-center gap-3">
+          <i class="fas fa-layer-group text-amber-400"></i>
+          <span class="text-amber-300 font-semibold text-base">Annual Consolidated Reports</span>
+          <span class="text-emerald-400 text-xs font-normal">year-wise</span>
+        </span>
+        <i id="c-annual-icon" class="fas fa-chevron-down text-amber-400 text-xs transition-transform duration-200"></i>
+      </button>
+
+      <ul id="c-annual" class="hidden divide-y divide-emerald-800 bg-emerald-950">
+
+        <!-- ★ 2026 Annual -->
+        <li class="flex items-center justify-between px-6 py-3 hover:bg-emerald-900/60 transition">
+          <span class="text-emerald-100 text-sm">Consolidated Donor List — 2026</span>
+          <a href="MASTER LIST-Donations to Trust January-September, 2026.pdf" target="_blank" rel="noopener noreferrer"
+             class="inline-flex items-center gap-1.5 text-xs font-semibold text-amber-300 hover:text-amber-200 transition">
+            <i class="fas fa-file-pdf text-red-400"></i> Open
+          </a>
+        </li>
+
+        <!-- Add future annual reports here -->
+
+      </ul>
+    </div>
+
+    <!-- Master / All-time report — always visible, no collapse needed -->
+    <div class="mt-3 border border-amber-400/40 rounded-lg overflow-hidden">
+      <div class="flex items-center justify-between px-5 py-4 bg-emerald-900">
+        <span class="flex items-center gap-3">
+          <i class="fas fa-book text-amber-400"></i>
+          <span class="text-amber-300 font-semibold text-base">Master Donor List</span>
+          <span class="text-emerald-400 text-xs font-normal">all-time consolidated</span>
+        </span>
+        <a href="MASTER LIST-Donations to Trust January-September, 2026.pdf" target="_blank" rel="noopener noreferrer"
+           class="inline-flex items-center gap-1.5 text-xs font-semibold text-amber-300 hover:text-amber-200 transition">
+          <i class="fas fa-file-pdf text-red-400"></i> Open
+        </a>
+      </div>
+    </div>
+
+    </div><!-- end tab-consolidated -->
+
+    <!-- ══ TAB: BATCH-WISE ════════════════════════════════════════════════ -->
+    <div id="tab-batchwise" class="hidden">
+
+      <div class="border border-amber-400/40 rounded-lg overflow-hidden">
+        <div class="flex items-center justify-between px-5 py-4 bg-emerald-900">
+          <span class="flex items-center gap-3">
+            <i class="fas fa-users text-amber-400"></i>
+            <span class="text-amber-300 font-semibold text-base">Batch-wise Donor's List</span>
+          </span>
+          <a href="https://docs.google.com/spreadsheets/d/1l5wcqccKZjq0r6OOQOAP8a4CksGD7e6D7bFFpmiYmWI/edit?usp=sharing"
+             target="_blank" rel="noopener noreferrer"
+             class="inline-flex items-center gap-1.5 text-xs font-semibold text-amber-300 hover:text-amber-200 transition">
+            <i class="fas fa-table text-emerald-300"></i> Open
+          </a>
+        </div>
+      </div>
+
+    </div><!-- end tab-batchwise -->
+
+    <!-- ══ TAB: CADRE-WISE ════════════════════════════════════════════════ -->
+    <div id="tab-cadrewise" class="hidden">
+
+      <div class="border border-amber-400/40 rounded-lg overflow-hidden">
+        <div class="flex items-center justify-between px-5 py-4 bg-emerald-900">
+          <span class="flex items-center gap-3">
+            <i class="fas fa-sitemap text-amber-400"></i>
+            <span class="text-amber-300 font-semibold text-base">Cadre-wise Donor's List</span>
+          </span>
+          <a href="https://docs.google.com/spreadsheets/d/1XZu4RkTNE-eppwtUopnZ1glhRxUSMTqc/edit?usp=sharing&ouid=109309630389212557617&rtpof=true&sd=true"
+             target="_blank" rel="noopener noreferrer"
+             class="inline-flex items-center gap-1.5 text-xs font-semibold text-amber-300 hover:text-amber-200 transition">
+            <i class="fas fa-table text-emerald-300"></i> Open
+          </a>
+        </div>
+      </div>
+
+    </div><!-- end tab-cadrewise -->
+
+    </div>
 </section>
 
-<!-- ════════════════════════════════════════════
-     FOOTER
-════════════════════════════════════════════ -->
+<!-- CALL TO ACTION -->
+<section class="py-16 bg-emerald-900 border-t border-emerald-800">
+  <div class="max-w-3xl mx-auto px-6 text-center">
+    <h2 class="heading-font text-3xl text-amber-300 mb-4">Join Our Cause</h2>
+    <p class="text-emerald-200 mb-8 leading-relaxed">
+      Your contribution, however small, makes a meaningful difference in the lives of the families of our forest guardians. Be a part of this noble mission.
+    </p>
+    <a href="donate.html" class="inline-block bg-amber-400 hover:bg-amber-300 text-emerald-950 px-8 py-3 rounded-full font-semibold transition">
+      Donate Now <i class="fas fa-arrow-right ml-2"></i>
+    </a>
+  </div>
+</section>
+
+<!-- FOOTER -->
 <footer class="bg-emerald-900 border-t border-emerald-800 py-12 safe-bottom">
   <div class="max-w-7xl mx-auto px-6 text-center">
     <h3 class="heading-font text-2xl text-amber-300 mb-6">Connect With Us</h3>
@@ -705,40 +466,38 @@
 </footer>
 
 <script>
-/* ── Expandable text-panel toggle (no PDF) ── */
-function toggleExpand(panelId, rowEl) {
-  var panel  = document.getElementById(panelId);
-  var isOpen = panel.classList.contains('open');
-  // Close any other open panels first
-  document.querySelectorAll('.msg-panel.open').forEach(function(p) { p.classList.remove('open'); });
-  document.querySelectorAll('.news-row.open').forEach(function(r) { r.classList.remove('open'); });
-  if (!isOpen) {
-    panel.classList.add('open');
-    rowEl.classList.add('open');
-  }
+/* ─── Accordion ──────────────────────────────────────────────────────────── */
+function toggleYear(id) {
+  var list = document.getElementById(id);
+  var icon = document.getElementById(id + '-icon');
+  var open = !list.classList.contains('hidden');
+  list.classList.toggle('hidden');
+  icon.style.transform = open ? 'rotate(0deg)' : 'rotate(180deg)';
 }
 
-/* ── Title highlight toggle ── */
-function toggleNews(el) {
-  var row = el.closest('.news-row');
-  var isOpen = row.classList.contains('open');
-  document.querySelectorAll('.news-row.open').forEach(function(r) { r.classList.remove('open'); });
-  if (!isOpen) row.classList.add('open');
-}
-
-/* ── Desktop nav dropdowns ── */
-function navToggle(id) {
-  document.querySelectorAll('nav .absolute').forEach(function(el) {
-    if (el.id !== id) el.classList.add('hidden');
+/* ─── Tab switcher ───────────────────────────────────────────────────────── */
+function switchTab(tab) {
+  ['tab-monthly', 'tab-consolidated', 'tab-batchwise', 'tab-cadrewise'].forEach(function(t) {
+    document.getElementById(t).classList.add('hidden');
+    var btn = document.getElementById(t + '-btn');
+    btn.classList.remove('bg-amber-400', 'text-emerald-950', 'border-amber-400');
+    btn.classList.add('border-emerald-600', 'text-emerald-300');
   });
+  document.getElementById(tab).classList.remove('hidden');
+  var active = document.getElementById(tab + '-btn');
+  active.classList.add('bg-amber-400', 'text-emerald-950', 'border-amber-400');
+  active.classList.remove('border-emerald-600', 'text-emerald-300');
+}
+
+/* ─── Nav helpers ────────────────────────────────────────────────────────── */
+function navToggle(id) {
+  document.querySelectorAll('nav .absolute').forEach(el => { if (el.id !== id) el.classList.add('hidden'); });
   document.getElementById(id).classList.toggle('hidden');
 }
 
 // Click outside to close nav dropdowns
 document.addEventListener('click', function(e) {
-  if (!e.target.closest('nav')) {
-    document.querySelectorAll('nav .absolute').forEach(function(el) { el.classList.add('hidden'); });
-  }
+  if (!e.target.closest('nav')) document.querySelectorAll('nav .absolute').forEach(el => el.classList.add('hidden'));
 });
 
 // Click-based submenu toggle for Compensation Orders (desktop)
@@ -762,115 +521,19 @@ document.addEventListener('click', function(e) {
   }
 });
 
-/* ── Mobile accordion ── */
 function mobileToggle(id) {
   var panel = document.getElementById(id);
   var icon  = document.getElementById(id + '-icon');
   var isHidden = panel.classList.contains('hidden');
   ['mob-about','mob-gov','mob-gallery','mob-news'].forEach(function(p) {
     document.getElementById(p).classList.add('hidden');
-    var ic = document.getElementById(p + '-icon');
-    if (ic) ic.style.transform = 'rotate(0deg)';
+    document.getElementById(p + '-icon').style.transform = 'rotate(0deg)';
   });
   if (isHidden) {
     panel.classList.remove('hidden');
-    if (icon) icon.style.transform = 'rotate(180deg)';
+    icon.style.transform = 'rotate(180deg)';
   }
 }
-
-/* ══════════════════════════════════════════════════════════
-   NEWS LIST PAGINATION
-   Splits the numbered .news-item rows inside #updates into
-   pages of ITEMS_PER_PAGE and renders numbered page controls
-   (1, 2, 3 …) into #newsPagination. Works automatically no
-   matter how many rows are added later — no page numbers are
-   hard-coded anywhere.
-══════════════════════════════════════════════════════════ */
-(function () {
-  var ITEMS_PER_PAGE = 15;   // <-- change this to show more/fewer rows per page
-
-  var listItems  = Array.prototype.slice.call(document.querySelectorAll('#updates .news-item'));
-  var futureRow  = document.getElementById('futureUpdatesRow');
-  var pager      = document.getElementById('newsPagination');
-  if (!listItems.length || !pager) return;
-
-  var totalPages  = Math.max(1, Math.ceil(listItems.length / ITEMS_PER_PAGE));
-  var currentPage = 1;
-
-  function closeOpenPanels() {
-    document.querySelectorAll('.msg-panel.open').forEach(function (p) { p.classList.remove('open'); });
-    document.querySelectorAll('.news-row.open').forEach(function (r) { r.classList.remove('open'); });
-  }
-
-  function makeBtn(label, page, disabled, active) {
-    var btn = document.createElement('button');
-    btn.type = 'button';
-    btn.textContent = label;
-    var base = 'min-w-[2.25rem] h-9 px-3 flex items-center justify-center rounded-full text-xs sm:text-sm font-semibold transition ';
-    if (active) {
-      btn.className = base + 'bg-amber-400 text-emerald-950 cursor-default';
-      btn.setAttribute('aria-current', 'page');
-    } else if (disabled) {
-      btn.className = base + 'bg-emerald-800/40 text-emerald-600 cursor-not-allowed';
-    } else {
-      btn.className = base + 'bg-emerald-800 text-emerald-200 hover:bg-amber-400 hover:text-emerald-950';
-    }
-    if (disabled || active) {
-      btn.disabled = true;
-    } else {
-      btn.addEventListener('click', function () { goToPage(page); });
-    }
-    return btn;
-  }
-
-  function renderPager() {
-    pager.innerHTML = '';
-    if (totalPages <= 1) return; // nothing to paginate
-
-    var status = document.createElement('div');
-    status.className = 'text-center text-emerald-400 text-xs mb-3';
-    status.textContent = 'Page ' + currentPage + ' of ' + totalPages;
-    pager.appendChild(status);
-
-    var row = document.createElement('div');
-    row.className = 'flex flex-wrap items-center justify-center gap-2';
-
-    row.appendChild(makeBtn('‹ Prev', currentPage - 1, currentPage === 1, false));
-    for (var p = 1; p <= totalPages; p++) {
-      row.appendChild(makeBtn(String(p), p, false, p === currentPage));
-    }
-    row.appendChild(makeBtn('Next ›', currentPage + 1, currentPage === totalPages, false));
-
-    pager.appendChild(row);
-  }
-
-  function applyPage(scrollToTop) {
-    var start = (currentPage - 1) * ITEMS_PER_PAGE;
-    var end   = start + ITEMS_PER_PAGE;
-    listItems.forEach(function (item, idx) {
-      item.hidden = !(idx >= start && idx < end);
-    });
-    // Only reveal the "future updates" placeholder on the last page,
-    // so earlier pages don't look like the list has ended.
-    if (futureRow) futureRow.hidden = (currentPage !== totalPages);
-
-    renderPager();
-
-    if (scrollToTop) {
-      var section = document.getElementById('updates');
-      if (section) section.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    }
-  }
-
-  function goToPage(page) {
-    currentPage = Math.min(Math.max(page, 1), totalPages);
-    closeOpenPanels();
-    applyPage(true);
-  }
-
-  applyPage(false); // initial render, no scroll on page load
-})();
 </script>
-
 </body>
 </html>
