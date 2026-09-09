@@ -90,6 +90,10 @@
       0%, 100% { transform: translateY(0); }
       50%       { transform: translateY(6px); }
     }
+
+    /* Pagination: force hidden pages out of view even though rows
+       also carry Tailwind's "flex" display class */
+    [hidden] { display: none !important; }
   </style>
 </head>
 
@@ -310,7 +314,7 @@
     <div class="rounded-2xl border border-emerald-700 overflow-hidden shadow-xl divide-y divide-emerald-700/60">
 
 
-        <div>
+        <div class="news-item">
         <div class="news-row flex items-center gap-4 px-6 py-4 bg-emerald-800/50 cursor-pointer"
              onclick="toggleExpand('msg-pccf2-odisha', this)">
           <span class="text-emerald-400 font-semibold text-sm w-6 shrink-0 text-right">1.</span>
@@ -333,7 +337,7 @@
         </div>
       </div>
       
-       <div>
+       <div class="news-item">
         <div class="news-row flex items-center gap-4 px-6 py-4 bg-emerald-800/50 cursor-pointer"
              onclick="toggleExpand('msg-pccf1-odisha', this)">
           <span class="text-emerald-400 font-semibold text-sm w-6 shrink-0 text-right">2.</span>
@@ -356,7 +360,7 @@
       </div>
       
       <!-- Row 1 — Online meeting with PCCF (HoFF), Odisha -->
-      <div>
+      <div class="news-item">
         <div class="news-row flex items-center gap-4 px-6 py-4 bg-emerald-800/50 cursor-pointer"
              onclick="toggleExpand('msg-pccf-odisha', this)">
           <span class="text-emerald-400 font-semibold text-sm w-6 shrink-0 text-right">3.</span>
@@ -380,7 +384,7 @@
       </div>
 
       <!-- Row 2 — SBI Statement (NEW unique ID) -->
-      <div>
+      <div class="news-item">
         <div class="news-row flex items-center gap-4 px-6 py-4 bg-emerald-800/50 cursor-pointer"
              onclick="toggleExpand('msg-sbi-statement1', this)">
           <span class="text-emerald-400 font-semibold text-sm w-6 shrink-0 text-right">4.</span>
@@ -407,7 +411,7 @@
       
       
       <!-- Row 2 — Letter to Hon'ble CM Gujarat -->
-      <div>
+      <div class="news-item">
         <div class="news-row flex items-center gap-4 px-6 py-4 bg-emerald-800/50 cursor-pointer"
              onclick="toggleExpand('letter-CM-GJ', this)">
           <span class="text-emerald-400 font-semibold text-sm w-6 shrink-0 text-right">5.</span>
@@ -438,7 +442,7 @@
       </div>
            
       <!-- Row 3 — Letter to Hon'ble CM West Bengal -->
-      <div>
+      <div class="news-item">
         <div class="news-row flex items-center gap-4 px-6 py-4 bg-emerald-800/50 cursor-pointer"
              onclick="toggleExpand('letter-CM-WB', this)">
           <span class="text-emerald-400 font-semibold text-sm w-6 shrink-0 text-right">6.</span>
@@ -469,7 +473,7 @@
       </div>
 
        <!-- Row 4 — -->
-      <div class="news-row flex items-center gap-4 px-6 py-4 bg-emerald-800/50">
+      <div class="news-row news-item flex items-center gap-4 px-6 py-4 bg-emerald-800/50">
         <span class="text-emerald-400 font-semibold text-sm w-6 shrink-0 text-right">7.</span>
         <span class="news-title flex-1 text-sm font-medium leading-snug" onclick="toggleNews(this)">
            The IFSBWT provided financial assistance in ten cases so far.
@@ -481,7 +485,7 @@
       </div>
       
       <!-- Row 5 — SBI Statement (NEW unique ID) -->
-      <div>
+      <div class="news-item">
         <div class="news-row flex items-center gap-4 px-6 py-4 bg-emerald-800/50 cursor-pointer"
              onclick="toggleExpand('msg-sbi-statement', this)">
           <span class="text-emerald-400 font-semibold text-sm w-6 shrink-0 text-right">8.</span>
@@ -507,7 +511,7 @@
       </div>
 
       <!-- Row 6 — Lesser Known Khaki (kept original ID) -->
-      <div>
+      <div class="news-item">
         <div class="news-row flex items-center gap-4 px-6 py-4 bg-emerald-800/50 cursor-pointer"
              onclick="toggleExpand('msg-lesser-known-khaki', this)">
           <span class="text-emerald-400 font-semibold text-sm w-6 shrink-0 text-right">9.</span>
@@ -534,7 +538,7 @@
       </div>
 
       <!-- Row 7 — Sohan Singh (no PDF) -->
-      <div>
+      <div class="news-item">
         <div class="news-row flex items-center gap-4 px-6 py-4 bg-emerald-800/50 cursor-pointer"
              onclick="toggleExpand('msg-sohan-singh', this)">
           <span class="text-emerald-400 font-semibold text-sm w-6 shrink-0 text-right">10.</span>
@@ -556,7 +560,7 @@
       </div>
 
       <!-- Row 8 — Rasmita Subuddhi -->
-      <div>
+      <div class="news-item">
         <div class="news-row flex items-center gap-4 px-6 py-4 bg-emerald-800/50 cursor-pointer"
              onclick="toggleExpand('msg-rasmita', this)">
           <span class="text-emerald-400 font-semibold text-sm w-6 shrink-0 text-right">11.</span>
@@ -577,7 +581,7 @@
       </div>
 
       <!-- Row 9 — Appeal to Young IFS officers -->
-      <div class="news-row flex items-center gap-4 px-6 py-4 bg-emerald-800/50">
+      <div class="news-row news-item flex items-center gap-4 px-6 py-4 bg-emerald-800/50">
         <span class="text-emerald-400 font-semibold text-sm w-6 shrink-0 text-right">12.</span>
         <span class="news-title flex-1 text-sm font-medium leading-snug" onclick="toggleNews(this)">
           The Trust makes an appeal to the Young IFS officers.
@@ -589,7 +593,7 @@
       </div>
 
       <!-- Row 10 — Letter to PCCFs -->
-      <div class="news-row flex items-center gap-4 px-6 py-4 bg-emerald-800/50">
+      <div class="news-row news-item flex items-center gap-4 px-6 py-4 bg-emerald-800/50">
         <span class="text-emerald-400 font-semibold text-sm w-6 shrink-0 text-right">13.</span>
         <span class="news-title flex-1 text-sm font-medium leading-snug" onclick="toggleNews(this)">
           The Trust writes to PCCFs( HoFF) to nominate state co-ordinators and nodal officers for the Trust.
@@ -601,7 +605,7 @@
       </div>
 
       <!-- Row 11 — Radhakrishnan assistance -->
-      <div>
+      <div class="news-item">
         <div class="news-row flex items-center gap-4 px-6 py-4 bg-emerald-800/50 cursor-pointer"
              onclick="toggleExpand('msg-radhakrishnan2', this)">
           <span class="text-emerald-400 font-semibold text-sm w-6 shrink-0 text-right">14.</span>
@@ -623,7 +627,7 @@
       </div>
 
       <!-- Row 12 — Presentation to Press -->
-      <div class="news-row flex items-center gap-4 px-6 py-4 bg-emerald-800/50">
+      <div class="news-row news-item flex items-center gap-4 px-6 py-4 bg-emerald-800/50">
         <span class="text-emerald-400 font-semibold text-sm w-6 shrink-0 text-right">15.</span>
         <span class="news-title flex-1 text-sm font-medium leading-snug" onclick="toggleNews(this)">
           IFSBWT-Presentation Made to the Press on May 26, 2026 at Press Club of India.
@@ -635,7 +639,7 @@
       </div>
 
       <!-- Row 13 — GBM Presentation -->
-      <div class="news-row flex items-center gap-4 px-6 py-4 bg-emerald-800/40">
+      <div class="news-row news-item flex items-center gap-4 px-6 py-4 bg-emerald-800/40">
         <span class="text-emerald-400 font-semibold text-sm w-6 shrink-0 text-right">16.</span>
         <span class="news-title flex-1 text-sm font-medium leading-snug" onclick="toggleNews(this)">
           A copy of the presentation delivered during the Trust's First General Body Meeting, held on May 24, 2026.
@@ -647,7 +651,7 @@
       </div>
 
       <!-- Row 14 — Presentation to Forestry Associations -->
-      <div class="news-row flex items-center gap-4 px-6 py-4 bg-emerald-800/40">
+      <div class="news-row news-item flex items-center gap-4 px-6 py-4 bg-emerald-800/40">
         <span class="text-emerald-400 font-semibold text-sm w-6 shrink-0 text-right">17.</span>
         <span class="news-title flex-1 text-sm font-medium leading-snug" onclick="toggleNews(this)">
           IFSBWT-A Presentation Made to  Forestry Associations on May 23, 2026.
@@ -659,13 +663,18 @@
       </div>
 
       <!-- Placeholder row -->
-      <div class="flex items-center gap-4 px-6 py-4 bg-emerald-900/60 opacity-50">
+      <div id="futureUpdatesRow" class="flex items-center gap-4 px-6 py-4 bg-emerald-900/60 opacity-50">
         <span class="text-emerald-600 font-semibold text-sm w-6 shrink-0 text-right">+</span>
         <span class="flex-1 text-emerald-500 text-sm italic">Future updates will appear here…</span>
         <span class="shrink-0 text-emerald-700 text-2xl ml-2"><i class="fas fa-file-pdf"></i></span>
       </div>
 
     </div><!-- end list container -->
+
+    <!-- ════════════════════════════════════════════
+         PAGINATION
+    ════════════════════════════════════════════ -->
+    <div id="newsPagination" class="mt-8" aria-label="News pagination"></div>
 
   </div>
 </section>
@@ -768,6 +777,99 @@ function mobileToggle(id) {
     if (icon) icon.style.transform = 'rotate(180deg)';
   }
 }
+
+/* ══════════════════════════════════════════════════════════
+   NEWS LIST PAGINATION
+   Splits the numbered .news-item rows inside #updates into
+   pages of ITEMS_PER_PAGE and renders numbered page controls
+   (1, 2, 3 …) into #newsPagination. Works automatically no
+   matter how many rows are added later — no page numbers are
+   hard-coded anywhere.
+══════════════════════════════════════════════════════════ */
+(function () {
+  var ITEMS_PER_PAGE = 15;   // <-- change this to show more/fewer rows per page
+
+  var listItems  = Array.prototype.slice.call(document.querySelectorAll('#updates .news-item'));
+  var futureRow  = document.getElementById('futureUpdatesRow');
+  var pager      = document.getElementById('newsPagination');
+  if (!listItems.length || !pager) return;
+
+  var totalPages  = Math.max(1, Math.ceil(listItems.length / ITEMS_PER_PAGE));
+  var currentPage = 1;
+
+  function closeOpenPanels() {
+    document.querySelectorAll('.msg-panel.open').forEach(function (p) { p.classList.remove('open'); });
+    document.querySelectorAll('.news-row.open').forEach(function (r) { r.classList.remove('open'); });
+  }
+
+  function makeBtn(label, page, disabled, active) {
+    var btn = document.createElement('button');
+    btn.type = 'button';
+    btn.textContent = label;
+    var base = 'min-w-[2.25rem] h-9 px-3 flex items-center justify-center rounded-full text-xs sm:text-sm font-semibold transition ';
+    if (active) {
+      btn.className = base + 'bg-amber-400 text-emerald-950 cursor-default';
+      btn.setAttribute('aria-current', 'page');
+    } else if (disabled) {
+      btn.className = base + 'bg-emerald-800/40 text-emerald-600 cursor-not-allowed';
+    } else {
+      btn.className = base + 'bg-emerald-800 text-emerald-200 hover:bg-amber-400 hover:text-emerald-950';
+    }
+    if (disabled || active) {
+      btn.disabled = true;
+    } else {
+      btn.addEventListener('click', function () { goToPage(page); });
+    }
+    return btn;
+  }
+
+  function renderPager() {
+    pager.innerHTML = '';
+    if (totalPages <= 1) return; // nothing to paginate
+
+    var status = document.createElement('div');
+    status.className = 'text-center text-emerald-400 text-xs mb-3';
+    status.textContent = 'Page ' + currentPage + ' of ' + totalPages;
+    pager.appendChild(status);
+
+    var row = document.createElement('div');
+    row.className = 'flex flex-wrap items-center justify-center gap-2';
+
+    row.appendChild(makeBtn('‹ Prev', currentPage - 1, currentPage === 1, false));
+    for (var p = 1; p <= totalPages; p++) {
+      row.appendChild(makeBtn(String(p), p, false, p === currentPage));
+    }
+    row.appendChild(makeBtn('Next ›', currentPage + 1, currentPage === totalPages, false));
+
+    pager.appendChild(row);
+  }
+
+  function applyPage(scrollToTop) {
+    var start = (currentPage - 1) * ITEMS_PER_PAGE;
+    var end   = start + ITEMS_PER_PAGE;
+    listItems.forEach(function (item, idx) {
+      item.hidden = !(idx >= start && idx < end);
+    });
+    // Only reveal the "future updates" placeholder on the last page,
+    // so earlier pages don't look like the list has ended.
+    if (futureRow) futureRow.hidden = (currentPage !== totalPages);
+
+    renderPager();
+
+    if (scrollToTop) {
+      var section = document.getElementById('updates');
+      if (section) section.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  }
+
+  function goToPage(page) {
+    currentPage = Math.min(Math.max(page, 1), totalPages);
+    closeOpenPanels();
+    applyPage(true);
+  }
+
+  applyPage(false); // initial render, no scroll on page load
+})();
 </script>
 
 </body>
