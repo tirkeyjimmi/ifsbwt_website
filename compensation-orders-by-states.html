@@ -247,13 +247,20 @@
     <div class="max-w-4xl mx-auto px-6">
 
       <!-- Tab buttons -->
-      <div class="flex flex-col sm:flex-row gap-3 justify-center mb-10">
-        <button id="tabBtn-compensation" onclick="showOrderTab('compensation')" class="tab-btn active btn-tap px-6 py-3 rounded-full font-semibold text-sm sm:text-base w-full sm:w-auto">
-          <i class="fas fa-file-invoice-dollar mr-2"></i>Orders Related to Compensation
-        </button>
-        <button id="tabBtn-firearms" onclick="showOrderTab('firearms')" class="tab-btn btn-tap px-6 py-3 rounded-full font-semibold text-sm sm:text-base w-full sm:w-auto">
-          <i class="fas fa-shield-halved mr-2"></i>Orders Related to Supply of Firearms and Others
-        </button>
+      <div class="mb-10">
+        <div class="flex flex-col sm:flex-row gap-3 justify-center">
+          <button id="tabBtn-compensation" onclick="showOrderTab('compensation')" class="tab-btn active btn-tap px-6 py-3 rounded-full font-semibold text-sm sm:text-base w-full sm:w-auto">
+            <i class="fas fa-file-invoice-dollar mr-2"></i>Orders Related to Compensation
+          </button>
+          <button id="tabBtn-firearms" onclick="showOrderTab('firearms')" class="tab-btn btn-tap px-6 py-3 rounded-full font-semibold text-sm sm:text-base w-full sm:w-auto">
+            <i class="fas fa-shield-halved mr-2"></i>Orders Related to Supply of Firearms and Others
+          </button>
+        </div>
+        <div class="flex flex-col sm:flex-row gap-3 justify-center mt-3">
+          <button id="tabBtn-comparative" onclick="showOrderTab('comparative')" class="tab-btn btn-tap px-6 py-3 rounded-full font-semibold text-sm sm:text-base w-full sm:w-auto">
+            <i class="fas fa-scale-balanced mr-2"></i>Comparative Analysis of the Compensation Orders
+          </button>
+        </div>
       </div>
 
       <!-- Segment 1: Compensation -->
@@ -402,12 +409,37 @@
         </div>
       </div>
 
+      <!-- Segment 3: Comparative Analysis -->
+      <div id="orderPanel-comparative" class="space-y-3 hidden">
+        <h2 class="heading-font text-2xl text-amber-300 mb-6 text-center sm:text-left">Comparative Analysis of the Compensation Orders</h2>
+
+        <a href="Comparative-Analysis-Ten-States-Compensation-Orders.pdf" target="_blank" rel="noopener noreferrer" class="state-row flex items-center justify-between gap-3 bg-emerald-900/60 border border-emerald-800 rounded-xl px-5 py-4">
+          <span class="flex items-center gap-3"><i class="fas fa-file-pdf text-red-400 text-lg"></i>
+            <span>
+              <span class="block font-semibold text-emerald-100">Comparative Analysis — Ten States</span>
+              <span class="block text-xs text-emerald-300">Comparative analysis of the orders issued by ten States so far regarding compensation to forest field personnel who make the supreme sacrifice or suffer grievous injuries in the line of duty.</span>
+            </span>
+          </span>
+          <i class="fas fa-arrow-up-right-from-square text-emerald-400 text-sm"></i>
+        </a>
+
+        <a href="Comparative-Analysis-Three-Best-Orders.pdf" target="_blank" rel="noopener noreferrer" class="state-row flex items-center justify-between gap-3 bg-emerald-900/60 border border-emerald-800 rounded-xl px-5 py-4">
+          <span class="flex items-center gap-3"><i class="fas fa-file-pdf text-red-400 text-lg"></i>
+            <span>
+              <span class="block font-semibold text-emerald-100">Comparative Analysis — Three Best Orders</span>
+              <span class="block text-xs text-emerald-300">Comparative analysis of the three best orders issued by the States for compensation to forest field personnel who make the supreme sacrifice or suffer grievous injuries in the line of duty.</span>
+            </span>
+          </span>
+          <i class="fas fa-arrow-up-right-from-square text-emerald-400 text-sm"></i>
+        </a>
+      </div>
+
     </div>
   </section>
 
   <script>
     function showOrderTab(tab) {
-      ['compensation', 'firearms'].forEach(function(t) {
+      ['compensation', 'firearms', 'comparative'].forEach(function(t) {
         document.getElementById('orderPanel-' + t).classList.toggle('hidden', t !== tab);
         document.getElementById('tabBtn-' + t).classList.toggle('active', t === tab);
       });
