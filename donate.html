@@ -233,69 +233,104 @@ function mobileToggle(id) {
 
 <!-- MAIN CONTENT -->
 <section class="pb-20 px-6">
-  <div class="max-w-5xl mx-auto grid md:grid-cols-2 gap-10 bg-emerald-900/60 border border-emerald-700 rounded-2xl p-10 shadow-xl">
+  <div class="max-w-5xl mx-auto grid md:grid-cols-2 gap-6 md:gap-8">
 
-    <!-- Bank Details -->
-    <div>
-      <h2 class="heading-font text-3xl text-amber-300 mb-2">Bank Details</h2>
-      <p class="text-emerald-400 text-sm mb-6">IFS Benevolent and Welfare Trust</p>
+    <!-- LEFT: Online donation (SBI Collect + UPI) -->
+    <div class="bg-emerald-900/60 border border-emerald-700 rounded-2xl p-6 sm:p-8 shadow-xl flex flex-col">
+      <div class="flex items-center gap-3 mb-2">
+        <span class="w-11 h-11 flex items-center justify-center rounded-full bg-amber-400 text-emerald-950 text-lg"><i class="fas fa-landmark"></i></span>
+        <h2 class="heading-font text-3xl text-amber-300">Donate Online</h2>
+      </div>
+      <p class="text-emerald-400 text-sm mb-6">Quickest way: pay securely through SBI Collect using UPI, cards or net banking.</p>
 
-      <div class="space-y-4">
-        <div class="bg-emerald-950/60 border border-emerald-700 rounded-xl px-5 py-4">
-          <p class="text-xs text-emerald-500 uppercase tracking-widest mb-1">Account Name</p>
-          <p class="text-emerald-100 font-semibold">Indian Forest Service Benevolent and Welfare Trust</p>
+      <a href="https://sbcollect.sbi.bank.in/sbicollect/icollecthome.htm?corpID=7183463" target="_blank" rel="noopener noreferrer"
+         class="btn-tap flex items-center justify-center gap-2 bg-amber-400 text-emerald-950 px-7 py-4 rounded-full text-lg font-bold hover:bg-amber-300 transition shadow-lg">
+        <i class="fas fa-lock text-base"></i> Donate via SBI Collect
+      </a>
+
+      <ol class="mt-7 space-y-4 text-sm text-emerald-100">
+        <li class="flex gap-3"><span class="w-7 h-7 shrink-0 flex items-center justify-center rounded-full bg-emerald-800 border border-emerald-600 text-amber-300 font-semibold">1</span><span class="pt-0.5">Click the button above to open SBI Collect.</span></li>
+        <li class="flex gap-3"><span class="w-7 h-7 shrink-0 flex items-center justify-center rounded-full bg-emerald-800 border border-emerald-600 text-amber-300 font-semibold">2</span><span class="pt-0.5">Enter your details and the donation amount.</span></li>
+        <li class="flex gap-3"><span class="w-7 h-7 shrink-0 flex items-center justify-center rounded-full bg-emerald-800 border border-emerald-600 text-amber-300 font-semibold">3</span><span class="pt-0.5">Choose a payment mode and save your receipt.</span></li>
+      </ol>
+
+      <div class="flex items-center gap-3 my-7 text-emerald-600 text-xs uppercase tracking-widest">
+        <span class="flex-1 h-px bg-emerald-700"></span>or pay by UPI<span class="flex-1 h-px bg-emerald-700"></span>
+      </div>
+
+      <div class="flex items-center justify-between gap-3 bg-emerald-950/60 border border-emerald-700 rounded-xl px-5 py-4 mt-auto">
+        <div>
+          <p class="text-xs text-emerald-500 uppercase tracking-widest mb-1">UPI ID</p>
+          <p class="text-amber-300 font-semibold tracking-wide">ifsbwt@sbi</p>
         </div>
-        <div class="bg-emerald-950/60 border border-emerald-700 rounded-xl px-5 py-4">
-          <p class="text-xs text-emerald-500 uppercase tracking-widest mb-1">Bank A/C No.</p>
-          <p class="text-emerald-100 font-semibold tracking-widest">30454625682</p>
+        <button type="button" onclick="copyText('ifsbwt@sbi', this)" class="btn-tap shrink-0 text-xs bg-emerald-800 hover:bg-amber-400 hover:text-emerald-950 border border-emerald-600 rounded-full px-3 py-1.5 transition"><i class="far fa-copy mr-1"></i><span>Copy</span></button>
+      </div>
+    </div>
+
+    <!-- RIGHT: Bank transfer details -->
+    <div class="bg-emerald-900/60 border border-emerald-700 rounded-2xl p-6 sm:p-8 shadow-xl">
+      <div class="flex items-center gap-3 mb-2">
+        <span class="w-11 h-11 flex items-center justify-center rounded-full bg-emerald-800 border border-emerald-600 text-amber-300 text-lg"><i class="fas fa-building-columns"></i></span>
+        <h2 class="heading-font text-3xl text-amber-300">Bank Transfer</h2>
+      </div>
+      <p class="text-emerald-400 text-sm mb-6">For NEFT / RTGS / IMPS, use the details below. Tap Copy to avoid typing errors.</p>
+
+      <div class="space-y-3">
+        <div class="flex items-center justify-between gap-3 bg-emerald-950/60 border border-emerald-700 rounded-xl px-5 py-4">
+          <div class="min-w-0">
+            <p class="text-xs text-emerald-500 uppercase tracking-widest mb-1">Account Name</p>
+            <p class="text-emerald-100 font-semibold break-words">Indian Forest Service Benevolent and Welfare Trust</p>
+          </div>
+          <button type="button" onclick="copyText('Indian Forest Service Benevolent and Welfare Trust', this)" class="btn-tap shrink-0 text-xs bg-emerald-800 hover:bg-amber-400 hover:text-emerald-950 border border-emerald-600 rounded-full px-3 py-1.5 transition"><i class="far fa-copy mr-1"></i><span>Copy</span></button>
         </div>
-        <div class="bg-emerald-950/60 border border-emerald-700 rounded-xl px-5 py-4">
-          <p class="text-xs text-emerald-500 uppercase tracking-widest mb-1">IFSC Code</p>
-          <p class="text-emerald-100 font-semibold tracking-widest">SBIN0007837</p>
+        <div class="flex items-center justify-between gap-3 bg-emerald-950/60 border border-emerald-700 rounded-xl px-5 py-4">
+          <div class="min-w-0">
+            <p class="text-xs text-emerald-500 uppercase tracking-widest mb-1">Bank A/C No.</p>
+            <p class="text-emerald-100 font-semibold tracking-widest break-words">30454625682</p>
+          </div>
+          <button type="button" onclick="copyText('30454625682', this)" class="btn-tap shrink-0 text-xs bg-emerald-800 hover:bg-amber-400 hover:text-emerald-950 border border-emerald-600 rounded-full px-3 py-1.5 transition"><i class="far fa-copy mr-1"></i><span>Copy</span></button>
+        </div>
+        <div class="flex items-center justify-between gap-3 bg-emerald-950/60 border border-emerald-700 rounded-xl px-5 py-4">
+          <div class="min-w-0">
+            <p class="text-xs text-emerald-500 uppercase tracking-widest mb-1">IFSC Code</p>
+            <p class="text-emerald-100 font-semibold tracking-widest break-words">SBIN0007837</p>
+          </div>
+          <button type="button" onclick="copyText('SBIN0007837', this)" class="btn-tap shrink-0 text-xs bg-emerald-800 hover:bg-amber-400 hover:text-emerald-950 border border-emerald-600 rounded-full px-3 py-1.5 transition"><i class="far fa-copy mr-1"></i><span>Copy</span></button>
         </div>
         <div class="bg-emerald-950/60 border border-emerald-700 rounded-xl px-5 py-4">
           <p class="text-xs text-emerald-500 uppercase tracking-widest mb-1">Bank &amp; Branch</p>
           <p class="text-emerald-100 font-semibold">State Bank of India</p>
           <p class="text-emerald-300 text-sm">CGO Complex, Lodi Road, New Delhi</p>
         </div>
-        <div class="bg-emerald-950/60 border border-emerald-700 rounded-xl px-5 py-4">
-          <p class="text-xs text-emerald-500 uppercase tracking-widest mb-1">UPI ID</p>
-          <p class="text-amber-300 font-semibold tracking-wide">ifsbwt@sbi</p>
-        </div>
       </div>
-
-      <div class="mt-6 p-4 bg-amber-400/10 border border-amber-400/30 rounded-xl text-sm text-emerald-200 leading-relaxed">
-        <i class="fas fa-info-circle text-amber-300 mr-2"></i>
-        Donations to this Trust may be eligible for tax exemption under applicable provisions. Please retain your transaction receipt for records.
-      </div>
-
-      <a href="ecombase.html" class="inline-block mt-6 text-sm bg-amber-400 text-emerald-950 px-6 py-2 rounded-full font-semibold hover:bg-amber-300 transition">← Back to Home</a>
     </div>
 
-    <!-- QR Code -->
-    <div class="flex flex-col items-center justify-center text-center">
-      <h2 class="heading-font text-3xl text-amber-300 mb-2">Scan and Pay</h2>
-      <p class="text-emerald-400 text-sm mb-6">Use any UPI app to scan and donate instantly</p>
-
-      <div class="bg-white p-4 rounded-2xl shadow-xl w-full max-w-xs mx-auto">
-        <img src="qr-code.png"
-             alt="SBI UPI QR Code – IFS Benevolent and Welfare Trust"
-             class="w-full object-contain rounded-lg">
-      </div>
-
-      <p class="text-emerald-200 text-sm mt-4">UPI ID: <span class="text-amber-300 font-semibold">ifsbwt@sbi</span></p>
-
-      <a href="https://sbcollect.sbi.bank.in/sbicollect/icollecthome.htm?corpID=7183463"
-         target="_blank"
-         rel="noopener noreferrer"
-         class="btn-tap inline-flex items-center justify-center mt-5 bg-amber-400 text-emerald-950 px-7 py-3 rounded-full font-semibold hover:bg-amber-300 transition shadow-md">
-        <i class="fas fa-landmark mr-2"></i>
-        SBI COLLECT
-      </a>
+    <!-- Full-width note + back link -->
+    <div class="md:col-span-2 flex flex-col sm:flex-row sm:items-center justify-between gap-4 p-5 bg-amber-400/10 border border-amber-400/30 rounded-xl text-sm text-emerald-200 leading-relaxed">
+      <p><i class="fas fa-info-circle text-amber-300 mr-2"></i>Donations to this Trust may be eligible for tax exemption under applicable provisions. Please retain your transaction receipt for records.</p>
+      <a href="ecombase.html" class="shrink-0 text-center text-sm bg-amber-400 text-emerald-950 px-6 py-2 rounded-full font-semibold hover:bg-amber-300 transition">&larr; Back to Home</a>
     </div>
 
   </div>
 </section>
+
+<script>
+function copyText(text, btn) {
+  function done() {
+    var s = btn.querySelector('span'), old = s.textContent;
+    s.textContent = 'Copied!';
+    setTimeout(function () { s.textContent = old; }, 1500);
+  }
+  if (navigator.clipboard && navigator.clipboard.writeText) {
+    navigator.clipboard.writeText(text).then(done, function () {});
+  } else {
+    var t = document.createElement('textarea');
+    t.value = text; document.body.appendChild(t); t.select();
+    try { document.execCommand('copy'); done(); } catch (e) {}
+    document.body.removeChild(t);
+  }
+}
+</script>
 
 <!-- FOOTER -->
 <footer class="bg-emerald-900 border-t border-emerald-800 py-12 safe-bottom">
